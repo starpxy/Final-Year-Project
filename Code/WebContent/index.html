@@ -3,8 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>CodEX</title>
+    <link rel="stylesheet" href="assets/css/jquery-labelauty.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="alternate icon" type="image/png" href="assets-flat/img/icon-flat.png">
+    <style>
+        #search-bar{
+            width: 40%;
+        }
+        ul { list-style-type: none;}
+        li { display: inline-block;}
+        li { margin: 10px 10px;}
+        input.labelauty + label { font: 12px "Microsoft Yahei";}
+        .top-link{
+            color: #009e6c;
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:;">
+                <img style="height: 120%" alt="CodEX" src="assets-flat/img/icon-flat.png">
+            </a>
+        </div>
+        <div class="navbar-brand pull-right">
+            <a class="top-link"><span class="glyphicon glyphicon-user"></span></a>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <img style="width: 400px; margin-top: 14%; " src="assets-flat/img/logo-flat.png">
+    </div>
+    <ul class="">
+        <li>
+            <input type="checkbox" id="inlineCheckbox1" class="checkbox" data-labelauty="By Keyword" checked>
+        </li>
+        <li>
+            <input type="checkbox" id="inlineCheckbox2" class="checkbox" data-labelauty="By Keyword" >
+        </li>
+        <li>
+            <input type="checkbox" id="inlineCheckbox3" class="checkbox" data-labelauty="By Keyword" >
+        </li>
+    </ul>
+
+    <div class="form-inline form-group-lg">
+        <input id="search-bar" type="text" class="form-control input-lg" autofocus>
+        <button type="submit" class="btn btn-success btn-lg">Search</button>
+    </div>
+</div>
 
 </body>
 </html>
+<script src="assets/js/jquery-1.8.3.min.js"></script>
+<script src="assets/js/jquery-labelauty.js"></script>
+<script>
+    $(function(){
+        $(':input').labelauty();
+    });
+</script>
