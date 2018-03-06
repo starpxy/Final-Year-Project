@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodEX</title>
+    <link rel="stylesheet" href="assets-flat/css/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets-flat/css/flat-ui.css">
+    <link rel="alternate icon" type="image/png" href="assets-flat/img/icon-flat.png">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">CodEX</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="fui-user"></span><b class="caret"></b></a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right" action="#" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.navbar-collapse -->
+</nav><!-- /navbar -->
+<div class="panel panel-default" style="margin-top: 53px; padding: 20px;padding-bottom: 0px;; background-color: #f5f7f9">
+    <div class="row">
+        <div class="col-xs-1">
+            <img style="width: 125%" src="assets-flat/img/icon-text.png">
+        </div>
+        <div class="col-xs-7">
+            <input id="search-bar" type="text" class="form-control input-lg" autofocus>
+        </div>
+        <div class="col-xs-3">
+            <button type="submit" class="btn btn-lg btn-primary">Search</button>
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-lg" type="button"><span id="pre-btn">Bias</span><span class="caret"></span></button>
+                <ul role="menu" class="dropdown-menu ">
+                    <li id="p0" class="pref"><a href="javascript:;">No Bias</a></li>
+                    <li id="p1" class="pref"><a href="javascript:;">Search By Keyword</a></li>
+                    <li id="p2" class="pref"><a href="javascript:;">Boolean Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="padding-left: 9%; padding-right: 9%">
+        <ul class="nav nav-tabs">
+            <li id="l0" role="presentation" class="active lang"><a href="javascript:;">All</a></li>
+            <li id="l" role="presentation" class="dropdown">
+                <a id="language" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Language <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li id="l1" class="lang"><a href="javascript:;">Java</a></li>
+                    <li id="l2" class="lang"><a href="javascript:;">Javascript</a></li>
+                    <li id="l3" class="lang"><a href="javascript:;">C</a></li>
+                    <li id="l4" class="lang"><a href="javascript:;">C#</a></li>
+                    <li id="l5" class="lang"><a href="javascript:;">C++</a></li>
+                    <li id="l6" class="lang"><a href="javascript:;">Python</a></li>
+                    <li id="l7" class="lang"><a href="javascript:;">HTML</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="container">
+        <a href="index.html"><h6>Title is here</h6></a>
+        <p>This is description.This is description.
+            This is description.This is description.This is description.This is description.
+            This is description.This is description.This is description.This is description.This is description.
+            This is description.</p>
+        <hr>
+    </div>
+    <div class="container">
+        <a href="index.html"><h6>Title is here</h6></a>
+        <p>This is description.This is description.
+            This is description.This is description.This is description.This is description.
+            This is description.This is description.This is description.This is description.This is description.
+            This is description.</p>
+        <hr>
+    </div>
+    <div class="container">
+        <a href="index.html"><h6>Title is here</h6></a>
+        <p>This is description.This is description.
+            This is description.This is description.This is description.This is description.
+            This is description.This is description.This is description.This is description.This is description.
+            This is description.</p>
+        <hr>
+    </div>
+    <div class="container">
+        <a href="index.html"><h6>Title is here</h6></a>
+        <p>This is description.This is description.
+            This is description.This is description.This is description.This is description.
+            This is description.This is description.This is description.This is description.This is description.
+            This is description.</p>
+        <hr>
+    </div>
+</div>
+</body>
+<script src="assets-flat/js/vendor/jquery.min.js"></script>
+<script src="assets-flat/js/vendor/video.js"></script>
+<script src="assets-flat/js/flat-ui.min.js"></script>
+<script src="assets-flat/js/application.js"></script>
+<script type="text/javascript">
+    function Search(p,s,l) {
+        var url = ""
+    }
+    $(function () {
+        var p = 'p0';
+        $(".pref").click(function () {
+            var ele = $(this);
+            var id = ele.attr("id");
+            var pref = '';
+            p = id;
+            pref = ele.children("a").html();
+            $("#pre-btn").html(pref);
+            $(".pref").removeClass("active");
+            ele.addClass("active");
+        });
+        var l = '';
+        $(".lang").click(function () {
+            var ele = $(this);
+            var id = ele.attr("id");
+            var lang = ele.children("a").html();
+            $(".lang").removeClass("active");
+            if (id!="l0"){
+                $("#l").addClass("active");
+                $("#"+id).addClass("active");
+                $("#language").html(lang+' <span class="caret"></span>');
+            }else{
+                $("#language").html('Language <span class="caret"></span>');
+                $("#l0").addClass("active");
+                $("#l").removeClass("active");
+            }
+        });
+    });
+</script>
+</html>
