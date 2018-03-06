@@ -1,7 +1,23 @@
+'''
+@author: Star
+
+@time: 06-03-2018
+
+'''
 from LogWriter import LogWriter
 
-lg = LogWriter()
-lg.write_error_log("asdf")
-lg.write_error_log("asdf")
-lg.write_error_log("asdf")
-lg.write_error_log("asdf")
+class FreqCounter:
+
+    lw = ''
+    files = ''
+
+    def __init__(self,path=''):
+        lw = LogWriter()
+        lw.write_info_log("Initialize the Frequency Counter Class")
+
+
+def main():
+    fc = FreqCounter()
+
+if __name__ == '__main__':
+    main()
