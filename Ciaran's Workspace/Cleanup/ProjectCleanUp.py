@@ -13,7 +13,7 @@ class ProjectCleanUp:
 
     def __init__(self):
         self.logwriter = LogWriter()
-        self.hostname = "123.206.77.7"
+        self.hostname = "123.206.77.77"
         self.username = "ubuntu"
         self.password = "Star==960906"
         self.ssh_client = paramiko.SSHClient()
