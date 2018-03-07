@@ -2,6 +2,8 @@
 """
 Created on 06/03/2018
 Author: Ciarán
+
+Gets all the info from the files in a project and stores them in a json file
 """
 
 import os
@@ -40,6 +42,7 @@ class GetProjectInfo:
     def get_file_content(self, file_path):
         file = open(file_path)
         content = ''
+        print(file)
 
         for line in file.readlines():
             content += line
@@ -60,7 +63,7 @@ class GetProjectInfo:
 
     def save_to_json_file(self):
         for fci_object in self.files_in_project:
-            FCI.FCIConverter.to_json_file("Json_Files", fci_object)
+            FCI.FCIConverter.to_json_file("../../Hester'sWorkSpace/files", fci_object)
 
     def run(self):
         self.find_all_files(os.curdir + "/Final-Year-Project")
