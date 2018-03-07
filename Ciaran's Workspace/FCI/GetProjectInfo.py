@@ -7,10 +7,13 @@ Gets all the info from the files in a project and stores them in a json file
 """
 
 import os
+import paramiko
+import stat
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter
+#from Server.LinuxConnection import LinuxConnection
 
 
 class GetProjectInfo:
@@ -18,6 +21,10 @@ class GetProjectInfo:
     def __init__(self):
         self.files_in_project = []
         self.logwriter = LogWriter()
+        #self.connection = LinuxConnection()
+
+        self.ssh_client = paramiko.SSHClient
+        self.sftp = None
 
     def save_file_details(self, file_path, file_name):
         fci = FormattedCodeInterface()
@@ -40,7 +47,7 @@ class GetProjectInfo:
         self.logwriter.write_info_log(file_name + " documented.")
 
     def get_file_content(self, file_path):
-        file = open(file_path)
+        file = self.open_file(file_path)
         content = ''
         print(file)
 
@@ -49,13 +56,34 @@ class GetProjectInfo:
 
         return content
 
+        '''file = open(file_path)
+        content = ''
+        print(file)
+
+        for line in file.readlines():
+            content += line
+
+        return content'''
+
     def find_all_files(self, parent_directory):
-        for file_name in os.listdir(parent_directory):
+        self.logwriter.write_info_log("Listing files")
+
+        try:
+            for file_name in self.listdir("/home/ubuntu/test_files/clean"):
+                file_path = parent_directory + '/' + file_name
+                if self.isdir(file_path):
+                    self.find_all_files(file_path)
+                else:
+                    self.save_file_details(file_path, file_name)
+        except Exception as e:
+            self.logwriter.write_error_log(str(e))
+
+        '''for file_name in os.listdir(parent_directory):
             file_path = parent_directory + '/' + file_name
             if os.path.isdir(file_path):
                 self.find_all_files(file_path)
             else:
-                self.save_file_details(file_path, file_name)
+                self.save_file_details(file_path, file_name)'''
 
     def print_list_details(self):
         for file in self.files_in_project:
@@ -63,10 +91,11 @@ class GetProjectInfo:
 
     def save_to_json_file(self):
         for fci_object in self.files_in_project:
-            FCI.FCIConverter.to_json_file("../../Hester'sWorkSpace/files", fci_object)
+            #FCI.FCIConverter.to_json_file("../../Hester'sWorkSpace/files", fci_object)
+            FCI.FCIConverter.to_json_file("/home/ubuntu/test_files/json_files", fci_object)
 
     def run(self):
-        self.find_all_files(os.curdir + "/Final-Year-Project")
+        self.find_all_files("/home/ubuntu/test_files/clean")
         self.print_list_details()
         self.save_to_json_file()
 
