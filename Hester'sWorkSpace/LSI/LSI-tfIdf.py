@@ -5,19 +5,39 @@ from scipy import spatial
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-import math
+from Interfaces import FCIConverter as conv
+import os
 
-titles = [
-    "The Neatest Little Guide to Stock Market Investing",
-    "Investing For Dummies, 4th Edition",
-    "The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns",
-    "The Little Book of Value Investing",
-    "Value Investing: From Graham to Buffett and Beyond",
-    "Rich Dad's Guide to Investing: What the Rich Invest in, That the Poor and the Middle Class Do Not!",
-    "Investing in Real Estate, 5th Edition",
-    "Stock Investing For Dummies",
-    "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss"
-]
+path = "../files" #文件夹目录
+files= os.listdir(path) #得到文件夹下的所有文件名称
+documents = {}
+titles=[]
+i=0
+for file in files: #遍历文件夹
+     if not os.path.isdir(file): #判断是否是文件夹，不是文件夹才打开
+        documents[i]=conv.to_dic(path+"/"+file)
+        titles.append(documents[i]['content'])
+        i+=1
+
+print(titles)
+          #
+          # iter_f = iter(f); #创建迭代器
+          # str = ""
+          # for line in iter_f: #遍历文件，一行行遍历，读取文本
+          #     str = str + line
+          # s.append(str) #每个文件的文本存到list中
+
+# titles = [
+#     "The Neatest Little Guide to Stock Market Investing",
+#     "Investing For Dummies, 4th Edition",
+#     "The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns",
+#     "The Little Book of Value Investing",
+#     "Value Investing: From Graham to Buffett and Beyond",
+#     "Rich Dad's Guide to Investing: What the Rich Invest in, That the Poor and the Middle Class Do Not!",
+#     "Investing in Real Estate, 5th Edition",
+#     "Stock Investing For Dummies",
+#     "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss"
+# ]
 stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to']
 ignorechars =":!,"
 vectorizer = CountVectorizer()
@@ -58,13 +78,6 @@ class LSA(object):
         self.dcount += 1
 
     def build(self):
-        # self.keys = [k for k in self.wdict.keys() if len(self.wdict[k]) > 1]
-        # self.keys.sort()
-        # self.A = zeros([len(self.keys), self.dcount])
-        # for i, k in enumerate(self.keys):
-        #     for d in self.wdict[k]:
-        #         self.A[i,d] += 1
-        # dic1.keys = [k for k in self.wdict.keys() if len(self.wdict[k]) > 1]
         self.dickeys=sorted(self.dic1.keys())
         print('--------------------------')
         print(self.dickeys)
@@ -91,7 +104,7 @@ class LSA(object):
         print ("""\r""")
         d=vt.T
 
-        self.getQuery(u,s,d)
+        qArr=self.getQuery(u,s,d)
 
         plt.title("LSI Subspace with TF-IDF weight")
         plt.xlabel(u'dimention2')
@@ -107,6 +120,12 @@ class LSA(object):
         ut = u.T #Transaction
         demention2 = ut[1]
         demention3 = ut[2]
+        # draw the query point
+        dX=np.dot(demention2,qArr)
+        dY=np.dot(demention3,qArr)
+        plt.text(dX, dY, 'QUERY')
+        plt.plot(dX, dY,  'ro')
+        #draw terms
         for i in range(len(demention2)):
             plt.text(demention2[i],demention3[i],self.dickeys[i])
             plt.plot(demention2[i], demention3[i], '*')#draw points
@@ -142,6 +161,7 @@ class LSA(object):
             similarity[i]=spatial.distance.cosine(Dq, d[i])
         similarity=sorted(similarity.items(),key=lambda item:item[1])
         print(similarity)
+        return qArr.T
         # for key in similarity.keys():
         #     print('doc '+str(key)+': '+str(similarity[key]))
 
