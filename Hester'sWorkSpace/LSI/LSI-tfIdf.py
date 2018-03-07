@@ -3,57 +3,40 @@ import numpy as np
 from scipy.linalg import *
 from scipy import spatial
 import matplotlib.pyplot as plt
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from Interfaces import FCIConverter as conv
 import os
 
-path = "../files" #文件夹目录
-files= os.listdir(path) #得到文件夹下的所有文件名称
+path = "../files" #path name
+files= os.listdir(path) #get all the file names
 documents = {}
-titles=[]
+contents=[]
 i=0
 for file in files: #遍历文件夹
      if not os.path.isdir(file): #判断是否是文件夹，不是文件夹才打开
         documents[i]=conv.to_dic(path+"/"+file)
-        titles.append(documents[i]['content'])
+        contents.append(documents[i]['content'])
         i+=1
 
-print(titles)
-          #
-          # iter_f = iter(f); #创建迭代器
-          # str = ""
-          # for line in iter_f: #遍历文件，一行行遍历，读取文本
-          #     str = str + line
-          # s.append(str) #每个文件的文本存到list中
-
-# titles = [
-#     "The Neatest Little Guide to Stock Market Investing",
-#     "Investing For Dummies, 4th Edition",
-#     "The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns",
-#     "The Little Book of Value Investing",
-#     "Value Investing: From Graham to Buffett and Beyond",
-#     "Rich Dad's Guide to Investing: What the Rich Invest in, That the Poor and the Middle Class Do Not!",
-#     "Investing in Real Estate, 5th Edition",
-#     "Stock Investing For Dummies",
-#     "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss"
-# ]
 stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to']
 ignorechars =":!,"
 vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(titles)
-word=vectorizer.get_feature_names()
 tfidf = TfidfVectorizer()
-re = tfidf.fit_transform(titles).toarray().T
-dic={}
-tranIgnore = str.maketrans("", "", ignorechars)
+X = vectorizer.fit_transform(contents)
+transformer=TfidfTransformer()
+re = tfidf.fit_transform(contents).toarray().T #tf-idf values
+word=vectorizer.get_feature_names()#the unique terms after preprocessing
+dic={}#dictionary{term: tf-idf}
+tranIgnore = str.maketrans("", "", ignorechars)#ignore the ignorechars
 for i in range(len(word)):
     w=word[i]
     if w not in stopwords:
         dic[w]=re[i]
 print('dic\n')
 print(dic)
-dickeys=[]
+dickeys=[]#keys of dic
+print(contents)
 
 class LSA(object):
     def __init__(self, stopwords, ignorechars):
@@ -65,28 +48,24 @@ class LSA(object):
         self.dickeys=[]
     def parse(self, doc):
         words = doc.split()
-        for word in words:
-            #print self.dcount
-            w = word.lower().replace("'s", '').translate(tranIgnore)
+        for w in words:
+            w = w.lower().replace("'s", '').translate(tranIgnore)
             if w in self.stopwords:
                 continue
-            elif w in self.wdict:
-                self.wdict[w].append(self.dcount)
-                self.dic1[w]=dic[w]#copy the words appearing in more than one document
+            elif w not in word:
+                self.dic1[w]=dic[w]#give the words a tf-idf value if it appears in more than one document(when we detect a term not in the word list, it is the second time to appear)
             else:
-                self.wdict[w] = [self.dcount]
+                word.remove(w) #delete the term from word when this term is found at the first time
         self.dcount += 1
 
     def build(self):
         self.dickeys=sorted(self.dic1.keys())
-        print('--------------------------')
-        print(self.dickeys)
-        self.A = zeros([len(self.dickeys), self.dcount])
+        self.A = zeros([len(self.dickeys), len(contents)])#num(terms)*num(documments)
+        #construct the matrix A
         index=0
         for i in self.dickeys:
             self.A[index] = self.dic1[i]
             index+=1
-        return self.A
 
     def printA(self):
         print('A\n')
@@ -104,32 +83,32 @@ class LSA(object):
         print ("""\r""")
         d=vt.T
 
-        qArr=self.getQuery(u,s,d)
 
         plt.title("LSI Subspace with TF-IDF weight")
         plt.xlabel(u'dimention2')
         plt.ylabel(u'dimention3')
 
-        titles = ['T1','T2','T3','T4','T5','T6','T7','T8','T9']
-        vdemention2 = vt[1]
+        vdemention2 = vt[1]#we choose the 2nd and 3rd dimensions because the first dimension has little meaning
         vdemention3 = vt[2]
         for j in range(len(vdemention2)):
-            plt.text(vdemention2[j],vdemention3[j],titles[j])
+            plt.text(vdemention2[j],vdemention3[j],'T'+str(j))
             plt.plot(vdemention2, vdemention3, '.')
 
         ut = u.T #Transaction
         demention2 = ut[1]
         demention3 = ut[2]
+        #draw terms
+        for i in range(len(demention2)):
+            plt.text(demention2[i],demention3[i],self.dickeys[i])
+            plt.plot(demention2[i], demention3[i], '*')#draw points
+
+        #get query, draw the query point
+        qArr=self.getQuery(u,s,d)
         # draw the query point
         dX=np.dot(demention2,qArr)
         dY=np.dot(demention3,qArr)
         plt.text(dX, dY, 'QUERY')
         plt.plot(dX, dY,  'ro')
-        #draw terms
-        for i in range(len(demention2)):
-            plt.text(demention2[i],demention3[i],self.dickeys[i])
-            plt.plot(demention2[i], demention3[i], '*')#draw points
-            #get query, draw the query point
 
     def getQuery(self,u,s,d):
         query=input("Please enter your query: ")
@@ -156,17 +135,16 @@ class LSA(object):
         Dq=np.dot(Dq,sInv)
         print(Dq)
         similarity={}
-        i=0
         for i in range(len(d)):
             similarity[i]=spatial.distance.cosine(Dq, d[i])
         similarity=sorted(similarity.items(),key=lambda item:item[1])
-        print(similarity)
+        for i in range(len(similarity)):
+            index=similarity[i][0]
+            print(str(similarity[i])+':    '+contents[index])
         return qArr.T
-        # for key in similarity.keys():
-        #     print('doc '+str(key)+': '+str(similarity[key]))
 
 mylsa = LSA(stopwords, ignorechars)
-for t in titles:
+for t in contents:
     mylsa.parse(t)
 mylsa.build()
 mylsa.printA()
