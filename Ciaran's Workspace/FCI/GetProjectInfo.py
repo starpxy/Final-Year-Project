@@ -7,26 +7,24 @@ Gets all the info from the files in a project and stores them in a json file
 """
 
 import os
-import paramiko
-import stat
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter
-#from Server.LinuxConnection import LinuxConnection
+from Server.LinuxConnection import LinuxConnection
 
 
 class GetProjectInfo:
 
     def __init__(self):
+        self.local_path = "../../Hester'sWorkSpace/files"
+        self.remote_path = "/home/ubuntu/test_files/json_files"
+        self.clean_projects_path = "/home/ubuntu/test_files/clean"
         self.files_in_project = []
-        self.logwriter = LogWriter()
-        #self.connection = LinuxConnection()
+        self.log_writer = LogWriter()
+        self.connection = LinuxConnection()
 
-        self.ssh_client = paramiko.SSHClient
-        self.sftp = None
-
-    def save_file_details(self, file_path, file_name):
+    def save_file_details_to_fci_object(self, file_path, file_name):
         fci = FormattedCodeInterface()
 
         fci.set_file_name(file_name)
@@ -44,60 +42,50 @@ class GetProjectInfo:
         '''
 
         self.files_in_project.append(fci)
-        self.logwriter.write_info_log(file_name + " documented.")
+        self.log_writer.write_info_log(file_path + " documented.")
 
     def get_file_content(self, file_path):
-        file = self.open_file(file_path)
+        file = self.connection.open_file(file_path)
         content = ''
-        print(file)
 
         for line in file.readlines():
             content += line
 
         return content
 
-        '''file = open(file_path)
-        content = ''
-        print(file)
-
-        for line in file.readlines():
-            content += line
-
-        return content'''
-
-    def find_all_files(self, parent_directory):
-        self.logwriter.write_info_log("Listing files")
-
+    def find_and_save_files(self, parent_directory):
         try:
-            for file_name in self.listdir("/home/ubuntu/test_files/clean"):
+            for file_name in self.connection.listdir(parent_directory):
                 file_path = parent_directory + '/' + file_name
-                if self.isdir(file_path):
-                    self.find_all_files(file_path)
+                if file_name.endswith(".py"):
+                    self.save_file_details_to_fci_object(file_path, file_name)
                 else:
-                    self.save_file_details(file_path, file_name)
+                    self.find_and_save_files(file_path)
         except Exception as e:
-            self.logwriter.write_error_log(str(e))
-
-        '''for file_name in os.listdir(parent_directory):
-            file_path = parent_directory + '/' + file_name
-            if os.path.isdir(file_path):
-                self.find_all_files(file_path)
-            else:
-                self.save_file_details(file_path, file_name)'''
-
-    def print_list_details(self):
-        for file in self.files_in_project:
-            print(file.get_file_name() + " " + str(file))
+            self.log_writer.write_error_log(str(e))
 
     def save_to_json_file(self):
+        self.log_writer.write_info_log("Saving Json files")
+        self.save_to_local_directory()
+        self.save_to_remote_directory()
+
+    def save_to_local_directory(self):
         for fci_object in self.files_in_project:
-            #FCI.FCIConverter.to_json_file("../../Hester'sWorkSpace/files", fci_object)
-            FCI.FCIConverter.to_json_file("/home/ubuntu/test_files/json_files", fci_object)
+            FCI.FCIConverter.to_json_file(self.local_path, fci_object)
+
+        self.log_writer.write_info_log("Saved to local machine at " + self.local_path)
+
+    def save_to_remote_directory(self):
+        for file in os.listdir(self.local_path):
+            local_path = self.local_path + "/" + file
+            remote_path = self.remote_path + "/" + file
+            self.connection.copy_file_to_server(local_path, remote_path)
+
+        self.log_writer.write_info_log("Saved to remote machine at " + self.remote_path)
 
     def run(self):
-        self.find_all_files("/home/ubuntu/test_files/clean")
-        self.print_list_details()
-        self.save_to_json_file()
+            self.find_and_save_files(self.clean_projects_path)
+            self.save_to_json_file()
 
 
 def main():

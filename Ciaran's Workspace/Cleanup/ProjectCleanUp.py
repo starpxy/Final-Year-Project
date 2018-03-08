@@ -14,34 +14,35 @@ from Server.LinuxConnection import LinuxConnection
 class ProjectCleanUp:
 
     def __init__(self):
-        self.logwriter = LogWriter()
+        self.log_writer = LogWriter()
         self.connection = LinuxConnection()
 
     def unzip(self):
 
-        self.logwriter.write_info_log("Unzipping files")
+        self.log_writer.write_info_log("Unzipping files")
 
         # Keep unzipped folders but put in separate directory
         # Delete unzipped directories containing source code files
         try:
             for file in self.connection.listdir("/home/ubuntu/test_files/unclean"):
-                unzip_command = "unzip /home/ubuntu/test_files/unclean/" + file + " -d /home/ubuntu/test_files/clean"
+                unzip_command = "unzip /home/ubuntu/test_files/unclean/" + file + \
+                                " -d /home/ubuntu/test_files/clean/" + file[:-4]
                 self.connection.exec_command(unzip_command)
-                self.logwriter.write_info_log(file + " unzipped")
-            self.logwriter.write_info_log("Files unzipped")
+                self.log_writer.write_info_log(file + " unzipped")
+            self.log_writer.write_info_log("Files unzipped")
         except Exception as command_error:
-            self.logwriter.write_error_log("Could not unzip files: " + str(command_error))
+            self.log_writer.write_error_log("Could not unzip files: " + str(command_error))
 
     def delete_files(self):
 
-        self.logwriter.write_info_log("Deleting unwanted files")
+        self.log_writer.write_info_log("Deleting unwanted files")
 
         try:
             self.connection.exec_command("cd /home/ubuntu/test_files/clean;"
                                          "python3 delete_unwanted_files.py")
-            self.logwriter.write_info_log("Unwanted files deleted")
+            self.log_writer.write_info_log("Unwanted files deleted")
         except Exception as command_error:
-            self.logwriter.write_error_log("Could not delete files: " + str(command_error))
+            self.log_writer.write_error_log("Could not delete files: " + str(command_error))
 
     def run(self):
         self.unzip()

@@ -21,14 +21,17 @@ class TestLinuxServer:
         return self.sftp.open(file)
 
     def isdir(self, file):
-        for attr in self.sftp.listdir_attr(file):
-            return stat.S_ISDIR(attr.st_mode)
+        try:
+            self.listdir(file)
+            return True
+        except:
+            return False
 
     def listdir(self, path):
-        self.sftp.listdir(path)
+        return self.sftp.listdir(path)
 
     def exec_command(self, command):
-        self.ssh_client.exec_command(command)
+        return self.ssh_client.exec_command(command)
 
     def close_connection(self):
         self.ssh_client.close()
@@ -45,7 +48,6 @@ class TestLinuxServer:
         try:
             ssh_client.connect(hostname=hostname, username=username, password=password)
             self.sftp = self.ssh_client.open_sftp()
-            print(self.sftp.listdir("/home/ubuntu/test_files/clean"))
         except Exception as connection_error:
             print("Could not connect to server: " + str(connection_error))
 
@@ -53,6 +55,37 @@ class TestLinuxServer:
 def main():
     connection = TestLinuxServer()
     print(connection.listdir("/home/ubuntu/test_files/clean"))
+
+    if connection.isdir("/home/ubuntu/test_files/unclean"):
+        print("isdir")
+    else:
+        print("notdir")
+
+    if connection.isdir("/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex/main.py"):
+        print("isdir")
+    else:
+        print("notdir")
+
+    file = connection.open_file("/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex/main.py")
+    dir = connection.open_file("/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex")
+    content = ''
+    print(file)
+    print(dir)
+
+    #print(connection.listdir("/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex"))
+    #print(connection.listdir("/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex/main.py"))
+
+    #print(connection.listdir(dir))
+    #print(connection.listdir(file))
+
+    for line in file.readlines():
+        content += line
+
+    print(content)
+
+    stdin, stdout, stderr = connection.exec_command("-d /home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex/main.py")
+    print(stdout.channel.recv_exit_status())
+    print(connection.exec_command("-d /home/ubuntu/test_files/clean"))
 
 
 if __name__ == '__main__':

@@ -12,12 +12,25 @@ from LogWriter import LogWriter
 class Connection:
 
     def __init__(self):
-        self.logwriter = LogWriter()
+        self.log_writer = LogWriter()
         self.ssh_client = paramiko.SSHClient()
         self.sftp = None
 
+    def open_file(self, file):
+        return self.sftp.open(file)
+
+    def copy_file_to_server(self, local_path, remote_path):
+        self.sftp.put(local_path, remote_path)
+
+    def isdir(self, file):
+        try:
+            self.listdir(file)
+            return True
+        except FileNotFoundError:
+            return False
+
     def listdir(self, path):
-        self.sftp.listdir(path)
+        return self.sftp.listdir(path)
 
     def exec_command(self, command):
         self.ssh_client.exec_command(command)

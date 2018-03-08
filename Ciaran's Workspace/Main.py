@@ -10,13 +10,14 @@ from Cleanup.ProjectCleanUp import ProjectCleanUp
 from FCI.GetProjectInfo import GetProjectInfo
 from Server.Connection import Connection
 
-def main():
-    cleanup = ProjectCleanUp
-    getinfo = GetProjectInfo
-    connection = Connection
 
-    cleanup().run()
-    getinfo().run()
+def main():
+    cleanup = ProjectCleanUp()
+    getinfo = GetProjectInfo()
+    connection = Connection()
+
+    cleanup.run()
+    getinfo.run()
 
     connection.close_connection()
 
