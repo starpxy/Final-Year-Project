@@ -8,13 +8,13 @@ Runs all the code
 
 from Cleanup.ProjectCleanUp import ProjectCleanUp
 from FCI.GetProjectInfo import GetProjectInfo
-from Server.Connection import Connection
+from Server.LinuxConnection import LinuxConnection
 
 
 def main():
-    cleanup = ProjectCleanUp()
-    getinfo = GetProjectInfo()
-    connection = Connection()
+    connection = LinuxConnection()
+    cleanup = ProjectCleanUp(connection)
+    getinfo = GetProjectInfo(connection)
 
     cleanup.run()
     getinfo.run()

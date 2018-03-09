@@ -13,9 +13,9 @@ from Server.LinuxConnection import LinuxConnection
 
 class ProjectCleanUp:
 
-    def __init__(self):
+    def __init__(self, connection):
         self.log_writer = LogWriter()
-        self.connection = LinuxConnection()
+        self.connection = connection
 
     def unzip(self):
 

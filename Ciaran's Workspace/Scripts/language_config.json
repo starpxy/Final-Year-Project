@@ -1,0 +1,16 @@
+{
+  "supported_languages" :{
+    "javascript" : [".js"],
+    "java" : [".java"],
+    "python" : [".py", ".py3"],
+    "PHP" : [".php"],
+    "C#" : [".cs"],
+    "C++" : [".cpp"],
+    "CSS" : [".css"],
+    "Ruby" : [".rb"],
+    "C" : [".c"],
+    "Swift" : [".swift"]
+  },
+
+  "special_file_types" :{}
+}

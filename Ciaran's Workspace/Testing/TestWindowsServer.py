@@ -15,6 +15,14 @@ def main():
     except Exception as e:
         print("Could not connect: " + str(e))
 
+    try:
+        ssh_client = paramiko.SSHClient()
+        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh_client.connect(hostname="123.206.68.82", username="Administrator", password="Star==960906")
+        print("Connection successful")
+    except Exception as e:
+        print("Could not connect: " + str(e))
+
 
 
 if __name__ == "__main__":

@@ -20,9 +20,10 @@ class FormattedCodeInterface:
     __save_path = '' # On server
     __language = '' # Programming language
     __quality = '' # From Kirk
-    __content = '' # File Contents
+    __code = '' # File Contents
+    __comments = ''
 
-    def __init__(self,description='',author='',update_at='',save_time='',file_name='',project_name='',save_path='',language='',quality='',content=''):
+    def __init__(self,description='',author='',update_at='',save_time='',file_name='',project_name='',save_path='',language='',quality='',code='',comments=''):
         self.__description = description
         self.__author = author
         self.__update_at = update_at
@@ -32,7 +33,8 @@ class FormattedCodeInterface:
         self.__save_path = save_path
         self.__language = language
         self.__quality = quality
-        self.__content = content
+        self.__code = code
+        self.__comments = comments
 
     def set_description(self,description):
         self.__description = description
@@ -88,11 +90,17 @@ class FormattedCodeInterface:
     def get_quality(self):
         return self.__quality
 
-    def set_content(self,content):
-        self.__content = content
+    def set_code(self,code):
+        self.__code = code
 
-    def get_content(self):
-        return self.__content
+    def get_code(self):
+        return self.__code
+
+    def set_comments(self,comments):
+        self.__comments = comments
+
+    def get_comments(self):
+        return self.__comments
 
     def to_dictionary(self):
         dic = {}
@@ -105,5 +113,6 @@ class FormattedCodeInterface:
         dic["save_path"] = self.__save_path
         dic["language"] = self.__language
         dic["quality"] = self.__quality
-        dic["content"] = self.__content
+        dic["code"] = self.__code
+        dic["comments"] = self.__comments
         return dic
