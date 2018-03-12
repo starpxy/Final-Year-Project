@@ -28,8 +28,8 @@ class FormattedCodeInterface:
     __url = ''
     __wiki = False  # Whether the project has a wiki or not
 
-    def __init__(self, description='', author='', update_at='', save_time='', file_name='', project_name='',
-                 save_path='', language='', quality='', content='', code='', comments='', url='', wiki=False):
+    def __init__(self, description='', author='', update_at='', save_time='', file_name='', project_name='', save_path='',
+                 language='', quality='', content='', code='', comments='', source = '', url='', wiki=False):
         self.__description = description
         self.__author = author
         self.__update_at = update_at
@@ -42,6 +42,7 @@ class FormattedCodeInterface:
         self.__content = content
         self.__code = code
         self.__comments = comments
+        self.__source = source
         self.__url = url
         self.__wiki = wiki
 
@@ -117,6 +118,12 @@ class FormattedCodeInterface:
     def get_comments(self):
         return self.__comments
 
+    def set_source(self,source):
+        self.__source = source
+
+    def get_source(self):
+        return self.__source
+
     def set_url(self,url):
         self.__url = url
 
@@ -142,6 +149,7 @@ class FormattedCodeInterface:
                "content": self.__content,
                "code": self.__code,
                "comments": self.__comments,
+               "source": self.__source,
                "url": self.__url,
                "wiki": self.__wiki}
         return dic
