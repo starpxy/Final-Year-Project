@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodEX</title>
-    <link rel="stylesheet" href="assets-flat/css/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets-flat/css/flat-ui.css">
-    <link rel="alternate icon" type="image/png" href="assets-flat/img/icon-flat.png">
+    {% load static %}
+    <link rel="stylesheet" href="{%  static 'search/css/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'search/css/flat-ui.min.css' %}">
+    <link rel="alternate icon" type="image/png" href="{%  static 'search/img/icon-flat.png' %}">
+    <style>
+        .page-active{
+            padding: 8px;
+            background-color: #1bc5a3;
+            color: #ffffff;
+            border-radius:25px;
+        }
+        .page-active:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .my-page{
+            padding: 8px;
+            background-color: #f7f7f7;
+            border-radius:25px;
+        }
+        .my-page:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            background-color: #1bc5a3;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
@@ -44,10 +70,10 @@
 <div class="panel panel-default" style="margin-top: 53px; padding: 20px;padding-bottom: 0px;; background-color: #f5f7f9">
     <div class="row">
         <div class="col-xs-1">
-            <img style="width: 125%" src="assets-flat/img/icon-text.png">
+            <img style="width: 125%" src="{%  static 'search/img/icon-text.png' %}">
         </div>
         <div class="col-xs-7">
-            <input id="search-bar" type="text" class="form-control input-lg" autofocus>
+            <input id="search-bar" type="text" value="{{ q }}" class="form-control input-lg">
         </div>
         <div class="col-xs-3">
             <button type="submit" class="btn btn-lg btn-primary">Search</button>
@@ -82,51 +108,59 @@
         </ul>
     </div>
 </div>
+<div class="container text-center">
+    <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+    {% for page in pages %}
+        {% if forloop.counter == p %}
+        <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+        {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
+        {% else %}
+        <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+        {% endif %}
+    {% endfor %}
+    <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+</div>
 <div class="container">
+    {% for i in results %}
     <div class="container">
-        <a href="index.html"><h6>Title is here</h6></a>
-        <p>This is description.This is description.
-            This is description.This is description.This is description.This is description.
-            This is description.This is description.This is description.This is description.This is description.
-            This is description.</p>
+        <a href="detail/?id={{ i.get_id }}"><h6>{{ i.get_project_name }}-{{ i.get_file_name }} </h6></a>
+        <p>{{ i.get_content }}</p>
         <hr>
     </div>
-    <div class="container">
-        <a href="index.html"><h6>Title is here</h6></a>
-        <p>This is description.This is description.
-            This is description.This is description.This is description.This is description.
-            This is description.This is description.This is description.This is description.This is description.
-            This is description.</p>
-        <hr>
-    </div>
-    <div class="container">
-        <a href="index.html"><h6>Title is here</h6></a>
-        <p>This is description.This is description.
-            This is description.This is description.This is description.This is description.
-            This is description.This is description.This is description.This is description.This is description.
-            This is description.</p>
-        <hr>
-    </div>
-    <div class="container">
-        <a href="index.html"><h6>Title is here</h6></a>
-        <p>This is description.This is description.
-            This is description.This is description.This is description.This is description.
-            This is description.This is description.This is description.This is description.This is description.
-            This is description.</p>
-        <hr>
-    </div>
+    {% endfor %}
+</div>
+<div class="container text-center">
+    <br><br>
+    <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+    {% for page in pages %}
+        {% if forloop.counter == p %}
+        <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+        {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
+        {% else %}
+        <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+        {% endif %}
+    {% endfor %}
+    <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+<br><br><br><br>
+</div>
+<div class="navbar-fixed-bottom text-center bg-primary">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
 </div>
 </body>
-<script src="assets-flat/js/vendor/jquery.min.js"></script>
-<script src="assets-flat/js/vendor/video.js"></script>
-<script src="assets-flat/js/flat-ui.min.js"></script>
-<script src="assets-flat/js/application.js"></script>
+<script src="../static/search/js/vendor/jquery.min.js"></script>
+<script src="../static/search/js/vendor/video.js"></script>
+<script src="../static/search/js/flat-ui.min.js"></script>
+<script src="../static/search/js/application.js"></script>
 <script type="text/javascript">
     function Search(p,s,l) {
         var url = ""
     }
     $(function () {
-        var p = 'p0';
+        var p = '1';
         $(".pref").click(function () {
             var ele = $(this);
             var id = ele.attr("id");

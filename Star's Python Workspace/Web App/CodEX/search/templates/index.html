@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodEX</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'search/css/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'search/css/flat-ui.css' %}">
+    <link rel="alternate icon" type="image/png" href="{% static 'search/img/icon-flat.png' %}">
+    <style>
+        #search-bar {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">CodEX</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="fui-user"></span><b
+                        class="caret"></b></a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right search" action="search" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input name="p" class="p" value="1" type="hidden">
+                    <input name="q" class="form-control s-bar" id="navbarInput-01" value="" type="search"
+                           placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.navbar-collapse -->
+</nav><!-- /navbar -->
+<div class="container text-center">
+    <br><br>
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <img style="width: 90%; margin-top: 12%;" src="{% static 'search/img/logo-flat.png' %}">
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+    <br><br>
+    <form class="form-inline form-group-lg search" action="search" method="get">
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-7">
+            <input name="p" class="p" value="1" type="hidden">
+            <input name="q" id="search-bar" type="text" value="" class="form-control input-lg s-bar" autofocus>
+        </div>
+        <div class="col-xs-3">
+            <button type="submit" class="btn btn-lg btn-primary pull-left">Search</button>
+        </div>
+    </form>
+</div>
+<div class="navbar-fixed-bottom text-center">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
+</div>
+</body>
+<script src="../static/search/js/vendor/jquery.min.js"></script>
+<script src="../static/search/js/vendor/video.js"></script>
+<script src="../static/search/js/flat-ui.min.js"></script>
+<script src="../static/search/js/application.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
+    });
+</script>
+</html>

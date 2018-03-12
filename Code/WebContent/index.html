@@ -9,7 +9,7 @@
     <link rel="alternate icon" type="image/png" href="assets-flat/img/icon-flat.png">
     <style>
         #search-bar{
-            width: 40%;
+            width: 100%;
         }
     </style>
 </head>
@@ -37,7 +37,7 @@
         <form class="navbar-form navbar-right search" action="Search" role="search">
             <div class="form-group">
                 <div class="input-group">
-                    <input name="p" class="p" value="0" type="hidden">
+                    <!--<input name="p" class="p" value="0" type="hidden">-->
                     <input name="q" class="form-control" id="navbarInput-01" type="search" placeholder="Search">
                     <span class="input-group-btn">
                       <button type="submit" class="btn"><span class="fui-search"></span></button>
@@ -48,23 +48,34 @@
     </div><!-- /.navbar-collapse -->
 </nav><!-- /navbar -->
 <div class="container text-center">
+    <br><br>
     <div class="row">
-        <img style="width: 40%; margin-top: 12%; " src="assets-flat/img/logo-flat.png">
-    </div>
-    <br>
-
-    <form class="form-inline form-group-lg search" action="Search" method="get">
-        <input name="q" id="search-bar" type="text" class="form-control input-lg" autofocus>
-        <input name="p" class="p" value="p0" type="hidden">
-        <button type="submit" class="btn btn-lg btn-primary">Search</button>
-        <div class="btn-group">
-            <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-lg" type="button"><span id="pre-btn">Bias</span><span class="caret"></span></button>
-            <ul role="menu" class="dropdown-menu ">
-                <li id="0" class="pref"><a href="javascript:;">No Bias</a></li>
-                <li id="1" class="pref"><a href="javascript:;">Search By Keyword</a></li>
-                <li id="2" class="pref"><a href="javascript:;">Boolean Search</a></li>
-            </ul>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <img style="width: 100%; margin-top: 12%;" src="assets-flat/img/logo-flat.png">
         </div>
+        <div class="col-xs-3"></div>
+    </div>
+    <br><br>
+    <form class="form-inline form-group-lg search" action="Search" method="get">
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-xs-7">
+            <input name="q" id="search-bar" type="text" class="form-control input-lg" autofocus>
+        </div>
+        <!--<input name="p" class="p" value="p0" type="hidden">-->
+        <div class="col-xs-3">
+            <button type="submit" class="btn btn-lg btn-primary pull-left">Search</button>
+        </div>
+        <!--<div class="btn-group">-->
+            <!--<button data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-lg" type="button"><span id="pre-btn">Bias</span><span class="caret"></span></button>-->
+            <!--<ul role="menu" class="dropdown-menu ">-->
+                <!--<li id="0" class="pref"><a href="javascript:;">No Bias</a></li>-->
+                <!--<li id="1" class="pref"><a href="javascript:;">Search By Keyword</a></li>-->
+                <!--<li id="2" class="pref"><a href="javascript:;">Boolean Search</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
         <!--<div class="row">-->
             <!--<div class="col-lg-2">-->
             <!--</div>-->
@@ -93,17 +104,17 @@
 <script type="text/javascript">
     $(function () {
         var p = 'p0';
-        $(".pref").click(function () {
-            var ele = $(this);
-            var id = ele.attr("id");
-            var pref = '';
-            p = id;
-            pref = ele.children("a").html();
-            $("#pre-btn").html(pref);
-            $(".pref").removeClass("active");
-            ele.addClass("active");
-            $(".p").val(p);
-        });
+//        $(".pref").click(function () {
+//            var ele = $(this);
+//            var id = ele.attr("id");
+//            var pref = '';
+//            p = id;
+//            pref = ele.children("a").html();
+//            $("#pre-btn").html(pref);
+//            $(".pref").removeClass("active");
+//            ele.addClass("active");
+//            $(".p").val(p);
+//        });
         $(".search").submit(function () {
             var q = $(this).children("input").val();
             if(q==""){
