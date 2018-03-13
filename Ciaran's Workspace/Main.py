@@ -7,7 +7,7 @@ Runs all the code
 """
 
 from Cleanup.ProjectCleanUp import ProjectCleanUp
-from FCI.GetProjectInfo import GetProjectInfo
+from FCI.FileDetailsToJson import GetProjectInfo
 from Server.LinuxConnection import LinuxConnection
 
 

@@ -15,24 +15,28 @@ class ProjectCleanUp:
 
     def __init__(self, connection):
         self.log_writer = LogWriter()
+        self.remote_directory = "/home/ubuntu/test_files/unclean"
         self.connection = connection
 
+    # Unzips all zipped folders in the directories in unclean to corresponding directories in clean
     def unzip(self):
 
         self.log_writer.write_info_log("Unzipping files")
 
-        # Keep unzipped folders but put in separate directory
-        # Delete unzipped directories containing source code files
         try:
-            for file in self.connection.listdir("/home/ubuntu/test_files/unclean"):
-                unzip_command = "unzip /home/ubuntu/test_files/unclean/" + file + \
-                                " -d /home/ubuntu/test_files/clean/" + file[:-4]
-                self.connection.exec_command(unzip_command)
-                self.log_writer.write_info_log(file + " unzipped")
+            for directory in self.connection.listdir(self.remote_directory):
+                for file in self.connection.listdir(self.remote_directory + "/" + directory):
+                    if file.endswith(".zip"):
+                        unzip_command = "unzip /home/ubuntu/test_files/unclean/" + directory + "/" + file + \
+                                        " -d /home/ubuntu/test_files/clean/" + directory + "/" + file[:-4]
+                        self.connection.exec_command(unzip_command)
+                        self.log_writer.write_info_log(file + " unzipped")
             self.log_writer.write_info_log("Files unzipped")
         except Exception as command_error:
             self.log_writer.write_error_log("Could not unzip files: " + str(command_error))
 
+    # Uses the delete_files_script to delete all files in a folder
+    # who's extensions aren't in the language configuration file
     def delete_files(self):
 
         self.log_writer.write_info_log("Deleting unwanted files")
@@ -50,7 +54,7 @@ class ProjectCleanUp:
 
 
 def main():
-    ProjectCleanUp().run()
+    ProjectCleanUp(LinuxConnection()).run()
 
 
 if __name__ == "__main__":
