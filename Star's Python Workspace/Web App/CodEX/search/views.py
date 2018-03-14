@@ -5,8 +5,7 @@ import search.supportings.FCIConverter
 from django.shortcuts import render
 from search.supportings.LogWriter import LogWriter
 from search.supportings.FormattedCodeInterface import FormattedCodeInterface
-
-
+from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
 def index(request):
     return render(request, 'index.html')
 
