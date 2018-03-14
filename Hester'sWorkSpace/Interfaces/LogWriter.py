@@ -22,7 +22,7 @@ class LogWriter:
         if not os.path.exists("logs"):
             os.mkdir("logs")
         logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', filename="logs/warning.log",
-                            filemode="w", level=logging.DEBUG)
+                            filemode="w", level=logging.WARNING)
         logging.warning(content)
 
     # Write info log into logs/info.log

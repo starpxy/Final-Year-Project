@@ -1,6 +1,6 @@
-# from Interfaces.LogWriter import LogWriter
-from Interfaces.FormattedCodeInterface import FormattedCodeInterface
-import Interfaces.FCIConverter
+import parser
+import os
+files= os.listdir("../files")
 
-# lw = LogWriter()
-# lw.write_info_log("I love star")
+st=parser.suite(files[1])
+print(parser.st2list(st, line_info=False, col_info=False))

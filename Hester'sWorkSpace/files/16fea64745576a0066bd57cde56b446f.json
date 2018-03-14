@@ -1,1 +1,17 @@
+<<<<<<< HEAD:Hester'sWorkSpace/files/1c7ff0297d70356eaeab62c577c92e84.json
+{
+  "author": "",
+  "code": "\n\r\n\r\nfrom process.ProjectCleanUp import *\r\n\r\n\r\nclass Main:\r\n\r\n    def __init__(self):\r\n        pass\r\n\r\n    if __name__ == \"__main__\":\r\n        pcu = ProjectCleanUp('C:\\\\Users\\\\CeXGalway\\\\Downloads\\\\BBS-master.zip')\r\n        pcu.unzip()\r\n",
+  "comments": "\r\nCreated on 04/03/2018\r\nAuthor: Ciar\u00e1n\r\n\n\n\n# coding=utf-8\r\n",
+  "description": "",
+  "file_name": "main.py",
+  "language": "",
+  "project_name": "",
+  "quality": "",
+  "save_path": "/home/ubuntu/test_files/clean/Final-Year-Project/Code/src/com/codex/main.py",
+  "save_time": "",
+  "update_at": ""
+}
+=======
 {"author": "", "code": "\n\r\n\r\nfrom process.ProjectCleanUp import *\r\n\r\n\r\nclass Main:\r\n\r\n    def __init__(self):\r\n        pass\r\n\r\n    if __name__ == \"__main__\":\r\n        pcu = ProjectCleanUp('C:\\\\Users\\\\CeXGalway\\\\Downloads\\\\BBS-master.zip')\r\n        pcu.unzip()\r\n", "comments": "\r\nCreated on 04/03/2018\r\nAuthor: Ciar\u00e1n\r\n\n\n\n# coding=utf-8\r\n", "description": "", "file_name": "main.py", "language": "", "project_name": "", "quality": "", "save_path": "/home/ubuntu/test_files/clean/Final-Year-Project-Test/Final-Year-Project/Code/src/com/codex/main.py", "save_time": "", "update_at": ""}
+>>>>>>> 278d9c81dda1c3b345aaba42ed3f43b69871d447:Hester'sWorkSpace/files/16fea64745576a0066bd57cde56b446f.json

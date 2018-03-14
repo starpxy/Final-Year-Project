@@ -22,11 +22,13 @@ class FormattedCodeInterface:
     __save_path = ''
     __language = ''
     __quality = ''
-    __content = ''
+    __content = ''# File Contents
+    __comments = ''
+    __code=''
 
     # constructor
     def __init__(self, description='', author='', update_at='', save_time='', file_name='', project_name='',
-                 save_path='', language='', quality='', content=''):
+                 save_path='', language='', quality='', content='',code='',comments=''):
         self.__description = description
         self.__author = author
         self.__update_at = update_at
@@ -37,7 +39,8 @@ class FormattedCodeInterface:
         self.__language = language
         self.__quality = quality
         self.__content = content
-
+        self.__code = code
+        self.__comments = comments
     # getters and setters
     def set_description(self, description):
         self.__description = description
@@ -99,6 +102,18 @@ class FormattedCodeInterface:
     def get_content(self):
         return self.__content
 
+    def set_code(self, code):
+        self.__code = code
+
+    def get_code(self):
+        return self.__code
+
+    def set_comments(self, comments):
+        self.__comments = comments
+
+    def get_comments(self):
+        return self.__comments
+
     # convert FCI object into dictionary.
     def to_dictionary(self):
         dic = {}
@@ -112,6 +127,8 @@ class FormattedCodeInterface:
         dic["language"] = self.__language
         dic["quality"] = self.__quality
         dic["content"] = self.__content
+        dic["code"] = self.__code
+        dic["comments"] = self.__comments
         return dic
 
     # convert dictionary into FCI objects.
@@ -127,4 +144,6 @@ class FormattedCodeInterface:
         fci.set_save_path(dic["save_path"])
         fci.set_save_time(dic["save_time"])
         fci.set_update_at(dic["update_at"])
+        fci.set_code(dic["code"])
+        fci.set_comments(dic["comments"])
         return fci
