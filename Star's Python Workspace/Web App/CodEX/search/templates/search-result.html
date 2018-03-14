@@ -23,7 +23,7 @@
         }
         .my-page{
             padding: 8px;
-            background-color: #f7f7f7;
+            background-color: #ecf0f1;
             border-radius:25px;
         }
         .my-page:hover{
@@ -40,7 +40,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="#">CodEX</a>
+        <a class="navbar-brand" href="../">CodEX</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav navbar-left">
@@ -55,10 +55,12 @@
                 </ul>
             </li>
         </ul>
-        <form class="navbar-form navbar-right" action="#" role="search">
+        <form class="navbar-form navbar-right search" action="search" role="search">
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                    <input name="p" value="1" hidden>
+                    <input name="q" class="form-control s-bar" id="navbarInput-01" value="" type="search"
+                           placeholder="Search">
                     <span class="input-group-btn">
                       <button type="submit" class="btn"><span class="fui-search"></span></button>
                     </span>
@@ -68,25 +70,18 @@
     </div><!-- /.navbar-collapse -->
 </nav><!-- /navbar -->
 <div class="panel panel-default" style="margin-top: 53px; padding: 20px;padding-bottom: 0px;; background-color: #f5f7f9">
-    <div class="row">
+    <form class="row search">
         <div class="col-xs-1">
             <img style="width: 125%" src="{%  static 'search/img/icon-text.png' %}">
         </div>
         <div class="col-xs-7">
-            <input id="search-bar" type="text" value="{{ q }}" class="form-control input-lg">
+            <input name="p" value="1" hidden>
+            <input id="search-bar" name="q" type="text" value="{{ q }}" class="form-control input-lg">
         </div>
         <div class="col-xs-3">
             <button type="submit" class="btn btn-lg btn-primary">Search</button>
-            <!--<div class="btn-group">-->
-                <!--<button data-toggle="dropdown" class="btn btn-danger dropdown-toggle btn-lg" type="button"><span id="pre-btn">Bias</span><span class="caret"></span></button>-->
-                <!--<ul role="menu" class="dropdown-menu ">-->
-                    <!--<li id="p0" class="pref"><a href="javascript:;">No Bias</a></li>-->
-                    <!--<li id="p1" class="pref"><a href="javascript:;">Search By Keyword</a></li>-->
-                    <!--<li id="p2" class="pref"><a href="javascript:;">Boolean Search</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
         </div>
-    </div>
+    </form>
     <br>
     <div style="padding-left: 9%; padding-right: 9%">
         <ul class="nav nav-tabs">
@@ -124,7 +119,7 @@
 <div class="container">
     {% for i in results %}
     <div class="container">
-        <a href="detail/?id={{ i.get_id }}"><h6>{{ i.get_project_name }}-{{ i.get_file_name }} </h6></a>
+        <a href="/detail/?id={{ i.get_id }}"><h6>{{ i.get_project_name }} - {{ i.get_file_name }} </h6></a>
         <p>{{ i.get_content }}</p>
         <hr>
     </div>
@@ -161,6 +156,12 @@
     }
     $(function () {
         var p = '1';
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
         $(".pref").click(function () {
             var ele = $(this);
             var id = ele.attr("id");
