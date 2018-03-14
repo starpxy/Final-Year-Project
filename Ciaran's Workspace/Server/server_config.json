@@ -1,0 +1,19 @@
+{
+  "linux_server" :{
+    "hostname": "123.206.77.77",
+    "username": "ubuntu",
+    "password": "Star==960906"
+  },
+
+  "windows_server" :{
+    "hostname": "118.89.233.227",
+    "username": "Administrator",
+    "password": "Star==960906"
+  },
+
+  "kirk_windows_server" :{
+    "hostname": "123.206.68.82",
+    "username": "Administrator",
+    "password": "Star==960906"
+  }
+}

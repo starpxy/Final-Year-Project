@@ -153,3 +153,23 @@ class FormattedCodeInterface:
                "url": self.__url,
                "wiki": self.__wiki}
         return dic
+
+    # convert dictionary into FCI objects.
+    def from_dictionary(self, dic):
+        fci = FormattedCodeInterface()
+        fci.set_author(dic["author"])
+        fci.set_content(dic["content"])
+        fci.set_description(dic["description"])
+        fci.set_file_name(dic["file_name"])
+        fci.set_language(dic["language"])
+        fci.set_project_name(dic["project_name"])
+        fci.set_quality(dic["quality"])
+        fci.set_save_path(dic["save_path"])
+        fci.set_save_time(dic["save_time"])
+        fci.set_update_at(dic["update_at"])
+        fci.set_code(dic["code"])
+        fci.set_comments(dic["comments"])
+        fci.set_wiki(dic["wiki"])
+        fci.set_url(dic["url"])
+        fci.set_source(dic["source"])
+        return fci

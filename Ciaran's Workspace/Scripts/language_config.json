@@ -1,8 +1,8 @@
 {
   "supported_languages" :{
-    "javascript" : [".js"],
-    "java" : [".java"],
-    "python" : [".py", ".py3"],
+    "Javascript" : [".js"],
+    "Java" : [".java"],
+    "Python" : [".py", ".py3"],
     "PHP" : [".php"],
     "C#" : [".cs"],
     "C++" : [".cpp"],
@@ -12,5 +12,7 @@
     "Swift" : [".swift"]
   },
 
-  "special_file_types" :{}
+  "special_file_types" :{
+    "language_config_file" : ["language_config.json"]
+  }
 }
