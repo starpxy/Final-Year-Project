@@ -10,6 +10,7 @@ import os
 import math
 import redis
 from LSI import Results
+import pickle
 
 class LSI_TFIDF:
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
@@ -39,18 +40,34 @@ class LSI_TFIDF:
                     self.contents.append(self.documents[file]['code'])
                     self.wholeContent+=self.documents[file]['code']
         self.lw.write_info_log("get "+str(len(self.documents))+" documents")
-        #indexing
         self.lw.write_info_log("indexing...")
         self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to','print']
         self.vectorizer = CountVectorizer()
         self.tfidf = TfidfVectorizer()
+
+    #indexing
+    def indexing(self):
         self.X = self.vectorizer.fit_transform([self.wholeContent]).toarray().T
         self.transformer=TfidfTransformer()
         self.re = self.tfidf.fit_transform(self.contents).toarray().T #tf-idf values
         self.word=self.vectorizer.get_feature_names()#the unique terms after preprocessing
-        #get query
+        #store the index into the pickle
+        with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+            pickle.dump(self.re, f, True)
+            pickle.dump(self.X, f, True)
+            pickle.dump(self.word, f, True)
+            pickle.dump(self.transformer, f, True)
+
 
     def getDocumentList(self,query,page):
+        # use pickle module to read data into our program if CodexIndex.pik exists, load the data directly
+        if os.path.exists("CodexIndex.pik"):
+            rfile = open('CodexIndex.pik', 'rb')
+            self.re = pickle.load(rfile)
+            self.X=pickle.load(rfile)
+            self.word=pickle.load(rfile)
+            self.transformer=pickle.load(rfile)
+
         sortedDocuments=[]
         #check if the result of this query already exist in the redis
         if not self.r.exists(query):#if the result is not in the redis
