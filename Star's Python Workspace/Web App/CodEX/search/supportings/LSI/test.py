@@ -5,4 +5,4 @@ class Test:
         print("init")
 if __name__ == '__main__':
     lf = LSI_TFIDF()
-    print(lf.getDocumentList("test query",1))
+    print(str(lf.getDocumentList("hh",1).getNumOfResults()))
