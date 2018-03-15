@@ -4,5 +4,4 @@ class Test:
     def __init__(self):
         print("init")
 if __name__ == '__main__':
-    lf = LSI_TFIDF()
-    print(str(lf.getDocumentList("hh",1).getNumOfResults()))
+    lf = LSI_TFIDF().indexing()

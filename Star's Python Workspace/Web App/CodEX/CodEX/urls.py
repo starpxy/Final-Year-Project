@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_views.search),
     path('detail/',search_views.detail),
+    path('init/',search_views.init),
     path('', search_views.index),
 ]

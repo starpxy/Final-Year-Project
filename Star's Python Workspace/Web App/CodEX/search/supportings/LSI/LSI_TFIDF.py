@@ -28,6 +28,7 @@ class LSI_TFIDF:
     vectorizer = ''
     tfidf = ''
     pageNum = 10
+    indexing_path = "/Users/quanyewu/Desktop/Final-Year-Project/Star's Python Workspace/Web App/CodEX/search/supportings/LSI/CodexIndex.pik"
 
     def __init__(self):
         self.lw.write_info_log("reading files...")
@@ -52,7 +53,7 @@ class LSI_TFIDF:
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
         self.word = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
         # store the index into the pickle
-        with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+        with open(self.indexing_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.re, f, True)
             pickle.dump(self.X, f, True)
             pickle.dump(self.word, f, True)
@@ -60,8 +61,8 @@ class LSI_TFIDF:
 
     def getDocumentList(self, query, page):
         # use pickle module to read data into our program if CodexIndex.pik exists, load the data directly
-        if os.path.exists("CodexIndex.pik"):
-            rfile = open('CodexIndex.pik', 'rb')
+        if os.path.exists(self.indexing_path):
+            rfile = open(self.indexing_path, 'rb')
             self.re = pickle.load(rfile)
             self.X = pickle.load(rfile)
             self.word = pickle.load(rfile)
@@ -228,6 +229,11 @@ class LSI_TFIDF:
         matrixSimilarity=[]
         for i in range(len(d)):
             # similarity[i]=spatial.distance.cosine(Dq, d[i])
+            # print("==========")
+            # print(self.re.shape)
+            # print(i)
+            # print(self.files[i])
+            # print(d[i])
             similarities[self.files[i]] = np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i])))
         # matrixSimilarity=sorted(similarities.items(),key=lambda item:item[1],reverse=True)
         matrixSimilarity = sorted(similarities.keys(), key=similarities.__getitem__, reverse=True)

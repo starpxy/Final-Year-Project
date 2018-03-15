@@ -30,6 +30,8 @@ def to_json_file(path, fci_object):
     m = hashlib.md5()
     m.update(to_write.encode("utf8"))
     f_name = m.hexdigest()
+    fci_object.set_id(f_name)
+    to_write = to_json_str(fci_object)
     f = open(path + "/" + f_name + ".json", "w", encoding="utf-8")
     f.write(to_write)
     f.close()

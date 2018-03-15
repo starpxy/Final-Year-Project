@@ -104,17 +104,20 @@
     </div>
 </div>
 <div class="container text-center">
-    <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
-    {% for page in pages %}
-        {% if forloop.counter == p %}
-        <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
-        {% elif forloop.counter < p_p or forloop.counter > n_p%}
+    {% if t_p == 0 %}
+    {% else %}
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
 
-        {% else %}
-        <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
-        {% endif %}
-    {% endfor %}
-    <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+            {% else %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+    {% endif %}
 </div>
 <div class="container">
     {% for i in results %}
@@ -127,17 +130,22 @@
 </div>
 <div class="container text-center">
     <br><br>
-    <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
-    {% for page in pages %}
-        {% if forloop.counter == p %}
-        <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
-        {% elif forloop.counter < p_p or forloop.counter > n_p%}
+    {% if t_p == 0 %}
+        <br><br>
+        <p>Sorry, No results found!</p>
+    {% else %}
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
 
-        {% else %}
-        <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
-        {% endif %}
-    {% endfor %}
-    <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+            {% else %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+    {% endif %}
 <br><br><br><br>
 </div>
 <div class="navbar-fixed-bottom text-center bg-primary">

@@ -27,6 +27,7 @@ class FormattedCodeInterface:
     __comments = ''  # Content minus code
     __source = ''
     __url = ''
+    __id = ''
     __wiki = False  # Whether the project has a wiki or not
 
     def __init__(self, description='', author='', update_at='', save_time='', file_name='', project_name='',
@@ -138,6 +139,12 @@ class FormattedCodeInterface:
     def get_wiki(self):
         return self.__wiki
 
+    def get_id(self):
+        return self.__id
+
+    def set__id(self, id):
+        self.__id = id
+
     # convert FCI object into dictionary.
     def to_dictionary(self):
         dic = {}
@@ -156,6 +163,7 @@ class FormattedCodeInterface:
         dic["wiki"] = self.__wiki
         dic["url"] = self.__url
         dic["source"] = self.__source
+        dic["id"] = self.__id
         return dic
 
     # convert dictionary into FCI objects.
@@ -176,4 +184,5 @@ class FormattedCodeInterface:
         fci.set_wiki(dic["wiki"])
         fci.set_url(dic["url"])
         fci.set_source(dic["source"])
+        fci.set__id(dic["id"])
         return fci
