@@ -36,6 +36,9 @@ class LinuxConnection:
         except FileNotFoundError:
             return False
 
+    def mkdir(self, dir_path):
+        self.sftp.mkdir(dir_path)
+
     def listdir(self, path):
         return self.sftp.listdir(path)
 
