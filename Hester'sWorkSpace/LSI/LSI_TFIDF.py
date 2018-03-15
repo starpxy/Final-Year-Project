@@ -16,7 +16,7 @@ class LSI_TFIDF:
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     # get files
-    path = "/Users/quanyewu/Desktop/Final-Year-Project/Star's Python Workspace/Web App/CodEX/search/supportings/files"  # path name
+    path = "../files"  # path name
     files = []
     documents = {}
     sortedDocuments = []
@@ -32,12 +32,12 @@ class LSI_TFIDF:
     def __init__(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
+        self.files.remove('.DS_Store')
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
-                if not file == '.DS_Store':
-                    self.documents[file] = conv.to_dic(self.path + "/" + file)
-                    self.contents.append(self.documents[file]['code'])
-                    self.wholeContent += self.documents[file]['code']
+                self.documents[file] = conv.to_dic(self.path + "/" + file)
+                self.contents.append(self.documents[file]['code'])
+                self.wholeContent += self.documents[file]['code']
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # indexing
         self.lw.write_info_log("indexing...")
@@ -47,10 +47,12 @@ class LSI_TFIDF:
         self.X=''
         # indexing
     def indexing(self):
-        self.X = self.vectorizer.fit_transform([self.wholeContent]).toarray().T
         self.transformer = TfidfTransformer()
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
+        self.vectorizer.fit_transform([self.wholeContent])
         self.word = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
+        self.X = self.vectorizer.fit_transform(self.contents).toarray().T
+        print(self.X)
         # store the index into the pickle
         with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.re, f, True)
@@ -72,12 +74,12 @@ class LSI_TFIDF:
             # store the result of the query into redis
             l = self.MatrixSearching(query)
             if l is None:
-                return Results.Results(0,[])
+                return Results.Results(0, [])
             self.lw.write_info_log("storing results into redis in form of list")
             for j in range(len(l)):
                 self.r.rpush(query, l[j])
                 if (page - 1) * self.pageNum < j and j < page * self.pageNum:
-                    sortedDocuments.append(self.documents[l[j]])
+                    sortedDocuments.append(l[j])
             results = Results.Results(len(l), sortedDocuments)
         # get the result list of this query from redis
         # catch 10 documents at a time
@@ -85,9 +87,8 @@ class LSI_TFIDF:
             self.lw.write_info_log("geting results from redis")
             i = (page - 1) * self.pageNum
             length = self.r.llen(query)
-            while i < page * self.pageNum and i<length:
-                fileName = self.r.lindex(query, i)
-                sortedDocuments.append(self.documents[fileName])
+            while i < page * self.pageNum and i < length:
+                sortedDocuments.append(self.r.lindex(query, i))
                 i += 1
             results = Results.Results(length, sortedDocuments)
         self.r.expire(query, 30)  # expire after 30s
@@ -197,6 +198,7 @@ class LSI_TFIDF:
         qFreq = self.vectorizer.fit_transform([query]).toarray().T  # make the vectorizer fit the query
         qWord = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
         qArr = np.zeros([1, len(self.word)])
+        ocurrence=np.zeros([1, len(self.word)])
         # fill in the term frequency into the empty Xq matrix
         ifEmpty = True
         for w in qWord:
@@ -204,6 +206,7 @@ class LSI_TFIDF:
             if w in self.word:
                 ifEmpty = False
                 j = self.word.index(w)
+                ocurrence[0][j]+=1
                 idf = len(np.nonzero(self.re[j])[0])
                 idf = (1 + len(self.files)) / (idf + 1)
                 idf = math.log2(idf) + 1
@@ -212,7 +215,6 @@ class LSI_TFIDF:
         if ifEmpty:
             self.lw.write_warning_log("Nothing found!")
             return None
-
         # print(qArr)
         sDiagno = np.diag(np.array(s))
         sInv = np.linalg.inv(sDiagno)
@@ -225,15 +227,49 @@ class LSI_TFIDF:
         # print(Dq)
         # similarities from Dq=X.T * T * S-1.
         similarities = {}
-        matrixSimilarity=[]
         for i in range(len(d)):
             # similarity[i]=spatial.distance.cosine(Dq, d[i])
             similarities[self.files[i]] = np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i])))
         # matrixSimilarity=sorted(similarities.items(),key=lambda item:item[1],reverse=True)
-        matrixSimilarity = sorted(similarities.keys(), key=similarities.__getitem__, reverse=True)
-        print(matrixSimilarity)
+        similarities=sorted(similarities, key=similarities.get, reverse=True)
+        print(similarities)
+        machingLines=self.highlighting(ocurrence,qWord,similarities)
         # turn the id list into sorted document list
-        return matrixSimilarity
+        return machingLines
+
+    #highlight the matching lines
+    def highlighting(self,ocurrence,qWord,similarities):
+        if similarities is None:
+            return None
+        rT=self.X.T
+        #construct matching lines
+        machingLines=[]
+        for doc in similarities:
+            i=self.files.index(doc)
+            if np.dot(rT[i], ocurrence[0]) >0:
+                lines=[]
+                lineNo=0
+                for line in self.contents[i].split('\n'):
+                    if line.strip() is '':
+                        continue
+                    try:
+                        self.vectorizer.fit_transform([line])
+                    except ValueError:
+                        continue
+                    else:
+                        w = self.vectorizer.get_feature_names()
+                        if len(list(set(w).intersection(set(qWord))))>0:
+                            lines.append(lineNo)
+                    lineNo+=1
+                machingLines.append((doc, lines))
+            else:
+                machingLines.append((doc, []))
+
+        return machingLines
+
+
+
+
 
 
         # printA()
