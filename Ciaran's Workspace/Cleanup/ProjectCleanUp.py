@@ -82,7 +82,7 @@ class ProjectCleanUp:
 
     def run(self):
         self.load_file_paths()
-        # self.unzip()
+        self.unzip()
         self.compare_projects()
         # self.delete_files()
 

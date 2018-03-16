@@ -11,6 +11,7 @@ import json
 import hashlib
 from LogWriter import LogWriter
 from FCI.FormattedCodeInterface import FormattedCodeInterface
+from Server.LinuxConnection import LinuxConnection
 
 
 def to_json_str(fci_object):
@@ -23,7 +24,7 @@ def to_json_str(fci_object):
         exit()
 
 
-def to_json_file(path, fci_object):
+def to_local_json_file(path, fci_object):
     to_write = to_json_str(fci_object)
     if not os.path.exists(path):
         os.mkdir(path)
@@ -33,6 +34,20 @@ def to_json_file(path, fci_object):
     fci_object.set_id(f_name)
     to_write = to_json_str(fci_object)
     f = open(path + "/" + f_name + ".json", "w", encoding="utf-8")
+    f.write(to_write)
+    f.close()
+
+
+def to_remote_json_file(path, fci_object, connection):
+    to_write = to_json_str(fci_object)
+    if not connection.isdir(path):
+        connection.mkdir(path)
+    m = hashlib.md5()
+    m.update(to_write.encode("utf8"))
+    f_name = m.hexdigest()
+    fci_object.set_id(f_name)
+    to_write = to_json_str(fci_object)
+    f = connection.open_file(path + "/" + f_name + ".json", "w")
     f.write(to_write)
     f.close()
 

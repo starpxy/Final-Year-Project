@@ -23,8 +23,8 @@ class LinuxConnection:
         super().__init__()
 
     ### Parent ###
-    def open_file(self, file):
-        return self.sftp.open(file)
+    def open_file(self, file, mode='r'):
+        return self.sftp.open(file, mode)
 
     def copy_file_to_server(self, local_path, remote_path):
         self.sftp.put(local_path, remote_path)

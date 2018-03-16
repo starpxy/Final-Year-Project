@@ -73,7 +73,7 @@ class FileDetailsToJson:
                     if self.connection.isdir(file_path):
                         self.create_fci_objects(file_path)
                     else:  # Just an extra check to make sure no other files are left
-                        self.log_writer.write_warning_log(file_path + " not deleted:" + "\n")
+                        self.log_writer.write_warning_log(file_path + " not deleted")
         except Exception as e:
             self.log_writer.write_error_log(str(e) + "\n")
 
@@ -130,12 +130,22 @@ class FileDetailsToJson:
         fci.set_url(self.json_data["html_url"])
         fci.set_wiki(self.json_data["has_wiki"])
 
+    # Converts fci objects to json files and saves them remotely
+    def save_fci_objects_to_json_files(self):
+        self.log_writer.write_info_log("Saving Json files")
+
+        for fci_object in self.files_in_project:
+            FCI.FCIConverter.to_remote_json_file(self.remote_json_path, fci_object, self.connection)
+
+        self.log_writer.write_info_log("Json files saved to remote machine at " + self.remote_json_path)
+
+    '''
     # Save fci objects to local and remote json files
     def save_fci_objects_to_json_files(self):
         self.log_writer.write_info_log("Saving Json files")
         self.save_to_local_directory()
         self.save_to_remote_directory()
-
+    
     # Converts fci objects to json files and saves them locally
     def save_to_local_directory(self):
         for fci_object in self.files_in_project:
@@ -151,6 +161,7 @@ class FileDetailsToJson:
             self.connection.copy_file_to_server(local_path, remote_path)
 
         self.log_writer.write_info_log("Saved to remote machine at " + self.remote_json_path)
+    '''
 
 
 def main():
