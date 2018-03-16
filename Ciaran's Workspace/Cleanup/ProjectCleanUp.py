@@ -44,10 +44,28 @@ class ProjectCleanUp:
                         unzip_command = "unzip " + self.unclean_projects_path + "/" + directory + "/" + file + \
                                         " -d " + unzip_path + "/" + file[:-4]
                         self.connection.exec_command(unzip_command)
-                        self.log_writer.write_info_log(directory + "/" + file + " unzipped")
+                        # self.log_writer.write_info_log(directory + "/" + file + " unzipped")
             self.log_writer.write_info_log("Files unzipped")
         except Exception as command_error:
             self.log_writer.write_error_log("Could not unzip files: " + str(command_error))
+
+    def compare_projects(self):
+        unclean_projects = []
+        clean_projects = []
+
+        for directory in self.connection.listdir(self.unclean_projects_path):
+            for project in self.connection.listdir(self.unclean_projects_path + "/" + directory):
+                if project.endswith(".zip"):
+                    unclean_projects.append(project[:-4])
+
+        for directory in self.connection.listdir(self.clean_projects_path):
+            if self.connection.isdir(self.clean_projects_path + "/" + directory):
+                for project in self.connection.listdir(self.clean_projects_path + "/" + directory):
+                    if self.connection.isdir(self.clean_projects_path + "/" + directory + "/" + project):
+                        clean_projects.append(project)
+
+        for not_unzipped in set(unclean_projects).difference(clean_projects):
+            self.log_writer.write_error_log("Could not unzip: " + not_unzipped)
 
     # Uses the delete_files_script to delete all files in a folder
     # who's extensions aren't in the language configuration file
@@ -64,9 +82,9 @@ class ProjectCleanUp:
 
     def run(self):
         self.load_file_paths()
-        self.unzip()
-        self.delete_files()
-        self.delete_files()
+        # self.unzip()
+        self.compare_projects()
+        # self.delete_files()
 
 
 def main():

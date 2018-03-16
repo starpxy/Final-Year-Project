@@ -40,7 +40,10 @@ class LinuxConnection:
         self.sftp.mkdir(dir_path)
 
     def listdir(self, path):
-        return self.sftp.listdir(path)
+        try:
+            return self.sftp.listdir(path)
+        except IsADirectoryError:
+            return None
 
     def exec_command(self, command):
         self.ssh_client.exec_command(command)
