@@ -4,6 +4,8 @@
 # Log file
 *.log
 
+config*.py
+
 # BlueJ files
 *.ctxt
 
