@@ -1,5 +1,6 @@
 {
   "author": "nvbn",
+  "id":"0a719236330cd230ce0fd0200386504b",
   "code": "import re\n\nfrom thefuck.specific.git import git_support\n\n\n@git_support\ndef match(command):\n    return \"remote delete\" in command.script\n\n\n@git_support\ndef get_new_command(command):\n    return re.sub(r\"delete\", \"remove\", command.script, 1)\n",
   "comments": "",
   "content": "import re\n\nfrom thefuck.specific.git import git_support\n\n\n@git_support\ndef match(command):\n    return \"remote delete\" in command.script\n\n\n@git_support\ndef get_new_command(command):\n    return re.sub(r\"delete\", \"remove\", command.script, 1)\n",

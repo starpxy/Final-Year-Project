@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../static/search/css/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/search/css/flat-ui.css">
     <link rel="alternate icon" type="image/png" href="../static/search/img/icon-flat.png">
-    <link rel="stylesheet" type="text/css" href="../static/search/css/jquery.snippet.css">
+    <link rel="stylesheet" type="text/css" href="../static/search/css/prism.css">
     <style>
-        .my-title{
+        .my-title {
 
         }
-        .my-author{
-            font-size:15px;
+
+        .my-author {
+            font-size: 15px;
             text-align: center;
             color: #9aa4af;
         }
@@ -26,7 +27,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="#">CodEX</a>
+        <a class="navbar-brand" href="/">CodEX</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav navbar-left">
@@ -42,10 +43,12 @@
                 </ul>
             </li>
         </ul>
-        <form class="navbar-form navbar-right" action="#" role="search">
+        <form class="navbar-form navbar-right search" action="/search" role="search">
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                    <input name="p" value="1" hidden>
+                    <input name="q" class="form-control s-bar" id="navbarInput-01" value="" type="search"
+                           placeholder="Search">
                     <span class="input-group-btn">
                       <button type="submit" class="btn"><span class="fui-search"></span></button>
                     </span>
@@ -55,25 +58,10 @@
     </div><!-- /.navbar-collapse -->
 </nav><!-- /navbar -->
 <div class="container" style="margin-top: 60px">
-    <h3 class="my-title text-center">Final Year Project - LogWriter.py</h3>
-    <p class="my-author">Author : Star,Hester</p>
-    <table class="table-bordered">
-        <thead>
-            <tr>
-
-            </tr>
-        </thead>
-    </table>
-    <pre id="test">
-        def to_json_str(fci_object):
-            if isinstance(fci_object, FormattedCodeInterface):
-                dic = fci_object.to_dictionary()
-                return json.dumps(dic, sort_keys=True)
-            else:
-                lw = LogWriter()
-                lw.write_error_log("Method 'to_json' in FCIConverter requires an FCI type of object as parameter!")
-                exit()
-    </pre>
+    <h3 class="my-title text-center">{{ detail.get_project_name }} - {{ detail.get_file_name }}</h3>
+    <p class="my-author">Author : {{ detail.get_author }}</p>
+    <pre class="line-numbers" data-line="{{ match_lines }}"><code class="language-{{ detail.get_language }}">{{ detail.get_content }}</code></pre>
+    <br><br><br>
 </div>
 <div class="navbar-fixed-bottom text-center bg-primary">
     <p>
@@ -85,10 +73,15 @@
 <script src="../static/search/js/vendor/video.js"></script>
 <script src="../static/search/js/flat-ui.min.js"></script>
 <script src="../static/search/js/application.js"></script>
-<script src="../static/search/js/jquery.snippet.js"></script>
+<script src="../static/search/js/prism.js"></script>
 <script type="text/javascript">
     $(function () {
-        $("#test").snippet("Python",{"style":"bright","box":"3","boxColor":"red"});
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
     });
 </script>
 </html>

@@ -142,7 +142,7 @@ class FormattedCodeInterface:
     def get_id(self):
         return self.__id
 
-    def set__id(self, id):
+    def set_id(self, id):
         self.__id = id
 
     # convert FCI object into dictionary.
@@ -184,5 +184,5 @@ class FormattedCodeInterface:
         fci.set_wiki(dic["wiki"])
         fci.set_url(dic["url"])
         fci.set_source(dic["source"])
-        fci.set__id(dic["id"])
+        fci.set_id(dic["id"])
         return fci
