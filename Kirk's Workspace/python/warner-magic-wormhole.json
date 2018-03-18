@@ -1,0 +1,13 @@
+{
+  "name": "magic-wormhole",
+  "full_name": "warner/magic-wormhole",
+  "owner_name": "warner",
+  "html_url": "https://github.com/warner/magic-wormhole",
+  "description": "get things from one computer to another, safely",
+  "api_url": "https://api.github.com/repos/warner/magic-wormhole",
+  "created_at": "2015-02-10T08:38:44Z",
+  "updated_at": "2018-03-18T02:40:47Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

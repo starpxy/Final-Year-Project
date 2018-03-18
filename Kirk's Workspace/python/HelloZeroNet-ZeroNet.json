@@ -1,0 +1,13 @@
+{
+  "name": "ZeroNet",
+  "full_name": "HelloZeroNet/ZeroNet",
+  "owner_name": "HelloZeroNet",
+  "html_url": "https://github.com/HelloZeroNet/ZeroNet",
+  "description": "ZeroNet - Decentralized websites using Bitcoin crypto and BitTorrent network",
+  "api_url": "https://api.github.com/repos/HelloZeroNet/ZeroNet",
+  "created_at": "2015-01-12T00:41:38Z",
+  "updated_at": "2018-03-18T10:22:29Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

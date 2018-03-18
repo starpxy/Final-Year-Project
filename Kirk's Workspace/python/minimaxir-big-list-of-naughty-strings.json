@@ -1,0 +1,13 @@
+{
+  "name": "big-list-of-naughty-strings",
+  "full_name": "minimaxir/big-list-of-naughty-strings",
+  "owner_name": "minimaxir",
+  "html_url": "https://github.com/minimaxir/big-list-of-naughty-strings",
+  "description": "The Big List of Naughty Strings is a list of strings which have a high probability of causing issues when used as user-input data.",
+  "api_url": "https://api.github.com/repos/minimaxir/big-list-of-naughty-strings",
+  "created_at": "2015-08-08T20:57:20Z",
+  "updated_at": "2018-03-18T10:34:19Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

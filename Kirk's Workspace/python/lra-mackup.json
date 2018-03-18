@@ -1,0 +1,13 @@
+{
+  "name": "mackup",
+  "full_name": "lra/mackup",
+  "owner_name": "lra",
+  "html_url": "https://github.com/lra/mackup",
+  "description": "Keep your application settings in sync (OS X/Linux)",
+  "api_url": "https://api.github.com/repos/lra/mackup",
+  "created_at": "2013-04-06T19:22:54Z",
+  "updated_at": "2018-03-18T08:59:47Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

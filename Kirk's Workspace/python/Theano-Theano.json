@@ -1,0 +1,13 @@
+{
+  "name": "Theano",
+  "full_name": "Theano/Theano",
+  "owner_name": "Theano",
+  "html_url": "https://github.com/Theano/Theano",
+  "description": "Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. It can use GPUs and perform efficient symbolic differentiation.",
+  "api_url": "https://api.github.com/repos/Theano/Theano",
+  "created_at": "2011-08-10T03:48:06Z",
+  "updated_at": "2018-03-18T03:16:17Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "pytorch",
+  "full_name": "pytorch/pytorch",
+  "owner_name": "pytorch",
+  "html_url": "https://github.com/pytorch/pytorch",
+  "description": "Tensors and Dynamic neural networks in Python  with strong GPU acceleration",
+  "api_url": "https://api.github.com/repos/pytorch/pytorch",
+  "created_at": "2016-08-13T05:26:41Z",
+  "updated_at": "2018-03-18T11:12:09Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

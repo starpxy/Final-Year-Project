@@ -1,0 +1,13 @@
+{
+  "name": "http-prompt",
+  "full_name": "eliangcs/http-prompt",
+  "owner_name": "eliangcs",
+  "html_url": "https://github.com/eliangcs/http-prompt",
+  "description": "HTTPie + prompt_toolkit = an interactive command-line HTTP client featuring autocomplete and syntax highlighting",
+  "api_url": "https://api.github.com/repos/eliangcs/http-prompt",
+  "created_at": "2016-04-06T07:24:35Z",
+  "updated_at": "2018-03-17T18:26:33Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

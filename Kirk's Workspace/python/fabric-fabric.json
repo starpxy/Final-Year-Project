@@ -1,0 +1,13 @@
+{
+  "name": "fabric",
+  "full_name": "fabric/fabric",
+  "owner_name": "fabric",
+  "html_url": "https://github.com/fabric/fabric",
+  "description": "Simple, Pythonic remote execution and deployment.",
+  "api_url": "https://api.github.com/repos/fabric/fabric",
+  "created_at": "2009-05-01T01:14:24Z",
+  "updated_at": "2018-03-18T08:37:54Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}
