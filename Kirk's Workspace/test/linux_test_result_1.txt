@@ -1,0 +1,52 @@
+ubuntu@VM-131-14-ubuntu:~/test_files/unclean$ python3.5 GithubCrawler.py
+200
+{
+  "rate": {
+    "remaining": 4999,
+    "limit": 5000,
+    "reset": 1521377674
+  },
+  "resources": {
+    "core": {
+      "remaining": 4999,
+      "limit": 5000,
+      "reset": 1521377674
+    },
+    "graphql": {
+      "remaining": 5000,
+      "limit": 5000,
+      "reset": 1521379754
+    },
+    "search": {
+      "remaining": 30,
+      "limit": 30,
+      "reset": 1521376214
+    }
+  }
+}
+^CTraceback (most recent call last):
+  File "GithubCrawler.py", line 205, in <module>
+    main()
+  File "GithubCrawler.py", line 184, in main
+    status, data = crawler.call_api_search(crawler.g, "python", "1", "100")
+  File "GithubCrawler.py", line 42, in call_api_search
+    per_page = per_page
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/agithub/base.py", line 157, in get
+    return self.request('GET', url, None, headers)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/agithub/base.py", line 210, in request
+    content = ResponseBody(response)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/agithub/base.py", line 305, in __init__
+    self.body = response.read()
+  File "/usr/lib/python3.5/http/client.py", line 461, in read
+    s = self._safe_read(self.length)
+  File "/usr/lib/python3.5/http/client.py", line 607, in _safe_read
+    chunk = self.fp.read(min(amt, MAXAMOUNT))
+  File "/usr/lib/python3.5/socket.py", line 575, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.5/ssl.py", line 929, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.5/ssl.py", line 791, in read
+    return self._sslobj.read(len, buffer)
+  File "/usr/lib/python3.5/ssl.py", line 575, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt

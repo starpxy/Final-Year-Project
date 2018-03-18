@@ -1,0 +1,77 @@
+ubuntu@VM-131-14-ubuntu:~/test_files/unclean$ python3.5 GithubCrawler.py
+200
+{
+  "rate": {
+    "limit": 5000,
+    "reset": 1521377674,
+    "remaining": 4999
+  },
+  "resources": {
+    "search": {
+      "limit": 30,
+      "reset": 1521376728,
+      "remaining": 30
+    },
+    "graphql": {
+      "limit": 5000,
+      "reset": 1521380268,
+      "remaining": 5000
+    },
+    "core": {
+      "limit": 5000,
+      "reset": 1521377674,
+      "remaining": 4999
+    }
+  }
+}
+35044
+vinta-awesome-python: 35.8kb [00:00, 110kb/s]
+1857191
+rg3-youtube-dl: 1.86Mb [00:42, 44.1kb/s]
+None
+jakubroztocil-httpie: 294kb [00:00, 337kb/s]
+None
+toddmotto-public-apis: 1.02kb [00:00, 786kb/s]
+None
+nvbn-thefuck: 1.49Mb [01:24, 17.6kb/s]
+None
+pallets-flask: 763kb [00:01, 584kb/s]
+None
+django-django: 6.26Mb [01:27, 52.9kb/s]Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 302, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 601, in read_chunked
+    chunk = self._handle_chunk(amt)
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 562, in _handle_chunk
+    self._fp._safe_read(2)  # Toss the CRLF at the end of the chunk.
+  File "/usr/lib/python3.5/http/client.py", line 609, in _safe_read
+    raise IncompleteRead(b''.join(s), amt)
+http.client.IncompleteRead: IncompleteRead(0 bytes read, 2 more expected)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/requests/models.py", line 745, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 432, in stream
+    for line in self.read_chunked(amt, decode_content=decode_content):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 626, in read_chunked
+    self._original_response.close()
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 320, in _error_catcher
+    raise ProtocolError('Connection broken: %r' % e, e)
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(0 bytes read, 2 more expected)', IncompleteRead(0 bytes read, 2 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "GithubCrawler.py", line 205, in <module>
+    main()
+  File "GithubCrawler.py", line 199, in main
+    crawler.download(project_json_list[i].get("url"), project_json_list[i].get("full_name").replace("/", "-"))
+  File "GithubCrawler.py", line 166, in download
+    for chunk in response.iter_content(chunk_size = 1024):
+  File "/usr/local/lib/python3.5/dist-packages/requests/models.py", line 748, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(0 bytes read, 2 more expected)', IncompleteRead(0 bytes read, 2 more expected))

@@ -1,0 +1,75 @@
+ubuntu@VM-131-14-ubuntu:~/test_files/unclean$ python3.5 GithubCrawler.py
+200
+{
+  "rate": {
+    "limit": 5000,
+    "remaining": 4999,
+    "reset": 1521377674
+  },
+  "resources": {
+    "graphql": {
+      "limit": 5000,
+      "remaining": 5000,
+      "reset": 1521380118
+    },
+    "search": {
+      "limit": 30,
+      "remaining": 30,
+      "reset": 1521376578
+    },
+    "core": {
+      "limit": 5000,
+      "remaining": 4999,
+      "reset": 1521377674
+    }
+  }
+}
+None
+vinta-awesome-python: 35.8kb [00:10, 3.40kb/s]
+None
+rg3-youtube-dl: 171kb [00:50, 2.84kb/s]Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 302, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 601, in read_chunked
+    chunk = self._handle_chunk(amt)
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 557, in _handle_chunk
+    value = self._fp._safe_read(amt)
+  File "/usr/lib/python3.5/http/client.py", line 607, in _safe_read
+    chunk = self.fp.read(min(amt, MAXAMOUNT))
+  File "/usr/lib/python3.5/socket.py", line 575, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.5/ssl.py", line 929, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.5/ssl.py", line 791, in read
+    return self._sslobj.read(len, buffer)
+  File "/usr/lib/python3.5/ssl.py", line 575, in read
+    v = self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/requests/models.py", line 745, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 432, in stream
+    for line in self.read_chunked(amt, decode_content=decode_content):
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 626, in read_chunked
+    self._original_response.close()
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/usr/local/lib/python3.5/dist-packages/urllib3/response.py", line 307, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='codeload.github.com', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "GithubCrawler.py", line 205, in <module>
+    main()
+  File "GithubCrawler.py", line 199, in main
+    crawler.download(project_json_list[i].get("url"), project_json_list[i].get("full_name").replace("/", "-"))
+  File "GithubCrawler.py", line 166, in download
+    for chunk in response.iter_content(chunk_size = 1024):
+  File "/usr/local/lib/python3.5/dist-packages/requests/models.py", line 752, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='codeload.github.com', port=443): Read timed out.

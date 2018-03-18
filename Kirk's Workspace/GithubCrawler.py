@@ -24,7 +24,7 @@ class GithubCrawler(object):
 
 		self.g = GitHub("", "")
 
-		self.output_path = "python\\"
+		self.output_path = "python"
 
 	def config_github_account(self, username, password):
 		self.g = GitHub(username, password)
@@ -122,7 +122,7 @@ class GithubCrawler(object):
 		# Save to JSON file
 		project_name = project_json["full_name"].replace("/", "-")
 
-		with open(self.output_path + project_name + ".json", "w") as file:
+		with open(os.path.join(self.output_path, project_name) + ".json", "w") as file:
 			file.write(json.dumps(project_json, indent = 2))
 
 	def download(self, download_url, download_filename):
@@ -133,16 +133,23 @@ class GithubCrawler(object):
 
 		# Handle [timeout] & [stream transmission]
 		try:
-			response = requests.get(download_url + "/zipball", timeout=(3.05, 27), stream = True,  auth = HTTPBasicAuth('SoapKe', 'BBC19951228Soap'))
-		except Timeout:
-			self.log_writer.write_error_log("Download request ---- TIMEOUT")
+			headers = {
+			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36',
+			'Accept-Encoding': 'identity'
+			}
+
+			response = requests.get(download_url + "/zipball", headers = headers, timeout= 15.5, stream = True,  auth = HTTPBasicAuth('SoapKe', 'BBC19951228Soap'))
+		except requests.exceptions.Timeout:
+			self.log_writer.write_error_log("Download request ---- TIMEOUT" + " url: " + download_url)
 			
 			# TO DO: Reconnect
+			self.download(download_url, download_filename)
 
-		except HTTPError:
-			self.log_writer.write_error_log("Download request ---- BAD REQUEST " + "HTTP Response Status Code: " + str(response.status_code))
+		except requests.exceptions.HTTPError:
+			self.log_writer.write_error_log("Download request ---- BAD REQUEST " + "HTTP Response Status Code: " + str(response.status_code) + " url: " + download_url)
 
 			# TO DO: Reconnect
+			self.download(download_url, download_filename)
 
 		else:
 			# Content length -- Chunked
@@ -161,17 +168,33 @@ class GithubCrawler(object):
 			# Have a chance to fail, when the Internet Connection is bad
 			# Retry? How to catch breakconnection when "stream = True"
 			# ----> Solution: Just download first, and check the file integrity when Ciaran unzip the files
-			with open(self.output_path + download_filename + ".zip", "wb") as f:
-				# Chunk size unit in byte
-				for chunk in response.iter_content(chunk_size = 1024): 
-					if chunk:
-						f.write(chunk)
-						pbar.update(1024)
 
-			# Close the Progress Bar
-			pbar.close()
-			# Close the request
-			response.close()
+			try:
+				with open(os.path.join(self.output_path, download_filename) + ".zip", "wb") as f:
+					# Chunk size unit in byte
+					for chunk in response.iter_content(chunk_size = 1024): 
+						if chunk:
+							f.write(chunk)
+							pbar.update(1024)
+			except requests.exceptions.ConnectionError:
+				self.log_writer.write_error_log("Download request ---- Connection broken due to bad Internet condition" + " url: " + download_url)
+				
+				# TO DO: Reconnect
+				self.download(download_url, download_filename)
+
+			except requests.exceptions.ChunkedEncodingError:
+				self.log_writer.write_error_log("Download request ---- Connection broken due to bad Internet condition" + " url: " + download_url)
+			
+				# TO DO: Reconnect
+				self.download(download_url, download_filename)
+
+			finally:
+				# Close the Progress Bar
+				pbar.close()
+				# Close the request
+				response.close()
+
+				print("")
 
 	def run(self):
 		pass
