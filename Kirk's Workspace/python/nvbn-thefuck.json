@@ -1,0 +1,13 @@
+{
+  "name": "thefuck",
+  "full_name": "nvbn/thefuck",
+  "owner_name": "nvbn",
+  "html_url": "https://github.com/nvbn/thefuck",
+  "description": "Magnificent app which corrects your previous console command.",
+  "api_url": "https://api.github.com/repos/nvbn/thefuck",
+  "created_at": "2015-04-08T15:08:04Z",
+  "updated_at": "2018-03-18T10:53:07Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

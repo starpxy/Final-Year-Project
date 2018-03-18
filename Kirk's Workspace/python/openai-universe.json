@@ -1,0 +1,13 @@
+{
+  "name": "universe",
+  "full_name": "openai/universe",
+  "owner_name": "openai",
+  "html_url": "https://github.com/openai/universe",
+  "description": "Universe: a software platform for measuring and training an AI's general intelligence across the world's supply of games, websites and other applications.",
+  "api_url": "https://api.github.com/repos/openai/universe",
+  "created_at": "2016-12-04T21:53:35Z",
+  "updated_at": "2018-03-18T08:39:09Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

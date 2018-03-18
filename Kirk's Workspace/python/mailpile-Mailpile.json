@@ -1,0 +1,13 @@
+{
+  "name": "Mailpile",
+  "full_name": "mailpile/Mailpile",
+  "owner_name": "mailpile",
+  "html_url": "https://github.com/mailpile/Mailpile",
+  "description": "A free & open modern, fast email client with user-friendly encryption and privacy features",
+  "api_url": "https://api.github.com/repos/mailpile/Mailpile",
+  "created_at": "2011-10-30T23:45:22Z",
+  "updated_at": "2018-03-17T23:54:52Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

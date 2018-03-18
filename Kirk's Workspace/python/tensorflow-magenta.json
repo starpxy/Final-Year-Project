@@ -1,0 +1,13 @@
+{
+  "name": "magenta",
+  "full_name": "tensorflow/magenta",
+  "owner_name": "tensorflow",
+  "html_url": "https://github.com/tensorflow/magenta",
+  "description": "Magenta: Music and Art Generation with Machine Intelligence",
+  "api_url": "https://api.github.com/repos/tensorflow/magenta",
+  "created_at": "2016-05-05T20:10:40Z",
+  "updated_at": "2018-03-18T10:57:13Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

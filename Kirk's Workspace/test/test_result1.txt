@@ -1,0 +1,57 @@
+running from C:\Users\soapk\Documents\Final-Year-Project\Kirk's Workspace
+file is crawler_github_api.py
+200
+<class 'int'> 200
+<class 'requests.structures.CaseInsensitiveDict'> {
+
+'Transfer-Encoding': 'chunked', 
+'Access-Control-Allow-Origin': 'https://render.githubusercontent.com', 
+'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; sandbox", 
+'Strict-Transport-Security': 'max-age=31536000', 
+'Vary': 'Authorization,Accept-Encoding', 
+'X-Content-Type-Options': 'nosniff', 
+'X-Frame-Options': 'deny', 
+'X-XSS-Protection': '1; mode=block', 
+'ETag': '"fe300f230199e22b4bf1730c7e791cd4cec47ad3"', 
+'Content-Type': 'application/zip', 
+'Content-Disposition': 'attachment; filename=vinta-awesome-python-fe300f2.zip', 
+'X-Geo-Block-List': '', 
+'Date': 'Thu, 08 Mar 2018 03:29:14 GMT', 
+'X-GitHub-Request-Id': 'D8DC:1DF0:24994C:486D5E:5AA0AE0A'
+
+}
+
+<class 'requests.cookies.RequestsCookieJar'> <RequestsCookieJar[]>
+<class 'str'> https://codeload.github.com/vinta/awesome-python/legacy.zip/master
+<class 'list'> [<Response [302]>]
+[Finished in 6.0s]
+
+{
+'Date': 'Fri, 09 Mar 2018 14:12:07 GMT', 
+'Content-Type': 'text/html;charset=utf-8', 
+'Content-Length': '0', 
+'Server': 'GitHub.com', 
+'Status': '302 Found', 
+'X-RateLimit-Limit': '60', 
+'X-RateLimit-Remaining': '58', 
+'X-RateLimit-Reset': '1520606804', 
+'Cache-Control': 'public, must-revalidate, max-age=0', 
+'Expires': 'Fri, 09 Mar 2018 14:12:07 GMT', 
+'Location': 'https://codeload.github.com/tensorflow/models/legacy.zip/master', 
+'Access-Control-Expose-Headers': 'ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval', 
+'Access-Control-Allow-Origin': '*', 
+'Content-Security-Policy': "default-src 'none'", 
+'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 
+'X-Content-Type-Options': 'nosniff', 
+'X-Frame-Options': 'deny', 
+'X-XSS-Protection': '1; mode=block', 
+'X-Runtime-rack': '0.022174', 
+'Vary': 'Accept-Encoding', 
+'X-GitHub-Request-Id': '1E37:20A81:13496DC:198B0C7:5AA29636'
+}
+
+break
+	store temp part
+
+reconnect
+	download 

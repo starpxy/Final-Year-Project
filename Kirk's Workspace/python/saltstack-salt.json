@@ -1,0 +1,13 @@
+{
+  "name": "salt",
+  "full_name": "saltstack/salt",
+  "owner_name": "saltstack",
+  "html_url": "https://github.com/saltstack/salt",
+  "description": "Software to automate the management and configuration of any infrastructure or application at scale. Get access to the Salt software package repository here: ",
+  "api_url": "https://api.github.com/repos/saltstack/salt",
+  "created_at": "2011-02-20T20:16:56Z",
+  "updated_at": "2018-03-18T08:15:33Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

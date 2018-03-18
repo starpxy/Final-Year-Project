@@ -1,0 +1,13 @@
+{
+  "name": "face_recognition",
+  "full_name": "ageitgey/face_recognition",
+  "owner_name": "ageitgey",
+  "html_url": "https://github.com/ageitgey/face_recognition",
+  "description": "The world's simplest facial recognition api for Python and the command line",
+  "api_url": "https://api.github.com/repos/ageitgey/face_recognition",
+  "created_at": "2017-03-03T21:52:39Z",
+  "updated_at": "2018-03-18T09:33:27Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

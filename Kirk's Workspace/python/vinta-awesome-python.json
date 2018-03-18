@@ -1,0 +1,13 @@
+{
+  "name": "awesome-python",
+  "full_name": "vinta/awesome-python",
+  "owner_name": "vinta",
+  "html_url": "https://github.com/vinta/awesome-python",
+  "description": "A curated list of awesome Python frameworks, libraries, software and resources",
+  "api_url": "https://api.github.com/repos/vinta/awesome-python",
+  "created_at": "2014-06-27T21:00:06Z",
+  "updated_at": "2018-03-18T10:58:07Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

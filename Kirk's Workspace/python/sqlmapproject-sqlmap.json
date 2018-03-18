@@ -1,0 +1,13 @@
+{
+  "name": "sqlmap",
+  "full_name": "sqlmapproject/sqlmap",
+  "owner_name": "sqlmapproject",
+  "html_url": "https://github.com/sqlmapproject/sqlmap",
+  "description": "Automatic SQL injection and database takeover tool",
+  "api_url": "https://api.github.com/repos/sqlmapproject/sqlmap",
+  "created_at": "2012-06-26T09:52:15Z",
+  "updated_at": "2018-03-18T01:24:58Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

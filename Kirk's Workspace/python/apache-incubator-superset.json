@@ -1,0 +1,13 @@
+{
+  "name": "incubator-superset",
+  "full_name": "apache/incubator-superset",
+  "owner_name": "apache",
+  "html_url": "https://github.com/apache/incubator-superset",
+  "description": "Apache Superset (incubating) is a modern, enterprise-ready business intelligence web application",
+  "api_url": "https://api.github.com/repos/apache/incubator-superset",
+  "created_at": "2015-07-21T18:55:34Z",
+  "updated_at": "2018-03-18T09:21:23Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

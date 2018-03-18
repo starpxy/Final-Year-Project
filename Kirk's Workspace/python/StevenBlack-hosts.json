@@ -1,0 +1,13 @@
+{
+  "name": "hosts",
+  "full_name": "StevenBlack/hosts",
+  "owner_name": "StevenBlack",
+  "html_url": "https://github.com/StevenBlack/hosts",
+  "description": "Extending and consolidating hosts files from several well-curated sources like adaway.org, mvps.org, malwaredomainlist.com, someonewhocares.org, and potentially others.  You can optionally invoke extensions to block additional sites by category. ",
+  "api_url": "https://api.github.com/repos/StevenBlack/hosts",
+  "created_at": "2012-04-12T20:22:50Z",
+  "updated_at": "2018-03-18T08:17:59Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

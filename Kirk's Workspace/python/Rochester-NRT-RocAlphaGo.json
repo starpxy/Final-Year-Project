@@ -1,0 +1,13 @@
+{
+  "name": "RocAlphaGo",
+  "full_name": "Rochester-NRT/RocAlphaGo",
+  "owner_name": "Rochester-NRT",
+  "html_url": "https://github.com/Rochester-NRT/RocAlphaGo",
+  "description": "An independent, student-led replication of DeepMind's 2016 Nature publication, \"Mastering the game of Go with deep neural networks and tree search\" (Nature 529, 484-489, 28 Jan 2016), details of which can be found on their website https://deepmind.com/publications.html.",
+  "api_url": "https://api.github.com/repos/Rochester-NRT/RocAlphaGo",
+  "created_at": "2016-02-01T00:40:29Z",
+  "updated_at": "2018-03-18T05:09:29Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

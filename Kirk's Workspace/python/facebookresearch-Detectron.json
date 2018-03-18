@@ -1,0 +1,13 @@
+{
+  "name": "Detectron",
+  "full_name": "facebookresearch/Detectron",
+  "owner_name": "facebookresearch",
+  "html_url": "https://github.com/facebookresearch/Detectron",
+  "description": "FAIR's research platform for object detection research, implementing popular algorithms like Mask R-CNN and RetinaNet.",
+  "api_url": "https://api.github.com/repos/facebookresearch/Detectron",
+  "created_at": "2017-10-05T17:32:00Z",
+  "updated_at": "2018-03-18T10:39:42Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

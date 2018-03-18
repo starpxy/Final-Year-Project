@@ -1,0 +1,69 @@
+472
+attachment; filename=toddmotto-public-apis-4639c4b.zip
+
+{
+
+'Content-Length': '472', 
+
+'Access-Control-Allow-Origin': 'https://render.githubusercontent.com', 
+
+'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; sandbox", 
+
+'Strict-Transport-Security': 'max-age=31536000', 
+
+'Vary': 'Authorization,Accept-Encoding', 
+
+'X-Content-Type-Options': 'nosniff', 
+
+'X-Frame-Options': 'deny', 
+
+'X-XSS-Protection': '1; mode=block', 
+
+'ETag': '"4639c4ba11676a7020499f5b402b07f73bda49af"', 
+
+'Content-Type': 'application/zip', 
+
+'Content-Disposition': 'attachment; filename=toddmotto-public-apis-4639c4b.zip', 
+
+'X-Geo-Block-List': '', 
+
+'Date': 'Tue, 13 Mar 2018 10:46:04 GMT', 
+
+'X-GitHub-Request-Id': 'D932:1DF0:3B1544:75D30A:5AA7ABEB'
+
+}
+None
+
+attachment; filename=nvbn-thefuck-3.25-29-g284d49d.zip
+
+{
+
+'Transfer-Encoding': 'chunked', 
+
+'Access-Control-Allow-Origin': 'https://render.githubusercontent.com', 
+
+'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; sandbox", 
+
+'Strict-Transport-Security': 'max-age=31536000', 
+
+'Vary': 'Authorization,Accept-Encoding', 
+
+'X-Content-Type-Options': 'nosniff', 
+
+'X-Frame-Options': 'deny', 
+
+'X-XSS-Protection': '1; mode=block', 
+
+'ETag': '"284d49da8d0ab3252b5426423b608033d39c2669"', 
+
+'Content-Type': 'application/zip', 
+
+'Content-Disposition': 'attachment; filename=nvbn-thefuck-3.25-29-g284d49d.zip', 
+
+'X-Geo-Block-List': '', 
+
+'Date': 'Tue, 13 Mar 2018 10:46:08 GMT', 
+
+'X-GitHub-Request-Id': 'D934:1DF0:3B1558:75D332:5AA7ABEF'
+
+}

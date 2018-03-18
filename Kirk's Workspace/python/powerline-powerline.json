@@ -1,0 +1,13 @@
+{
+  "name": "powerline",
+  "full_name": "powerline/powerline",
+  "owner_name": "powerline",
+  "html_url": "https://github.com/powerline/powerline",
+  "description": "Powerline is a statusline plugin for vim, and provides statuslines and prompts for several other applications, including zsh, bash, tmux, IPython, Awesome and Qtile.",
+  "api_url": "https://api.github.com/repos/powerline/powerline",
+  "created_at": "2012-06-12T12:48:40Z",
+  "updated_at": "2018-03-18T09:00:33Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

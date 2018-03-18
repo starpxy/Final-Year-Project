@@ -1,0 +1,13 @@
+{
+  "name": "redash",
+  "full_name": "getredash/redash",
+  "owner_name": "getredash",
+  "html_url": "https://github.com/getredash/redash",
+  "description": "Make Your Company Data Driven. Connect to any data source, easily visualize and share your data.",
+  "api_url": "https://api.github.com/repos/getredash/redash",
+  "created_at": "2013-10-28T13:19:39Z",
+  "updated_at": "2018-03-18T09:00:42Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}

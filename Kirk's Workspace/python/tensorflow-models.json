@@ -1,0 +1,13 @@
+{
+  "name": "models",
+  "full_name": "tensorflow/models",
+  "owner_name": "tensorflow",
+  "html_url": "https://github.com/tensorflow/models",
+  "description": "Models and examples built with TensorFlow",
+  "api_url": "https://api.github.com/repos/tensorflow/models",
+  "created_at": "2016-02-05T01:15:20Z",
+  "updated_at": "2018-03-18T10:56:34Z",
+  "language": "Python",
+  "has_wiki": true,
+  "source": "github"
+}

@@ -1,0 +1,15 @@
+running from C:\Users\soapk\Documents\Final-Year-Project\Kirk's Workspace
+file is crawler_github_api.py
+<class 'int'> 200
+<class 'requests.structures.CaseInsensitiveDict'> {'Content-Length': '446004015', 'Access-Control-Allow-Origin': 'https://render.githubusercontent.com', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; sandbox", 'Strict-Transport-Security': 'max-age=31536000', 'Vary': 'Authorization,Accept-Encoding', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'deny', 'X-XSS-Protection': '1; mode=block', 'ETag': '"3f78f4cfd21c786c62bf321c07830071027ebb5e"', 'Content-Type': 'application/zip', 'Content-Disposition': 'attachment; filename=tensorflow-models-3f78f4c.zip', 'X-Geo-Block-List': '', 'Date': 'Sun, 11 Mar 2018 07:24:26 GMT', 'X-GitHub-Request-Id': '31BA:5FF8:F47B:36A2A:5AA4D9A9'}
+<class 'requests.cookies.RequestsCookieJar'> <RequestsCookieJar[]>
+<class 'str'> https://codeload.github.com/tensorflow/models/legacy.zip/master
+<class 'list'> []
+446004015
+Traceback (most recent call last):
+  File "C:\Users\soapk\Documents\Final-Year-Project\Kirk's Workspace\crawler_github_api.py", line 27, in <module>
+    print(r.headers['content-range'])
+  File "C:\ProgramData\Anaconda2\envs\py3\lib\site-packages\requests\structures.py", line 54, in __getitem__
+    return self._store[key.lower()][1]
+KeyError: 'content-range'
+[Finished in 1.3s]

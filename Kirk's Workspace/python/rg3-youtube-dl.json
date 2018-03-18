@@ -1,0 +1,13 @@
+{
+  "name": "youtube-dl",
+  "full_name": "rg3/youtube-dl",
+  "owner_name": "rg3",
+  "html_url": "https://github.com/rg3/youtube-dl",
+  "description": "Command-line program to download videos from YouTube.com and other video sites",
+  "api_url": "https://api.github.com/repos/rg3/youtube-dl",
+  "created_at": "2010-10-31T14:35:07Z",
+  "updated_at": "2018-03-18T10:46:12Z",
+  "language": "Python",
+  "has_wiki": false,
+  "source": "github"
+}
