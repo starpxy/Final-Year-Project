@@ -1,0 +1,1232 @@
+{'limit': 30, 'remaining': 30, 'reset': 1521549589}
+https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+100
+{'limit': 30, 'remaining': 29, 'reset': 1521549613}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+200
+{'limit': 30, 'remaining': 28, 'reset': 1521549613}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+300
+{'limit': 30, 'remaining': 29, 'reset': 1521549676}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+400
+{'limit': 30, 'remaining': 28, 'reset': 1521549676}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+500
+{'limit': 30, 'remaining': 27, 'reset': 1521549676}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+600
+{'limit': 30, 'remaining': 30, 'reset': 1521549756}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+700
+{'limit': 30, 'remaining': 29, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+800
+{'limit': 30, 'remaining': 28, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+900
+{'limit': 30, 'remaining': 27, 'reset': 1521549781}
+1000
+{'limit': 30, 'remaining': 26, 'reset': 1521549781}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+1100
+{'limit': 30, 'remaining': 25, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+1200
+{'limit': 30, 'remaining': 24, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+1300
+{'limit': 30, 'remaining': 23, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+1400
+{'limit': 30, 'remaining': 22, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+1500
+{'limit': 30, 'remaining': 21, 'reset': 1521549781}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+1600
+{'limit': 30, 'remaining': 30, 'reset': 1521549841}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+1700
+{'limit': 30, 'remaining': 29, 'reset': 1521549843}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+1800
+{'limit': 30, 'remaining': 28, 'reset': 1521549843}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D1310&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+1900
+{'limit': 30, 'remaining': 27, 'reset': 1521549843}
+2000
+{'limit': 30, 'remaining': 30, 'reset': 1521549904}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+2100
+{'limit': 30, 'remaining': 29, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+2200
+{'limit': 30, 'remaining': 28, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+2300
+{'limit': 30, 'remaining': 27, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+2400
+{'limit': 30, 'remaining': 26, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+2500
+{'limit': 30, 'remaining': 25, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+2600
+{'limit': 30, 'remaining': 24, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+2700
+{'limit': 30, 'remaining': 23, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+2800
+{'limit': 30, 'remaining': 22, 'reset': 1521549915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D685&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+2900
+{'limit': 30, 'remaining': 21, 'reset': 1521549915}
+3000
+{'limit': 30, 'remaining': 30, 'reset': 1521549978}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+3100
+{'limit': 30, 'remaining': 29, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+3200
+{'limit': 30, 'remaining': 28, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+3300
+{'limit': 30, 'remaining': 27, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+3400
+{'limit': 30, 'remaining': 26, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+3500
+{'limit': 30, 'remaining': 25, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+3600
+{'limit': 30, 'remaining': 24, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+3700
+{'limit': 30, 'remaining': 23, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+3800
+{'limit': 30, 'remaining': 22, 'reset': 1521549983}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D453&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+3900
+{'limit': 30, 'remaining': 21, 'reset': 1521549983}
+4000
+{'limit': 30, 'remaining': 20, 'reset': 1521549983}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+4100
+{'limit': 30, 'remaining': 30, 'reset': 1521550044}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+4200
+{'limit': 30, 'remaining': 29, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+4300
+{'limit': 30, 'remaining': 28, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+4400
+{'limit': 30, 'remaining': 27, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+4500
+{'limit': 30, 'remaining': 26, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+4600
+{'limit': 30, 'remaining': 25, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+4700
+{'limit': 30, 'remaining': 24, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+4800
+{'limit': 30, 'remaining': 23, 'reset': 1521550048}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D336&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+4900
+{'limit': 30, 'remaining': 22, 'reset': 1521550048}
+5000
+{'limit': 30, 'remaining': 21, 'reset': 1521550106}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+5100
+{'limit': 30, 'remaining': 29, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+5200
+{'limit': 30, 'remaining': 28, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+5300
+{'limit': 30, 'remaining': 27, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+5400
+{'limit': 30, 'remaining': 26, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+5500
+{'limit': 30, 'remaining': 25, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+5600
+{'limit': 30, 'remaining': 24, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+5700
+{'limit': 30, 'remaining': 23, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+5800
+{'limit': 30, 'remaining': 22, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D268&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+5900
+{'limit': 30, 'remaining': 21, 'reset': 1521550110}
+6000
+{'limit': 30, 'remaining': 20, 'reset': 1521550110}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+6100
+{'limit': 30, 'remaining': 19, 'reset': 1521550110}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+6200
+{'limit': 30, 'remaining': 29, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+6300
+{'limit': 30, 'remaining': 28, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+6400
+{'limit': 30, 'remaining': 27, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+6500
+{'limit': 30, 'remaining': 26, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+6600
+{'limit': 30, 'remaining': 25, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+6700
+{'limit': 30, 'remaining': 24, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+6800
+{'limit': 30, 'remaining': 23, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D219&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+6900
+{'limit': 30, 'remaining': 22, 'reset': 1521550170}
+7000
+{'limit': 30, 'remaining': 21, 'reset': 1521550170}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+7100
+{'limit': 30, 'remaining': 20, 'reset': 1521550170}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+7200
+{'limit': 30, 'remaining': 30, 'reset': 1521550230}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+7300
+{'limit': 30, 'remaining': 29, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+7400
+{'limit': 30, 'remaining': 28, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+7500
+{'limit': 30, 'remaining': 27, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+7600
+{'limit': 30, 'remaining': 26, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+7700
+{'limit': 30, 'remaining': 25, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+7800
+{'limit': 30, 'remaining': 24, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D185&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+7900
+{'limit': 30, 'remaining': 23, 'reset': 1521550233}
+8000
+{'limit': 30, 'remaining': 22, 'reset': 1521550233}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+8100
+{'limit': 30, 'remaining': 21, 'reset': 1521550233}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+8200
+{'limit': 30, 'remaining': 30, 'reset': 1521550293}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+8300
+{'limit': 30, 'remaining': 29, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+8400
+{'limit': 30, 'remaining': 28, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+8500
+{'limit': 30, 'remaining': 27, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+8600
+{'limit': 30, 'remaining': 26, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+8700
+{'limit': 30, 'remaining': 25, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+8800
+{'limit': 30, 'remaining': 24, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D159&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+8900
+{'limit': 30, 'remaining': 23, 'reset': 1521550296}
+9000
+{'limit': 30, 'remaining': 22, 'reset': 1521550296}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+9100
+{'limit': 30, 'remaining': 21, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+9200
+{'limit': 30, 'remaining': 20, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+9300
+{'limit': 30, 'remaining': 19, 'reset': 1521550296}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+9400
+{'limit': 30, 'remaining': 30, 'reset': 1521550357}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+9500
+{'limit': 30, 'remaining': 29, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+9600
+{'limit': 30, 'remaining': 28, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+9700
+{'limit': 30, 'remaining': 27, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+9800
+{'limit': 30, 'remaining': 26, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D139&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+9900
+{'limit': 30, 'remaining': 25, 'reset': 1521550360}
+10000
+{'limit': 30, 'remaining': 24, 'reset': 1521550360}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+10100
+{'limit': 30, 'remaining': 23, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+10200
+{'limit': 30, 'remaining': 22, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+10300
+{'limit': 30, 'remaining': 21, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+10400
+{'limit': 30, 'remaining': 20, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+10500
+{'limit': 30, 'remaining': 19, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+10600
+{'limit': 30, 'remaining': 18, 'reset': 1521550360}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+10700
+{'limit': 30, 'remaining': 29, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+10800
+{'limit': 30, 'remaining': 28, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D124&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+10900
+{'limit': 30, 'remaining': 27, 'reset': 1521550420}
+11000
+{'limit': 30, 'remaining': 26, 'reset': 1521550420}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+11100
+{'limit': 30, 'remaining': 25, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+11200
+{'limit': 30, 'remaining': 24, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+11300
+{'limit': 30, 'remaining': 23, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+11400
+{'limit': 30, 'remaining': 22, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+11500
+{'limit': 30, 'remaining': 21, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+11600
+{'limit': 30, 'remaining': 20, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+11700
+{'limit': 30, 'remaining': 19, 'reset': 1521550420}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+11800
+{'limit': 30, 'remaining': 29, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D111&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+11900
+{'limit': 30, 'remaining': 28, 'reset': 1521550481}
+12000
+{'limit': 30, 'remaining': 27, 'reset': 1521550481}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+12100
+{'limit': 30, 'remaining': 26, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+12200
+{'limit': 30, 'remaining': 25, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+12300
+{'limit': 30, 'remaining': 24, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+12400
+{'limit': 30, 'remaining': 23, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+12500
+{'limit': 30, 'remaining': 22, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+12600
+{'limit': 30, 'remaining': 21, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+12700
+{'limit': 30, 'remaining': 20, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+12800
+{'limit': 30, 'remaining': 19, 'reset': 1521550481}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D100&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+12900
+{'limit': 30, 'remaining': 29, 'reset': 1521550542}
+13000
+{'limit': 30, 'remaining': 28, 'reset': 1521550542}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+13100
+{'limit': 30, 'remaining': 27, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+13200
+{'limit': 30, 'remaining': 26, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+13300
+{'limit': 30, 'remaining': 25, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+13400
+{'limit': 30, 'remaining': 24, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+13500
+{'limit': 30, 'remaining': 23, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+13600
+{'limit': 30, 'remaining': 22, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+13700
+{'limit': 30, 'remaining': 21, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+13800
+{'limit': 30, 'remaining': 20, 'reset': 1521550542}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D91&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+13900
+{'limit': 30, 'remaining': 19, 'reset': 1521550542}
+14000
+{'limit': 30, 'remaining': 29, 'reset': 1521550602}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+14100
+{'limit': 30, 'remaining': 28, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+14200
+{'limit': 30, 'remaining': 27, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+14300
+{'limit': 30, 'remaining': 26, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+14400
+{'limit': 30, 'remaining': 25, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+14500
+{'limit': 30, 'remaining': 24, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+14600
+{'limit': 30, 'remaining': 23, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+14700
+{'limit': 30, 'remaining': 22, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+14800
+{'limit': 30, 'remaining': 21, 'reset': 1521550602}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D84&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+14900
+{'limit': 30, 'remaining': 20, 'reset': 1521550602}
+15000
+{'limit': 30, 'remaining': 19, 'reset': 1521550602}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+15100
+{'limit': 30, 'remaining': 30, 'reset': 1521550663}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+15200
+{'limit': 30, 'remaining': 29, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+15300
+{'limit': 30, 'remaining': 28, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+15400
+{'limit': 30, 'remaining': 27, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+15500
+{'limit': 30, 'remaining': 26, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+15600
+{'limit': 30, 'remaining': 25, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+15700
+{'limit': 30, 'remaining': 24, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+15800
+{'limit': 30, 'remaining': 23, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D78&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+15900
+{'limit': 30, 'remaining': 22, 'reset': 1521550666}
+16000
+{'limit': 30, 'remaining': 21, 'reset': 1521550666}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+16100
+{'limit': 30, 'remaining': 20, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+16200
+{'limit': 30, 'remaining': 19, 'reset': 1521550666}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+16300
+{'limit': 30, 'remaining': 29, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+16400
+{'limit': 30, 'remaining': 28, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+16500
+{'limit': 30, 'remaining': 27, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+16600
+{'limit': 30, 'remaining': 26, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+16700
+{'limit': 30, 'remaining': 25, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+16800
+{'limit': 30, 'remaining': 24, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D72&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+16900
+{'limit': 30, 'remaining': 23, 'reset': 1521550728}
+17000
+{'limit': 30, 'remaining': 22, 'reset': 1521550728}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+17100
+{'limit': 30, 'remaining': 21, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+17200
+{'limit': 30, 'remaining': 20, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+17300
+{'limit': 30, 'remaining': 19, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+17400
+{'limit': 30, 'remaining': 18, 'reset': 1521550728}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+17500
+{'limit': 30, 'remaining': 29, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+17600
+{'limit': 30, 'remaining': 28, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+17700
+{'limit': 30, 'remaining': 27, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+17800
+{'limit': 30, 'remaining': 26, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D67&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+17900
+{'limit': 30, 'remaining': 25, 'reset': 1521550790}
+18000
+{'limit': 30, 'remaining': 24, 'reset': 1521550790}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+18100
+{'limit': 30, 'remaining': 23, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+18200
+{'limit': 30, 'remaining': 22, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+18300
+{'limit': 30, 'remaining': 21, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+18400
+{'limit': 30, 'remaining': 20, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+18500
+{'limit': 30, 'remaining': 19, 'reset': 1521550790}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+18600
+{'limit': 30, 'remaining': 30, 'reset': 1521550852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+18700
+{'limit': 30, 'remaining': 29, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+18800
+{'limit': 30, 'remaining': 28, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D62&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+18900
+{'limit': 30, 'remaining': 27, 'reset': 1521550854}
+19000
+{'limit': 30, 'remaining': 26, 'reset': 1521550854}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+19100
+{'limit': 30, 'remaining': 25, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+19200
+{'limit': 30, 'remaining': 24, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+19300
+{'limit': 30, 'remaining': 23, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+19400
+{'limit': 30, 'remaining': 22, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+19500
+{'limit': 30, 'remaining': 21, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+19600
+{'limit': 30, 'remaining': 20, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+19700
+{'limit': 30, 'remaining': 19, 'reset': 1521550854}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+19800
+{'limit': 30, 'remaining': 29, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D58&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+19900
+{'limit': 30, 'remaining': 28, 'reset': 1521550915}
+20000
+{'limit': 30, 'remaining': 27, 'reset': 1521550915}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+20100
+{'limit': 30, 'remaining': 26, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+20200
+{'limit': 30, 'remaining': 25, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+20300
+{'limit': 30, 'remaining': 24, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+20400
+{'limit': 30, 'remaining': 23, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+20500
+{'limit': 30, 'remaining': 22, 'reset': 1521550915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+20600
+{'limit': 30, 'remaining': 29, 'reset': 1521550976}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+20700
+{'limit': 30, 'remaining': 28, 'reset': 1521550976}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+20800
+{'limit': 30, 'remaining': 27, 'reset': 1521550976}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D55&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+20900
+{'limit': 30, 'remaining': 26, 'reset': 1521550976}
+21000
+{'limit': 30, 'remaining': 25, 'reset': 1521550976}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+21100
+{'limit': 30, 'remaining': 24, 'reset': 1521550976}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+21200
+{'limit': 30, 'remaining': 30, 'reset': 1521551053}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+21300
+{'limit': 30, 'remaining': 29, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+21400
+{'limit': 30, 'remaining': 28, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+21500
+{'limit': 30, 'remaining': 27, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+21600
+{'limit': 30, 'remaining': 26, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+21700
+{'limit': 30, 'remaining': 25, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+21800
+{'limit': 30, 'remaining': 24, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D52&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+21900
+{'limit': 30, 'remaining': 23, 'reset': 1521551056}
+22000
+{'limit': 30, 'remaining': 22, 'reset': 1521551056}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+22100
+{'limit': 30, 'remaining': 21, 'reset': 1521551056}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+22200
+{'limit': 30, 'remaining': 30, 'reset': 1521551132}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+22300
+{'limit': 30, 'remaining': 29, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+22400
+{'limit': 30, 'remaining': 28, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+22500
+{'limit': 30, 'remaining': 27, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+22600
+{'limit': 30, 'remaining': 26, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+22700
+{'limit': 30, 'remaining': 25, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+22800
+{'limit': 30, 'remaining': 24, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D49&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+22900
+{'limit': 30, 'remaining': 23, 'reset': 1521551134}
+23000
+{'limit': 30, 'remaining': 22, 'reset': 1521551134}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+23100
+{'limit': 30, 'remaining': 21, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+23200
+{'limit': 30, 'remaining': 20, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+23300
+{'limit': 30, 'remaining': 19, 'reset': 1521551134}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+23400
+{'limit': 30, 'remaining': 30, 'reset': 1521551197}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+23500
+{'limit': 30, 'remaining': 29, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+23600
+{'limit': 30, 'remaining': 28, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+23700
+{'limit': 30, 'remaining': 27, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+23800
+{'limit': 30, 'remaining': 26, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D47&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+23900
+{'limit': 30, 'remaining': 25, 'reset': 1521551202}
+24000
+{'limit': 30, 'remaining': 24, 'reset': 1521551202}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+24100
+{'limit': 30, 'remaining': 23, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+24200
+{'limit': 30, 'remaining': 22, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+24300
+{'limit': 30, 'remaining': 21, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+24400
+{'limit': 30, 'remaining': 20, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+24500
+{'limit': 30, 'remaining': 19, 'reset': 1521551202}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+24600
+{'limit': 30, 'remaining': 30, 'reset': 1521551263}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+24700
+{'limit': 30, 'remaining': 29, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+24800
+{'limit': 30, 'remaining': 28, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D45&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+24900
+{'limit': 30, 'remaining': 27, 'reset': 1521551266}
+25000
+{'limit': 30, 'remaining': 26, 'reset': 1521551266}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+25100
+{'limit': 30, 'remaining': 25, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+25200
+{'limit': 30, 'remaining': 24, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+25300
+{'limit': 30, 'remaining': 23, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+25400
+{'limit': 30, 'remaining': 22, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+25500
+{'limit': 30, 'remaining': 21, 'reset': 1521551266}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+25600
+{'limit': 30, 'remaining': 30, 'reset': 1521551326}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+25700
+{'limit': 30, 'remaining': 29, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+25800
+{'limit': 30, 'remaining': 28, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D43&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+25900
+{'limit': 30, 'remaining': 27, 'reset': 1521551329}
+26000
+{'limit': 30, 'remaining': 26, 'reset': 1521551329}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+26100
+{'limit': 30, 'remaining': 25, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+26200
+{'limit': 30, 'remaining': 24, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+26300
+{'limit': 30, 'remaining': 23, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+26400
+{'limit': 30, 'remaining': 22, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+26500
+{'limit': 30, 'remaining': 21, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+26600
+{'limit': 30, 'remaining': 20, 'reset': 1521551329}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+26700
+{'limit': 30, 'remaining': 30, 'reset': 1521551390}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+26800
+{'limit': 30, 'remaining': 29, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=lang
+26900uage%3Apython+stars%3A%3C%3D41&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+{'limit': 30, 'remaining': 28, 'reset': 1521551393}
+27000
+{'limit': 30, 'remaining': 27, 'reset': 1521551393}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+27100
+{'limit': 30, 'remaining': 26, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+27200
+{'limit': 30, 'remaining': 25, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+27300
+{'limit': 30, 'remaining': 24, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+27400
+{'limit': 30, 'remaining': 23, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+27500
+{'limit': 30, 'remaining': 22, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+27600
+{'limit': 30, 'remaining': 21, 'reset': 1521551393}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+27700
+{'limit': 30, 'remaining': 30, 'reset': 1521551456}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+27800
+{'limit': 30, 'remaining': 29, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D39&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+27900
+{'limit': 30, 'remaining': 28, 'reset': 1521551459}
+28000
+{'limit': 30, 'remaining': 27, 'reset': 1521551459}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+28100
+{'limit': 30, 'remaining': 26, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+28200
+{'limit': 30, 'remaining': 25, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+28300
+{'limit': 30, 'remaining': 24, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+28400
+{'limit': 30, 'remaining': 23, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+28500
+{'limit': 30, 'remaining': 22, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+28600
+{'limit': 30, 'remaining': 21, 'reset': 1521551459}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+28700
+{'limit': 30, 'remaining': 30, 'reset': 1521551530}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+28800
+{'limit': 30, 'remaining': 29, 'reset': 1521551534}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D38&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+28900
+{'limit': 30, 'remaining': 30, 'reset': 1521551600}
+29000
+{'limit': 30, 'remaining': 29, 'reset': 1521551603}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+29100
+{'limit': 30, 'remaining': 28, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+29200
+{'limit': 30, 'remaining': 27, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+29300
+{'limit': 30, 'remaining': 26, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+29400
+{'limit': 30, 'remaining': 25, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+29500
+{'limit': 30, 'remaining': 24, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+29600
+{'limit': 30, 'remaining': 23, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+29700
+{'limit': 30, 'remaining': 22, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+29800
+{'limit': 30, 'remaining': 21, 'reset': 1521551603}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D37&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+29900
+{'limit': 30, 'remaining': 20, 'reset': 1521551603}
+30000
+{'limit': 30, 'remaining': 29, 'reset': 1521551664}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+30100
+{'limit': 30, 'remaining': 28, 'reset': 1521551664}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+30200
+{'limit': 30, 'remaining': 27, 'reset': 1521551664}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+30300
+{'limit': 30, 'remaining': 26, 'reset': 1521551664}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+30400
+{'limit': 30, 'remaining': 30, 'reset': 1521551724}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+30500
+{'limit': 30, 'remaining': 29, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+30600
+{'limit': 30, 'remaining': 28, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+30700
+{'limit': 30, 'remaining': 27, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+30800
+{'limit': 30, 'remaining': 26, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D36&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+30900
+{'limit': 30, 'remaining': 25, 'reset': 1521551727}
+31000
+{'limit': 30, 'remaining': 24, 'reset': 1521551727}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+31100
+{'limit': 30, 'remaining': 23, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+31200
+{'limit': 30, 'remaining': 22, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+31300
+{'limit': 30, 'remaining': 21, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+31400
+{'limit': 30, 'remaining': 20, 'reset': 1521551727}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+31500
+{'limit': 30, 'remaining': 29, 'reset': 1521551788}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+31600
+{'limit': 30, 'remaining': 28, 'reset': 1521551788}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+31700
+{'limit': 30, 'remaining': 27, 'reset': 1521551788}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+31800
+{'limit': 30, 'remaining': 26, 'reset': 1521551788}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D35&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+31900
+{'limit': 30, 'remaining': 25, 'reset': 1521551788}
+32000
+{'limit': 30, 'remaining': 24, 'reset': 1521551788}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+32100
+{'limit': 30, 'remaining': 23, 'reset': 1521551788}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+32200
+{'limit': 30, 'remaining': 30, 'reset': 1521551849}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+32300
+{'limit': 30, 'remaining': 29, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+32400
+{'limit': 30, 'remaining': 28, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+32500
+{'limit': 30, 'remaining': 27, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+32600
+{'limit': 30, 'remaining': 26, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+32700
+{'limit': 30, 'remaining': 25, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+32800
+{'limit': 30, 'remaining': 24, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D34&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+32900
+{'limit': 30, 'remaining': 23, 'reset': 1521551852}
+33000
+{'limit': 30, 'remaining': 22, 'reset': 1521551852}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+33100
+{'limit': 30, 'remaining': 21, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+33200
+{'limit': 30, 'remaining': 20, 'reset': 1521551852}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+33300
+{'limit': 30, 'remaining': 29, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+33400
+{'limit': 30, 'remaining': 28, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+33500
+{'limit': 30, 'remaining': 27, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+33600
+{'limit': 30, 'remaining': 26, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+33700
+{'limit': 30, 'remaining': 25, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+33800
+{'limit': 30, 'remaining': 24, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D33&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+33900
+{'limit': 30, 'remaining': 23, 'reset': 1521551915}
+34000
+{'limit': 30, 'remaining': 22, 'reset': 1521551915}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+34100
+{'limit': 30, 'remaining': 21, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+34200
+{'limit': 30, 'remaining': 20, 'reset': 1521551915}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+34300
+{'limit': 30, 'remaining': 30, 'reset': 1521551976}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+34400
+{'limit': 30, 'remaining': 29, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+34500
+{'limit': 30, 'remaining': 28, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+34600
+{'limit': 30, 'remaining': 27, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+34700
+{'limit': 30, 'remaining': 26, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+34800
+{'limit': 30, 'remaining': 25, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D32&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+34900
+{'limit': 30, 'remaining': 24, 'reset': 1521551979}
+35000
+{'limit': 30, 'remaining': 23, 'reset': 1521551979}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+35100
+{'limit': 30, 'remaining': 22, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+35200
+{'limit': 30, 'remaining': 21, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+35300
+{'limit': 30, 'remaining': 20, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+35400
+{'limit': 30, 'remaining': 19, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+35500
+{'limit': 30, 'remaining': 30, 'reset': 1521551979}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+35600
+{'limit': 30, 'remaining': 29, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+35700
+{'limit': 30, 'remaining': 28, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+35800
+{'limit': 30, 'remaining': 27, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D31&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+35900
+{'limit': 30, 'remaining': 26, 'reset': 1521552041}
+36000
+{'limit': 30, 'remaining': 25, 'reset': 1521552041}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+36100
+{'limit': 30, 'remaining': 24, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+36200
+{'limit': 30, 'remaining': 23, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+36300
+{'limit': 30, 'remaining': 22, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+36400
+{'limit': 30, 'remaining': 21, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+36500
+{'limit': 30, 'remaining': 20, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+36600
+{'limit': 30, 'remaining': 19, 'reset': 1521552041}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+36700
+{'limit': 30, 'remaining': 29, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+36800
+{'limit': 30, 'remaining': 28, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D30&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+36900
+{'limit': 30, 'remaining': 27, 'reset': 1521552102}
+37000
+{'limit': 30, 'remaining': 26, 'reset': 1521552102}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+37100
+{'limit': 30, 'remaining': 25, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+37200
+{'limit': 30, 'remaining': 24, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+37300
+{'limit': 30, 'remaining': 23, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+37400
+{'limit': 30, 'remaining': 22, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+37500
+{'limit': 30, 'remaining': 21, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+37600
+{'limit': 30, 'remaining': 20, 'reset': 1521552102}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+37700
+{'limit': 30, 'remaining': 30, 'reset': 1521552164}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+37800
+{'limit': 30, 'remaining': 29, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D29&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+37900
+{'limit': 30, 'remaining': 28, 'reset': 1521552168}
+38000
+{'limit': 30, 'remaining': 27, 'reset': 1521552168}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+38100
+{'limit': 30, 'remaining': 26, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+38200
+{'limit': 30, 'remaining': 25, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+38300
+{'limit': 30, 'remaining': 24, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+38400
+{'limit': 30, 'remaining': 23, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+38500
+{'limit': 30, 'remaining': 22, 'reset': 1521552168}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+38600
+{'limit': 30, 'remaining': 30, 'reset': 1521552232}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+38700
+{'limit': 30, 'remaining': 29, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+38800
+{'limit': 30, 'remaining': 28, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D28&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+38900
+{'limit': 30, 'remaining': 27, 'reset': 1521552235}
+39000
+{'limit': 30, 'remaining': 26, 'reset': 1521552235}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+39100
+{'limit': 30, 'remaining': 25, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+39200
+{'limit': 30, 'remaining': 24, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+39300
+{'limit': 30, 'remaining': 23, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+39400
+{'limit': 30, 'remaining': 22, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+39500
+{'limit': 30, 'remaining': 21, 'reset': 1521552235}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+39600
+{'limit': 30, 'remaining': 29, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+39700
+{'limit': 30, 'remaining': 28, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+39800
+{'limit': 30, 'remaining': 27, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D27&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+39900
+{'limit': 30, 'remaining': 26, 'reset': 1521552295}
+40000
+{'limit': 30, 'remaining': 25, 'reset': 1521552295}
+https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=2', 'rel': 'next'}
+40100
+{'limit': 30, 'remaining': 24, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=3', 'rel': 'next'}
+40200
+{'limit': 30, 'remaining': 23, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=4', 'rel': 'next'}
+40300
+{'limit': 30, 'remaining': 22, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=5', 'rel': 'next'}
+40400
+{'limit': 30, 'remaining': 21, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=6', 'rel': 'next'}
+40500
+{'limit': 30, 'remaining': 20, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=7', 'rel': 'next'}
+40600
+{'limit': 30, 'remaining': 19, 'reset': 1521552295}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=8', 'rel': 'next'}
+40700
+{'limit': 30, 'remaining': 29, 'reset': 1521552355}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=9', 'rel': 'next'}
+40800
+{'limit': 30, 'remaining': 28, 'reset': 1521552355}
+{'url': 'https://api.github.com/search/repositories?q=language%3Apython+stars%3A%3C%3D26&sort=stars&order=desc&per_page=100&page=10', 'rel': 'next'}
+40900
+{'limit': 30, 'remaining': 27, 'reset': 1521552355}
+26
+Reach the limitation
+[Finished in 2794.2s]
