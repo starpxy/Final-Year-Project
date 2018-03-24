@@ -17,14 +17,14 @@ elif operation == '-v' or operation == '-version':
     print(configuration.VERSION)
 elif operation == 'run-slave-server':
     print('run slave server...')
-    ip_address = input("please enter main server's ip address: ")
-    main_port = input("please enter main server's port: ")
+    ip_address = input("Please enter main server's ip address: ")
+    main_port = input("Please enter main server's port: ")
     try:
         main_port = int(main_port)
     except:
         print("Please enter a correct port number!")
         exit()
-    my_port = input("please enter an available port on your computer: ")
+    my_port = input("Please enter an available port on your computer: ")
     try:
         my_port = int(my_port)
     except:
@@ -32,9 +32,11 @@ elif operation == 'run-slave-server':
         exit()
     server = Server(ip_address="localhost", port=my_port)
     server.start_listen()
+    client = Client(ip_address, main_port)
+    client.connect_server()
 elif operation == 'run-main-server':
     print('run main server...')
-    my_port = input("please enter an available port on your computer: ")
+    my_port = input("Please enter an available port on your computer: ")
     try:
         my_port = int(my_port)
     except:
