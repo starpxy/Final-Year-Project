@@ -3,6 +3,7 @@
 from DF.core.Server import Server
 from DF.core.Client import Client
 import sys
+import socket
 from DF.app.configuration import configuration
 
 # get cmd operation
@@ -31,8 +32,8 @@ elif operation == 'run-slave-server':
         print("Please enter a correct port number!")
         exit()
     client = Client(ip_address, main_port)
-    client.send_message({"test":"hello world"})
-    server = Server(ip_address="localhost", port=my_port)
+    client.send_message({"test": "hello world"})
+    server = Server(ip_address=socket.gethostbyname(socket.gethostname()), port=my_port)
     server.start_listen()
 elif operation == 'run-main-server':
     print('run main server...')

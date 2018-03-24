@@ -16,11 +16,12 @@ class Client:
         self.__main_server_port = main_server_port
 
     def send_message(self, message={}):
+        self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
         try:
-            self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
             print("Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
-            LogWriter().write_info_log("Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
+            LogWriter().write_info_log(
+                "Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
         except:
             LogWriter().write_error_log(
                 "Cannot connect to server {}:{}!".format(self.__main_server_ip, self.__main_server_port))
