@@ -4,7 +4,7 @@ import socket
 import threading
 import hashlib
 import json
-from LogWriter import LogWriter
+from DF.LogWriter import LogWriter
 from DF.core.Task import Task
 
 
@@ -36,23 +36,24 @@ class Server:
 
     def __execute__(self, connection, address):
         LogWriter().write_info_log('Running task')
+        print("Running task...")
+        l = threading.Lock()
+        l.acquire()
+        if address not in self.__other_server:
+            self.__other_server.append(address)
+        l.release()
         try:
-            l = threading.Lock()
-            l.acquire()
-            if address not in self.__other_server:
-                self.__other_server.append(address)
-            l.release()
             h = connection.recv(1024)
             h = bytes.decode(h)
             header = json.loads(h)
             size = int(header['message_size'])
             fingerprint = header['fingerprint']
             result = ''.encode("utf-8")
-            while size > 0:
+            while size - 1024 > 0:
                 temp = connection.recv(1024)
                 result += temp
                 size -= 1024
-            result += connection.recv(1024)
+            result += connection.recv(size)
             #   Check Integrity
             m = hashlib.md5()
             m.update(result)
@@ -60,8 +61,8 @@ class Server:
 
             #   Run task if message hasn't been changed
             if digest == fingerprint:
-                LogWriter().write_info_log("Message received correctly!")
-                print("Message received correctly!")
+                LogWriter().write_info_log("Message {} received correctly!".format(result))
+                print("Message {} received correctly!".format(result))
                 r = result.decode("utf-8")
                 data = json.loads(r)
                 Task(data).run()
@@ -71,24 +72,25 @@ class Server:
         except:
             LogWriter().write_error_log('Error occurs during information transforming.')
             print('Error occurs during information transforming.')
+        connection.close()
 
     # listen at the port and run tasks
     def start_listen(self):
         while True:
             try:
                 connection, address = self.__sk_server.accept()
-                LogWriter().write_info_log('Server accepted access.')
-                print('Server accepted access.')
+                LogWriter().write_info_log("{} connect to the server...".format(address[0]))
                 connection.settimeout(30)
-                self.__thread = threading.Thread(target=self.__execute__(connection, address))
+                print("{} connect to the server...".format(address[0]))
+                self.__thread = threading.Thread(target=self.__execute__(connection, address[0]))
                 self.__thread.start()
             except TimeoutError:
                 LogWriter().write_warning_log("Time out. Thread automatically closed.")
                 print("Time out. Thread automatically closed.")
-            except :
+            except:
                 LogWriter().write_error_log("Server stopped.")
                 print("Server stopped.")
-                exit()
+                return
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@
 import socket
 import json
 import hashlib
-from LogWriter import LogWriter
+from DF.LogWriter import LogWriter
 
 
 class Client:
@@ -14,17 +14,18 @@ class Client:
     def __init__(self, main_server_ip, main_server_port):
         self.__main_server_ip = main_server_ip
         self.__main_server_port = main_server_port
-        self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    def connect_server(self):
-        try:
-            self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
-            self.send_message({'msg_type': 0})
-        except:
-            LogWriter().write_error_log("Cannot connect to server {}:{}!".format(self.__main_server_ip,self.__main_server_port))
-            print("Cannot connect to server {}:{}!".format(self.__main_server_ip,self.__main_server_port))
 
     def send_message(self, message={}):
+        try:
+            self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
+            print("Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
+            LogWriter().write_info_log("Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
+        except:
+            LogWriter().write_error_log(
+                "Cannot connect to server {}:{}!".format(self.__main_server_ip, self.__main_server_port))
+            print("Cannot connect to server {}:{}!".format(self.__main_server_ip, self.__main_server_port))
+            return
         to_send = json.dumps(message).encode("utf-8")
         m = hashlib.md5()
         m.update(to_send)
@@ -42,11 +43,12 @@ class Client:
 
         except:
             LogWriter().write_error_log("Message {} is not sent to main server!".format(header))
+        self.__sk_client.close()
+        return
 
 
 if __name__ == '__main__':
     c = Client("localhost", 9609)
-    c.connect_main_server()
     i = 0
     s = 'a'
     while i < 10:

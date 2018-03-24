@@ -30,10 +30,10 @@ elif operation == 'run-slave-server':
     except:
         print("Please enter a correct port number!")
         exit()
+    client = Client(ip_address, main_port)
+    client.send_message({"test":"hello world"})
     server = Server(ip_address="localhost", port=my_port)
     server.start_listen()
-    client = Client(ip_address, main_port)
-    client.connect_server()
 elif operation == 'run-main-server':
     print('run main server...')
     my_port = input("Please enter an available port on your computer: ")
