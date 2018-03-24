@@ -2,8 +2,11 @@
 # @author : star
 import socket
 import threading
+import hashlib
+import json
 from LogWriter import LogWriter
-from DF.core import Client
+from DF.core.Task import Task
+
 
 class Server:
     __port = 0
@@ -11,8 +14,8 @@ class Server:
     __max_client_num = 0
     __ip_address = ''
     __thread = ''
+    __other_server = []
 
-    # initialize synchronize server
     def __init__(self, port=9609, max_client_num=3, ip_address='localhost'):
         self.__port = port
         self.__max_client_num = max_client_num
@@ -23,27 +26,70 @@ class Server:
             self.__sk_server.listen(max_client_num)
         except OSError:
             LogWriter().write_error_log("Port {} is already in use!".format(self.__port))
+            print("Port {} is already in use!".format(self.__port))
             exit()
         LogWriter().write_info_log(
             'Server will serve at {}:{}, max server number is {}'.format(self.__ip_address, self.__port,
                                                                          self.__max_client_num))
+        print('Server will serve at {}:{}, max server number is {}'.format(self.__ip_address, self.__port,
+                                                                           self.__max_client_num))
 
-    def __task__(self, connection):
+    def __execute__(self, connection, address):
         LogWriter().write_info_log('Running task')
+        try:
+            l = threading.Lock()
+            l.acquire()
+            if address not in self.__other_server:
+                self.__other_server.append(address)
+            l.release()
+            h = connection.recv(1024)
+            h = bytes.decode(h)
+            header = json.loads(h)
+            size = int(header['message_size'])
+            fingerprint = header['fingerprint']
+            result = ''.encode("utf-8")
+            while size > 0:
+                temp = connection.recv(1024)
+                result += temp
+                size -= 1024
+            result += connection.recv(1024)
+            #   Check Integrity
+            m = hashlib.md5()
+            m.update(result)
+            digest = m.hexdigest()
 
+            #   Run task if message hasn't been changed
+            if digest == fingerprint:
+                LogWriter().write_info_log("Message received correctly!")
+                print("Message received correctly!")
+                r = result.decode("utf-8")
+                data = json.loads(r)
+                Task(data).run()
+            else:
+                LogWriter().write_error_log("Message has been changed!")
+                print("Message has been changed!")
+        except:
+            LogWriter().write_error_log('Error occurs during information transforming.')
+            print('Error occurs during information transforming.')
 
     # listen at the port and run tasks
     def start_listen(self):
         while True:
-            connection, address = self.__sk_server.accept()
-            LogWriter().write_info_log('Server accepted access.')
-            connection.settimeout(30)
-            self.__thread = threading.Thread(target=self.__task__(connection))
             try:
+                connection, address = self.__sk_server.accept()
+                LogWriter().write_info_log('Server accepted access.')
+                print('Server accepted access.')
+                connection.settimeout(30)
+                self.__thread = threading.Thread(target=self.__execute__(connection, address))
                 self.__thread.start()
-            except self.__sk_server.timeout:
+            except TimeoutError:
                 LogWriter().write_warning_log("Time out. Thread automatically closed.")
+                print("Time out. Thread automatically closed.")
+            except :
+                LogWriter().write_error_log("Server stopped.")
+                print("Server stopped.")
+                exit()
 
 
 if __name__ == '__main__':
-    Server(True).start_listen()
+    Server().start_listen()
