@@ -9,7 +9,10 @@ from DF.app.configuration import configuration
 # get cmd operation
 poten_opera = ['-h/-help', '-v/-version', 'run-main-server', 'run-slave-server']
 operation = sys.argv[1]
-
+print("###### Welcome to use Star's Distributed Framework!")
+print("Please rewrite DF.core.Task.run() before start your servers")
+print("Enter -h to see available operations")
+print("Star's ©️copyright 2018")
 if operation == '-h' or operation == '-help':
     print('Here are operations you can have:')
     for op in poten_opera:
@@ -31,8 +34,10 @@ elif operation == 'run-slave-server':
     except:
         print("Please enter a correct port number!")
         exit()
+    print("Sending a test message to server...")
     client = Client(ip_address, main_port)
     client.send_message({"test": "hello world"})
+    configuration.IS_MAIN = False
     server = Server(ip_address=socket.gethostbyname(socket.gethostname()), port=my_port)
     server.start_listen()
 elif operation == 'run-main-server':
@@ -43,5 +48,6 @@ elif operation == 'run-main-server':
     except:
         print("Please enter a correct port number!")
         exit()
+    configuration.IS_MAIN = True
     server = Server(ip_address="localhost", port=my_port)
     server.start_listen()

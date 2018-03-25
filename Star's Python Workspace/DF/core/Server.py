@@ -20,8 +20,8 @@ class Server:
         self.__port = port
         self.__max_client_num = max_client_num
         self.__ip_address = ip_address
-        self.__sk_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
+            self.__sk_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.__sk_server.bind((self.__ip_address, port))
             self.__sk_server.listen(max_client_num)
         except OSError:

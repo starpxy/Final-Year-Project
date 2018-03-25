@@ -16,9 +16,9 @@ class Client:
         self.__main_server_port = main_server_port
 
     def send_message(self, message={}):
-        self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
         try:
+            self.__sk_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.__sk_client.connect((self.__main_server_ip, self.__main_server_port))
             print("Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
             LogWriter().write_info_log(
                 "Connected to server {}:{}".format(self.__main_server_ip, self.__main_server_port))
@@ -32,7 +32,7 @@ class Client:
         m.update(to_send)
         digest = m.hexdigest()
         header = json.dumps({'message_size': str(len(to_send)).zfill(953), 'fingerprint': digest}).encode('utf-8')
-        print(header)
+        # print(header)
         try:
             self.__sk_client.send(header)
             while len(to_send) > 1024:
