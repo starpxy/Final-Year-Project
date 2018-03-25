@@ -34,13 +34,13 @@ class CleanZippedProjects:
             for directory in os.listdir(self.unclean_projects_path):
                 for file in os.listdir(self.unclean_projects_path + "/" + directory):
                     file_path = self.unclean_projects_path + "/" + directory + "/" + file
-                    if zipfile.is_zipfile(file_path):
-                        unzip_path = self.clean_projects_path + "/" + directory
+                    if file.endswith(".zip"):
+                        unzip_path = self.clean_projects_path + "/" + directory + "/" + file[:-4]
 
                         if not os.path.isdir(unzip_path):
                             os.mkdir(unzip_path)
 
-                        unzip_command = "unzip " + file_path + " -d " + unzip_path + "/" + file[:-4]
+                        unzip_command = "unzip " + file_path + " -d " + unzip_path
                         os.system(unzip_command)
                         self.log_writer.write_info_log(directory + "/" + file + " unzipped")
 
@@ -54,7 +54,7 @@ class CleanZippedProjects:
 
         for directory in os.listdir(self.unclean_projects_path):
             for project in os.listdir(self.unclean_projects_path + "/" + directory):
-                if zipfile.is_zipfile(self.unclean_projects_path + "/" + directory + "/" + project):
+                if project.endswith(".zip"):
                     unclean_projects.append(project[:-4])
 
         for directory in os.listdir(self.clean_projects_path):

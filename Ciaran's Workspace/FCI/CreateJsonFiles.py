@@ -102,8 +102,9 @@ class CreateJsonFiles:
         # Code
         code = content
         for comment_pattern in python_comments:
-            comments_list += re.findall(comment_pattern, code)
-            code = re.sub(comment_pattern, '', code)
+            for comment in re.findall(comment_pattern, code):
+                comments_list += comment
+                code = re.sub(comment, '', code)
         fci_object.set_code(code)
 
         # Comments
