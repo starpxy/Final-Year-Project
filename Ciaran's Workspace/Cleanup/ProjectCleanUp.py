@@ -35,16 +35,17 @@ class ProjectCleanUp:
 
         try:
             for directory in self.connection.listdir(self.unclean_projects_path):
-                for file in self.connection.listdir(self.unclean_projects_path + "/" + directory):
-                    if file.endswith(".zip"):
-                        unzip_path = self.clean_projects_path + "/" + directory
-                        if not self.connection.isdir(unzip_path):
-                            self.connection.mkdir(unzip_path)
+                if directory == "network_test":
+                    for file in self.connection.listdir(self.unclean_projects_path + "/" + directory):
+                        if file.endswith(".zip"):
+                            unzip_path = self.clean_projects_path + "/" + directory
+                            if not self.connection.isdir(unzip_path):
+                                self.connection.mkdir(unzip_path)
 
-                        unzip_command = "unzip " + self.unclean_projects_path + "/" + directory + "/" + file + \
-                                        " -d " + unzip_path + "/" + file[:-4]
-                        self.connection.exec_command(unzip_command)
-                        # self.log_writer.write_info_log(directory + "/" + file + " unzipped")
+                            unzip_command = "unzip " + self.unclean_projects_path + "/" + directory + "/" + file + \
+                                            " -d " + unzip_path + "/" + file[:-4]
+                            self.connection.exec_command(unzip_command)
+                            # self.log_writer.write_info_log(directory + "/" + file + " unzipped")
             self.log_writer.write_info_log("Files unzipped")
         except Exception as command_error:
             self.log_writer.write_error_log("Could not unzip files: " + str(command_error))
@@ -83,7 +84,7 @@ class ProjectCleanUp:
     def run(self):
         self.load_file_paths()
         self.unzip()
-        self.compare_projects()
+        #self.compare_projects()
         # self.delete_files()
 
 

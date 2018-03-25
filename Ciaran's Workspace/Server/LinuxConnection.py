@@ -46,7 +46,7 @@ class LinuxConnection:
             return None
 
     def exec_command(self, command):
-        self.ssh_client.exec_command(command)
+        return self.ssh_client.exec_command(command)
 
     def close_connection(self):
         self.ssh_client.close()

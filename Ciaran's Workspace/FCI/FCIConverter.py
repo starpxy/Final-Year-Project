@@ -11,7 +11,6 @@ import json
 import hashlib
 from LogWriter import LogWriter
 from FCI.FormattedCodeInterface import FormattedCodeInterface
-from Server.LinuxConnection import LinuxConnection
 
 
 def to_json_str(fci_object):

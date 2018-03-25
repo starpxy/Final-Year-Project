@@ -1,35 +1,30 @@
 # coding=utf-8
 """
-Created on 06/03/2018
+Created on 23/03/2018
 Author: Ciarán
-
-Gets all the info from the files in a project and stores them in a json file
 """
 
 import re
 import json
+import os
 import nltk
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter
-from Server.LinuxConnection import LinuxConnection
 
 
-class FileDetailsToJson:
+class CreateJsonFiles:
 
-    def __init__(self, connection):
-        self.local_path = "../Hester'sWorkSpace/files"
+    def __init__(self):
         self.clean_projects_path = None
         self.unclean_projects_path = None
         self.remote_json_path = None
 
         self.json_data = None
-        self.files_in_project = []
         self.project_info = {}  # Dictionary with project names and containing directory as key and corresponding json data as value
 
         self.log_writer = LogWriter()
-        self.connection = connection
 
     def load_file_paths(self):
         file_paths_config_file = open("../file_paths.json")
@@ -47,37 +42,38 @@ class FileDetailsToJson:
 
         for project_name in self.project_info:
             self.json_data = self.project_info[project_name]
-            self.create_fci_objects(self.clean_projects_path + project_name)
-
-        #self.save_fci_objects_to_json_files()
+            self.find_all_source_files(self.clean_projects_path + project_name)
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
     # and the json data as the element
     def find_all_json_files(self):
-        for directory in self.connection.listdir(self.unclean_projects_path):
-            if self.connection.isdir(self.unclean_projects_path + "/" + directory):
+        for directory in os.listdir(self.unclean_projects_path):
+            projects = self.unclean_projects_path + "/" + directory
+            if os.path.isdir(projects):
                 self.log_writer.write_info_log("Reading jsons from " + directory)
-                for file in self.connection.listdir(self.unclean_projects_path + "/" + directory):
+                for file in os.listdir(projects):
                     if file.endswith(".json"):
                         json_path = "/" + directory + "/" + file
-                        json_file = self.connection.open_file(self.unclean_projects_path + json_path)
+                        json_file = open(self.unclean_projects_path + json_path)
+                        # Save the json_path without '.json' at the end to get the name of the unzipped project
                         self.project_info[json_path[:-5]] = json.load(json_file)
 
     # Goes through all files in a cleaned project and creates an fci object for each
-    def create_fci_objects(self, parent_directory):
+    # Initially the path to a project is passed and the function recursively goes through all files in the project
+    def find_all_source_files(self, parent_directory):
         try:
-            for file_name in self.connection.listdir(parent_directory):
+            for file_name in os.listdir(parent_directory):
                 file_path = parent_directory + '/' + file_name
                 if file_name.endswith(".py"):
                     self.save_file_details_to_fci_object(file_path, file_name)
                 else:
-                    if self.connection.isdir(file_path):
-                        self.create_fci_objects(file_path)
+                    if os.path.isdir(file_path):
+                        self.find_all_source_files(file_path)
                     else:  # Just an extra check to make sure no other files are left
                         self.log_writer.write_warning_log(file_path + " not deleted")
         except Exception as e:
-            self.log_writer.write_error_log(str(e) + "\n")
+            self.log_writer.write_error_log(str(e))
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):
@@ -88,16 +84,14 @@ class FileDetailsToJson:
         self.set_content(file_path, fci_object)
         self.set_project_details(fci_object)
 
-        #self.files_in_project.append(fci_object)
         self.save_fci_objects_to_json_files(fci_object)
         self.log_writer.write_info_log(file_path + " documented.")
 
     # Save the content, code, and comments of an individual file to an fci object
     def set_content(self, file_path, fci_object):
-        file = self.connection.open_file(file_path)
+        file = open(file_path)
         content = ''
         comments_list = []
-        comments = ''
         python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '#.*']
 
         # Content
@@ -108,9 +102,8 @@ class FileDetailsToJson:
         # Code
         code = content
         for comment_pattern in python_comments:
-            for comment in re.findall(comment_pattern, code):
-                comments_list += comment
-                code = re.sub(comment, '', code)
+            comments_list += re.findall(comment_pattern, code)
+            code = re.sub(comment_pattern, '', code)
         fci_object.set_code(code)
 
         # Comments
@@ -122,9 +115,7 @@ class FileDetailsToJson:
         stopwords = set(nltk.corpus.stopwords.words('english'))
 
         for comment in comments_list:
-            if type(comment) is tuple:
-                print()
-            for word in list(comment).split(' '):
+            for word in comment.split(' '):
                 if word.startswith('#'):
                     word = word[1:]
 
@@ -151,43 +142,5 @@ class FileDetailsToJson:
 
     # Converts fci objects to json files and saves them remotely
     def save_fci_objects_to_json_files(self, fci_object):
-        self.log_writer.write_info_log("Saving Json files")
-
-        FCI.FCIConverter.to_remote_json_file(self.remote_json_path, fci_object, self.connection)
-
-        '''for fci_object in self.files_in_project:
-            FCI.FCIConverter.to_remote_json_file(self.remote_json_path, fci_object, self.connection)'''
-
+        FCI.FCIConverter.to_local_json_file(self.remote_json_path, fci_object)
         self.log_writer.write_info_log("Json files saved to remote machine at " + self.remote_json_path)
-
-    '''
-    # Save fci objects to local and remote json files
-    def save_fci_objects_to_json_files(self):
-        self.log_writer.write_info_log("Saving Json files")
-        self.save_to_local_directory()
-        self.save_to_remote_directory()
-    
-    # Converts fci objects to json files and saves them locally
-    def save_to_local_directory(self):
-        for fci_object in self.files_in_project:
-            FCI.FCIConverter.to_json_file(self.local_path, fci_object)
-
-        self.log_writer.write_info_log("Saved to local machine at " + os.path.realpath(self.local_path))
-
-    # Save json files from local directory to remote directory
-    def save_to_remote_directory(self):
-        for file in os.listdir(self.local_path):
-            local_path = self.local_path + "/" + file
-            remote_path = self.remote_json_path + "/" + file
-            self.connection.copy_file_to_server(local_path, remote_path)
-
-        self.log_writer.write_info_log("Saved to remote machine at " + self.remote_json_path)
-    '''
-
-
-def main():
-    FileDetailsToJson(LinuxConnection()).run()
-
-
-if __name__ == '__main__':
-    main()

@@ -6,18 +6,18 @@ Author: Ciarán
 Runs all the code
 """
 
-from Cleanup.ProjectCleanUp import ProjectCleanUp
-from FCI.FileDetailsToJson import FileDetailsToJson
+from Cleanup.CleanZippedProjects import CleanZippedProjects
+from FCI.CreateJsonFiles import CreateJsonFiles
 from Server.LinuxConnection import LinuxConnection
 
 
 def main():
     connection = LinuxConnection()
-    cleanup = ProjectCleanUp(connection)
-    tojson = FileDetailsToJson(connection)
+    cleanup = CleanZippedProjects()
+    create_json_files = CreateJsonFiles()
 
     cleanup.run()
-    tojson.run()
+    create_json_files.run()
 
     connection.close_connection()
 

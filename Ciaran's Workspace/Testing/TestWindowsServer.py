@@ -6,6 +6,9 @@ Author: Ciarán
 
 import paramiko
 
+from Server.LinuxConnection import LinuxConnection
+
+
 def main():
     try:
         ssh_client = paramiko.SSHClient()
@@ -23,6 +26,12 @@ def main():
     except Exception as e:
         print("Could not connect: " + str(e))
 
+    try:
+        connection = LinuxConnection()
+        stdin, stdout, stderr = connection.exec_command("ls")
+        print(stdout.readlines())
+    except Exception as e:
+        print("Could not connect: " + str(e))
 
 
 if __name__ == "__main__":
