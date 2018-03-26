@@ -19,7 +19,7 @@ class CleanZippedProjects:
         self.clean_projects_path = None
 
     def load_file_paths(self):
-        file_paths_config_file = open("../file_paths.json")
+        file_paths_config_file = open("file_paths.json")
         file_paths = json.load(file_paths_config_file)
 
         self.clean_projects_path = file_paths["Linux"]["clean_dir"]
