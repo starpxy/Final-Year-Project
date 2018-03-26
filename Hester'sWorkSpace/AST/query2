@@ -1,0 +1,32 @@
+def highlighting(self,ocurrence,qWord,similarities):
+    print('hello')
+    if similarities is None:
+        return None
+    rT=self.X.T
+    #construct matching lines
+    machingLine=[]
+    for doc in similarities:
+        i=self.files.index(doc)
+        if np.dot(rT[i], ocurrence[0]) >0:
+            lines=[]
+            lineNo=0
+            for line in self.contents[i].split('\n'):
+                if line.strip() is '':
+                    lineNo+=1
+                    continue
+                try:
+                    self.vectorizer.fit_transform([line])
+                except ValueError:
+                    lineNo += 1
+                    continue
+                else:
+                    w = self.vectorizer.get_feature_names()
+                    if len(list(set(w).intersection(set(qWord))))>0:
+                        lines.append(lineNo)
+                lineNo+=1
+            machingLine.append((doc, lines))
+        else:
+            machingLine.append((doc, []))
+        #comment
+
+    return machingLine

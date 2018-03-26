@@ -36,8 +36,8 @@ class LSI_TFIDF:
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
-                self.contents.append(self.documents[file]['code'])
-                self.wholeContent += self.documents[file]['code']
+                self.contents.append(self.documents[file]['content'])
+                self.wholeContent += self.documents[file]['content']
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # indexing
         self.lw.write_info_log("indexing...")
@@ -73,12 +73,13 @@ class LSI_TFIDF:
         if not self.r.exists(query):  # if the result is not in the redis
             # store the result of the query into redis
             l = self.MatrixSearching(query)
+            print(l)
             if l is None:
                 return Results.Results(0, [])
             self.lw.write_info_log("storing results into redis in form of list")
             for j in range(len(l)):
                 self.r.rpush(query, l[j])
-                if (page - 1) * self.pageNum < j and j < page * self.pageNum:
+                if (page - 1) * self.pageNum <= j and j < page * self.pageNum:
                     sortedDocuments.append(l[j])
             results = Results.Results(len(l), sortedDocuments)
         # get the result list of this query from redis
@@ -88,6 +89,7 @@ class LSI_TFIDF:
             i = (page - 1) * self.pageNum
             length = self.r.llen(query)
             while i < page * self.pageNum and i < length:
+                print(self.r.lindex(query, i))
                 sortedDocuments.append(self.r.lindex(query, i))
                 i += 1
             results = Results.Results(length, sortedDocuments)
@@ -251,10 +253,12 @@ class LSI_TFIDF:
                 lineNo=0
                 for line in self.contents[i].split('\n'):
                     if line.strip() is '':
+                        lineNo+=1
                         continue
                     try:
                         self.vectorizer.fit_transform([line])
                     except ValueError:
+                        lineNo += 1
                         continue
                     else:
                         w = self.vectorizer.get_feature_names()
@@ -272,6 +276,8 @@ class LSI_TFIDF:
 
 
 
-        # printA()
+
+
+            # printA()
         # plt.show()
         # getDocumentList(query, 2)
