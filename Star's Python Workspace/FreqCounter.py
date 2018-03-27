@@ -37,7 +37,7 @@ class FreqCounter:
     def get_frequency_list(self):
         for o in self.fci_list:
             # TODO: This get_content() should be get_code() in later version after 09-03-2018
-            content = o.get_content()
+            content = o.get_code()
             tokens = content.split()
             for token in tokens:
                 processed_token = ''
@@ -47,7 +47,7 @@ class FreqCounter:
                         processed_token += c
                     else:
                         if processed_token == '':
-                            processed_token = ''
+                            pass
                         elif processed_token in self.dic:
                             self.dic[processed_token] += 1
                         else:
@@ -55,10 +55,15 @@ class FreqCounter:
                         processed_token = ''
         return self.dic
 
+    def get_ordered_keys(self):
+        key = sorted(self.dic, key=self.dic.get, reverse=True)
+        return key
 def main():
     fc = FreqCounter("files")
     dic = fc.get_frequency_list()
-    print(dic)
+    key = fc.get_ordered_keys()
+    for k in key[:200]:
+        print("Key:{}, Value:{}".format(k,dic[k]))
 
 
 if __name__ == '__main__':
