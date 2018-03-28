@@ -5,6 +5,7 @@ Author: Ciarán
 """
 
 import re
+import socket
 
 
 def test_error():
@@ -141,7 +142,8 @@ def old_test():
 
 
 def main():
-    test_error()
+    print(socket.gethostname())
+    #test_error()
 
 
 if __name__ == '__main__':

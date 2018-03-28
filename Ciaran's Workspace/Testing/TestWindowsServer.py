@@ -13,7 +13,7 @@ def main():
     try:
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_client.connect(hostname="118.89.233.227", username="Administrator", password="Star==960906")
+        ssh_client.connect(hostname="118.89.233.227", username="ubuntu", password="Star==960906")
         print("Connection successful")
     except Exception as e:
         print("Could not connect: " + str(e))
@@ -21,7 +21,7 @@ def main():
     try:
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_client.connect(hostname="123.206.68.82", username="Administrator", password="Star==960906")
+        ssh_client.connect(hostname="123.206.68.82", username="ubuntu", password="Star==960906")
         print("Connection successful")
     except Exception as e:
         print("Could not connect: " + str(e))

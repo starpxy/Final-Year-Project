@@ -9,10 +9,12 @@ import json
 import os
 import nltk
 import sys
+import socket
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter
+from Server.LinuxConnection import LinuxConnection
 
 
 class CreateJsonFiles:
@@ -20,10 +22,12 @@ class CreateJsonFiles:
     def __init__(self):
         self.clean_projects_path = None
         self.unclean_projects_path = None
-        self.remote_json_path = None
+        self.json_files_path = None
 
         self.json_data = None
         self.project_info = {}  # Dictionary with project names and containing directory as key and corresponding json data as value
+
+        self.connection = None
 
         self.log_writer = LogWriter()
 
@@ -33,17 +37,29 @@ class CreateJsonFiles:
 
         self.clean_projects_path = file_paths["Linux"]["clean_dir"]
         self.unclean_projects_path = file_paths["Linux"]["unclean_dir"]
-        self.remote_json_path = file_paths["Linux"]["json_dir"]
+        self.json_files_path = file_paths["Linux"]["json_dir"]
 
     # For each json file from Kirk find the corresponding clean project
     # For each file within that project crete an fci object with the details of that file
     def run(self):
+        self.open_connection()
         self.load_file_paths()
         self.find_all_json_files()
 
         for project_name in self.project_info:
             self.json_data = self.project_info[project_name]
             self.find_all_source_files(self.clean_projects_path + project_name)
+
+        self.close_connection()
+
+    # Open a connection to the master server if on a slave server
+    def open_connection(self):
+        if socket.gethostname() != "VM-131-14-ubuntu":
+            self.connection = LinuxConnection()
+
+    def close_connection(self):
+        if self.connection is not None:
+            self.connection.close_connection()
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
@@ -135,6 +151,10 @@ class CreateJsonFiles:
         fci_object.set_url(self.json_data["html_url"])
         fci_object.set_wiki(self.json_data["has_wiki"])
 
-    # Converts fci objects to json files and saves them remotely
+    # Converts fci objects to json files and saves them to the server
+    # Also saves the json files to the master server if on a slave
     def save_fci_objects_to_json_files(self, fci_object):
-        FCI.FCIConverter.to_local_json_file(self.remote_json_path, fci_object)
+        FCI.FCIConverter.to_local_json_file(self.json_files_path, fci_object)
+
+        if self.connection is not None:
+            FCI.FCIConverter.to_remote_json_file(self.json_files_path, fci_object, self.connection)
