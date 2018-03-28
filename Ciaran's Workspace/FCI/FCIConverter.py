@@ -37,7 +37,7 @@ def to_local_json_file(path, fci_object):
     f.close()
 
 
-def to_remote_json_file(path, fci_object, connection):
+def to_master_json_file(path, fci_object, connection):
     to_write = to_json_str(fci_object)
     if not connection.isdir(path):
         connection.mkdir(path)

@@ -23,6 +23,7 @@ class CreateJsonFiles:
         self.clean_projects_path = None
         self.unclean_projects_path = None
         self.json_files_path = None
+        self.master_json_path = None
 
         self.json_data = None
         self.project_info = {}  # Dictionary with project names and containing directory as key and corresponding json data as value
@@ -30,14 +31,6 @@ class CreateJsonFiles:
         self.connection = None
 
         self.log_writer = LogWriter()
-
-    def load_file_paths(self):
-        file_paths_config_file = open("file_paths.json")
-        file_paths = json.load(file_paths_config_file)
-
-        self.clean_projects_path = file_paths["Linux"]["clean_dir"]
-        self.unclean_projects_path = file_paths["Linux"]["unclean_dir"]
-        self.json_files_path = file_paths["Linux"]["json_dir"]
 
     # For each json file from Kirk find the corresponding clean project
     # For each file within that project crete an fci object with the details of that file
@@ -60,6 +53,17 @@ class CreateJsonFiles:
     def close_connection(self):
         if self.connection is not None:
             self.connection.close_connection()
+
+    def load_file_paths(self):
+        file_paths_config_file = open("file_paths.json")
+        file_paths = json.load(file_paths_config_file)
+
+        self.clean_projects_path = file_paths["Linux"]["clean_dir"]
+        self.unclean_projects_path = file_paths["Linux"]["unclean_dir"]
+        self.json_files_path = file_paths["Linux"]["json_dir"]
+
+        if self.connection is not None:
+            self.master_json_path = file_paths["Linux"]["master_json_files"]
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
@@ -99,7 +103,7 @@ class CreateJsonFiles:
         self.set_content(file_path, fci_object)
         self.set_project_details(fci_object)
 
-        self.save_fci_objects_to_json_files(fci_object)
+        self.save_fci_objects_to_json_files(fci_object, file_name)
         self.log_writer.write_info_log(file_name + " saved to server at " + file_path)
 
     # Save the content, code, and comments of an individual file to an fci object
@@ -153,8 +157,9 @@ class CreateJsonFiles:
 
     # Converts fci objects to json files and saves them to the server
     # Also saves the json files to the master server if on a slave
-    def save_fci_objects_to_json_files(self, fci_object):
+    def save_fci_objects_to_json_files(self, fci_object, file_name):
         FCI.FCIConverter.to_local_json_file(self.json_files_path, fci_object)
 
         if self.connection is not None:
-            FCI.FCIConverter.to_remote_json_file(self.json_files_path, fci_object, self.connection)
+            FCI.FCIConverter.to_master_json_file(self.master_json_path, fci_object, self.connection)
+            self.log_writer.write_info_log(file_name + " saved to master server")
