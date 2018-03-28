@@ -32,17 +32,20 @@ class CleanZippedProjects:
 
         try:
             for directory in os.listdir(self.unclean_projects_path):
-                for file in os.listdir(self.unclean_projects_path + "/" + directory):
-                    file_path = self.unclean_projects_path + "/" + directory + "/" + file
-                    if file.endswith(".zip"):
-                        unzip_path = self.clean_projects_path + "/" + directory + "/" + file[:-4]
+                if os.path.isdir(self.unclean_projects_path + "/" + directory):
+                    for file in os.listdir(self.unclean_projects_path + "/" + directory):
+                        file_path = self.unclean_projects_path + "/" + directory + "/" + file
+                        if file.endswith(".zip"):
+                            unzip_path = self.clean_projects_path + "/" + directory + "/" + file[:-4]
 
-                        if not os.path.isdir(unzip_path):
-                            os.mkdir(unzip_path)
+                            if not os.path.isdir(unzip_path):
+                                os.makedirs(unzip_path)
+                            else:
+                                continue
 
-                        unzip_command = "unzip " + file_path + " -d " + unzip_path
-                        os.system(unzip_command)
-                        self.log_writer.write_info_log(directory + "/" + file + " unzipped")
+                            unzip_command = "unzip " + file_path + " -d " + unzip_path
+                            os.system(unzip_command)
+                            self.log_writer.write_info_log(directory + "/" + file + " unzipped")
 
             self.log_writer.write_info_log("Files unzipped")
         except Exception as command_error:

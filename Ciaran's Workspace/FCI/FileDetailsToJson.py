@@ -9,6 +9,7 @@ Gets all the info from the files in a project and stores them in a json file
 import re
 import json
 import nltk
+import sys
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
@@ -66,18 +67,23 @@ class FileDetailsToJson:
 
     # Goes through all files in a cleaned project and creates an fci object for each
     def create_fci_objects(self, parent_directory):
+        f = ''
         try:
             for file_name in self.connection.listdir(parent_directory):
                 file_path = parent_directory + '/' + file_name
+                f = file_path
                 if file_name.endswith(".py"):
                     self.save_file_details_to_fci_object(file_path, file_name)
-                else:
+                elif self.connection.isdir(file_path):
+                    self.create_fci_objects(file_path)
+                '''else:
                     if self.connection.isdir(file_path):
                         self.create_fci_objects(file_path)
                     else:  # Just an extra check to make sure no other files are left
-                        self.log_writer.write_warning_log(file_path + " not deleted")
+                        self.log_writer.write_warning_log(file_path + " not deleted")'''
         except Exception as e:
-            self.log_writer.write_error_log(str(e) + "\n")
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            self.log_writer.write_error_log("%s at line %d" % (str(e), exc_tb.tb_lineno))
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):
@@ -98,26 +104,48 @@ class FileDetailsToJson:
         content = ''
         comments_list = []
         comments = ''
-        python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '#.*']
+        python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '(?<!(\"|\'))#.*(?=\n)']
 
         # Content
         for line in file.readlines():
             content += line
         fci_object.set_content(content)
 
+        if file_path.endswith("red_test.py"):
+            print()
         # Code
         code = content
         for comment_pattern in python_comments:
-            for comment in re.findall(comment_pattern, code):
-                comments_list += comment
-                code = re.sub(comment, '', code)
+            for match in re.finditer(comment_pattern, code):
+                #comments_list += match.group(0)
+                code = re.sub(match.group(0), '', code)
+                comments_list.append(self.format_comments(match.group(0)))
         fci_object.set_code(code)
 
         # Comments
-        comments = self.format_comments(comments_list)
+        '''for recorded_comment in comments_list:
+            if type(recorded_comment) is tuple:
+                for comment in recorded_comment:
+                    comments += comment + '\n'
+            else:
+                comments += recorded_comment + '\n'''
+        comments = ' '.join(comments_list)
         fci_object.set_comments(comments)
 
-    def format_comments(self, comments_list):
+    def format_comments(self, comment):
+        formatted_comment = ''
+        alnum_pattern = r'[^(a-zA-Z0-9)]'
+        stopwords = set(nltk.corpus.stopwords.words('english'))
+
+        comment = re.sub(alnum_pattern, ' ', comment)
+
+        for word in comment.split(' '):
+            if word not in stopwords:
+                formatted_comment += str(word) + ' '
+
+        return formatted_comment.lower()
+
+    '''def format_comments(self, comments_list):
         filtered_comments_list = []
         stopwords = set(nltk.corpus.stopwords.words('english'))
 
@@ -135,7 +163,7 @@ class FileDetailsToJson:
                     filtered_comments_list.append(word)
 
         comments = ' '.join(filtered_comments_list)
-        return comments.lower()
+        return comments.lower()'''
 
     # Saves the details of the current project to an fci object
     def set_project_details(self, fci_object):

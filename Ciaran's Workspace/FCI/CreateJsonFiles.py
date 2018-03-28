@@ -8,6 +8,7 @@ import re
 import json
 import os
 import nltk
+import sys
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
@@ -67,13 +68,11 @@ class CreateJsonFiles:
                 file_path = parent_directory + '/' + file_name
                 if file_name.endswith(".py"):
                     self.save_file_details_to_fci_object(file_path, file_name)
-                else:
-                    if os.path.isdir(file_path):
-                        self.find_all_source_files(file_path)
-                    else:  # Just an extra check to make sure no other files are left
-                        self.log_writer.write_warning_log(file_path + " not deleted")
+                elif os.path.isdir(file_path):
+                    self.find_all_source_files(file_path)
         except Exception as e:
-            self.log_writer.write_error_log(str(e))
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            self.log_writer.write_error_log("At line %d: %s" % (exc_tb.tb_lineno, str(e)))
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):
@@ -85,14 +84,14 @@ class CreateJsonFiles:
         self.set_project_details(fci_object)
 
         self.save_fci_objects_to_json_files(fci_object)
-        self.log_writer.write_info_log(file_path + " documented.")
+        self.log_writer.write_info_log(file_name + " saved to server at " + file_path)
 
     # Save the content, code, and comments of an individual file to an fci object
     def set_content(self, file_path, fci_object):
         file = open(file_path)
         content = ''
         comments_list = []
-        python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '#.*']
+        python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '(?<!(\"|\'))#.*(?=\n)']
 
         # Content
         for line in file.readlines():
@@ -102,32 +101,27 @@ class CreateJsonFiles:
         # Code
         code = content
         for comment_pattern in python_comments:
-            for comment in re.findall(comment_pattern, code):
-                comments_list += comment
-                code = re.sub(comment, '', code)
+            for match in re.finditer(comment_pattern, code):
+                comments_list.append(self.format_comments(match.group(0)))
+                code = re.sub(match.group(0), '', code)
         fci_object.set_code(code)
 
         # Comments
-        comments = self.format_comments(comments_list)
+        comments = ' '.join(comments_list)
         fci_object.set_comments(comments)
 
-    def format_comments(self, comments_list):
-        filtered_comments_list = []
+    def format_comments(self, comment):
+        formatted_comment = ''
+        alnum_pattern = r'[^(a-zA-Z0-9)]'
         stopwords = set(nltk.corpus.stopwords.words('english'))
 
-        for comment in comments_list:
-            for word in comment.split(' '):
-                if word.startswith('#'):
-                    word = word[1:]
+        comment = re.sub(alnum_pattern, ' ', comment)
 
-                if word.endswith('.') or word.endswith(','):
-                    word = word[:-1]
+        for word in comment.split(' '):
+            if word not in stopwords:
+                formatted_comment += str(word) + ' '
 
-                if (word not in stopwords) and (word is not '#') and (word is not ''):
-                    filtered_comments_list.append(word)
-
-        comments = ' '.join(filtered_comments_list)
-        return comments.lower()
+        return formatted_comment.lower()
 
     # Saves the details of the current project to an fci object
     def set_project_details(self, fci_object):
@@ -144,4 +138,3 @@ class CreateJsonFiles:
     # Converts fci objects to json files and saves them remotely
     def save_fci_objects_to_json_files(self, fci_object):
         FCI.FCIConverter.to_local_json_file(self.remote_json_path, fci_object)
-        self.log_writer.write_info_log("Json files saved to remote machine at " + self.remote_json_path)
