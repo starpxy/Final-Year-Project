@@ -3,8 +3,6 @@ import ast
 import hashlib
 from AST import MyVisitor as mv
 
-query1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/query",'r').read()
-query2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/query2", 'r').read()
 q=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/q", 'r').read()
 q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/q1",'r').read()
 
@@ -12,8 +10,9 @@ q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/q1",'r')
 
 astSearch=asts.ASTSearching()
 # astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/25408d35aed107a4c9321ddb89ef64d6.json")
-astSearch.ReadFiles()
-astSearch.search(str(q1))
+# astSearch.ReadFiles()
+astSearch.getResults(q1,1)
+# astSearch.search(str(q1))
 
 # hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
 # weights={}#{weight:[fileNames] }
@@ -113,3 +112,41 @@ def _format1(node, lineNums, weights, fileName,hashTrees):
 # print('\n\n')
 # print(hashTrees)
 # print(lineNums)
+
+
+
+# #work out the hash values and weights of every node in the corpus
+    # def hashTree(self,fileName, node, tree):
+    #     m = hashlib.md5()
+    #     m.update(ast.dump(node).encode("utf8"))
+    #     nodeStr = m.hexdigest()
+    #
+    #     startLine=getattr(node, "lineno", 1)
+    #     print(startLine)
+    #     self.lineNums[(fileName,nodeStr)]=startLine
+    #     tree[nodeStr] = {}
+    #     weight=1
+    #     # if startLine ==-1:
+    #     #     startLine=1
+    #     i=0
+    #     # endLine = startLine
+    #     for n in ast.iter_child_nodes(node):
+    #         i+=1
+    #         weight+=self.hashTree(fileName, n, tree[nodeStr])
+    #         # l = self.lineNums[fileName][hash(n)][1]
+    #         # if l > endLine:
+    #         #     endLine = l
+    #     # self.lineNums[fileName][nodeStr]=(startLine,endLine)
+    #     if i==0:
+    #         tree[nodeStr]=None
+    #     #if weight of this node is bigger than 4, store it into weights
+    #     if weight>=self.weightThreshold:
+    #         tree[(weight,nodeStr)]=tree.pop(nodeStr)
+    #         if weight in self.weights:
+    #             if fileName not in self.weights[weight]:
+    #                 self.weights[weight].append(fileName)
+    #         else:
+    #                 self.weights[weight]=[fileName]
+    #     return weight
+
+

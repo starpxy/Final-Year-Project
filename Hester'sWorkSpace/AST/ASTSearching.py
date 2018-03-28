@@ -7,6 +7,7 @@ from Interfaces import LogWriter as lg
 from AST import MyVisitor as mv
 import pickle
 import hashlib
+from AST import Results
 
 class ASTSearching:
     r = redis.Redis(host='localhost', port=6379,decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
@@ -21,6 +22,7 @@ class ASTSearching:
     # these parameters should be tuned
     matchingThreshold=0.6
     weightThreshold=10 #
+    pageNum=10
     def __init__(self):
         pass
 
@@ -51,22 +53,7 @@ class ASTSearching:
             pickle.dump(self.hashTrees, f, True)
             pickle.dump(self.lineNums,f,True)
 
-    #compare if two queries are the same using hash functions
-    def compareQueries(self, query1, query2):
-        h1=self.nodeToHash(query1)
-        h2 = self.nodeToHash(query2)
-        return h1==h2
-
-    #parse a query
-    def nodeToHash(self, node):
-        qRoot = ast.parse(node)
-        self.visitor.visit(qRoot)
-        qt = ast.dump(qRoot)
-        m = hashlib.md5()
-        m.update(qt.encode("utf8"))
-        h = m.hexdigest()
-        return h
-
+    #turn every document root into index
     def Indexing(self, node, lineNums, weights, fileName, hashTrees):
         weight = 1
         min = 0
@@ -135,40 +122,48 @@ class ASTSearching:
             return (weight, min, max)
         return (weight, min, max)
 
+    #interface to front end. Input query, return a Result instance
+    def getResults(self,query,page):
+        if not self.r.exists(query):  # if the result is not in the redis
+            # store the result of the query into redis
+            matchingLines = {}  # {fileName:[(qStart,qEnd, fStart,fEnd)]}
+            similarities = self.search(query, matchingLines)
+            keys=list(similarities.keys())
+            for k in keys:
+                if similarities[k] < self.matchingThreshold:
+                    similarities.pop(k)
+                    matchingLines.pop(k)
+            sorteKeys = sorted(similarities, key=similarities.get, reverse=True)
+            # print('------')
+            # print(sorteKeys)
+            if len(sorteKeys)==0:
+                return Results.Results(0, [],{})
+            self.lw.write_info_log("storing results into redis in form of list")
+            self.r.rpush(query, sorteKeys)
+            self.r.rpush(query,matchingLines)
 
-    # #work out the hash values and weights of every node in the corpus
-    # def hashTree(self,fileName, node, tree):
-    #     m = hashlib.md5()
-    #     m.update(ast.dump(node).encode("utf8"))
-    #     nodeStr = m.hexdigest()
-    #
-    #     startLine=getattr(node, "lineno", 1)
-    #     print(startLine)
-    #     self.lineNums[(fileName,nodeStr)]=startLine
-    #     tree[nodeStr] = {}
-    #     weight=1
-    #     # if startLine ==-1:
-    #     #     startLine=1
-    #     i=0
-    #     # endLine = startLine
-    #     for n in ast.iter_child_nodes(node):
-    #         i+=1
-    #         weight+=self.hashTree(fileName, n, tree[nodeStr])
-    #         # l = self.lineNums[fileName][hash(n)][1]
-    #         # if l > endLine:
-    #         #     endLine = l
-    #     # self.lineNums[fileName][nodeStr]=(startLine,endLine)
-    #     if i==0:
-    #         tree[nodeStr]=None
-    #     #if weight of this node is bigger than 4, store it into weights
-    #     if weight>=self.weightThreshold:
-    #         tree[(weight,nodeStr)]=tree.pop(nodeStr)
-    #         if weight in self.weights:
-    #             if fileName not in self.weights[weight]:
-    #                 self.weights[weight].append(fileName)
-    #         else:
-    #                 self.weights[weight]=[fileName]
-    #     return weight
+        # get the result list of this query from redis
+        else:
+            self.lw.write_info_log("geting results from redis")
+            sorteKeys=eval(self.r.lindex(query, 0))
+            matchingLines=eval(self.r.lindex(query,1))
+
+        self.r.expire(query, 30)  # expire after 30s
+        if page * self.pageNum<len(sorteKeys):
+            results=Results.Results(len(sorteKeys),sorteKeys[(page - 1) * self.pageNum : page * self.pageNum],matchingLines)
+        else:
+            results = Results.Results(len(sorteKeys), sorteKeys[(page - 1) * self.pageNum: ],matchingLines)
+
+        print('==============')
+        print(results.getDocumentList())
+        # print("similarities")
+        # for k in sorteKeys:
+        #     print(str(k) + ": " + str(similarities[k]), end='  in:  ')
+        #     print(matchingLines[k])
+        return results
+
+
+
 
 
     #break the query tree into nodes and calculate their weights
@@ -241,7 +236,7 @@ class ASTSearching:
         return (weight, min, max)
 
     #search plagiarism code with query
-    def search(self, query):
+    def search(self, query,matchingLines):
         if os.path.exists("CodexIndexAST.pik"):
             rfile = open('CodexIndexAST.pik', 'rb')
             self.weights = pickle.load(rfile)
@@ -253,25 +248,14 @@ class ASTSearching:
         qNode=ast.parse(query)
         self.visitor.visit(qNode)
         print(ast.dump(qNode, include_attributes=True))
-        print(ast.dump(qNode))
         self.queryWeight(qNode,qLineNums,qTree)
         print("qTree:  ",end='')
         print(qTree)
-        print(self.hashTrees['25408d35aed107a4c9321ddb89ef64d6.json'])
         print(qLineNums)
         maxWeight=list(qTree.keys())[0][0]
-        matchingLines={}#{fileName:[(qStart,qEnd, fStart,fEnd)]}
-        similarities={}
+        similarities={}#{fileName:score}
         self.similarities(qTree,self.hashTrees,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
-        sorteKeys=sorted(similarities,key=similarities.get,reverse=True)
-        print("similarities")
-        for k in sorteKeys:
-            if similarities[k]>self.matchingThreshold:
-                print('match!: ',end='')
-                print(str(k) + ": " + str(similarities[k]),end='  in:  ')
-                print(matchingLines[k])
-            else:
-                print(str(k)+": "+str(similarities[k]))
+        return similarities
 
 
     # calculate the similarities between corpus and query
@@ -330,6 +314,23 @@ class ASTSearching:
         dic = conv.to_dic(file_name=filename)
         print(dic['code'])
         # return  self.compareQueries(dic['code'],q1)
+
+
+    #compare if two queries are the same using hash functions
+        def compareQueries(self, query1, query2):
+            h1=self.nodeToHash(query1)
+            h2 = self.nodeToHash(query2)
+            return h1==h2
+
+        #parse a query
+        def nodeToHash(self, node):
+            qRoot = ast.parse(node)
+            self.visitor.visit(qRoot)
+            qt = ast.dump(qRoot)
+            m = hashlib.md5()
+            m.update(qt.encode("utf8"))
+            h = m.hexdigest()
+            return h
 
 
 
