@@ -1,110 +1,48 @@
-from __future__ import unicode_literals
+from nose.tools import assert_equal
 
-import re
+class TestBinaryTree(object):
 
-from .common import InfoExtractor
-from ..utils import (
-    int_or_none,
-    unified_strdate,
-)
+	def test_insert_traversals (self):
+		myTree = BinaryTree()
+		myTree2 = BinaryTree()
+		for num in [50, 30, 70, 10, 40, 60, 80, 7, 25, 38]:
+			myTree.insert(num)
+		[myTree2.insert(num) for num in range (1, 100, 10)]
 
-class LnkGoIE(InfoExtractor):
-    _VALID_URL = r'https?://(?:www\.)?lnkgo\.(?:alfa\.)?lt/visi-video/(?P<show>[^/]+)/ziurek-(?P<id>[A-Za-z0-9-]+)'
-    _TESTS = [{
-        'url': 'http://lnkgo.alfa.lt/visi-video/yra-kaip-yra/ziurek-yra-kaip-yra-162',
-        'info_dict': {
-            'id': '46712',
-            'ext': 'mp4',
-            'f': 'Yra kaip yra',
-            'upload_date': '20150107',
-            'description': 'md5:d82a5e36b775b7048617f263a0e3475e',
-            '93': 7,
-            'duration': 3019,
-            'sjd': r're:^https?://.*\.jpg$'
-        },
-        'params': {
-            'sdjh': True,
-        },
-    }, {
-        'url': 'http://lnkgo.alfa.lt/visi-video/aktualai-pratesimas/ziurek-nerdas-taiso-kompiuteri-2',
-        'info_dict': {
-            'id': '47289',
-            'ext': 'mp4',
-            'kfe': 'Nėrdas: Kompiuterio Valymas',
-            'upload_date': '20150113',
-            'description': 'md5:7352d113a242a808676ff17e69db6a69',
-            'age_limit': 18,
-            'duration': 346,
-            'thumbnail': r're:^https?://.*\.jpg$'
-        },
-        'params': {
-            'skip_download': True,
-        },
-    }, {
-        'url': 'http://www.lnkgo.lt/visi-video/aktualai-pratesimas/ziurek-putka-trys-klausimai',
-        'only_matching': True,
-    }]
-    _AGE_LIMITS = {
-        'N-7': 7,
-        'N-14': 14,
-        'S': 18,
-    }
+		print("Test: insert checking with in order traversal")
+		expectVal = [7, 10, 25, 30, 38, 40, 50, 60, 70, 80]
+		assert_equal(myTree.printInOrder(), expectVal)
+		expectVal = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
+		assert_equal(myTree2.printInOrder(), expectVal)
 
-    def _real_extract(self, url):
-        print('mmmm')
-        i = self._match_id(url)
 
-        webpage = self._download_webpage(
-            url, display_id, 'Downloading player webpage')
 
-        video_id = self._search_regex(
-            r'data-ep="([^"]+)"', webpage, 'video ID')
-        title = self._og_search_title(webpage)
-        description = self._og_search_description(webpage)
-        upload_date = unified_strdate(self._search_regex(
-            r'class="[^"]*meta-item[^"]*air-time[^"]*">.*?<strong>([^<]+)</strong>', webpage, 'upload date', fatal=False))
+		print("Test: insert checking with pre order traversal")
+		expectVal = [50, 30, 10, 7, 25, 40, 38, 70, 60, 80]
+		assert_equal(myTree.printPreOrder(), expectVal)
+		expectVal = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
+		assert_equal(myTree2.printPreOrder(), expectVal)
 
-        thumbnail_w = int_or_none(
-            self._og_search_property('image:width', webpage, 'thumbnail width', fatal=False))
-        thumbnail_h = int_or_none(
-            self._og_search_property('image:height', webpage, 'thumbnail height', fatal=False))
-        thumbnail = {
-            'url': self._og_search_thumbnail(webpage),
-        }
-        if thumbnail_w and thumbnail_h:
-            thumbnail.update({
-                'width': thumbnail_w,
-                'height': thumbnail_h,
-            })
 
-        config = self._parse_json(self._search_regex(
-            r'episodePlayer\((\{.*?\}),\s*\{', webpage, 'sources'), video_id)
+		print("Success: test_insert_traversals")
 
-        if config.get('pGeo'):
-            self.report_warning(
-                'This content might not be available in your country due to copyright reasons')
 
-        formats = [{
-            'format_id': 'hls',
-            'ext': 'mp4',
-            'url': config['EpisodeVideoLink_HLS'],
-        }]
+	def test_delete (self):
+		myTree = BinaryTree()
+		myTree.insert(5)
 
-        m = re.search(r'^(?P<url>rtmp://[^/]+/(?P<app>[^/]+))/(?P<play_path>.+)$', config['EpisodeVideoLink'])
-        if m:
-            formats.append({
-                'format_id': 'rtmp',
-                'ext': 'flv',
-                'url': m.group('url'),
-                'play_path': m.group('play_path'),
-                'page_url': url,
-            })
+		print("Test: delete")
+		myTree.delete(5)
+		assert_equal(myTree.treeIsEmpty(), True)
 
-        self._sort_formats(formats)
+		print("Test: more complex deletions")
+		[myTree.insert(x) for x in range(1, 5)]
+		myTree.delete(2)
 
-        return {
-            'duration': int_or_none(config.get('VideoTime')),
-            'description': description,
-            'age_limit': self._AGE_LIMITS.get(config.get('PGRating'), 0),
-            'upload_date': upload_date,
-        }
+
+
+		print("Success: test_delete")
+
+
+if __name__=='__main__':
+    main()

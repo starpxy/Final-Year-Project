@@ -22,7 +22,11 @@ class MyVisitor(ast.NodeTransformer):
         return node
 
     def visit_Expr(self, node):#remove print
-        if node.value.func=="Name(id='print', ctx=Load())":
-            return None
+        if isinstance(node.value, ast.Call):
+            if isinstance(node.value.func,ast.Name):
+                if node.value.func.id=='print':
+                    return None
+        return node
+
 
 
