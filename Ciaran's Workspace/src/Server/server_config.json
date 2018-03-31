@@ -1,0 +1,19 @@
+{
+  "linux_master_server" :{
+    "hostname": "123.206.77.77",
+    "username": "ubuntu",
+    "password": "Star==960906"
+  },
+
+  "linux_slave_server_1" :{
+    "hostname": "118.89.233.227",
+    "username": "ubuntu",
+    "password": "Star==960906"
+  },
+
+  "linux_slave_server_2" :{
+    "hostname": "123.206.68.82",
+    "username": "ubuntu",
+    "password": "Star==960906"
+  }
+}

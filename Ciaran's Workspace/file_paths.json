@@ -1,8 +1,0 @@
-{
-  "Linux" :{
-    "unclean_dir" : "/home/ubuntu/test_files/unclean",
-    "clean_dir" : "/home/ubuntu/test_files/clean",
-    "json_dir" : "/home/ubuntu/test_files/json_files",
-    "master_json_dir" : "/home/ubuntu/test_files/json_files"
-  }
-}
