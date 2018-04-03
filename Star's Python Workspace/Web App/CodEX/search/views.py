@@ -50,6 +50,11 @@ def init(request):
     LSI_TFIDF().indexing()
     return HttpResponse("init successfully")
 
+def plagiarize(request):
+    return render(request,'plagiarize.html',{})
+
+def plagiarizeResult(request):
+    return render(request,'plagiarize-result.html',{})
 
 def detail(request):
     id = request.GET['id']
