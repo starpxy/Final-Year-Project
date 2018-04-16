@@ -30,5 +30,5 @@ class configuration:
 
 
 if __name__ == '__main__':
-    configuration.SERVER_LIST = ['asdf']
+    configuration.SERVER_LIST = ['']
     print(configuration.SERVER_LIST)

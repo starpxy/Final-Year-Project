@@ -64,6 +64,7 @@ class Server:
                 LogWriter().write_info_log("Message {} received correctly!".format(result))
                 print("Message {} received correctly!".format(result))
                 r = result.decode("utf-8")
+
                 data = json.loads(r)
                 Task(data).run()
             else:
@@ -91,7 +92,7 @@ class Server:
                 LogWriter().write_error_log("Server stopped.")
                 print("Server stopped.")
                 return
-
-
+    def get_workers(self):
+        return self.__other_server
 if __name__ == '__main__':
     Server().start_listen()

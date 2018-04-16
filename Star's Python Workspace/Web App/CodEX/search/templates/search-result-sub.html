@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>CodEX</title>
+    <link rel="stylesheet" href="{% static 'css/codex.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
+    <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="/">CodEX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Keyword Search <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/snippet">Snippet Search</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 search" action="/search" method="get">
+            <input name="p" class="p" value="1" type="hidden">
+            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Quick Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="jumbotron" style="padding: 20px">
+    <form class="row codex-result-search-bar search" action="/search" method="get">
+        <div class="codex-result-title">
+            <label class="c">C</label>
+            <label class="o">o</label>
+            <label class="d">d</label>
+            <label class="e">E</label>
+            <label class="c">X</label>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <input name="p" class="p" value="1" type="hidden">
+        <input name="q" class="col-md-8 form-control form-control-lg" value="{{ q }}" type="text"
+               placeholder="Enter Keyword to Search"
+               autofocus>
+        <button type="submit" class="col-md-1 btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="container">
+    {% for i in results %}
+        <div class="container">
+            <a href="/detail/?id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}">
+                <h5>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }} </h5></a>
+            <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}"><code
+                    class="language-{{ i.get_fci_obj.get_language }}">{{ i.get_fci_obj.get_content }}</code></pre>
+            <hr>
+        </div>
+    {% endfor %}
+</div>
+<div class="container col-md-4" style="margin-left:auto;margin-right:auto;">
+    {% if t_p == 0 %}
+        <br><br>
+        <p>Sorry, No results found!</p>
+    {% else %}
+        <ul class="pagination pagination-lg">
+            {% if p == 1 %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&laquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?p={{ pre }}&q={{ q }}">&laquo;</a>
+                </li>
+            {% endif %}
+            {% for page in pages %}
+                {% if forloop.counter == p %}
+                    <li class="page-item active">
+                        <a class="page-link" href="?p={{ forloop.counter }}&q={{ q }}">{{ forloop.counter }}</a>
+                    </li>
+                {% elif forloop.counter < p_p or forloop.counter > n_p%}
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?p={{ forloop.counter }}&q={{ q }}">{{ forloop.counter }}</a>
+                    </li>
+                {% endif %}
+                {% if forloop.last%}
+                    {% if forloop.counter > t_p %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?p={{ next }}&q={{ q }}">&raquo;</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+<br><br><br>
+<div class="text-center fixed-bottom">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
+</div>
+</body>
+<script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<script src="{% static 'js/umd/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
+    });
+</script>
+</html>

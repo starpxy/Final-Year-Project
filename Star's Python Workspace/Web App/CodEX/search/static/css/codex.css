@@ -1,0 +1,91 @@
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .codex-title{
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        font-family:"Hiragino Maru Gothic ProN","Sathu","Arial";
+        margin-top:10%;
+    }
+    .c{
+        color: #3a82ec;
+    }
+    .o{
+        color: #ec4f32;
+    }
+    .d{
+        color: rgb(255, 230, 66);
+    }
+    .e{
+        color: #39d16a;
+    }
+    .codex-search-bar{
+        display: inline;
+        margin-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 1024px){
+    .codex-title{
+        text-align: center;
+        font-size: 70px;
+        font-weight: bold;
+        font-family:"Hiragino Maru Gothic ProN","Sathu","Arial";
+        margin-top:20%;
+    }
+    .c{
+        color: #3a82ec;
+    }
+    .o{
+        color: #ec4f32;
+    }
+    .d{
+        color: rgb(255, 230, 66);
+    }
+    .e{
+        color: #39d16a;
+    }
+    .codex-search-bar{
+        display: inline;
+        margin-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media only screen and (min-width: 1024px){
+    .codex-title{
+        text-align: center;
+        font-size: 100px;
+        font-weight: bold;
+        font-family:"Hiragino Maru Gothic ProN","Sathu","Arial";
+        margin-top:10%;
+    }
+    .codex-result-title{
+        font-size: 30px;
+        font-weight: bold;
+        font-family:"Hiragino Maru Gothic ProN","Sathu","Arial";
+    }
+    .c{
+        color: #3a82ec;
+    }
+    .o{
+        color: #ec4f32;
+    }
+    .d{
+        color: rgb(255, 230, 66);
+    }
+    .e{
+        color: #39d16a;
+    }
+    .codex-search-bar{
+        display: inline;
+        margin-top: 50px;
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+    .codex-result-search-bar{
+        margin-top: 50px;
+        padding-left: 10px;
+        padding-right: 50px;
+    }
+}

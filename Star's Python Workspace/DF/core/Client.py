@@ -41,11 +41,14 @@ class Client:
                 self.__sk_client.send(trunk)
             if len(to_send) > 0:
                 self.__sk_client.send(to_send)
-
+            buffer = self.__sk_client.recv(1024)
+            buffer = bytes.decode(buffer)
+            response = json.loads(buffer)
         except:
             LogWriter().write_error_log("Message {} is not sent to main server!".format(header))
+            return 400
         self.__sk_client.close()
-        return
+        return response["err_code"]
 
 
 if __name__ == '__main__':
