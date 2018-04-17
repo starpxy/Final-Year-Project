@@ -10,7 +10,7 @@ stores them in the clean folder and then runs delete_files_script.py
 import json
 
 from LogWriter import LogWriter
-from src.Server.LinuxConnection import LinuxConnection
+from Server.LinuxConnection import LinuxConnection
 
 
 class ProjectCleanUp:

@@ -8,7 +8,7 @@ Runs all the code
 
 from Cleanup.CleanZippedProjects import CleanZippedProjects
 from FCI.CreateJsonFiles import CreateJsonFiles
-from src.Server.LinuxConnection import LinuxConnection
+from Server.LinuxConnection import LinuxConnection
 
 
 def main():

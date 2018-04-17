@@ -6,7 +6,6 @@ Author: Ciarán
 
 import json
 import os
-import zipfile
 
 from LogWriter import LogWriter
 
@@ -84,5 +83,6 @@ class CleanZippedProjects:
     def run(self):
         self.load_file_paths()
         self.unzip()
+        # Unzip and then delete files in one operation?
         # self.compare_projects()
         # self.delete_files()

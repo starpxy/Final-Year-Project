@@ -4,7 +4,7 @@ Created on 25/03/2018
 Author: Ciarán
 """
 
-from src.Server.LinuxConnection import LinuxConnection
+from Server.LinuxConnection import LinuxConnection
 
 
 def main():

@@ -6,7 +6,7 @@ Author: Ciarán
 
 import paramiko
 
-from src.LogWriter import LogWriter
+from LogWriter import LogWriter
 
 
 class LinuxConnection:
