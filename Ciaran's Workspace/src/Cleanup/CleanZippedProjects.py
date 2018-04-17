@@ -7,7 +7,7 @@ Author: Ciarán
 import json
 import os
 
-from src.LogWriter import LogWriter
+from LogWriter import LogWriter
 
 
 class CleanZippedProjects:

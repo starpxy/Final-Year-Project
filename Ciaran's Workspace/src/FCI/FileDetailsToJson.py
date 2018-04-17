@@ -14,7 +14,7 @@ import sys
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter
-from src.Server.LinuxConnection import LinuxConnection
+from Server.LinuxConnection import LinuxConnection
 
 
 class FileDetailsToJson:

@@ -11,10 +11,10 @@ import nltk
 import sys
 import socket
 
-from src.FCI.FormattedCodeInterface import FormattedCodeInterface
-from src.LogWriter import LogWriter
-import src.FCI.FCIConverter as FCIConverter
-from src.Server.LinuxConnection import LinuxConnection
+from FCI.FormattedCodeInterface import FormattedCodeInterface
+from LogWriter import LogWriter
+import FCI.FCIConverter as FCIConverter
+from Server.LinuxConnection import LinuxConnection
 
 
 class CreateJsonFiles:
