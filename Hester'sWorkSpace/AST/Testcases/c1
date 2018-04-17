@@ -1,0 +1,73 @@
+#1a147019a3c309f3db904a39ce2919fa.json
+import sys
+import os
+import shlex
+
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+sys.path.insert(0, os.path.abspath(os.path.join(here, '..')))
+
+needs_sphinx = '1.0'
+
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.viewcode',
+    'repoze.sphinx.autointerface',
+]
+
+autodoc_member_order = 'bysource'
+autodoc_default_flags = ['show-inheritance', 'private-members']
+
+templates_path = ['_templates']
+source_suffix = '.rst'
+master_doc = 'index'
+project = u'certbot-compatibility-test'
+copyright = u'2014-2015, Let\'s Encrypt Project'
+author = u'Certbot Project'
+version = '0'
+release = '0'
+language = 'en'
+exclude_patterns = ['_build']
+default_role = 'py:obj'
+pygments_style = 'sphinx'
+todo_include_todos = True
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if not on_rtd:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_static_path = ['_static']
+htmlhelp_basename = 'certbot-compatibility-testdoc'
+latex_elements = {
+}
+latex_documents = [
+    (master_doc, 'certbot-compatibility-test.tex',
+     u'certbot-compatibility-test Documentation',
+     u'Certbot Project', 'manual'),
+]
+man_pages = [
+    (master_doc, 'certbot-compatibility-test',
+     u'certbot-compatibility-test Documentation',
+     [author], 1)
+]
+texinfo_documents = [
+    (master_doc, 'certbot-compatibility-test',
+     u'certbot-compatibility-test Documentation',
+     author, 'certbot-compatibility-test',
+     'One line description of project.', 'Miscellaneous'),
+]
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/', None),
+    'acme': ('https://acme-python.readthedocs.org/en/latest/', None),
+    'certbot': ('https://certbot.eff.org/docs/', None),
+    'certbot-apache': (
+        'https://letsencrypt-apache.readthedocs.org/en/latest/', None),
+    'certbot-nginx': (
+        'https://letsencrypt-nginx.readthedocs.org/en/latest/', None),
+}
+
+

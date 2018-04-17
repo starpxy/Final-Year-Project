@@ -3,15 +3,15 @@ import ast
 import hashlib
 from AST import MyVisitor as mv
 
-q=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/q", 'r').read()
-q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/q1",'r').read()
+q=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q", 'r').read()#combine multiple programs
+q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q1",'r').read()#copy one program
 
 # print(astSearch.compareQueries(query1,query2))
 
 astSearch=asts.ASTSearching()
-# astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/25408d35aed107a4c9321ddb89ef64d6.json")
+# astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/46bd2d7af4f9369baaa6112f52069c5e.json")
 # astSearch.ReadFiles()
-astSearch.getResults(q1,1)
+astSearch.getResults(q,9)
 # astSearch.search(str(q1))
 
 # hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
