@@ -4,10 +4,7 @@
 import search.supportings.FCIConverter as fci
 from django.shortcuts import render
 from django.http import HttpResponse
-from search.supportings.LogWriter import LogWriter
-from search.supportings.FormattedCodeInterface import FormattedCodeInterface
 from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
-from search.supportings.LSI.Results import Results
 import CodEX.config as config
 from search.supportings.FrontEndInterface import FrontEndInterface
 
@@ -52,11 +49,13 @@ def init(request):
 
 
 def plagiarize(request):
+
     return render(request, 'snippet.html', {})
 
 
 def plagiarizeResult(request):
-    return render(request, 'plagiarize-result.html', {})
+    snippet = request.GET['snippet']
+    return render(request, 'snippet-result.html', {'snippet':snippet})
 
 
 def detail(request):

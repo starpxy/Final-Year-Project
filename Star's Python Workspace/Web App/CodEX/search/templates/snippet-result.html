@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodEX-Snippet Search</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/codex.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="/">CodEX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Keyword Search </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/snippet">Snippet Search <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 search" action="/search" method="get">
+            <input name="p" class="p" value="1" type="hidden">
+            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Quick Search">
+            <button class="btn btn-secondary" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="jumbotron" style="padding: 20px">
+    <form class="row codex-result-search-bar snippet" action="/snippet-result" method="get">
+        <div class="codex-result-title">
+            <label class="c">C</label>
+            <label class="o">o</label>
+            <label class="d">d</label>
+            <label class="e">E</label>
+            <label class="c">X</label>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <input name="p" class="p" value="1" type="hidden">
+        <textarea id="area" name="snippet" class="col-md-8 form-control form-control-lg"
+               placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="1" style="resize:none;">{{ snippet }}</textarea>
+        <button type="submit" class="col-md-1 btn btn-primary">Search</button>
+    </form>
+</div>
+<div class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Snippet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+            <div class="modal-body">
+                <textarea id="temp" rows="10" style="resize:none;" class="form-control form-control-lg" placeholder="Insert code snippet here to search the usage of it or detect plagiarism..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="reset" class="btn btn-secondary">Reset</button>
+                <button id="save" class="btn btn-primary">Save Changes</button>
+            </div>
+    </div>
+  </div>
+</div>
+<div class="fixed-bottom text-center">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
+</div>
+</body>
+</html>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/umd/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
+        $(".snippet").submit(function () {
+            var q = $("#area").val();
+            if (q == '') {
+                return false;
+            }
+        });
+        $("#area").focus(function () {
+            $("#temp").text($("#area").val());
+            $("#area").blur();
+            $(".modal").modal();
+            $("#temp").focus();
+        });
+        $("#reset").click(function () {
+            $("#temp").text("");
+        });
+        $("#save").click(function () {
+            $("#area").text($("#temp").val());
+            $(".modal").modal('hide');
+        });
+    });
+</script>
+</html>

@@ -1,4 +1,5 @@
 # coding=utf8
+# author:Star
 import socket
 import threading
 from DF.core.Server import Server
@@ -17,12 +18,15 @@ class Master():
         t = threading.Thread(target=self.start(port=port))
         t.start()
 
+    def config_ttl(self, ttl):
+        self.__ttl = ttl
+
     def start(self, port):
         self.__master = Server(ip_address=socket.gethostbyname(socket.gethostname()), port=port)
         self.__master.start_listen()
 
     def allocate_workers(self):
-        if self.__master!='':
+        if self.__master != '':
             print("allocating...")
             workers = self.__master.get_workers()
             self.__mappers = []
