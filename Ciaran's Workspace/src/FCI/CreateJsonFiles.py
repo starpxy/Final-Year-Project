@@ -11,9 +11,9 @@ import nltk
 import sys
 import socket
 
-from FCI.FormattedCodeInterface import FormattedCodeInterface
-from LogWriter import LogWriter
-import FCI.FCIConverter
+from src.FCI.FormattedCodeInterface import FormattedCodeInterface
+from src.LogWriter import LogWriter
+import src.FCI.FCIConverter as FCIConverter
 from src.Server.LinuxConnection import LinuxConnection
 
 
@@ -26,7 +26,8 @@ class CreateJsonFiles:
         self.master_json_path = None
 
         self.json_data = None
-        self.project_info = {}  # Dictionary with project names and containing directory as key and corresponding json data as value
+        # Dictionary with project names and containing directory as keys and their corresponding json data as values
+        self.project_info = {}
 
         self.connection = None
 
@@ -40,6 +41,7 @@ class CreateJsonFiles:
         self.find_all_json_files()
 
         for project_name in self.project_info:
+            # If project_name is not in clean:
             self.json_data = self.project_info[project_name]
             self.find_all_source_files(self.clean_projects_path + project_name)
 
@@ -158,8 +160,8 @@ class CreateJsonFiles:
     # Converts fci objects to json files and saves them to the server
     # Also saves the json files to the master server if on a slave
     def save_fci_objects_to_json_files(self, fci_object, file_name):
-        FCI.FCIConverter.to_local_json_file(self.json_files_path, fci_object)
+        FCIConverter.to_local_json_file(self.json_files_path, fci_object)
 
         if self.connection is not None:
-            FCI.FCIConverter.to_master_json_file(self.master_json_path, fci_object, self.connection)
+            FCIConverter.to_master_json_file(self.master_json_path, fci_object, self.connection)
             self.log_writer.write_info_log(file_name + " saved to master server")
