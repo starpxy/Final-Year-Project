@@ -56,7 +56,6 @@ class LSI_TFIDF:
         self.vectorizer.fit_transform([self.wholeContent])
         self.word = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
         self.X = self.vectorizer.fit_transform(self.contents).toarray().T
-        print(self.X)
         # store the index into the pickle
         with open(self.indexing_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.re, f, True)
@@ -103,19 +102,7 @@ class LSI_TFIDF:
 
     def MatrixSearching(self, query):
         # svd decomposition
-        print('re\n')
-        print(self.re)
         u, s, vt = svd(self.re, full_matrices=False)
-        print("""\r""")
-        print('u\n')
-        print(u)
-        print("""\r""")
-        print('s\n')
-        print(s)
-        print("""\r""")
-        print('vt\n')
-        print(vt)
-        print("""\r""")
         d = vt.T
 
         # work out the Xq.T
@@ -151,7 +138,6 @@ class LSI_TFIDF:
             similarities[self.files[i]] = np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i])))
         # matrixSimilarity=sorted(similarities.items(),key=lambda item:item[1],reverse=True)
         similarities = sorted(similarities, key=similarities.get, reverse=True)
-        print(similarities)
         machingLines = self.highlighting(ocurrence, qWord, similarities)
         # turn the id list into sorted document list
         return machingLines

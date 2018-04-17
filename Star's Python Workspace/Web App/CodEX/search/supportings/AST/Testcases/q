@@ -1,0 +1,165 @@
+#not copied
+def __init__(self):
+    self.lw.write_info_log("reading files...")
+    self.files = os.listdir(self.path)  # get all the file names
+    self.files.remove('.DS_Store')
+    for file in self.files:  # go through the folder
+        if not os.path.isdir(file):  # judge if it is a folder
+            self.documents[file] = conv.to_dic(self.path + "/" + file)
+            self.contents.append(self.documents[file]['content'])
+            self.wholeContent += self.documents[file]['content']
+    self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
+    # indexing
+    self.lw.write_info_log("indexing...")
+    self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to', 'print']
+    self.vectorizer = CountVectorizer()
+    self.tfidf = TfidfVectorizer()
+    self.X=''
+
+
+#from c3 l32-l97
+def delete (self, data):
+		current = self.root
+		parent = self.root
+		isLeft = False
+
+		if current is None:
+			return False
+
+		while current is not None and current.data is not data:
+			parent = current
+			if data < current.data:
+				current = current.leftChild
+				isLeft = True
+			else:
+				current = current.rightChild
+				isLeft = False
+
+		if current is None:
+			return False
+
+		if current.leftChild is None and current.rightChild is None:
+			if current is self.root:
+				self.root = None
+			elif isLeft:
+				parent.leftChild = None
+			else:
+				parent.rightChild = None
+
+		elif current.rightChild is None:
+			if current is self.root:
+				self.root = current.leftChild
+			elif isLeft:
+				parent.leftChild = current.leftChild
+			else:
+				parent.rightChild = current.leftChild
+
+		elif current.rightChild is None:
+			if current is self.root:
+				self.root = current.rightChild
+			elif isLeft:
+				parent.lChild = current.rightChild
+			else:
+				parent.rightChild = current.rightChild
+
+		else:
+			successor = current.rightChild
+			successorParent = current
+
+			while successor.leftChild is not None:
+				successorParent = successor
+				successor = successor.leftChild
+
+			if current is self.root:
+				self.root = successor
+			elif isLeft:
+				parent.leftChild = successor
+			else:
+				parent.rightChild = successor
+
+			successor.leftChild = current.leftChild
+
+			if successor is not current.rightChild:
+				successorParent.leftChild = successor.rightChild
+				successor.rightChild = current.rightChild
+
+		return True
+
+#from c2 L7-L22
+class UiRequestPlugin(object):
+
+    def __init__(self, *args, **kwargs):
+        from Site import SiteManager
+        self.site_manager = SiteManager.site_manager
+        super(UiRequestPlugin, self).__init__(*args, **kwargs)
+
+
+    def actionSiteMedia(self, path, **kwargs):
+        match = re.match("/media/(?P<address>[A-Za-z0-9-]+\.[A-Za-z0-9\.-]+)(?P<inner_path>/.*|$)", path)
+        if match:
+            domain = match.group("address")
+            address = self.site_manager.resolveDomain(domain)
+            if address:
+                path = "/media/" + address + match.group("inner_path")
+        return super(UiRequestPlugin, self).actionSiteMedia(path, **kwargs)
+
+
+#from c1 L38-L70
+if not on_rtd:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_static_path = ['_static']
+htmlhelp_basename = 'certbot-compatibility-testdoc'
+latex_elements = {
+}
+latex_documents = [
+    (master_doc, 'certbot-compatibility-test.tex',
+     u'certbot-compatibility-test Documentation',
+     u'Certbot Project', 'manual'),
+]
+man_pages = [
+    (master_doc, 'certbot-compatibility-test',
+     u'certbot-compatibility-test Documentation',
+     [author], 1)
+]
+texinfo_documents = [
+    (master_doc, 'certbot-compatibility-test',
+     u'certbot-compatibility-test Documentation',
+     author, 'certbot-compatibility-test',
+     'One line description of project.', 'Miscellaneous'),
+]
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/', None),
+    'acme': ('https://acme-python.readthedocs.org/en/latest/', None),
+    'certbot': ('https://certbot.eff.org/docs/', None),
+    'certbot-apache': (
+        'https://letsencrypt-apache.readthedocs.org/en/latest/', None),
+    'certbot-nginx': (
+        'https://letsencrypt-nginx.readthedocs.org/en/latest/', None),
+}
+
+#not copied
+def import_in(self,filename):
+    dic = conv.to_dic(file_name=filename)
+    print(dic['code'])
+    # return  self.compareQueries(dic['code'],q1)
+
+
+#compare if two queries are the same using hash functions
+    def compareQueries(self, query1, query2):
+        h1=self.nodeToHash(query1)
+        h2 = self.nodeToHash(query2)
+        return h1==h2
+
+    #parse a query
+    def nodeToHash(self, node):
+        qRoot = ast.parse(node)
+        self.visitor.visit(qRoot)
+        qt = ast.dump(qRoot)
+        m = hashlib.md5()
+        m.update(qt.encode("utf8"))
+        h = m.hexdigest()
+        return h
+
+

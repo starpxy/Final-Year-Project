@@ -8,6 +8,31 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
     <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+    <style>
+        .page-active{
+            padding: 8px;
+            background-color: #78c5a9;
+            color: #ffffff;
+            border-radius:25px;
+        }
+        .page-active:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .my-page{
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius:25px;
+        }
+        .my-page:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            background-color: #9ce5cc;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
@@ -63,48 +88,26 @@
         </div>
     {% endfor %}
 </div>
-<div class="container col-md-4" style="margin-left:auto;margin-right:auto;">
+<div class="container text-center">
+    <br><br>
     {% if t_p == 0 %}
         <br><br>
         <p>Sorry, No results found!</p>
     {% else %}
-        <ul class="pagination pagination-lg">
-            {% if p == 1 %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">&laquo;</a>
-                </li>
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
             {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?p={{ pre }}&q={{ q }}">&laquo;</a>
-                </li>
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
             {% endif %}
-            {% for page in pages %}
-                {% if forloop.counter == p %}
-                    <li class="page-item active">
-                        <a class="page-link" href="?p={{ forloop.counter }}&q={{ q }}">{{ forloop.counter }}</a>
-                    </li>
-                {% elif forloop.counter < p_p or forloop.counter > n_p%}
-                {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?p={{ forloop.counter }}&q={{ q }}">{{ forloop.counter }}</a>
-                    </li>
-                {% endif %}
-                {% if forloop.last%}
-                    {% if forloop.counter > t_p %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">&raquo;</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item">
-                            <a class="page-link" href="?p={{ next }}&q={{ q }}">&raquo;</a>
-                        </li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        </ul>
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
     {% endif %}
 </div>
-<br><br><br>
+<br><br><br><br>
 <div class="text-center fixed-bottom">
     <p>
         Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
