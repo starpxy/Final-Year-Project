@@ -85,8 +85,10 @@ class CreateJsonFiles:
     # Goes through all files in a cleaned project and creates an fci object for each
     # Initially the path to a project is passed and the function recursively goes through all files in the project
     def find_all_source_files(self, parent_directory):
+        curr_file = ''
         try:
             for file_name in os.listdir(parent_directory):
+                curr_file = file_name
                 file_path = parent_directory + '/' + file_name
                 if file_name.endswith(".py"):
                     self.save_file_details_to_fci_object(file_path, file_name)
@@ -94,7 +96,7 @@ class CreateJsonFiles:
                     self.find_all_source_files(file_path)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
-            self.log_writer.write_error_log("At line %d: %s" % (exc_tb.tb_lineno, str(e)))
+            self.log_writer.write_error_log("At line %d: %s in %s" % (exc_tb.tb_lineno, str(e), curr_file))
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):

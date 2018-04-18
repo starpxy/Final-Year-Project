@@ -9,9 +9,18 @@ from Server.LinuxConnection import LinuxConnection
 
 def main():
     connection = LinuxConnection()
-    path_to_file = "/home/ubuntu/Final-Year-Project/Ciaran's Workspace/Main.py"
-    command = "pyhton3.5 " + path_to_file
+    file = "Main.py"
+    #path_to_file = "/home/ubuntu/Final-Year-Project/Ciaran's Workspace/src/"
+    '''path_to_file = "Final-Year-Project/Ciaran\\'s\ Workspace/src/"
+    change_directory = "cd " + path_to_file
+    run_file = "pyhton3.5 " + file
+    command = change_directory + "; " + run_file'''
+    command = "cd /home/ubuntu/Final-Year-Project/Ciaran\\'s\ Workspace/src/; python3.5 Main.py"
     connection.exec_command(command)
+    '''print(command)
+    si, so, se = connection.exec_command(command)
+    print(se.read())
+    print(so.read())'''
     connection.close_connection()
 
 
