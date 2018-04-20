@@ -38,18 +38,22 @@ class ASTSearching:
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
-                try:
-                    root=ast.parse(str(self.documents[file]['content']))
-                except(SyntaxError):
-                    self.lw.write_error_log("syntax error! " + file)
-                    # self.documents[file].close()
-                    continue
-                #remove strings and variable names
-                self.visitor.visit(root)
-                hTree={}
-                self.lineNums[file]={}
-                self.Indexing(root, self.lineNums[file], self.weights, file, hTree)
-                self.hashTrees[file] =hTree
+                if len(self.documents[file]['content'].strip()) > 0:
+                    try:
+                        root=ast.parse(str(self.documents[file]['content']))
+                    except(SyntaxError):
+                        self.lw.write_error_log("syntax error! " + file)
+                        # self.documents[file].close()
+                        continue
+                    #remove strings and variable names
+                    self.visitor.visit(root)
+                    hTree={}
+                    self.lineNums[file]={}
+                    self.Indexing(root, self.lineNums[file], self.weights, file, hTree)
+                    self.hashTrees[file] =hTree
+                else:
+                    self.documents.pop(file)
+        self.files=list(self.documents.keys())
                 # self.documents[file].close()
 
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
@@ -136,15 +140,15 @@ class ASTSearching:
             # store the result of the query into redis
             matchingLines = {}  # {fileName:[(qStart,qEnd, fStart,fEnd)]}
             similarities = self.search(query, matchingLines)
-            globalSimilarity=self.wholeSimilarity
-            matchingBlocks=self.matchingBlock
-            documentList=sorted(similarities,key=similarities.get,reverse=True)
             if similarities==None:
                 self.lw.write_error_log('Pickle files not found!')
                 return None
             elif similarities==0:
                 return 0
             #get the normal relevant documents and the suspected plagiarized documents
+            globalSimilarity=self.wholeSimilarity
+            matchingBlocks=self.matchingBlock
+            documentList=sorted(similarities,key=similarities.get,reverse=True)
             plagiarismList=[]
             i=0
             for d in documentList:
@@ -166,6 +170,10 @@ class ASTSearching:
                         self.r.rpush(query, globalSimilarity)
                         self.r.rpush(query, matchingBlocks)
                         self.r.rpush(query,componentDocuments)
+                    else:
+                        globalSimilarity=0
+                        matchingBlocks={}
+                        componentDocuments=[]
                 else:
                     self.r.rpush(query, globalSimilarity)
                     self.r.rpush(query, matchingBlocks)
@@ -190,7 +198,6 @@ class ASTSearching:
         matchingblocksLength=len(componentDocuments)
         length=documentListLength+plagiarismListLength+matchingblocksLength
         results=Results.Results(numOfResults=length,matchingLines=matchingLines,globalSimilarity=globalSimilarity,matchingBlocks=matchingBlocks)
-        results.setNumOfResult(length)
         disMatchingBlocks=[]
         disPlagiarismList=[]
         disDocumentList=[]
