@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import *
 from scipy import spatial
 import matplotlib.pyplot as plt
-from scipy import sparse as sparse
+from scipy.sparse import dok_matrix as docM
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from Interfaces import FCIConverter as conv
@@ -75,9 +75,8 @@ class LSI_TFIDF:
         # svd decomposition
         print(self.re.shape)
         #compression matrix
-        sp_re = sparse.coo_matrix(self.re)
-        self.re = sp_re.toarray()
-        print(len(self.re))
+        self.re=docM.dok_matrix(self.re)
+
         # self.u, self.s, vt = svd(self.re, full_matrices=False)
         # print("""\r""")
         # print('u\n')

@@ -309,7 +309,6 @@ class ASTSearching:
             self.lineNums=pickle.load(rfile)
         else:
             return None
-
         qTree={}#{(weight,nodeHash):{nested dictionaries}}
         qLineNums={}#{nodeHash:(start,end)}
         try:
@@ -318,11 +317,11 @@ class ASTSearching:
             self.lw.write_error_log("syntax error in qeury! " )
             return 0
         self.visitor.visit(qNode)
-        print(ast.dump(qNode, include_attributes=True))
+        # print(ast.dump(qNode, include_attributes=True))
         self.queryWeight(qNode,qLineNums,qTree)
-        print("qTree:  ",end='')
-        print(qTree)
-        print(qLineNums)
+        # print("qTree:  ",end='')
+        # print(qTree)
+        # print(qLineNums)
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
         self.similarities(qTree,self.hashTrees,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
