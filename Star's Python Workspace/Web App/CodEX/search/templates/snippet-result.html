@@ -6,12 +6,40 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/codex.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
     <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+    <style>
+        .page-active{
+            padding: 8px;
+            background-color: #78c5a9;
+            color: #ffffff;
+            border-radius:25px;
+        }
+        .page-active:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .my-page{
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius:25px;
+        }
+        .my-page:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            background-color: #9ce5cc;
+        }
+    </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <a class="navbar-brand" href="/">CodEX</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -44,29 +72,89 @@
         &nbsp;&nbsp;&nbsp;
         <input name="p" class="p" value="1" type="hidden">
         <textarea id="area" name="snippet" class="col-md-8 form-control form-control-lg"
-               placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="1" style="resize:none;">{{ snippet }}</textarea>
+                  placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="1"
+                  style="resize:none;">{{ snippet }}</textarea>
         <button type="submit" class="col-md-1 btn btn-primary">Search</button>
     </form>
 </div>
 <div class="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Snippet</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Snippet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
-                <textarea id="temp" rows="10" style="resize:none;" class="form-control form-control-lg" placeholder="Insert code snippet here to search the usage of it or detect plagiarism..."></textarea>
+                <textarea id="temp" rows="10" style="resize:none;" class="form-control form-control-lg"
+                          placeholder="Insert code snippet here to search the usage of it or detect plagiarism..."></textarea>
             </div>
             <div class="modal-footer">
                 <button id="reset" class="btn btn-secondary">Reset</button>
                 <button id="save" class="btn btn-primary">Save Changes</button>
             </div>
+        </div>
     </div>
-  </div>
 </div>
+
+<div class="container">
+    {% if is_global %}
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header"><h4>Matching Degree:{{ global_similarity }}%</h4></div>
+            {% for component_document in component_documents %}
+                <div class="card-body">
+                    <a href="/snippet-detail/?q={{ snippet }}&id={{ component_document.get_fci_obj.get_id }}&ml={{ component_document.get_match_lines }}">
+                <h5>{{ component_document.get_fci_obj.get_project_name }} - {{ component_document.get_fci_obj.get_file_name }} </h5></a>
+                    <pre class="line-numbers" style="max-height: 200px">
+                        <code class="language-{{ component_document.get_fci_obj.get_language }}" >{{ component_document.get_fci_obj.get_content }}</code>
+                    </pre>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<div class="container">
+    {% for i in plagiarize_list %}
+        <a href="/snippet-detail/?q={{ snippet }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}">
+        <h5>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }} <span class="badge badge-danger">Plagiarized</span></h5>
+        </a>
+        <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}"><code
+                class="language-{{ i.get_fci_obj.get_language }}">{{ i.get_fci_obj.get_content }}</code>
+        </pre>
+        <hr>
+    {% endfor %}
+    {% for i in document_list %}
+        <a href="/snippet-detail/?q={{ snippet }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}">
+        <h5>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }}</h5>
+        </a>
+        <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}"><code
+                class="language-{{ i.get_fci_obj.get_language }}">{{ i.get_fci_obj.get_content }}</code>
+        </pre>
+        <hr>
+    {% endfor %}
+</div>
+<div class="container text-center">
+    <br><br>
+    {% if t_p == 0 %}
+        <br><br>
+        <p>Sorry, No results found!</p>
+    {% else %}
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
+            {% else %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+    {% endif %}
+</div>
+<br><br><br><br>
 <div class="fixed-bottom text-center">
     <p>
         Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
@@ -77,6 +165,8 @@
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/umd/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<script src="{% static 'js/layer/layer.js' %}"></script>
 <script type="text/javascript">
     $(function () {
         $(".search").submit(function () {
@@ -84,12 +174,20 @@
             if (q == '') {
                 return false;
             }
+            layer.msg('Wait for a while...', {
+                time:60000,
+                icon : 16,
+                shade : 0.3});
         });
         $(".snippet").submit(function () {
             var q = $("#area").val();
             if (q == '') {
                 return false;
             }
+            layer.msg('Wait for a while...', {
+                time:60000,
+                icon : 16,
+                shade : 0.3});
         });
         $("#area").focus(function () {
             $("#temp").text($("#area").val());

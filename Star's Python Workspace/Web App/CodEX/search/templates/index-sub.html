@@ -6,7 +6,7 @@
     <title>CodEX</title>
     <link rel="stylesheet" href="{% static 'css/codex.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-    <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'icon-flat.png' %}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
@@ -55,6 +55,7 @@
 </body>
 <script src="{% static 'js/jquery-3.1.1.js' %}"></script>
 <script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/layer/layer.js' %}"></script>
 <script type="text/javascript">
     $(function () {
         $(".search").submit(function () {
@@ -62,6 +63,10 @@
             if (q == '') {
                 return false;
             }
+            layer.msg('Wait for a while...', {
+                time:60000,
+                icon : 16,
+                shade : 0.3});
         });
     });
 </script>

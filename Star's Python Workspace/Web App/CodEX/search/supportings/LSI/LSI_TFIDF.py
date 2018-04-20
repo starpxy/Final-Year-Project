@@ -29,7 +29,7 @@ class LSI_TFIDF:
     vectorizer = ''
     tfidf = ''
     pageNum = config.configs['others']['page_num']
-    indexing_path = config.configs["paths"]["indexing_path"]
+    indexing_path = config.configs["paths"]["LSI_indexing_path"]
 
     def __init__(self):
         self.lw.write_info_log("reading files...")

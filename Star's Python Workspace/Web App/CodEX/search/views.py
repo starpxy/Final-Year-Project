@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
 import CodEX.config as config
 from search.supportings.FrontEndInterface import FrontEndInterface
+from search.supportings.AST.ASTSearching import ASTSearching
 
 
 def index(request):
@@ -49,13 +50,51 @@ def init(request):
 
 
 def plagiarize(request):
-
     return render(request, 'snippet.html', {})
 
 
 def plagiarizeResult(request):
     snippet = request.GET['snippet']
-    return render(request, 'snippet-result.html', {'snippet':snippet})
+    page = request.GET['p']
+    ast = ASTSearching()
+    result = ast.getResults(query=snippet, page=int(page))
+    is_global = False
+    plagiarize_list = []
+    document_list = []
+    component_document = []
+    global_similarity = 0
+    if result != None:
+        total_num = result.getNumOfResults()
+        total_page = (total_num / config.configs['others']['page_num']) + 1
+        matching_blocks = result.getMatchingBlocks()
+        global_similarity = result.getGlobalSimilarity()
+        if global_similarity != None and global_similarity > 0:
+            is_global = True
+            cd = result.getComponentDocuments()
+            component_document = []
+            for c in cd:
+                ml = str(matching_blocks[c][0]) + '-' + str(matching_blocks[c][1])
+                fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + c)
+                component_document.append(FrontEndInterface(fobj, ml))
+            result.getMatchingBlocks()
+        matching_lines = result.getMatchingLines()
+
+        for t in result.getPlagiarismList():
+            ml = ''
+            for mls in matching_lines[t]:
+                ml += str(mls[0]) + '-' + str(mls[1]) + ','
+            fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + t)
+            plagiarize_list.append(FrontEndInterface(fobj, ml))
+        for t in result.getDocumentList():
+            ml = ''
+            for mls in matching_lines[t]:
+                ml += str(mls[0]) + '-' + str(mls[1]) + ','
+            fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + t)
+            document_list.append(FrontEndInterface(fobj, ml))
+    return render(request, 'snippet-result.html',
+                  {'snippet': snippet, "is_global": is_global, 'component_documents': component_document,
+                   "global_similarity": global_similarity, "plagiarize_list": plagiarize_list,
+                   "document_list": document_list})
 
 
 def detail(request):

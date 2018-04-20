@@ -50,8 +50,9 @@
 </div>
 
 <div class="container">
-    <form class="" method="get" action="/snippet-result">
-        <textarea autofocus name="snippet" class="form-control" placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="9" style="resize:none;"></textarea>
+    <form class="snippet-search" method="get" action="/snippet-result">
+        <input name="p" class="p" value="1" type="hidden">
+        <textarea id="area" autofocus name="snippet" class="form-control" placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="9" style="resize:none;"></textarea>
         <br><br>
         <div class="row">
             <button type="reset" class="col-md-2 btn btn-lg btn-outline-secondary">Reset</button>
@@ -70,6 +71,7 @@
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/umd/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/layer/layer.js' %}"></script>
 <script type="text/javascript">
     $(function () {
         $(".search").submit(function () {
@@ -77,6 +79,20 @@
             if (q == '') {
                 return false;
             }
+            layer.msg('Wait for a while...', {
+                time:60000,
+                icon : 16,
+                shade : 0.3});
+        });
+        $(".snippet-search").submit(function () {
+            var q = $("#area").val();
+            if (q == '') {
+                return false;
+            }
+            layer.msg('Wait for a while...', {
+                time:60000,
+                icon : 16,
+                shade : 0.3});
         });
     });
 </script>
