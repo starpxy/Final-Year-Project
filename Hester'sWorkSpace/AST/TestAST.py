@@ -11,5 +11,5 @@ q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcase
 astSearch=asts.ASTSearching()
 # astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/1b1bf356cb26e4b5674b613969b56e49.json")
 # astSearch.ReadFiles()
-astSearch.getResults(q,9)
+astSearch.getResults(q,1)
 # astSearch.search(str(q1))
