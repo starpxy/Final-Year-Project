@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LSI_TFIDF.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LSI_TFIDF.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSI/LSI_TFIDF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
+            <state relative-caret-position="285">
+              <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASTSearching.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ASTSearching.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AST/ASTSearching.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1101">
-              <caret line="402" column="13" selection-start-line="402" selection-start-column="13" selection-end-line="402" selection-end-column="13" />
+            <state relative-caret-position="210">
+              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -174,13 +174,13 @@
         <option value="$PROJECT_DIR$/AST/logs/info.log" />
         <option value="$PROJECT_DIR$/AST/Results.py" />
         <option value="$PROJECT_DIR$/LSI/TestLsi.py" />
-        <option value="$PROJECT_DIR$/LSI/LSI_TFIDF.py" />
         <option value="$PROJECT_DIR$/AST/Testcases/c3" />
         <option value="$PROJECT_DIR$/AST/Testcases/c2" />
         <option value="$PROJECT_DIR$/AST/Testcases/c1" />
         <option value="$PROJECT_DIR$/AST/TestAST.py" />
         <option value="$PROJECT_DIR$/AST/Testcases/q" />
         <option value="$PROJECT_DIR$/AST/ASTSearching.py" />
+        <option value="$PROJECT_DIR$/LSI/LSI_TFIDF.py" />
       </list>
     </option>
   </component>
@@ -872,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSI/LSI_TFIDF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LSI/TestLsi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -950,10 +940,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AST/ASTSearching.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1101">
-          <caret line="402" column="13" selection-start-line="402" selection-start-column="13" selection-end-line="402" selection-end-column="13" />
+        <state relative-caret-position="210">
+          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSI/LSI_TFIDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

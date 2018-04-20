@@ -12,7 +12,7 @@ from AST import Results
 class ASTSearching:
     r = redis.Redis(host='localhost', port=6379,decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
-    path = "/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files"  # path name
+    path = "/Users/hester/Desktop/finalYearProject/files"  # path name
     files = []
     documents = {}
     hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
@@ -142,6 +142,8 @@ class ASTSearching:
             if similarities==None:
                 self.lw.write_error_log('Pickle files not found!')
                 return None
+            elif similarities==0:
+                return 0
             #get the normal relevant documents and the suspected plagiarized documents
             plagiarismList=[]
             i=0
@@ -303,7 +305,11 @@ class ASTSearching:
 
         qTree={}#{(weight,nodeHash):{nested dictionaries}}
         qLineNums={}#{nodeHash:(start,end)}
-        qNode=ast.parse(query)
+        try:
+            qNode=ast.parse(query)
+        except(SyntaxError):
+            self.lw.write_error_log("syntax error in qeury! " )
+            return 0
         self.visitor.visit(qNode)
         print(ast.dump(qNode, include_attributes=True))
         self.queryWeight(qNode,qLineNums,qTree)

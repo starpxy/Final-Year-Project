@@ -17,7 +17,7 @@ class LSI_TFIDF:
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     # get files
-    path = "../files"  # path name
+    path = "/Users/hester/Desktop/finalYearProject/files"  # path name
     files = []
     documents = {}
     sortedDocuments = []
