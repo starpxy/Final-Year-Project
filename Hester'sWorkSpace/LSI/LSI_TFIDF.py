@@ -2,6 +2,7 @@ import numpy as np
 from scipy.linalg import *
 from scipy import spatial
 import matplotlib.pyplot as plt
+from scipy import sparse as sparse
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from Interfaces import FCIConverter as conv
@@ -28,16 +29,33 @@ class LSI_TFIDF:
     vectorizer = ''
     tfidf = ''
     pageNum = 10
+    s=''
+    u=''
+    d=''
 
     def __init__(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
-        for file in self.files:  # go through the folder
+        # self.files.remove('.DS_Store')
+        fs=len(self.files)
+        i=0
+        while  i<fs:  # go through the folder
+            file=self.files[i]
+            i+=1
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
-                self.contents.append(self.documents[file]['content'])
-                self.wholeContent += self.documents[file]['content']
+                if len(self.documents[file]['content'].strip())>0:
+                    self.contents.append(self.documents[file]['content'])
+                    self.wholeContent += ' '+self.documents[file]['content']
+
+                else:
+                    self.documents.pop(file)
+                    self.files.remove(file)
+                    fs-=1
+            else:
+                fs-=1
+                self.files.remove(file)
+        self.files=list(self.documents.keys())
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # indexing
         self.lw.write_info_log("indexing...")
@@ -45,6 +63,7 @@ class LSI_TFIDF:
         self.vectorizer = CountVectorizer()
         self.tfidf = TfidfVectorizer()
         self.X=''
+
         # indexing
     def indexing(self):
         self.transformer = TfidfTransformer()
@@ -52,10 +71,34 @@ class LSI_TFIDF:
         self.vectorizer.fit_transform([self.wholeContent])
         self.word = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
         self.X = self.vectorizer.fit_transform(self.contents).toarray().T
-        print(self.X)
+
+        # svd decomposition
+        print(self.re.shape)
+        #compression matrix
+        sp_re = sparse.coo_matrix(self.re)
+        self.re = sp_re.toarray()
+        print(len(self.re))
+        # self.u, self.s, vt = svd(self.re, full_matrices=False)
+        # print("""\r""")
+        # print('u\n')
+        # print(self.u)
+        # print("""\r""")
+        # print('s\n')
+        # print(self.s)
+        # print("""\r""")
+        # print('vt\n')
+        # print(vt)
+        # print("""\r""")
+        # self.d = vt.T
+
         # store the index into the pickle
         with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+            print('store re')
             pickle.dump(self.re, f, True)
+            print('done')
+            # pickle.dump(self.s, f, True)
+            # pickle.dump(self.u, f, True)
+            # pickle.dump(self.d, f, True)
             pickle.dump(self.X, f, True)
             pickle.dump(self.word, f, True)
             pickle.dump(self.transformer, f, True)
@@ -64,7 +107,10 @@ class LSI_TFIDF:
         # use pickle module to read data into our program if CodexIndex.pik exists, load the data directly
         if os.path.exists("CodexIndex.pik"):
             rfile = open('CodexIndex.pik', 'rb')
-            self.re = pickle.load(rfile)
+            self.re=pickle.load(rfile)
+            self.s = pickle.load(rfile)
+            self.u = pickle.load(rfile)
+            self.d = pickle.load(rfile)
             self.X = pickle.load(rfile)
             self.word = pickle.load(rfile)
             self.transformer = pickle.load(rfile)
@@ -72,7 +118,7 @@ class LSI_TFIDF:
         # check if the result of this query already exist in the redis
         if not self.r.exists(query):  # if the result is not in the redis
             # store the result of the query into redis
-            l = self.MatrixSearching(query)
+            l = self.MatrixSearching(query, self.s,self.u, self.d)
             print(l)
             if l is None:
                 return Results.Results(0, [])
@@ -178,25 +224,17 @@ class LSI_TFIDF:
     #     return centroidResult
 
 
-    def MatrixSearching(self, query):
-        # svd decomposition
-        print('re\n')
-        print(self.re)
-        u, s, vt = svd(self.re, full_matrices=False)
-        print("""\r""")
-        print('u\n')
-        print(u)
-        print("""\r""")
-        print('s\n')
-        print(s)
-        print("""\r""")
-        print('vt\n')
-        print(vt)
-        print("""\r""")
-        d = vt.T
+    def MatrixSearching(self, query, s, u, d):
 
         # work out the Xq.T
         # get the term frequency
+        # print(len(self.word))
+        # print(len(self.documents))
+        # print(self.re.shape)
+        # print(self.u.shape)
+        # print(self.s.shape)
+        # print(self.d.shape)
+
         qFreq = self.vectorizer.fit_transform([query]).toarray().T  # make the vectorizer fit the query
         qWord = self.vectorizer.get_feature_names()  # the unique terms after preprocessing
         qArr = np.zeros([1, len(self.word)])
@@ -217,7 +255,7 @@ class LSI_TFIDF:
         if ifEmpty:
             self.lw.write_warning_log("Nothing found!")
             return None
-        # print(qArr)
+        print(qArr.shape)
         sDiagno = np.diag(np.array(s))
         sInv = np.linalg.inv(sDiagno)
         # print("sDiago inverse")
@@ -231,11 +269,16 @@ class LSI_TFIDF:
         similarities = {}
         for i in range(len(d)):
             # similarity[i]=spatial.distance.cosine(Dq, d[i])
-            similarities[self.files[i]] = np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i])))
+            similarities[self.files[i]] = round((np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i]))))[0],5)
         # matrixSimilarity=sorted(similarities.items(),key=lambda item:item[1],reverse=True)
-        similarities=sorted(similarities, key=similarities.get, reverse=True)
-        print(similarities)
-        machingLines=self.highlighting(ocurrence,qWord,similarities)
+        keys=sorted(similarities, key=similarities.get, reverse=True)
+        machingLines=self.highlighting(ocurrence,qWord,keys)
+        i=0
+        for k in keys:
+            print(k,end=': ')
+            print(similarities[k],end='     ')
+            print(machingLines[i](1))
+            i+=1
         # turn the id list into sorted document list
         return machingLines
 

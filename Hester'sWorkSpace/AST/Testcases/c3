@@ -1,156 +1,74 @@
-#46bd2d7af4f9369baaa6112f52069c5e
-class Node (object):
-	def __init__ (self, data):
-		self.data = data
-		self.rightChild = None
-		self.leftChild = None
+#1ae7008016787b0113177e52b9020abf
+# -*- coding: utf-8 -*-
 
-class BinaryTree (object):
-	def __init__ (self):
-		self.root = None
-
-	def insert (self, newData):
-		leaf = Node(newData)
-
-		if self.root is None:
-			self.root = leaf
-		else:
-			current = self.root
-			parent = self.root
-			while current is not None:
-				parent = current
-				if newData < current.data:
-					current = current.leftChild
-				else:
-					current = current.rightChild
-
-			if newData < parent.data:
-				parent.leftChild = leaf
-			else:
-				parent.rightChild = leaf
+from odoo import api, fields, models
 
 
-	def delete (self, data):
-		current = self.root
-		parent = self.root
-		isLeft = False
+class ProjectTaskMergeWizard(models.TransientModel):
+    _name = 'project.task.merge.wizard'
 
-		if current is None:
-			return False
+    task_ids = fields.Many2many('project.task', string="Tasks to Merge", required=True)
+    user_id = fields.Many2one('res.users', string="Assigned to")
+    create_new_task = fields.Boolean('Create a new task')
+    target_task_name = fields.Char('New task name')
+    target_project_id = fields.Many2one('project.project', string="Target Project")
+    target_task_id = fields.Many2one('project.task', string="Merge into an existing task")
 
-		while current is not None and current.data is not data:
-			parent = current
-			if data < current.data:
-				current = current.leftChild
-				isLeft = True
-			else:
-				current = current.rightChild
-				isLeft = False
+    @api.multi
+    def merge_tasks(self):
+        values = {
+            'user_id': self.user_id.id,
+            'description': self.merge_description(),
+        }
+        if self.create_new_task:
+            values.update({
+                'name': self.target_task_name,
+                'project_id': self.target_project_id.id
+            })
+            self.target_task_id = self.env['project.task'].create(values)
+        else:
+            self.target_task_id.write(values)
+        self.merge_followers()
+        self.target_task_id.message_post_with_view(
+            self.env.ref('project.mail_template_task_merge'),
+            values={'target': True, 'tasks': self.task_ids - self.target_task_id},
+            subtype_id=self.env.ref('mail.mt_comment').id
+        )
+        (self.task_ids - self.target_task_id).message_post_with_view(
+            self.env.ref('project.mail_template_task_merge'),
+            values={'target': False, 'task': self.target_task_id},
+            subtype_id=self.env.ref('mail.mt_comment').id
+        )
+        (self.task_ids - self.target_task_id).write({'active': False})
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "project.task",
+            "views": [[False, "form"]],
+            "res_id": self.target_task_id.id,
+        }
 
-		if current is None:
-			return False
+    @api.multi
+    def merge_description(self):
+        return '<br/>'.join(self.task_ids.mapped(lambda task: "Description from task <b>%s</b>:<br/>%s" % (task.name, task.description or 'No description')))
 
-		if current.leftChild is None and current.rightChild is None:
-			if current is self.root:
-				self.root = None
-			elif isLeft:
-				parent.leftChild = None
-			else:
-				parent.rightChild = None
+    @api.multi
+    def merge_followers(self):
+        self.target_task_id.message_subscribe(
+            partner_ids=(self.task_ids - self.target_task_id).mapped('message_partner_ids').ids,
+            channel_ids=(self.task_ids - self.target_task_id).mapped('message_channel_ids').ids,
+        )
 
-		elif current.rightChild is None:
-			if current is self.root:
-				self.root = current.leftChild
-			elif isLeft:
-				parent.leftChild = current.leftChild
-			else:
-				parent.rightChild = current.leftChild
+    @api.model
+    def default_get(self, fields):
+        result = super(ProjectTaskMergeWizard, self).default_get(fields)
+        selected_tasks = self.env['project.task'].browse(self.env.context.get('active_ids', False))
+        assigned_tasks = selected_tasks.filtered(lambda task: task.user_id)
+        result.update({
+            'task_ids': selected_tasks.ids,
+            'user_id': assigned_tasks and assigned_tasks[0].user_id.id or False,
+            'target_project_id': selected_tasks[0].project_id.id,
+            'target_task_id': selected_tasks[0].id
+        })
+        return result
 
-		elif current.rightChild is None:
-			if current is self.root:
-				self.root = current.rightChild
-			elif isLeft:
-				parent.lChild = current.rightChild
-			else:
-				parent.rightChild = current.rightChild
-
-		else:
-			successor = current.rightChild
-			successorParent = current
-
-			while successor.leftChild is not None:
-				successorParent = successor
-				successor = successor.leftChild
-
-			if current is self.root:
-				self.root = successor
-			elif isLeft:
-				parent.leftChild = successor
-			else:
-				parent.rightChild = successor
-
-			successor.leftChild = current.leftChild
-
-			if successor is not current.rightChild:
-				successorParent.leftChild = successor.rightChild
-				successor.rightChild = current.rightChild
-
-		return True
-
-
-	def minNode (self):
-		current = self.root
-		while current.leftChild is not None:
-			current = current.leftChild
-
-		return current.data
-
-	def maxNode (self):
-		current = self.root
-		while current.rightChild is not None:
-			current = current.rightChild
-
-		return current.data
-
-	def printPostOrder (self):
-		global postOrder
-		postOrder = []
-
-		def PostOrder(node):
-			if node is not None:
-				PostOrder(node.leftChild)
-				PostOrder(node.rightChild)
-				postOrder.append(node.data)
-
-		PostOrder(self.root)
-		return postOrder
-
-	def printInOrder (self):
-		global inOrder
-		inOrder = []
-
-		def InOrder (node):
-			if node is not None:
-				InOrder(node.leftChild)
-				inOrder.append(node.data)
-				InOrder(node.rightChild)
-
-		InOrder(self.root)
-		return inOrder
-
-	def printPreOrder (self):
-		global preOrder
-		preOrder = []
-
-		def PreOrder (node):
-			if node is not None:
-				preOrder.append(node.data)
-				PreOrder(node.leftChild)
-				PreOrder(node.rightChild)
-
-		PreOrder(self.root)
-		return preOrder
-
-	def treeIsEmpty (self):
-		return self.root is None
 

@@ -34,15 +34,15 @@ class ASTSearching:
     def ReadFiles(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
+        # self.files.remove('.DS_Store')
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
                 try:
-                    root=ast.parse(str(self.documents[file]['code']))
+                    root=ast.parse(str(self.documents[file]['content']))
                 except(SyntaxError):
                     self.lw.write_error_log("syntax error! " + file)
-                    self.documents[file].close()
+                    # self.documents[file].close()
                     continue
                 #remove strings and variable names
                 self.visitor.visit(root)
@@ -50,7 +50,7 @@ class ASTSearching:
                 self.lineNums[file]={}
                 self.Indexing(root, self.lineNums[file], self.weights, file, hTree)
                 self.hashTrees[file] =hTree
-                self.documents[file].close()
+                # self.documents[file].close()
 
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # use pickle module to save data into file 'CodexIndexAST.pik'
@@ -67,7 +67,6 @@ class ASTSearching:
         i = 0
         startLine = 0
         endLine = 0
-
         if isinstance(node, ast.AST):
             m = hashlib.md5()
             m.update(ast.dump(node).encode("utf8"))
@@ -161,7 +160,7 @@ class ASTSearching:
             self.r.rpush(query, matchingLines)
             if globalSimilarity!=0 and len(matchingBlocks)!=0:
                 if len(plagiarismList)>0:
-                    if globalSimilarity>=similarities[plagiarismList[0]]:
+                    if globalSimilarity>=similarities[plagiarismList[0]]and globalSimilarity>=self.matchingThreshold:
                         self.r.rpush(query, globalSimilarity)
                         self.r.rpush(query, matchingBlocks)
                         self.r.rpush(query,componentDocuments)
@@ -215,13 +214,8 @@ class ASTSearching:
                 return None
             results.setDocumentList(disDocumentList)
 
-
         print('==============')
         results.toString()
-        # print("similarities")
-        # for k in sorteKeys:
-        #     print(str(k) + ": " + str(similarities[k]), end='  in:  ')
-        #     print(matchingLines[k])
         return results
 
 
@@ -382,7 +376,10 @@ class ASTSearching:
                             BackMerge = False
                             if file not in self.blockWeights:
                                 self.blockWeights[file] = {}
-                            self.blockWeights[file][(qs, qe)] = w[0]
+                            elif (qs, qe) in self.blockWeights[file]:
+                                if w[0]>self.blockWeights[file][(qs, qe)]:
+                                    self.blockWeights[file][(qs, qe)] = w[0]
+                                continue
                             keys=list(self.blockWeights[file].keys())
                             for mLines in keys:
                                 if mLines[1] < qs:
@@ -398,12 +395,11 @@ class ASTSearching:
                                         self.blockWeights[file][(mLines[0], qe)] = w[0] + self.blockWeights[file][
                                             mLines]
                                         self.blockWeights[file].pop(mLines)
-                                        self.blockWeights[file].pop((qs, qe))
                                         forwMerge = True
                                 elif mLines[0] > qe:
                                     insertion = False
                                     # check insertion
-                                    for lines in qLineNums.get():
+                                    for lines in qLineNums.values():
                                         if (lines[1] < mLines[0] and lines[1] > qe) or (
                                                         lines[0] < mLines[0] and lines[0] > qe):
                                             insertion = True
@@ -412,10 +408,11 @@ class ASTSearching:
                                         self.blockWeights[file][(qs, mLines[1])] = w[0] + self.blockWeights[file][
                                             mLines]
                                         self.blockWeights[file].pop(mLines)
-                                        self.blockWeights[file].pop((qs, qe))
                                         BackMerge = True
                                 if forwMerge and BackMerge:
                                     break
+                            if not forwMerge and not BackMerge:
+                                self.blockWeights[file][(qs,qe)]=w[0]
 
                 if not find and qTree[w] is not None:
                     if len(qTree[w])>0:

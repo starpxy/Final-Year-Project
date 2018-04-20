@@ -1,73 +1,47 @@
-#1a147019a3c309f3db904a39ce2919fa.json
-import sys
-import os
-import shlex
+#1b1bf356cb26e4b5674b613969b56e49
+# -*- coding: utf-8 -*-
 
 
-here = os.path.abspath(os.path.dirname(__file__))
+from odoo import api, models
 
-sys.path.insert(0, os.path.abspath(os.path.join(here, '..')))
 
-needs_sphinx = '1.0'
+class FichePayeParser(models.AbstractModel):
+    _name = 'report.l10n_fr_hr_payroll.report_l10n_fr_fiche_paye'
 
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.viewcode',
-    'repoze.sphinx.autointerface',
-]
+    def get_payslip_lines(self, objs):
+        res = []
+        ids = []
+        for item in objs:
+            if item.appears_on_payslip is True and not item.salary_rule_id.parent_rule_id:
+                ids.append(item.id)
+        if ids:
+            res = self.env['hr.payslip.line'].browse(ids)
+        return res
 
-autodoc_member_order = 'bysource'
-autodoc_default_flags = ['show-inheritance', 'private-members']
+    def get_total_by_rule_category(self, obj, code):
+        category_total = 0
+        category_id = self.env['hr.salary.rule.category'].search([('code', '=', code)], limit=1).id
+        if category_id:
+            line_ids = self.env['hr.payslip.line'].search([('slip_id', '=', obj.id), ('category_id', 'child_of', category_id)])
+            for line in line_ids:
+                category_total += line.total
+        return category_total
 
-templates_path = ['_templates']
-source_suffix = '.rst'
-master_doc = 'index'
-project = u'certbot-compatibility-test'
-copyright = u'2014-2015, Let\'s Encrypt Project'
-author = u'Certbot Project'
-version = '0'
-release = '0'
-language = 'en'
-exclude_patterns = ['_build']
-default_role = 'py:obj'
-pygments_style = 'sphinx'
-todo_include_todos = True
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if not on_rtd:
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-html_static_path = ['_static']
-htmlhelp_basename = 'certbot-compatibility-testdoc'
-latex_elements = {
-}
-latex_documents = [
-    (master_doc, 'certbot-compatibility-test.tex',
-     u'certbot-compatibility-test Documentation',
-     u'Certbot Project', 'manual'),
-]
-man_pages = [
-    (master_doc, 'certbot-compatibility-test',
-     u'certbot-compatibility-test Documentation',
-     [author], 1)
-]
-texinfo_documents = [
-    (master_doc, 'certbot-compatibility-test',
-     u'certbot-compatibility-test Documentation',
-     author, 'certbot-compatibility-test',
-     'One line description of project.', 'Miscellaneous'),
-]
-intersphinx_mapping = {
-    'python': ('https://docs.python.org/', None),
-    'acme': ('https://acme-python.readthedocs.org/en/latest/', None),
-    'certbot': ('https://certbot.eff.org/docs/', None),
-    'certbot-apache': (
-        'https://letsencrypt-apache.readthedocs.org/en/latest/', None),
-    'certbot-nginx': (
-        'https://letsencrypt-nginx.readthedocs.org/en/latest/', None),
-}
+    def get_employer_line(self, obj, parent_line):
+        return self.env['hr.payslip.line'].search([('slip_id', '=', obj.id), ('salary_rule_id.parent_rule_id.id', '=', parent_line.salary_rule_id.id)], limit=1)
+
+    @api.model
+    def get_report_values(self, docids, data=None):
+        payslip = self.env['hr.payslip'].browse(docids)
+        return {
+            'doc_ids': docids,
+            'doc_model': 'hr.payslip',
+            'data': data,
+            'docs': payslip,
+            'lang': "fr_FR",
+            'get_payslip_lines': self.get_payslip_lines,
+            'get_total_by_rule_category': self.get_total_by_rule_category,
+            'get_employer_line': self.get_employer_line,
+        }
 
 
