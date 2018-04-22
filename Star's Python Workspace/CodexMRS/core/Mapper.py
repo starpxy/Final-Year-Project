@@ -1,6 +1,5 @@
-# coding=utf8
+# encoding=utf8
 # author:Star
-from CodexMRS.base.Client import Client
 
 
 class Mapper:
@@ -14,4 +13,4 @@ class Mapper:
     __server = None
 
     def __init__(self):
-        self.__client = Client()
+        pass
