@@ -1,12 +1,10 @@
 class Results:
     numOfResults = 0
-    documentList = []
-    matchingLines={}
+    documents = {} #{fileName:[maching line numbers]}
 
-    def __init__(self, numOfResults=0, documentList=[],matchingLines=None):
+    def __init__(self, numOfResults=0, documents={}):
         self.numOfResults = numOfResults
-        self.documentList = documentList
-        self.matchingLines=matchingLines
+        self.documents = documents
 
     def getNumOfResults(self):
         return self.numOfResults
@@ -14,14 +12,9 @@ class Results:
     def setNumOfResult(self, num):
         self.numOfResults = num
 
-    def getDocumentList(self):
+    def getDocuments(self):
         return self.documentList
 
-    def setDocumentList(self, documentList):
-        self.documentList = documentList
+    def setDocuments(self, documents):
+        self.documents = documents
 
-    def setMatchingLines(self,matchingLines):
-        self.matchingLines=matchingLines
-
-    def getMatchingLines(self):
-        return self.matchingLines
