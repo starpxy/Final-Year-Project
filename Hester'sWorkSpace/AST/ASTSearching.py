@@ -9,7 +9,17 @@ import pickle
 import hashlib
 from AST import Results
 
-class ASTSearching:
+# singleton
+class Singleton(object):
+    _instance = None
+
+    def __new__(cls, *args, **kw):
+        if not cls._instance:
+            cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
+        return cls._instance
+
+
+class ASTSearching(Singleton):
     r = redis.Redis(host='localhost', port=6379,decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     path = "/Users/hester/Desktop/finalYearProject/files"  # path name
@@ -19,6 +29,7 @@ class ASTSearching:
     visitor = mv.MyVisitor()
     weights={}#{weight:[fileNames] }
     lineNums={}#{fileName: {nodeHash: (startLine, endLine)}}
+
     # these parameters should be tuned
     matchingThreshold=0.6
     weightThreshold=10 #weight outweigh weightThreshold will be taken into consideration
@@ -27,14 +38,21 @@ class ASTSearching:
     wholeSimilarity=0
     matchingBlock={} # {docID: (the startline and endline of the matching blocks)}.
     blockWeights={} #{docID: (startline, endline): weight of the biggest matching block}
+
+
     def __init__(self):
-        pass
+        if os.path.exists("CodexIndexAST.pik"):
+            rfile = open('CodexIndexAST.pik', 'rb')
+            self.weights = pickle.load(rfile)
+            self.hashTrees=pickle.load(rfile)
+            self.lineNums=pickle.load(rfile)
+        else:
+            self.ReadFiles()
 
     #parse the corpus
     def ReadFiles(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        # self.files.remove('.DS_Store')
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
@@ -43,7 +61,6 @@ class ASTSearching:
                         root=ast.parse(str(self.documents[file]['content']))
                     except(SyntaxError):
                         self.lw.write_error_log("syntax error! " + file)
-                        # self.documents[file].close()
                         continue
                     #remove strings and variable names
                     self.visitor.visit(root)
@@ -54,7 +71,6 @@ class ASTSearching:
                 else:
                     self.documents.pop(file)
         self.files=list(self.documents.keys())
-                # self.documents[file].close()
 
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # use pickle module to save data into file 'CodexIndexAST.pik'
@@ -301,14 +317,6 @@ class ASTSearching:
         self.wholeSimilarity = 0
         self.matchingBlock = {}
         self.blockWeights={}
-
-        if os.path.exists("CodexIndexAST.pik"):
-            rfile = open('CodexIndexAST.pik', 'rb')
-            self.weights = pickle.load(rfile)
-            self.hashTrees=pickle.load(rfile)
-            self.lineNums=pickle.load(rfile)
-        else:
-            return None
         qTree={}#{(weight,nodeHash):{nested dictionaries}}
         qLineNums={}#{nodeHash:(start,end)}
         try:
@@ -317,11 +325,7 @@ class ASTSearching:
             self.lw.write_error_log("syntax error in qeury! " )
             return 0
         self.visitor.visit(qNode)
-        # print(ast.dump(qNode, include_attributes=True))
         self.queryWeight(qNode,qLineNums,qTree)
-        # print("qTree:  ",end='')
-        # print(qTree)
-        # print(qLineNums)
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
         self.similarities(qTree,self.hashTrees,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
