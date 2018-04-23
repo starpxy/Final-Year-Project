@@ -2,7 +2,6 @@
 # author:Star
 # time: 21/04/2018
 import os
-import CodexMRS.vendor.FCIConverter as fc
 from CodexMRS.base.network import Server
 
 
@@ -11,7 +10,7 @@ class Master:
     Master server to assign tasks (in our version, master will also do some calculation)
     """
     __block_size = 100
-    __max_block_num = 10
+    __max_block_num = 5
     __blocks = {}
     __mappers = []
     __reducers = []
@@ -38,9 +37,12 @@ class Master:
         :param message: the dictionary received from server
         :return: None
         """
+        # operation 1 is to allocate blocks and
         operate_type = message['operate_type']
         if operate_type == 1:
+
             print('1')
+        # operation 2 is to
         elif operate_type == 2:
             print('2')
 

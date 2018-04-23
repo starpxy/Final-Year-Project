@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>{{ detail.get_project_name }} - {{ detail.get_file_name }}</title>
+    <link rel="stylesheet" href="{% static 'css/codex.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
+    <link rel="alternate icon" type="image/png" href="{% static 'icon-flat.png' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="/">CodEX</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Keyword Search <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/snippet">Snippet Search</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 search" action="/search" method="get">
+            <input name="p" class="p" value="1" type="hidden">
+            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Quick Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 80px">
+    <h1 class="my-title text-center">{{ detail.get_project_name }} - {{ detail.get_file_name }}</h1>
+    <h3>Details:</h3>
+{#    <p class="my-author text-center">Author : {{ detail.get_author }}</p>#}
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">File Information</div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th scope="row">Language:</th>
+                    <td>{{ detail.get_language }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Author:</th>
+                    <td>{{ detail.get_author }}</td>
+                </tr>
+                <tr>
+                    <th>Update At:</th>
+                    <td>{{ detail.get_update_at }}</td>
+                </tr>
+                <tr>
+                    <th>Origin URL:</th>
+                    <td><a class="text-white" href="{{ detail.get_url }}">{{ detail.get_url }}</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h3>File Content:</h3>
+    <pre class="line-numbers" data-line="{{ match_lines }}"><code
+            class="language-{{ detail.get_language }}">{{ detail.get_content }}</code></pre>
+    <br><br><br>
+</div>
+<div class="fixed-bottom text-center bg-light">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
+</div>
+</body>
+<script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
+    });
+</script>
+</html>

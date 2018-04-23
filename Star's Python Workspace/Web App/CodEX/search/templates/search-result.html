@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodEX</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%  static 'search/css/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'search/css/flat-ui.min.css' %}">
+    <link rel="alternate icon" type="image/png" href="{%  static 'search/img/../static/icon-flat.png' %}">
+    <link rel="stylesheet" type="text/css" href="../static/css/prism.css">
+    <style>
+        .page-active{
+            padding: 8px;
+            background-color: #1bc5a3;
+            color: #ffffff;
+            border-radius:25px;
+        }
+        .page-active:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .my-page{
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius:25px;
+        }
+        .my-page:hover{
+            transition-duration: 200ms;
+            padding: 12px;
+            color: #ffffff;
+            background-color: #1bc5a3;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="/">CodEX</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="fui-user"></span><b class="caret"></b></a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right search" action="/search" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input name="p" value="1" hidden>
+                    <input name="q" class="form-control s-bar" id="navbarInput-01" value="" type="search"
+                           placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.navbar-collapse -->
+</nav><!-- /navbar -->
+<div class="panel panel-default" style="margin-top: 53px; padding: 20px;padding-bottom: 0px;; background-color: #f5f7f9">
+    <form class="row search">
+        <div class="col-xs-1">
+            <img style="width: 125%" src="{%  static 'search/img/icon-text.png' %}">
+        </div>
+        <div class="col-xs-7">
+            <input name="p" value="1" hidden>
+            <input id="search-bar" name="q" type="text" value="{{ q }}" class="form-control input-lg">
+        </div>
+        <div class="col-xs-3">
+            <button type="submit" class="btn btn-lg btn-primary">Search</button>
+        </div>
+    </form>
+    <br>
+    <div style="padding-left: 9%; padding-right: 9%">
+        <ul class="nav nav-tabs">
+            <li id="l0" role="presentation" class="active lang"><a href="javascript:;">All</a></li>
+            <li id="l" role="presentation" class="dropdown">
+                <a id="language" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Language <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li id="l1" class="lang"><a href="javascript:;">Java</a></li>
+                    <li id="l2" class="lang"><a href="javascript:;">Javascript</a></li>
+                    <li id="l3" class="lang"><a href="javascript:;">C</a></li>
+                    <li id="l4" class="lang"><a href="javascript:;">C#</a></li>
+                    <li id="l5" class="lang"><a href="javascript:;">C++</a></li>
+                    <li id="l6" class="lang"><a href="javascript:;">Python</a></li>
+                    <li id="l7" class="lang"><a href="javascript:;">HTML</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container text-center">
+    {% if t_p == 0 %}
+    {% else %}
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
+            {% else %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+    {% endif %}
+</div>
+<div class="container">
+    {% for i in results %}
+    <div class="container">
+        <a href="/detail/?id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}"><h6>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }} </h6></a>
+        <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}" ><code class="language-{{ i.get_fci_obj.get_language }}">{{ i.get_fci_obj.get_content }}</code></pre>
+        <hr>
+    </div>
+    {% endfor %}
+</div>
+<div class="container text-center">
+    <br><br>
+    {% if t_p == 0 %}
+        <br><br>
+        <p>Sorry, No results found!</p>
+    {% else %}
+        <a class="my-page" href="?p={{ pre }}&q={{ q }}">Previous</a>&nbsp;&nbsp;&nbsp;
+        {% for page in pages %}
+            {% if forloop.counter == p %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="page-active p-value">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% elif forloop.counter < p_p or forloop.counter > n_p%}
+
+            {% else %}
+            <a href="?p={{ forloop.counter }}&q={{ q }}" class="p-value my-page">{{ forloop.counter }}</a>&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        {% endfor %}
+        <a class="my-page" href="?p={{ next }}&q={{ q }}">Next</a>
+    {% endif %}
+<br><br><br><br>
+</div>
+<div class="navbar-fixed-bottom text-center bg-primary">
+    <p>
+        Final Year Project Group-CodEX Copyright ©2018️ <a href="mailto:7301121@qq.com">Design By Star</a>
+    </p>
+</div>
+</body>
+<script src="../static/search/js/vendor/jquery.min.js"></script>
+<script src="../static/search/js/vendor/video.js"></script>
+<script src="../static/search/js/flat-ui.min.js"></script>
+<script src="../static/search/js/application.js"></script>
+<script src="../static/js/prism.js"></script>
+<script type="text/javascript">
+    function Search(p,s,l) {
+        var url = ""
+    }
+    $(function () {
+        var p = '1';
+        $(".search").submit(function () {
+            var q = $(this).find("input[name='q']").val();
+            if (q == '') {
+                return false;
+            }
+        });
+        $(".pref").click(function () {
+            var ele = $(this);
+            var id = ele.attr("id");
+            var pref = '';
+            p = id;
+            pref = ele.children("a").html();
+            $("#pre-btn").html(pref);
+            $(".pref").removeClass("active");
+            ele.addClass("active");
+        });
+        var l = '';
+        $(".lang").click(function () {
+            var ele = $(this);
+            var id = ele.attr("id");
+            var lang = ele.children("a").html();
+            $(".lang").removeClass("active");
+            if (id!="l0"){
+                $("#l").addClass("active");
+                $("#"+id).addClass("active");
+                $("#language").html(lang+' <span class="caret"></span>');
+            }else{
+                $("#language").html('Language <span class="caret"></span>');
+                $("#l0").addClass("active");
+                $("#l").removeClass("active");
+            }
+        });
+    });
+</script>
+</html>
