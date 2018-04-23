@@ -13,7 +13,7 @@ class Results:
         self.numOfResults = num
 
     def getDocuments(self):
-        return self.documentList
+        return self.documents
 
     def setDocuments(self, documents):
         self.documents = documents

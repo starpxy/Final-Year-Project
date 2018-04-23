@@ -239,8 +239,8 @@ class ASTSearching(Singleton):
                 return None
             results.setDocumentList(disDocumentList)
 
-        print('==============')
-        results.toString()
+        # print('==============')
+        # results.toString()
         return results
 
 
