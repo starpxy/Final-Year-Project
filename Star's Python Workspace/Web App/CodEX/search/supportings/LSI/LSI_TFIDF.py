@@ -27,7 +27,7 @@ class LSI_TFIDF(Singleton):
     lw = lg.LogWriter()
     # get files
     path = configs['paths']['FCI_path']  # path name
-    index_path = configs['paths']['LSI_indexing_path']
+    pickle_path = configs['paths']['LSI_indexing_path']
     files = []
     documents = {}
     sortedDocuments = []
@@ -47,8 +47,8 @@ class LSI_TFIDF(Singleton):
     def __init__(self):
         self.vectorizer = CountVectorizer()
         # if there exist the pickle file, read it
-        if os.path.exists(self.index_path):
-            rfile = open(self.index_path, 'rb')
+        if os.path.exists(self.pickle_path):
+            rfile = open(self.pickle_path, 'rb')
             self.s = pickle.load(rfile)
             self.u = pickle.load(rfile)
             self.d = pickle.load(rfile)
@@ -125,7 +125,7 @@ class LSI_TFIDF(Singleton):
         self.u, self.s, self.d = svds(self.re, k=50, return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
-        with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+        with open(self.pickle_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.s, f, True)
             pickle.dump(self.u, f, True)
             pickle.dump(self.d, f, True)
@@ -208,6 +208,8 @@ class LSI_TFIDF(Singleton):
             for t in qWord:
                 if t in self.lineNo[k]:
                     hitLines = list(set(hitLines).union(set(self.lineNo[k][t])))
+            if len(hitLines) > 0:
+                print(i)
             matchingLines.append((k, hitLines))
             i += 1
 
