@@ -9,7 +9,7 @@ configs = {
     'paths': {
         'FCI_path': "/home/ubuntu/test_files/json_files/",
         "LSI_indexing_path":"/home/ubuntu/test_files/CodexIndex.pik",
-        "AST_indexing_path":"/home/ubuntu/test_files/CodexASTIndex.pik",
+        "AST_indexing_path":"/home/ubuntu/test_files/CodexIndexAST.pik",
         # 'FCI_path': "/Users/quanyewu/Desktop/files",
         # "LSI_indexing_path":"/Users/quanyewu/Desktop/files/CodexIndex.pik",
         # "AST_indexing_path":"/Users/quanyewu/Desktop/files/CodexASTIndex.pik",
