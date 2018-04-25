@@ -7,6 +7,7 @@ from search.supportings.AST import MyVisitor as mv
 import pickle
 import hashlib
 from search.supportings.AST import Results
+from CodEX.config import configs
 
 # singleton
 class Singleton(object):
@@ -21,7 +22,8 @@ class Singleton(object):
 class ASTSearching(Singleton):
     r = redis.Redis(host='localhost', port=6379,decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
-    path = "/Users/hester/Desktop/finalYearProject/files"  # path name
+    path = configs['paths']['FCI_path']  # path name
+    indexing_path = configs['paths']['AST_indexing_path']
     files = []
     documents = {}
     hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
@@ -40,8 +42,8 @@ class ASTSearching(Singleton):
 
 
     def __init__(self):
-        if os.path.exists("CodexIndexAST.pik"):
-            rfile = open('CodexIndexAST.pik', 'rb')
+        if os.path.exists(self.indexing_path):
+            rfile = open(self.indexing_path, 'rb')
             self.weights = pickle.load(rfile)
             self.hashTrees=pickle.load(rfile)
             self.lineNums=pickle.load(rfile)
