@@ -10,7 +10,7 @@ print(time_end-time_start)
 # lsi.indexing()
 
 time_start = time.clock()
-dList=lsi.getDocumentList("search", 1)
+dList=lsi.getDocumentList("sort", 1)
 time_end = time.clock()
 print("search:")
 print(time_end-time_start)

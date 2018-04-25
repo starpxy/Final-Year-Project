@@ -1,5 +1,6 @@
 from scipy.linalg import *
 from scipy.sparse.linalg import svds
+from scipy import spatial
 from scipy.sparse import dok_matrix
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
@@ -14,7 +15,8 @@ titles = [
     "Investing in Real Estate, 5th Edition",
     "Stock Investing For Dummies",
     "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss",
-    "The Neatest Little Guide to Stock Market Investing"
+    "The Neatest Little Guide to Stock Market Investing",
+    "Investing in Real Estate, 5th Edition"
 ]
 
 
@@ -30,9 +32,11 @@ def MatrixSearching(query):
     re = dok_matrix(re)
     u, s, d = svds(re, k=4, return_singular_vectors='u')
     # print(u)
-    # print(s)
-    # print(d)
-
+    print(s)
+    sDiagno = np.diag(np.array(s))
+    print(sDiagno)
+    sInv = np.linalg.inv(sDiagno)
+    print(sInv)
     qFreq = vectorizer.fit_transform([query]).toarray().T  # make the vectorizer fit the query
     qWord = vectorizer.get_feature_names()  # the unique terms after preprocessing
     qArr = np.zeros([1, len(word)])
@@ -45,19 +49,21 @@ def MatrixSearching(query):
             qArr[0][j] = qFreq[i] * idf[j]
     print(qArr)
     sDiagno = np.diag(np.array(s))
+    print(sDiagno)
     sInv = np.linalg.inv(sDiagno)
-    print('1')
     Dq = np.dot(qArr, u)
-    print('2')
     Dq = np.dot(Dq, sInv)
-    print('3')
     d = d.T
+    print(d)
     # print(Dq)
     # similarities from Dq=X.T * T * S-1.
     similarities = {}
     for i in range(len(d)):
-        # similarity[i]=spatial.distance.cosine(Dq, d[i])
-        similarities[titles[i]] = round((np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i]))))[0], 8)
+        # similarities[titles[i]] = round((np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i]))))[0], 8)
+        # similarity = round(spatial.distance.cosine(Dq, d[i]), 8)
+        similarity=((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+        if similarity > 0:
+            similarities[titles[i]] = similarity
     print(Dq)
     # matrixSimilarity=sorted(similarities.items(),key=lambda item:item[1],reverse=True)
     keys = sorted(similarities, key=similarities.get, reverse=True)[0: 50]

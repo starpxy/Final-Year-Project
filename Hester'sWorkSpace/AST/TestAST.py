@@ -10,12 +10,13 @@ time_end = time.clock()
 print("ini: ")
 print(time_end-time_start)
 
-# astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/1b1bf356cb26e4b5674b613969b56e49.json")
-# astSearch.ReadFiles()
 
 time_start = time.clock()
-astSearch.getResults(q,1)
+result=astSearch.getResults(q,1)
 time_end = time.clock()
-print("search: ")
+print("whole: ")
 print(time_end-time_start)
+result.toString()
 
+
+# astSearch.import_in("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/files/1b1bf356cb26e4b5674b613969b56e49.json")

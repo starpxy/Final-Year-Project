@@ -1,18 +1,18 @@
 import numpy as np
-from scipy.linalg import *
+# from scipy.linalg import *
 from scipy import spatial
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from scipy.sparse import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from Interfaces import FCIConverter as conv
 from Interfaces import LogWriter as lg
 import os
-import math
+# import math
 import redis
 from LSI import Results
 import pickle
-import time
+# import time
 from scipy.sparse.linalg import svds
 
 #singleton
@@ -52,10 +52,6 @@ class LSI_TFIDF(Singleton):
             self.s = pickle.load(rfile)
             self.u = pickle.load(rfile)
             self.d = pickle.load(rfile)
-            # self.X = pickle.load(rfile)
-            # self.word = pickle.load(rfile)
-            # self.transformer = pickle.load(rfile)
-            # self.files = pickle.load(rfile)
             self.tfidf = pickle.load(rfile)
             self.lineNo=pickle.load(rfile)
 
@@ -114,25 +110,19 @@ class LSI_TFIDF(Singleton):
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
         self.idf=self.tfidf.idf_
         self.word=self.word=list(self.tfidf.vocabulary_.keys())
-        # self.word=sorted(self.word,key=self.word.get)
-        # self.X = self.vectorizer.fit_transform(self.contents).toarray().T
 
         #compression matrix
         self.re=dok_matrix(self.re)
         # self.X=dok_matrix(self.X)
         print("start SVD")
         # svd decomposition
-        self.u, self.s, self.d = svds(self.re, k=50,return_singular_vectors='u')
+        self.u, self.s, self.d = svds(self.re, k=500,return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
         with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.s, f, True)
             pickle.dump(self.u, f, True)
             pickle.dump(self.d, f, True)
-            # pickle.dump(self.X, f, True)
-            # pickle.dump(self.word, f, True)
-            # pickle.dump(self.transformer, f, True)
-            # pickle.dump(self.files, f, True)
             pickle.dump(self.tfidf, f, True)
             pickle.dump(self.lineNo,f,True)
             print('finish')
@@ -143,7 +133,7 @@ class LSI_TFIDF(Singleton):
             # store the result of the query into redis
             l = self.MatrixSearching(query, self.s,self.u, self.d.T)
             if l is None:
-                return Results.Results(0, {})
+                return Results.Results(0, [])
             elif (page-1)*self.pageNum>=len(l):
                 self.lw.write_error_log('page number out of range')
                 return None
@@ -163,7 +153,7 @@ class LSI_TFIDF(Singleton):
                 return None
 
         results = Results.Results(length, l[(page - 1) * self.pageNum:page * self.pageNum])
-        self.r.expire(query, 30)  # expire after 30s
+        self.r.expire(query, 1)  # expire after 30s
         return results  # return results
 
 
@@ -196,24 +186,36 @@ class LSI_TFIDF(Singleton):
         Dq = np.dot(Dq, sInv)
         similarities = {}
         for i in range(len(d)):
-            # similarity[i]=spatial.distance.cosine(Dq, d[i])
-            similarity=round((np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i]))))[0],8)
-            if similarity>0:
-                similarities[self.files[i]] = similarity
+            # similarity=round(spatial.distance.cosine(Dq, d[i]),8)
+            similarity=((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+            # if similarity>0:
+            similarities[self.files[i]] = similarity
+                # print(similarities[self.files[i]])
 
         # print(Dq)
         keys=sorted(similarities, key=similarities.get, reverse=True)
-        matchingLines=[]#[(docName: [hit lines]) ]
+        matchingLines=[]#[(docName, [hit lines]) ]
+        hitDocs={}
         i=0
         for k in keys:
             hitLines=[]
             for t in qWord:
                 if t in self.lineNo[k]:
                     hitLines=list(set(hitLines).union(set(self.lineNo[k][t])))
-            if len(hitLines)>0:
+            lengthHit=len(hitLines)
+            if lengthHit>0:
                 print(i)
-            matchingLines.append((k,hitLines))
+                if lengthHit in hitDocs:
+                    hitDocs[lengthHit].append((k,hitLines))
+                else:
+                    hitDocs[lengthHit]=[(k,hitLines)]
+            else:
+                matchingLines.append((k,hitLines))
             i+=1
+
+        hits=sorted(hitDocs, reverse=False)
+        for h in hits:
+            matchingLines=hitDocs[h]+matchingLines
 
         # return machingLines
         return matchingLines

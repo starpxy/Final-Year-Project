@@ -1,8 +1,8 @@
 class Results:
     numOfResults = 0
-    documents = {} #{fileName:[maching line numbers]}
+    documents = [] #[(docName, [hit lines]) ]
 
-    def __init__(self, numOfResults=0, documents={}):
+    def __init__(self, numOfResults=0, documents=[]):
         self.numOfResults = numOfResults
         self.documents = documents
 

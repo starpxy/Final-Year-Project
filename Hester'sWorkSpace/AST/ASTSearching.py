@@ -8,6 +8,7 @@ from AST import MyVisitor as mv
 import pickle
 import hashlib
 from AST import Results
+import time
 
 # singleton
 class Singleton(object):
@@ -25,7 +26,9 @@ class ASTSearching(Singleton):
     path = "/Users/hester/Desktop/finalYearProject/files"  # path name
     files = []
     documents = {}
-    hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
+    # hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
+    #-----compare with hashTrees and choose the efficient one-------
+    hashDic={}#{fileName:{weight:[nodeHash]}
     visitor = mv.MyVisitor()
     weights={}#{weight:[fileNames] }
     lineNums={}#{fileName: {nodeHash: (startLine, endLine)}}
@@ -39,13 +42,12 @@ class ASTSearching(Singleton):
     matchingBlock={} # {docID: (the startline and endline of the matching blocks)}.
     blockWeights={} #{docID: (startline, endline): weight of the biggest matching block}
 
-
     def __init__(self):
         if os.path.exists("CodexIndexAST.pik"):
             rfile = open('CodexIndexAST.pik', 'rb')
             self.weights = pickle.load(rfile)
-            self.hashTrees=pickle.load(rfile)
             self.lineNums=pickle.load(rfile)
+            self.hashDic=pickle.load(rfile)
         else:
             self.ReadFiles()
 
@@ -53,6 +55,7 @@ class ASTSearching(Singleton):
     def ReadFiles(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
+        self.files.remove('.DS_Store')
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
@@ -64,10 +67,9 @@ class ASTSearching(Singleton):
                         continue
                     #remove strings and variable names
                     self.visitor.visit(root)
-                    hTree={}
                     self.lineNums[file]={}
-                    self.Indexing(root, self.lineNums[file], self.weights, file, hTree)
-                    self.hashTrees[file] =hTree
+                    self.hashDic[file]={}
+                    self.Indexing(root, self.lineNums[file], self.weights, file)
                 else:
                     self.documents.pop(file)
         self.files=list(self.documents.keys())
@@ -76,11 +78,11 @@ class ASTSearching(Singleton):
         # use pickle module to save data into file 'CodexIndexAST.pik'
         with open('CodexIndexAST.pik', 'wb')as f:
             pickle.dump(self.weights, f, True)
-            pickle.dump(self.hashTrees, f, True)
             pickle.dump(self.lineNums,f,True)
+            pickle.dump(self.hashDic,f,True)
 
     #turn every document root into index
-    def Indexing(self, node, lineNums, weights, fileName, hashTrees):
+    def Indexing(self, node, lineNums, weights, fileName):
         weight = 1
         min = 0
         max = 0
@@ -91,9 +93,8 @@ class ASTSearching(Singleton):
             m = hashlib.md5()
             m.update(ast.dump(node).encode("utf8"))
             nodeStr = m.hexdigest()
-            hashTrees[nodeStr] = {}
             for n, m in ast.iter_fields(node):
-                tuple = self.Indexing(m, lineNums, weights, fileName, hashTrees[nodeStr])
+                tuple = self.Indexing(m, lineNums, weights, fileName)
                 weight += tuple[0]
                 if tuple[1] > 0:
                     startLine = tuple[1]
@@ -118,18 +119,19 @@ class ASTSearching(Singleton):
                         weights[weight].append(fileName)
                 else:
                     weights[weight] = [fileName]
+                #put the hash node into hash dictionary
+                if weight in self.hashDic[fileName]:
+                    self.hashDic[fileName][weight].append(nodeStr)
+                else:
+                    self.hashDic[fileName][weight]=[nodeStr]
 
                 lineNums[nodeStr] = (min, max)
-                if len(hashTrees[nodeStr]) == 0:
-                    hashTrees[nodeStr] = None
-            else:
-                hashTrees.pop(nodeStr)
 
             return (weight, min, max)
 
         elif isinstance(node, list):
             for x in node:
-                tuple = self.Indexing(x, lineNums, weights, fileName, hashTrees)
+                tuple = self.Indexing(x, lineNums, weights, fileName)
                 weight += tuple[0]
                 if tuple[1] > 0:
                     startLine = tuple[1]
@@ -155,7 +157,11 @@ class ASTSearching(Singleton):
         if not self.r.exists(query):  # if the result is not in the redis
             # store the result of the query into redis
             matchingLines = {}  # {fileName:[(qStart,qEnd, fStart,fEnd)]}
+            time_start = time.clock()
             similarities = self.search(query, matchingLines)
+            time_end = time.clock()
+            print("searching: ")
+            print(time_end - time_start)
             if similarities==None:
                 self.lw.write_error_log('Pickle files not found!')
                 return None
@@ -325,10 +331,16 @@ class ASTSearching(Singleton):
             self.lw.write_error_log("syntax error in qeury! " )
             return 0
         self.visitor.visit(qNode)
+
         self.queryWeight(qNode,qLineNums,qTree)
+
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
-        self.similarities(qTree,self.hashTrees,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
+        time_start2 = time.clock()
+        self.similarities(qTree,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
+        time_end2 = time.clock()
+        print("similarity: ")
+        print(time_end2 - time_start2)
 
         #work out the global similarity
         for dic in self.blockWeights:
@@ -365,16 +377,15 @@ class ASTSearching(Singleton):
 
 
     # calculate the similarities between corpus and query
-    def similarities(self,qTree, hashTrees, weights,similarities,maxWeight, qLineNums, lineNums,matchingLines):
+    def similarities(self,qTree, weights,similarities,maxWeight, qLineNums, lineNums,matchingLines):
         if maxWeight is None:
             maxWeight=1
         for w in qTree:
             if isinstance(w,tuple):
                 find=False
-                if w[0] in list(weights.keys()):
+                if w[0] in weights:
                     for file in weights[w[0]]:
-                        v=self.dict_get(w[0], hashTrees[file],w[1],'Not Found', weights, file)
-                        if v != 'Not Found':
+                        if w[1] in self.hashDic[file][w[0]]:
                             find=True
                             qs=qLineNums[w[1]][0]
                             qe=qLineNums[w[1]][1]
@@ -429,10 +440,9 @@ class ASTSearching(Singleton):
                                     break
                             if not forwMerge and not BackMerge:
                                 self.blockWeights[file][(qs,qe)]=w[0]
-
                 if not find and qTree[w] is not None:
                     if len(qTree[w])>0:
-                        self.similarities(qTree[w],hashTrees,weights,similarities,maxWeight,qLineNums, lineNums,matchingLines)
+                        self.similarities(qTree[w],weights,similarities,maxWeight,qLineNums, lineNums,matchingLines)
 
 
     #find a key in a nested dictionary
