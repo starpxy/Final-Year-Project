@@ -29,6 +29,7 @@ class LSI_TFIDF(Singleton):
     lw = lg.LogWriter()
     # get files
     path = "/Users/hester/Desktop/finalYearProject/files"  # path name
+    index_path='/Users/hester/Desktop/finalYearProject/CodexIndex.pik'
     files = []
     documents = {}
     sortedDocuments = []
@@ -44,11 +45,12 @@ class LSI_TFIDF(Singleton):
     d=None
     idf=None
     lineNo={}
+    expireTime=30
     def __init__(self):
         self.vectorizer = CountVectorizer()
         #if there exist the pickle file, read it
-        if os.path.exists('CodexIndex.pik'):
-            rfile=open('CodexIndex.pik', 'rb')
+        if os.path.exists(self.index_path):
+            rfile=open(self.index_path, 'rb')
             self.s = pickle.load(rfile)
             self.u = pickle.load(rfile)
             self.d = pickle.load(rfile)
@@ -119,7 +121,7 @@ class LSI_TFIDF(Singleton):
         self.u, self.s, self.d = svds(self.re, k=500,return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
-        with open('CodexIndex.pik', 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+        with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.s, f, True)
             pickle.dump(self.u, f, True)
             pickle.dump(self.d, f, True)
@@ -153,7 +155,7 @@ class LSI_TFIDF(Singleton):
                 return None
 
         results = Results.Results(length, l[(page - 1) * self.pageNum:page * self.pageNum])
-        self.r.expire(query, 1)  # expire after 30s
+        self.r.expire(query, self.expireTime)  # expire after 30s
         return results  # return results
 
 

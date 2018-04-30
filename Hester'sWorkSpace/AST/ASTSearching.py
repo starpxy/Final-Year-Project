@@ -24,6 +24,7 @@ class ASTSearching(Singleton):
     r = redis.Redis(host='localhost', port=6379,decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     path = "/Users/hester/Desktop/finalYearProject/files"  # path name
+    index_path='/Users/hester/Desktop/finalYearProject/CodexIndexAST.pik'
     files = []
     documents = {}
     # hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
@@ -41,10 +42,10 @@ class ASTSearching(Singleton):
     wholeSimilarity=0
     matchingBlock={} # {docID: (the startline and endline of the matching blocks)}.
     blockWeights={} #{docID: (startline, endline): weight of the biggest matching block}
-
+    expireTime=30
     def __init__(self):
-        if os.path.exists("CodexIndexAST.pik"):
-            rfile = open('CodexIndexAST.pik', 'rb')
+        if os.path.exists(self.index_path):
+            rfile = open(self.index_path, 'rb')
             self.weights = pickle.load(rfile)
             self.lineNums=pickle.load(rfile)
             self.hashDic=pickle.load(rfile)
@@ -76,7 +77,7 @@ class ASTSearching(Singleton):
 
         self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
         # use pickle module to save data into file 'CodexIndexAST.pik'
-        with open('CodexIndexAST.pik', 'wb')as f:
+        with open(self.index_path, 'wb')as f:
             pickle.dump(self.weights, f, True)
             pickle.dump(self.lineNums,f,True)
             pickle.dump(self.hashDic,f,True)
@@ -212,7 +213,7 @@ class ASTSearching(Singleton):
                 matchingBlocks=eval(self.r.lindex(query,4))
                 componentDocuments=eval(self.r.lindex(query,5))
 
-        self.r.expire(query, 30)  # expire after 30s
+        self.r.expire(query, self.expireTime)  # expire after 30s
 
         #encalsulate results into the object:Result
         documentListLength=len(documentList)
