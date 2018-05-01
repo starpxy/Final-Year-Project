@@ -2,6 +2,7 @@
 # author:Star
 # time: 21/04/2018
 import os
+from CodexMRS.vendor.LogWriter import LogWriter
 from CodexMRS.base.network import Server
 
 
@@ -40,11 +41,12 @@ class Master:
         # operation 1 is to allocate blocks and
         operate_type = message['operate_type']
         if operate_type == 1:
-
-            print('1')
+            LogWriter().write_info_log("execute operation 1: allocate blocks")
+            print("execute operation 1: allocate blocks")
         # operation 2 is to
         elif operate_type == 2:
-            print('2')
+            LogWriter().write_info_log("execute operation 2: allocate blocks")
+            print("execute operation 2: allocate blocks")
 
     def start_master(self):
         """
@@ -57,4 +59,4 @@ class Master:
 
 
 if __name__ == '__main__':
-    Master("/Users/quanyewu/Desktop/files").init_blocks()
+    Master("/Users/quanyewu/Desktop/files").start_master()
