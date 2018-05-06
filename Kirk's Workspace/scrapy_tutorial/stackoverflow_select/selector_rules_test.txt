@@ -1,0 +1,18 @@
+//*[@id="question-header"]/h1/a
+
+In [9]: response.xpath('//*[@id="question-header"]/h1/a/text()')
+Out[9]: [<Selector xpath='//*[@id="question-header"]/h1/a/text()' data='Asking the user for input until they giv'>]
+
+In [10]: response.xpath('//*[@id="question-header"]/h1/a/text()').extract()
+Out[10]: ['Asking the user for input until they give a valid response']
+
+In [11]: response.xpath('//*[@id="question-header"]/h1/a/@href').extract()
+Out[11]: ['/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response']
+
+//*[@id="answer-23294659"]/div/div[2]/div[1]/pre[1]/code
+
+#question > div.post-layout > div.postcell.post-layout--right > div.post-text > pre.lang-py.prettyprint.prettyprinted > code
+
+//*[@id="answer-23294659"]
+
+//*[@id="answer-23294659"]/div/div[2]/div[1]/pre[1]/code
