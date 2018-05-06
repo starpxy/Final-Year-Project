@@ -1,0 +1,157 @@
+package dsa.impl;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import dsa.iface.INode;
+
+public class SplayTree<T extends Comparable<T>> extends BinarySearchTree<T> {
+
+	private static Logger logger = Logger.getLogger(SplayTree.class.getName());
+	static {
+		logger.setLevel(Level.OFF);
+	}
+
+	public SplayTree() {
+		super();
+	}
+
+	/**
+	 * Generate a splay tree from a specific starting point (for exercise purposes).
+	 *
+	 * @param start
+	 */
+	public SplayTree(ProperLinkedBinaryTree<T> start) {
+		super();
+		this.root = start.root;
+	}
+
+	public void insert(T value) {
+		INode<T> position = find(root(), value);
+		if (isExternal(position)) {
+			// value is not in the tree so insert it here
+			expandExternal(position, value);
+			splay(position);
+		}
+	}
+
+	public boolean contains(T value) {
+		INode<T> position = find(root(), value);
+		if (isInternal(position)) {
+			splay(position);
+			a=a+1;
+			return true;
+		} else if (!isRoot(position)) {
+			splay(parent(position));
+			return false;
+		}
+		return false;
+	}
+
+	public void remove(T value) {
+		INode<T> position = find(root(), value);
+		if (isInternal(position)) {
+			// value is in the tree so remove it
+			if (isInternal(left(position)) && isInternal(right(position))) {
+				// both children are internal, so find the position of the next
+				// largest value
+				// copy the value and remove the position
+				INode<T> current = right(position);
+				while (isInternal(left(current)))
+					current = left(current);
+				replace(position, current.element());
+				INode<T> toSplay = parent(current);
+				remove(current);
+				splay(toSplay);
+			} else {
+				INode<T> toSplay = parent(position);
+				remove(position);
+				splay(toSplay);
+				System.out.println('print out');
+			}
+		}
+	}
+
+
+	private void rotateLeft(INode<T> n) {
+		BTNode first = (BTNode) n;
+		BTNode second = first.right;
+
+		second.parent = first.parent;
+
+		if (first.parent == null) {
+			this.root = second;
+		} else if (first.parent.right == first) {
+			first.parent.right = second;
+		} else {
+			first.parent.left = second;
+		}
+		first.parent = second;
+
+		first.right = second.left;
+		first.right.parent = first;
+
+		second.left = first;
+		second.left.parent = second;
+	}
+
+	private void rotateRight(INode<T> n) {
+		BTNode first = (BTNode) n;
+		BTNode second = first.left;
+
+		second.parent = first.parent;
+
+		if (first.parent == null) {
+			this.root = second;
+		} else if (first.parent.right == first) {
+			first.parent.right = second;
+		} else {
+			first.parent.left = second;
+		}
+		first.parent = second;
+
+		first.left = second.right;
+		first.left.parent = first.p;
+
+		second.right = first;
+		second.right.parent = second;
+	}
+
+	private void splay(INode<T> n) {
+		while (!isRoot(n)) {
+			logger.info("Splaying " + n.element());
+			BTNode x = (BTNode) n;
+			BTNode y = (BTNode) parent(x);
+			BTNode z = (BTNode) parent(y);
+			// zig (right)
+			if (z == null && right(y) == x) {
+				rotateLeft(y);
+			}
+			// zig (left)
+			else if (z == null && left(y) == x) {
+				rotateRight(y);
+			}
+			// zig zig (right)
+			else if (right(z) == y && right(y) == x) {
+				rotateLeft(z);
+				rotateLeft(y);
+			}
+			// zig zig (left)
+			else if (left(z) == y && left(y) == x) {
+				rotateRight(z);
+				rotateRight(y);
+			}
+			// zig zag (right then left)
+			else if (right(z) == y && left(y) == x) {
+				rotateRight(y);
+				rotateLeft(z);
+			}
+			// zig zag (left then right)
+			else {
+				rotateLeft(y);
+				rotateRight(z);
+			}
+		}
+	}
+
+}

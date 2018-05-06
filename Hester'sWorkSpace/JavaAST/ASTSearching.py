@@ -14,5 +14,6 @@ tree=javalang.parse.parse(q1)
 
 structure=list(tree.__iter__())[:-1][:-1]
 print(structure)
-for tuple in structure:
-    print(tuple)
+print(tree.position)
+# for tuple in structure:
+#     print(tuple)

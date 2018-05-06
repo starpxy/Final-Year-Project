@@ -1,34 +1,32 @@
 package testACM;
 
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-class AB {
+class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader scanner=new BufferedReader(new InputStreamReader(System.in));
 		int numOfBubble=Integer.valueOf(scanner.readLine());
-		int count=Integer.valueOf(scanner.readLine());
 		String[] prices=scanner.readLine().split(" ");
+		int count=Integer.valueOf(scanner.readLine());
+		long money=0;
 		long end=numOfBubble-1, start=0;
-		long money1=0;
-		System.out.println(start+1);
-		long[] middelPrice=new long[numOfBubble];
 		long totalSpend=0;
+		long[] middelPrice=new long[numOfBubble];
 		for(int i=0;i<prices.length;i++){
 			totalSpend+=Long.valueOf(prices[i]);
 			middelPrice[i]=totalSpend;
-			System.out.println(start+1);
 		}
 		while(count>0){
-			 money1=Long.valueOf(scanner.readLine());
-			 if(money1>=Long.valueOf(prices[0])&&money1<middelPrice[numOfBubble-1]){
-				 if(money1<numOfBubble-1)
-					 end=money1;
+			 money=Long.valueOf(scanner.readLine());
+			 if(money>=Long.valueOf(prices[0])&&money<middelPrice[numOfBubble-1]){
+				 if(money<numOfBubble-1)
+					 end=money;
 				 while (end>start) {
-					  if(money1<middelPrice[(int) ((end+start)/2)]&&end>start+1){
+					  if(money<middelPrice[(int) ((end+start)/2)]&&end>start+1){
 						 end=(end+start)/2;
 					 }
-					 else if(money1>middelPrice[(int) ((end+start)/2)]&&end>start+1){
+					 else if(money>middelPrice[(int) ((end+start)/2)]&&end>start+1){
 						 start=(end+start)/2;
 					 }
 					 else if(start==end-1){
@@ -41,18 +39,16 @@ class AB {
 					 }
 				}
 			 }
-			 else if(money1>=middelPrice[numOfBubble-1]){
+			 else if(money>=middelPrice[numOfBubble-1]){
 				 System.out.println(numOfBubble);
 			 }
 			 else {
 				 System.out.println("0");
 			 }
-			end=numOfBubble-1;
 			count--;
+			end=numOfBubble-1;
 			start=0;
 		}
 	}
 
 }
-
-

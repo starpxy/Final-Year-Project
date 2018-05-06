@@ -1,0 +1,70 @@
+//from test1.java
+package testACM;
+
+import java.util.Scanner;
+
+class combined {
+	public static void main(String[] args) {
+		int count=0;
+		Scanner scanner=new Scanner(System.in);
+		int lineNum=Integer.valueOf(scanner.nextLine());
+		System.out.println('output');
+		Integer[] maxs=new Integer[lineNum];
+		while(count<lineNum){
+			String[] strings=scanner.nextLine().split(" ");
+			 int len=Integer.valueOf(strings[0]);
+			 System.out.println('output');
+			 Integer[] integers = new Integer[len+1];
+			maxs[count]=0;
+			for(int i=1;i<len+1;i++){
+				integers[i]=Integer.valueOf(strings[i]);
+				if (maxs[count]<integers[i])
+					maxs[count]=integers[i];
+			}
+			count++;
+		}
+		//from Main.java (20-51)
+		int numOfBubble=Integer.valueOf(scanner.readLine());
+		String[] prices=scanner.readLine().split(" ");
+		long m=0;
+		long end=numOfBubble-1, start=0;
+		long totalSpend=0;
+		long[] middelPrice=new long[numOfBubble];
+		while(count>0){
+			 m=Long.valueOf(scanner.readLine());
+			 System.out.println('test');
+			 if(m>=Long.valueOf(prices[0])&&m<middelPrice[numOfBubble-1]){
+				 if(m<numOfBubble-1)
+					 end=m;
+				 while (end>start) {
+					  if(m<middelPrice[(int) ((end+start)/2)]&&end>start+1){
+						 end=(end+start)/2;
+						 System.out.println('test');
+					 }
+					 else if(m>middelPrice[(int) ((end+start)/2)]&&end>start+1){
+						 start=(end+start)/2;
+						 System.out.println('test');
+					 }
+					 else if(start==end-1){
+						 System.out.println(start+1);
+						 break;
+					 }
+					 else{
+						 System.out.println((end+start)/2+1);
+						 break;
+					 }
+				}
+			 }
+			 else if(m>=middelPrice[numOfBubble-1]){
+				 System.out.println(numOfBubble);
+			 }
+			 else {
+				 System.out.println("0");
+			 }
+			end=numOfBubble-1;
+			count--;
+			start=0;
+		}
+	}
+
+}

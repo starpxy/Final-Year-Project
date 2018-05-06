@@ -12,19 +12,18 @@ import os
 import redis
 from LSI import Results
 import pickle
-# import time
+import time
 from scipy.sparse.linalg import svds
 
 #singleton
-class Singleton(object):
-    _instance = None
-    def __new__(cls, *args, **kw):
-        if not cls._instance:
-            cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
-        return cls._instance
+# class Singleton(object):
+#     _instance = None
+#     def __new__(cls, *args, **kw):
+#         if not cls._instance:
+#             cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
+#         return cls._instance
 
-
-class LSI_TFIDF(Singleton):
+class LSI_TFIDF():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     # get files
@@ -45,24 +44,25 @@ class LSI_TFIDF(Singleton):
     d=None
     idf=None
     lineNo={}
-    expireTime=30
-    def __init__(self):
-        self.vectorizer = CountVectorizer()
-        #if there exist the pickle file, read it
-        if os.path.exists(self.index_path):
-            rfile=open(self.index_path, 'rb')
-            self.s = pickle.load(rfile)
-            self.u = pickle.load(rfile)
-            self.d = pickle.load(rfile)
-            self.tfidf = pickle.load(rfile)
-            self.lineNo=pickle.load(rfile)
-
-            self.idf = self.tfidf.idf_
-            self.word=list(self.tfidf.vocabulary_.keys())
-            self.files=list(self.lineNo.keys())
-
-        else:#if there is no such pickle file, indexing
-            self.indexing()
+    expireTime=300
+    end_time=time.clock()
+    # def __init__(self):
+        # self.vectorizer = CountVectorizer()
+        # #if there exist the pickle file, read it
+        # if os.path.exists(self.index_path):
+        #     rfile=open(self.index_path, 'rb')
+        #     self.s = pickle.load(rfile)
+        #     self.u = pickle.load(rfile)
+        #     self.d = pickle.load(rfile)
+        #     self.tfidf = pickle.load(rfile)
+        #     self.lineNo=pickle.load(rfile)
+        #
+        #     self.idf = self.tfidf.idf_
+        #     self.word=list(self.tfidf.vocabulary_.keys())
+        #     self.files=list(self.lineNo.keys())
+        #
+        # else:#if there is no such pickle file, indexing
+        #     self.indexing()
 
 
         # indexing
@@ -132,6 +132,23 @@ class LSI_TFIDF(Singleton):
     def getDocumentList(self, query, page):
         # check if the result of this query already exist in the redis
         if not self.r.exists(query):  # if the result is not in the redis
+            self.vectorizer = CountVectorizer()
+            # if there exist the pickle file, read it
+            if os.path.exists(self.index_path):
+                rfile = open(self.index_path, 'rb')
+                self.s = pickle.load(rfile)
+                self.u = pickle.load(rfile)
+                self.d = pickle.load(rfile)
+                self.tfidf = pickle.load(rfile)
+                self.lineNo = pickle.load(rfile)
+
+                self.idf = self.tfidf.idf_
+                self.word = list(self.tfidf.vocabulary_.keys())
+                self.files = list(self.lineNo.keys())
+
+            else:  # if there is no such pickle file, indexing
+                self.indexing()
+
             # store the result of the query into redis
             l = self.MatrixSearching(query, self.s,self.u, self.d.T)
             if l is None:
@@ -206,7 +223,6 @@ class LSI_TFIDF(Singleton):
                     hitLines=list(set(hitLines).union(set(self.lineNo[k][t])))
             lengthHit=len(hitLines)
             if lengthHit>0:
-                print(i)
                 if lengthHit in hitDocs:
                     hitDocs[lengthHit].append((k,hitLines))
                 else:

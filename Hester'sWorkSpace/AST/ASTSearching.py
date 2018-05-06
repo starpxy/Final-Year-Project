@@ -114,6 +114,7 @@ class ASTSearching(Singleton):
                 if min == 0 and max == 0:
                     min = lineNo
                     max = lineNo
+
             if weight >= self.weightThreshold:
                 if weight in weights:
                     if fileName not in weights[weight]:
@@ -150,6 +151,7 @@ class ASTSearching(Singleton):
             return (weight, min, max)
         return (weight, min, max)
 
+
     #interface to front end. Input query, return a Result instance
     def getResults(self,query,page):
         globalSimilarity=0
@@ -172,11 +174,11 @@ class ASTSearching(Singleton):
             globalSimilarity=self.wholeSimilarity
             matchingBlocks=self.matchingBlock
             documentList=sorted(similarities,key=similarities.get,reverse=True)
-            plagiarismList=[]
+            plagiarismList=[] #[sorted plagiarised files]
             i=0
             for d in documentList:
                 if similarities[d]>self.matchingThreshold:
-                    plagiarismList.append(similarities[d])
+                    plagiarismList.append(d)
                     i+=1
                 else:
                     break
