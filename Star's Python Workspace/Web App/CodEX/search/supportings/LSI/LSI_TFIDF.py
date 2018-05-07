@@ -1,33 +1,38 @@
 import numpy as np
+# from scipy.linalg import *
+from scipy import spatial
+# import matplotlib.pyplot as plt
 from scipy.sparse import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from search.supportings import FCIConverter as conv
 from search.supportings import LogWriter as lg
 import os
+# import math
 import redis
 from search.supportings.LSI import Results
 import pickle
-from scipy.sparse.linalg import svds
+import time
 from CodEX.config import configs
+from scipy.sparse.linalg import svds
 
 
 # singleton
-class Singleton(object):
-    _instance = None
+# class Singleton(object):
+#     _instance = None
+#
+#     def __new__(cls, *args, **kw):
+#         if not cls._instance:
+#             cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
+#         return cls._instance
 
-    def __new__(cls, *args, **kw):
-        if not cls._instance:
-            cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
-        return cls._instance
 
-
-class LSI_TFIDF(Singleton):
+class LSI_TFIDF():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     # get files
     path = configs['paths']['FCI_path']  # path name
-    pickle_path = configs['paths']['LSI_indexing_path']
+    index_path = configs['paths']['LSI_indexing_path']
     files = []
     documents = {}
     sortedDocuments = []
@@ -43,35 +48,13 @@ class LSI_TFIDF(Singleton):
     d = None
     idf = None
     lineNo = {}
+    expireTime = 300
 
-    def __init__(self):
-        self.vectorizer = CountVectorizer()
-        # if there exist the pickle file, read it
-        if os.path.exists(self.pickle_path):
-            rfile = open(self.pickle_path, 'rb')
-            self.s = pickle.load(rfile)
-            self.u = pickle.load(rfile)
-            self.d = pickle.load(rfile)
-            # self.X = pickle.load(rfile)
-            # self.word = pickle.load(rfile)
-            # self.transformer = pickle.load(rfile)
-            # self.files = pickle.load(rfile)
-            self.tfidf = pickle.load(rfile)
-            self.lineNo = pickle.load(rfile)
-
-            self.idf = self.tfidf.idf_
-            self.word = list(self.tfidf.vocabulary_.keys())
-            self.files = list(self.lineNo.keys())
-
-        else:  # if there is no such pickle file, indexing
-            self.indexing()
-
-
-            # indexing
 
     def indexing(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
+        self.files.remove('.DS_Store')
         fs = len(self.files)
         self.tfidf = TfidfVectorizer()
         i = 0
@@ -114,25 +97,19 @@ class LSI_TFIDF(Singleton):
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
         self.idf = self.tfidf.idf_
         self.word = self.word = list(self.tfidf.vocabulary_.keys())
-        # self.word=sorted(self.word,key=self.word.get)
-        # self.X = self.vectorizer.fit_transform(self.contents).toarray().T
 
         # compression matrix
         self.re = dok_matrix(self.re)
         # self.X=dok_matrix(self.X)
         print("start SVD")
         # svd decomposition
-        self.u, self.s, self.d = svds(self.re, k=50, return_singular_vectors='u')
+        self.u, self.s, self.d = svds(self.re, k=500, return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
-        with open(self.pickle_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
+        with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
             pickle.dump(self.s, f, True)
             pickle.dump(self.u, f, True)
             pickle.dump(self.d, f, True)
-            # pickle.dump(self.X, f, True)
-            # pickle.dump(self.word, f, True)
-            # pickle.dump(self.transformer, f, True)
-            # pickle.dump(self.files, f, True)
             pickle.dump(self.tfidf, f, True)
             pickle.dump(self.lineNo, f, True)
             print('finish')
@@ -140,10 +117,27 @@ class LSI_TFIDF(Singleton):
     def getDocumentList(self, query, page):
         # check if the result of this query already exist in the redis
         if not self.r.exists(query):  # if the result is not in the redis
+            self.vectorizer = CountVectorizer()
+            #read pickle
+            if os.path.exists(self.index_path):
+                rfile = open(self.index_path, 'rb')
+                self.s = pickle.load(rfile)
+                self.u = pickle.load(rfile)
+                self.d = pickle.load(rfile)
+                self.tfidf = pickle.load(rfile)
+                self.lineNo = pickle.load(rfile)
+
+                self.idf = self.tfidf.idf_
+                self.word = list(self.tfidf.vocabulary_.keys())
+                self.files = list(self.lineNo.keys())
+
+            else:  # if there is no such pickle file, indexing
+                self.indexing()
+
             # store the result of the query into redis
             l = self.MatrixSearching(query, self.s, self.u, self.d.T)
             if l is None:
-                return Results.Results(0, {})
+                return Results.Results(0, [])
             elif (page - 1) * self.pageNum >= len(l):
                 self.lw.write_error_log('page number out of range')
                 return None
@@ -163,7 +157,7 @@ class LSI_TFIDF(Singleton):
                 return None
 
         results = Results.Results(length, l[(page - 1) * self.pageNum:page * self.pageNum])
-        self.r.expire(query, 30)  # expire after 30s
+        self.r.expire(query, self.expireTime)  # expire after 30s
         return results  # return results
 
     def MatrixSearching(self, query, s, u, d):
@@ -194,24 +188,36 @@ class LSI_TFIDF(Singleton):
         Dq = np.dot(Dq, sInv)
         similarities = {}
         for i in range(len(d)):
-            # similarity[i]=spatial.distance.cosine(Dq, d[i])
-            similarity = round((np.dot(Dq, d[i]) / (np.linalg.norm(Dq) * (np.linalg.norm(d[i]))))[0], 8)
-            if similarity > 0:
-                similarities[self.files[i]] = similarity
+            # similarity=round(spatial.distance.cosine(Dq, d[i]),8)
+            similarity = ((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+            # if similarity>0:
+            similarities[self.files[i]] = similarity
+            # print(similarities[self.files[i]])
 
         # print(Dq)
         keys = sorted(similarities, key=similarities.get, reverse=True)
-        matchingLines = []  # [(docName: [hit lines]) ]
+        matchingLines = []  # [(docName, [hit lines]) ]
+        hitDocs = {}
         i = 0
         for k in keys:
             hitLines = []
             for t in qWord:
                 if t in self.lineNo[k]:
                     hitLines = list(set(hitLines).union(set(self.lineNo[k][t])))
-            if len(hitLines) > 0:
-                print(i)
-            matchingLines.append((k, hitLines))
+            lengthHit = len(hitLines)
+            if lengthHit > 0:
+                # print(i)
+                if lengthHit in hitDocs:
+                    hitDocs[lengthHit].append((k, hitLines))
+                else:
+                    hitDocs[lengthHit] = [(k, hitLines)]
+            else:
+                matchingLines.append((k, hitLines))
             i += 1
+
+        hits = sorted(hitDocs, reverse=False)
+        for h in hits:
+            matchingLines = hitDocs[h] + matchingLines
 
         # return machingLines
         return matchingLines

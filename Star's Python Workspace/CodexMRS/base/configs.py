@@ -1,0 +1,3 @@
+config = {
+    'socket_path':'.'
+}

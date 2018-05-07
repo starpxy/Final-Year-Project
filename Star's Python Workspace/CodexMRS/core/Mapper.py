@@ -11,6 +11,3 @@ class Mapper:
     __alias = None
     __client = None
     __server = None
-
-    def __init__(self):
-        pass
