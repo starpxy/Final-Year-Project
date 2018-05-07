@@ -10,6 +10,7 @@ import os
 import nltk
 import sys
 import socket
+import csv
 
 from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
@@ -22,8 +23,11 @@ class CreateJsonFiles:
     def __init__(self):
         self.clean_projects_path = None
         self.unclean_projects_path = None
-        self.json_files_path = None
-        self.master_json_path = None
+        self.so_questions = None
+        # self.master_json_path = None
+        self.python_json_path = None
+        self.java_json_path = None
+        self.so_json_path = None
 
         self.json_data = None
         # Dictionary with project names and containing directory as keys and their corresponding json data as values
@@ -42,8 +46,9 @@ class CreateJsonFiles:
 
         for project_name in self.project_info:
             # If project_name is not in clean:
-            self.json_data = self.project_info[project_name]
-            self.find_all_source_files(self.clean_projects_path + project_name)
+            if self.not_cleaned(project_name):
+                self.json_data = self.project_info[project_name]
+                self.find_all_source_files(self.clean_projects_path + project_name)
 
         self.close_connection()
 
@@ -62,10 +67,29 @@ class CreateJsonFiles:
 
         self.clean_projects_path = file_paths["Linux"]["clean_dir"]
         self.unclean_projects_path = file_paths["Linux"]["unclean_dir"]
-        self.json_files_path = file_paths["Linux"]["json_dir"]
+        self.so_questions = file_paths["Linux"]["so_questions"]
+        # self.master_json_path = file_paths["Linux"]["master_json_dir"]
+        self.python_json_path = file_paths["Linux"]["python_json_dir"]
+        self.java_json_path = file_paths["Linux"]["java_json_dir"]
+        self.so_json_path = file_paths["Linux"]["so_json_dir"]
 
-        if self.connection is not None:
-            self.master_json_path = file_paths["Linux"]["master_json_files"]
+        # if self.connection is not None:
+            # self.master_json_path = file_paths["Linux"]["master_json_files"]
+
+    def not_cleaned(self, project_name):
+        for directory in 
+
+    # Goes through each line in the StackOverflow text files
+    # Saves each question and corresponding answer to an FCI object
+    def get_info_from_so_files(self):
+        for file_name in os.listdir(self.so_questions):
+            file_path = self.so_questions + "\\" + file_name
+            with open(file_path, 'r') as tsv:
+                for line in csv.reader(tsv, dialect="excel-tab"):
+                    fci_object = FormattedCodeInterface()
+                    fci_object.set_content(line[2])
+                    fci_object.set_code(line[3])
+                    self.save_fci_object_to_json_files(fci_object, self.so_json_path)
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
@@ -85,18 +109,21 @@ class CreateJsonFiles:
     # Goes through all files in a cleaned project and creates an fci object for each
     # Initially the path to a project is passed and the function recursively goes through all files in the project
     def find_all_source_files(self, parent_directory):
-        curr_file = ''
+        curr_file_path = ''
         try:
             for file_name in os.listdir(parent_directory):
-                curr_file = file_name
                 file_path = parent_directory + '/' + file_name
-                if file_name.endswith(".py"):
+                curr_file_path = file_path
+                # if file_name.endswith(".py") and is not in json_files:
+                if file_name.endswith(".py") or file_name.endswith(".java"):
                     self.save_file_details_to_fci_object(file_path, file_name)
                 elif os.path.isdir(file_path):
                     self.find_all_source_files(file_path)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
-            self.log_writer.write_error_log("At line %d: %s in %s" % (exc_tb.tb_lineno, str(e), curr_file))
+            self.log_writer.write_error_log("At line %d: %s in %s" % (exc_tb.tb_lineno, str(e), curr_file_path))
+
+        self.log_writer.write_info_log("All json files created.")
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):
@@ -107,7 +134,11 @@ class CreateJsonFiles:
         self.set_content(file_path, fci_object)
         self.set_project_details(fci_object)
 
-        self.save_fci_objects_to_json_files(fci_object, file_name)
+        if file_path.endswith(".py"):
+            self.save_fci_object_to_json_files(fci_object, self.python_json_path, file_name)
+        else:
+            self.save_fci_object_to_json_files(fci_object, self.java_json_path, file_name)
+
         self.log_writer.write_info_log(file_name + " saved to server at " + file_path)
 
     # Save the content, code, and comments of an individual file to an fci object
@@ -115,7 +146,13 @@ class CreateJsonFiles:
         file = open(file_path)
         content = ''
         comments_list = []
-        python_comments = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '(?<!(\"|\'))#.*(?=\n)']
+        comment_patterns = []
+
+        if file_path.endswith(".py"):
+            comment_patterns = ['\"\"\"((.|\n)*)\"\"\"', '\'\'\'((.|\n)*)\'\'\'', '(?<!(\"|\'))#.*(?=\n)']
+        else:
+            comment_patterns = ['//.*|(\"(?:\\\\[^\"]|\\\\\"|.)*?\")|(?s)/\\*.*?\\*/']
+            # (?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)
 
         # Content
         for line in file.readlines():
@@ -124,7 +161,7 @@ class CreateJsonFiles:
 
         # Code
         code = content
-        for comment_pattern in python_comments:
+        for comment_pattern in comment_patterns:
             for match in re.finditer(comment_pattern, code):
                 comments_list.append(self.format_comments(match.group(0)))
                 code = re.sub(match.group(0), '', code)
@@ -159,11 +196,12 @@ class CreateJsonFiles:
         fci_object.set_url(self.json_data["html_url"])
         fci_object.set_wiki(self.json_data["has_wiki"])
 
-    # Converts fci objects to json files and saves them to the server
+    # Converts fci object to json file and saves it to the server
     # Also saves the json files to the master server if on a slave
-    def save_fci_objects_to_json_files(self, fci_object, file_name):
-        FCIConverter.to_local_json_file(self.json_files_path, fci_object)
+    def save_fci_object_to_json_files(self, fci_object, json_file_path, file_name = "StackOverflow question"):
+        FCIConverter.to_local_json_file(json_file_path, fci_object)
 
         if self.connection is not None:
-            FCIConverter.to_master_json_file(self.master_json_path, fci_object, self.connection)
+            # FCIConverter.to_master_json_file(self.master_json_path, fci_object, self.connection)
+            FCIConverter.to_master_json_file(json_file_path, fci_object, self.connection)
             self.log_writer.write_info_log(file_name + " saved to master server")
