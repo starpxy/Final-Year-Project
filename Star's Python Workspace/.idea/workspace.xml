@@ -13,21 +13,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Star's Python Workspace$network.coverage" NAME="network Coverage Results" MODIFIED="1525145569598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
+    <SUITE FILE_PATH="coverage/Star's Python Workspace$network.coverage" NAME="network Coverage Results" MODIFIED="1525692293796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Main_Server.coverage" NAME="Main_Server Coverage Results" MODIFIED="1521795685409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DF/core" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1521898555071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DF" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Server.coverage" NAME="Server Coverage Results" MODIFIED="1521779393770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Distributed Framework" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$FCIConverter.coverage" NAME="FCIConverter Coverage Results" MODIFIED="1520415194496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Learn2.coverage" NAME="Learn2 Coverage Results" MODIFIED="1521976634484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CNN" />
+    <SUITE FILE_PATH="coverage/Star's Python Workspace$forward_tunnel.coverage" NAME="forward-tunnel Coverage Results" MODIFIED="1525692276275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$MNIST.coverage" NAME="MNIST Coverage Results" MODIFIED="1521621022038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CNN" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Client.coverage" NAME="Client Coverage Results" MODIFIED="1522064874387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DF/core" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$FreqCounter.coverage" NAME="FreqCounter Coverage Results" MODIFIED="1522119098101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Master.coverage" NAME="Master Coverage Results" MODIFIED="1525145568047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/core" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$configuration.coverage" NAME="configuration Coverage Results" MODIFIED="1521872581921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DF/app" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Minist.coverage" NAME="Minist Coverage Results" MODIFIED="1521616855829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CNN" />
-    <SUITE FILE_PATH="coverage/Star's Python Workspace$test.coverage" NAME="test Coverage Results" MODIFIED="1524385151685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
+    <SUITE FILE_PATH="coverage/Star's Python Workspace$test.coverage" NAME="test Coverage Results" MODIFIED="1525592589486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Master__1_.coverage" NAME="Master (1) Coverage Results" MODIFIED="1524231638127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/core" />
+    <SUITE FILE_PATH="coverage/Star's Python Workspace$Singleton.coverage" NAME="Singleton Coverage Results" MODIFIED="1525610113061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SingletonTest" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$Server__1_.coverage" NAME="Server (1) Coverage Results" MODIFIED="1522064844293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DF/core" />
+    <SUITE FILE_PATH="coverage/Star's Python Workspace$communicator.coverage" NAME="communicator Coverage Results" MODIFIED="1525502647268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CodexMRS/base" />
     <SUITE FILE_PATH="coverage/Star's Python Workspace$MinistTest.coverage" NAME="MinistTest Coverage Results" MODIFIED="1521616838920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CNN" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -39,23 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Master.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-              <folding>
-                <element signature="e#49#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="303" column="60" selection-start-line="303" selection-start-column="60" selection-end-line="303" selection-end-column="60" />
+            <state relative-caret-position="4571">
+              <caret line="313" column="35" selection-start-line="313" selection-start-column="35" selection-end-line="313" selection-end-column="35" />
               <folding>
                 <element signature="e#50#61#0" expanded="true" />
               </folding>
@@ -63,11 +54,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FCIConverter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/FCIConverter.py">
+      <file leaf-file-name="Master.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-319">
+              <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
+              <folding>
+                <element signature="e#49#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start-net-server.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bash files/start-net-server.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="network-manage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python managers/network-manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forward-tunnel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CodexMRS/base/forward-tunnel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -76,8 +99,8 @@
       <file leaf-file-name="Mapper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/core/Mapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -96,18 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CNN/Neuron.py" />
-        <option value="$PROJECT_DIR$/CNN/MinistTest.py" />
-        <option value="$PROJECT_DIR$/CNN/Minist.py" />
-        <option value="$PROJECT_DIR$/CNN/MNIST.py" />
-        <option value="$PROJECT_DIR$/CNN/MNISTEST.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/README.md" />
-        <option value="$PROJECT_DIR$/Distributed Framework/__init__.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/Client.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/Server.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/Main_Client.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/frustructure/Main_Client.py" />
-        <option value="$PROJECT_DIR$/Distributed Framework/frustructure/Main_Server.py" />
         <option value="$PROJECT_DIR$/Distributed Framework/Main_Server.py" />
         <option value="$PROJECT_DIR$/Distributed Framework/core/Main_Client.py" />
         <option value="$PROJECT_DIR$/Distributed Framework/core/Client.py" />
@@ -137,16 +148,28 @@
         <option value="$PROJECT_DIR$/CodexMRS/core/Server.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/Server.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/Client.py" />
-        <option value="$PROJECT_DIR$/CodexMRS/core/Mapper.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/__init__.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/__init__.py" />
         <option value="$PROJECT_DIR$/CodexMRS/__init__.py" />
         <option value="$PROJECT_DIR$/CodexMRS/vendor/__init__.py" />
         <option value="$PROJECT_DIR$/DF/core/Server.py" />
         <option value="$PROJECT_DIR$/DF/core/Client.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/config.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/configs.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/communicator.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/startup.sh" />
+        <option value="$PROJECT_DIR$/CodexMRS/startup.sh" />
+        <option value="$PROJECT_DIR$/setup-environment.sh" />
         <option value="$PROJECT_DIR$/CodexMRS/base/test.py" />
-        <option value="$PROJECT_DIR$/CodexMRS/base/network.py" />
+        <option value="$PROJECT_DIR$/Web App/CodEX/search/supportings/LSI/LSI_TFIDF.py" />
+        <option value="$PROJECT_DIR$/SingletonTest/Singleton.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/core/Mapper.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/core/Reducer.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/Master.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/network.py" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/forward-tunnel.py" />
+        <option value="$PROJECT_DIR$/bash files/start-net-server.sh" />
+        <option value="$PROJECT_DIR$/python managers/network-manage.py" />
       </list>
     </option>
   </component>
@@ -207,6 +230,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -214,6 +238,30 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Star's Python Workspace" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python managers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -239,18 +287,8 @@
               <option name="myItemId" value="Star's Python Workspace" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CodexMRS" />
+              <option name="myItemId" value="bash files" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,10 +303,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="CodexMRS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,7 +326,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,38 +339,21 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bash files" />
+      <recent name="$PROJECT_DIR$/CodexMRS" />
       <recent name="$PROJECT_DIR$/CodexMRS/vendor" />
       <recent name="$PROJECT_DIR$/DF/core" />
       <recent name="$PROJECT_DIR$/Distributed Framework" />
-      <recent name="$PROJECT_DIR$/Distributed Framework/frustructure" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/CodexMRS/vendor" />
       <recent name="$PROJECT_DIR$/CodexMRS" />
       <recent name="$PROJECT_DIR$/CodexMRS/base" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/files" />
     </key>
   </component>
   <component name="RunManager" selected="Python.network">
-    <configuration default="false" name="Master" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CodexMRS/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Star's Python Workspace" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CodexMRS/core/Master.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="network" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -354,6 +370,89 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CodexMRS/base/network.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="communicator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CodexMRS/base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Star's Python Workspace" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CodexMRS/base/communicator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CodexMRS/base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Star's Python Workspace" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CodexMRS/base/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Singleton" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SingletonTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Star's Python Workspace" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SingletonTest/Singleton.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="forward-tunnel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CodexMRS/base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Star's Python Workspace" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CodexMRS/base/forward-tunnel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -564,14 +663,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Python.Master" />
-      <item index="1" class="java.lang.String" itemvalue="Python.network" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.network" />
+      <item index="1" class="java.lang.String" itemvalue="Python.communicator" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Singleton" />
+      <item index="4" class="java.lang.String" itemvalue="Python.forward-tunnel" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.network" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Master" />
+        <item index="1" class="java.lang.String" itemvalue="Python.forward-tunnel" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Singleton" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.communicator" />
       </list>
     </recent_temporary>
   </component>
@@ -601,7 +706,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32832617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34191704" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -654,28 +759,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/logs/info.log" />
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/frustructure/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/Main_Server.py" />
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/Main_Client.py" />
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/Client.py" />
-    <entry file="file://$PROJECT_DIR$/Distributed Framework/Server.py" />
-    <entry file="file://$PROJECT_DIR$/DF/LogWriter.py" />
-    <entry file="file://$PROJECT_DIR$/DF/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/DF/core/logs/info.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DF/core/Main_Client.py" />
-    <entry file="file://$PROJECT_DIR$/DF/core/Main_Server.py" />
     <entry file="file://$PROJECT_DIR$/FCIConverter.py" />
     <entry file="file://$PROJECT_DIR$/DF/core/FTPServer.py" />
     <entry file="file://$PROJECT_DIR$/DF/core/FTPClient.py" />
@@ -739,18 +827,76 @@
     <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/FormattedCodeInterface.py" />
     <entry file="file://$PROJECT_DIR$/DF/core/Client.py" />
     <entry file="file://$PROJECT_DIR$/DF/core/Server.py" />
-    <entry file="file://$PROJECT_DIR$/DF/app/manage.py" />
-    <entry file="file://$PROJECT_DIR$/CodexMRS/base/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/error.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/startup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/supportings/LSI/LSI_TFIDF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web App/CodEX/CodEX/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SingletonTest/Singleton.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="17" selection-start-line="3" selection-start-column="12" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bash files/setup-environment.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/communicator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+          <folding>
+            <element signature="e#48#61#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/configs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -762,18 +908,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/core/Reducer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DF/app/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/forward-tunnel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bash files/start-net-server.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python managers/network-manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/core/Mapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="303" column="60" selection-start-line="303" selection-start-column="60" selection-end-line="303" selection-end-column="60" />
+        <state relative-caret-position="4571">
+          <caret line="313" column="35" selection-start-line="313" selection-start-column="35" selection-end-line="313" selection-end-column="35" />
           <folding>
             <element signature="e#50#61#0" expanded="true" />
           </folding>
@@ -782,8 +968,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        <state relative-caret-position="-319">
+          <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
           <folding>
             <element signature="e#49#58#0" expanded="true" />
           </folding>

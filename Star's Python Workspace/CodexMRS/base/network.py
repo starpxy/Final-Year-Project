@@ -89,7 +89,21 @@ class Server:
         if message.get_is_modified():
             print('Message has been modified!')
         else:
-            self.__task(json.loads(message.get_message_body()))
+            self.__task(json.loads(message.get_message_body()), address)
+
+    def get_connected_ip(self):
+        """
+        Getter for connected ip address
+        :return: a list of connected ip address.
+        """
+        return self.__connected_ip
+
+    def get_public_ip_add(self):
+        """
+        Getter for public ip address
+        :return: a string of public ip address
+        """
+        return self.__public_ip_address
 
 
 class Client:
@@ -289,17 +303,13 @@ class MessageDumper:
         return message
 
 
-def test(message):
-    print(message)
-
-
 if __name__ == '__main__':
     # st = MessageDumper.encode_s("localhost", "127.0.0.1", "hello world")
     # msg = MessageDumper.dump_s(st)
     # print(msg.get_message_body())
     # print(msg.get_is_modified())
     # print(msg.get_sender())
-    # server = Server(test, "localhost")
+    # server = Server(test, "yeats.ucd.ie")
     # server.start_listening()
-    client = Client("localhost","localhost",9609,{"test":"kk"})
+    client = Client("localhost", "127.0.0.1", 10000, {"test": "kk"})
     client.send_message()

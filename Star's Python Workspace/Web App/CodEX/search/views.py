@@ -8,6 +8,8 @@ from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
 import CodEX.config as config
 from search.supportings.FrontEndInterface import FrontEndInterface
 from search.supportings.AST.ASTSearching import ASTSearching
+import time
+
 
 
 def index(request):
@@ -15,6 +17,7 @@ def index(request):
 
 
 def search(request):
+    start = time.clock()
     q = request.GET['q']
     p = int(request.GET['p'])
     pages = []
@@ -39,6 +42,7 @@ def search(request):
         m_l = m_l[0:len(m_l) - 1]
         fei = FrontEndInterface(temp, m_l)
         files.append(fei)
+    end = time.clock()
     return render(request, 'search-result-sub.html',
                   {'results': files, 'q': q, 'p': p, 'pages': pages, 'p_p': p_p, 'n_p': n_p, 'pre': p - 1,
                    'next': p + 1, 't_p': t_p})
