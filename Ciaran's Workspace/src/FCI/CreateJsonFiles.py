@@ -46,7 +46,7 @@ class CreateJsonFiles:
 
         for project_name in self.project_info:
             # If project_name is not in clean:
-            if self.not_cleaned(project_name):
+            if self.not_cleaned(self.clean_projects_path, project_name):
                 self.json_data = self.project_info[project_name]
                 self.find_all_source_files(self.clean_projects_path + project_name)
 
@@ -76,8 +76,9 @@ class CreateJsonFiles:
         # if self.connection is not None:
             # self.master_json_path = file_paths["Linux"]["master_json_files"]
 
-    def not_cleaned(self, project_name):
-        for directory in 
+    def not_cleaned(self, clean_project, project_name):
+        for directory in self.connection.listdir(clean_project):
+            if
 
     # Goes through each line in the StackOverflow text files
     # Saves each question and corresponding answer to an FCI object
