@@ -30,6 +30,7 @@ class combined {
 		long end=numOfBubble-1, start=0;
 		long totalSpend=0;
 		long[] middelPrice=new long[numOfBubble];
+		int a=0;
 		while(count>0){
 			 m=Long.valueOf(scanner.readLine());
 			 System.out.println('test');
