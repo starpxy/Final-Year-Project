@@ -46,9 +46,9 @@ class CreateJsonFiles:
 
         for project_name in self.project_info:
             # If project_name is not in clean:
-            if self.not_cleaned(self.clean_projects_path, project_name):
-                self.json_data = self.project_info[project_name]
-                self.find_all_source_files(self.clean_projects_path + project_name)
+            # if self.not_cleaned(self.clean_projects_path, project_name):
+            self.json_data = self.project_info[project_name]
+            self.find_all_source_files(self.clean_projects_path + project_name)
 
         self.close_connection()
 
@@ -135,7 +135,15 @@ class CreateJsonFiles:
 
         fci_object.set_file_name(file_name)
         fci_object.set_save_path(file_path)
-        self.set_content(file_path, fci_object)
+        # self.set_content(file_path, fci_object)
+
+        # Content
+        file = open(file_path)
+        content = ''
+        for line in file.readlines():
+            content += line
+        fci_object.set_content(content)
+
         self.set_project_details(fci_object)
 
         if file_path.endswith(".py"):

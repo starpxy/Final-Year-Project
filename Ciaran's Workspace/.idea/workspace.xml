@@ -38,11 +38,41 @@
       <file leaf-file-name="CreateJsonFiles.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-277">
-              <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+            <state relative-caret-position="-40">
+              <caret line="135" column="31" lean-forward="false" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
               <folding>
                 <element signature="e#61#70#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server_config.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server/server_config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CleanZippedProjects.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cleanup/CleanZippedProjects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170">
+              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0017250e81f78f5cc534ec582b642d8f.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FCI/json_files/0017250e81f78f5cc534ec582b642d8f.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="109" lean-forward="false" selection-start-line="10" selection-start-column="109" selection-end-line="10" selection-end-column="109" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,7 +90,7 @@
       <file leaf-file-name="FCIConverter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
+            <state relative-caret-position="589">
               <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
               <folding />
             </state>
@@ -70,8 +100,8 @@
       <file leaf-file-name="file_paths.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/file_paths.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="70" lean-forward="false" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+            <state relative-caret-position="68">
+              <caret line="4" column="65" lean-forward="false" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -146,13 +176,13 @@
         <option value="$PROJECT_DIR$/src/FCI/json_files/5922af37443d6a4e49f628e2d611bc65.json" />
         <option value="$PROJECT_DIR$/src/FCI/json_files/0017250e81f78f5cc534ec582b642d8f.json" />
         <option value="$PROJECT_DIR$/src/FCI/FormattedCodeInterface.py" />
-        <option value="$PROJECT_DIR$/src/file_paths.json" />
         <option value="$PROJECT_DIR$/src/FCI/StackOverflowJsons.py" />
         <option value="$PROJECT_DIR$/src/Server/WindowsConnection.py" />
         <option value="$PROJECT_DIR$/test/Server/UCDConnectionTest.py" />
         <option value="$PROJECT_DIR$/src/Testing/UCDConnectionTest.py" />
         <option value="$PROJECT_DIR$/src/Testing/TestWindowsServer.py" />
         <option value="$PROJECT_DIR$/src/MainInterface.py" />
+        <option value="$PROJECT_DIR$/src/file_paths.json" />
         <option value="$PROJECT_DIR$/src/FCI/CreateJsonFiles.py" />
       </list>
     </option>
@@ -199,6 +229,12 @@
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Cleanup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="FCI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -207,6 +243,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="FCI" type="462c0819:PsiDirectoryNode" />
               <item name="json_files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -607,13 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cleanup/CleanZippedProjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing/RemoteFileTesting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -626,13 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/server_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -748,13 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/json_files/0017250e81f78f5cc534ec582b642d8f.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="117" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/python_title_answer.txt">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="170">
@@ -850,22 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_paths.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="70" lean-forward="false" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainInterface.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -874,10 +885,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/server_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cleanup/CleanZippedProjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_paths.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="65" lean-forward="false" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/json_files/0017250e81f78f5cc534ec582b642d8f.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="109" lean-forward="false" selection-start-line="10" selection-start-column="109" selection-end-line="10" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-277">
-          <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+        <state relative-caret-position="-40">
+          <caret line="135" column="31" lean-forward="false" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
           <folding>
             <element signature="e#61#70#0" expanded="true" />
           </folding>
