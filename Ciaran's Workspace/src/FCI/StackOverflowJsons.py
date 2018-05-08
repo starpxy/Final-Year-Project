@@ -70,23 +70,16 @@ class StackOverflowJsons:
         if self.connection is not None:
             self.master_json_path = file_paths["Linux"]["master_json_files"]
 
+    # Goes through each line in the StackOverflow text files
+    # Saves each question and corresponding answer to an FCI object
     def get_info_from_so_files(self):
-        with open("python_title_answer.txt") as tsv:
+        with open("python_title_answer.txt", 'r', encoding='UTF-8') as tsv:
             for line in csv.reader(tsv, dialect="excel-tab"):
-                fci_object = FormattedCodeInterface()
-                fci_object.set_content(line[2])
-                fci_object.set_code(line[3])
-                self.save_so_questions_to_json_files(fci_object)
-        '''           
-        for file_name in os.listdir(self.so_questions):
-            file_path = self.so_questions + "\\" + file_name
-            #file = open(self.so_questions + "\\" + file_name)
-            #with open(file_path) as tsv:
-            with open("python_title_answer.txt", 'r') as tsv:
-                for line in csv.reader(tsv, dialect="excel-tab"):
-                    for value in line:
-                        print(value)
-        '''
+                try:
+                    print(line[2])
+                    print(line[3])
+                except Exception as e:
+                    print(e)
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key

@@ -91,13 +91,16 @@ class CreateJsonFiles:
         for file_name in os.listdir(self.so_questions):
             file_path = self.so_questions + "/" + file_name
             self.log_writer.write_info_log("Reading StackOverflow questions from " + file_name)
-            with open(file_path, 'r', encoding='utf-8') as tsv:
+            with open(file_path, 'r', encoding='UTF-8') as tsv:
                 for line in csv.reader(tsv, dialect="excel-tab"):
-                    self.log_writer.write_info_log("Reading StackOverflow question " + line[0])
-                    fci_object = FormattedCodeInterface()
-                    fci_object.set_content(line[2])
-                    fci_object.set_code(line[3])
-                    self.save_fci_object_to_json_files(fci_object, self.so_json_path)
+                    try:
+                        self.log_writer.write_info_log("Reading StackOverflow question " + line[0])
+                        fci_object = FormattedCodeInterface()
+                        fci_object.set_content(line[2])
+                        fci_object.set_code(line[3])
+                        self.save_fci_object_to_json_files(fci_object, self.so_json_path)
+                    except Exception as e:
+                        self.log_writer.write_error_log(e)
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
