@@ -43,6 +43,7 @@ class CreateJsonFiles:
         self.open_connection()
         self.load_file_paths()
         self.find_all_json_files()
+        self.get_info_from_so_files()
 
         for project_name in self.project_info:
             # If project_name is not in clean:
@@ -50,6 +51,7 @@ class CreateJsonFiles:
             self.json_data = self.project_info[project_name]
             self.find_all_source_files(self.clean_projects_path + project_name)
 
+        self.log_writer.write_info_log("All json files created.")
         self.close_connection()
 
     # Open a connection to the master server if on a slave server
@@ -119,15 +121,13 @@ class CreateJsonFiles:
                 file_path = parent_directory + '/' + file_name
                 curr_file_path = file_path
                 # if file_name.endswith(".py") and is not in json_files:
-                if file_name.endswith(".py") or file_name.endswith(".java"):
+                if (file_name.endswith(".py") and file_name != "__init__.py") or file_name.endswith(".java"):
                     self.save_file_details_to_fci_object(file_path, file_name)
                 elif os.path.isdir(file_path):
                     self.find_all_source_files(file_path)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             self.log_writer.write_error_log("At line %d: %s in %s" % (exc_tb.tb_lineno, str(e), curr_file_path))
-
-        self.log_writer.write_info_log("All json files created.")
 
     # Saves the details of an individual file to an fci object
     def save_file_details_to_fci_object(self, file_path, file_name):
