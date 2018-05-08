@@ -83,13 +83,13 @@ class CreateJsonFiles:
             if directory == project_name:
                 return False
             else:
-                self.not_cleaned(clean_project + "\\" + directory, project_name)
+                self.not_cleaned(clean_project + "/" + directory, project_name)
 
     # Goes through each line in the StackOverflow text files
     # Saves each question and corresponding answer to an FCI object
     def get_info_from_so_files(self):
         for file_name in os.listdir(self.so_questions):
-            file_path = self.so_questions + "\\" + file_name
+            file_path = self.so_questions + "/" + file_name
             with open(file_path, 'r') as tsv:
                 for line in csv.reader(tsv, dialect="excel-tab"):
                     fci_object = FormattedCodeInterface()
