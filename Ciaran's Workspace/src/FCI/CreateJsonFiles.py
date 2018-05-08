@@ -78,7 +78,10 @@ class CreateJsonFiles:
 
     def not_cleaned(self, clean_project, project_name):
         for directory in self.connection.listdir(clean_project):
-            if
+            if directory == project_name:
+                return False
+            else:
+                self.not_cleaned(clean_project + "\\" + directory, project_name)
 
     # Goes through each line in the StackOverflow text files
     # Saves each question and corresponding answer to an FCI object
