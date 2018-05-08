@@ -66,7 +66,7 @@ class LSI_TFIDF():
     def indexing(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        # self.files.remove('.DS_Store')
+        self.files.remove('.DS_Store')
         fs = len(self.files)
         self.tfidf = TfidfVectorizer()
         i = 0
@@ -194,7 +194,6 @@ class LSI_TFIDF():
             hitLines = []
             hitWords = 0
             commonLines = []
-            ifFullHit=True
             for t in qWord:
                 if t in self.lineNo[k]:
                     hitWords += 1
@@ -202,10 +201,8 @@ class LSI_TFIDF():
                     if hitWords == 1:
                         commonLines = self.lineNo[k][t]
                     commonLines = list(set(commonLines).intersection(set(self.lineNo[k][t])))
-                else:
-                    ifFullHit=False
             lengthHit = len(hitLines) * hitWords
-            if hitWords > 1 and ifFullHit:
+            if hitWords > 1:
                 fullHit = len(commonLines)
             else:
                 fullHit = 0

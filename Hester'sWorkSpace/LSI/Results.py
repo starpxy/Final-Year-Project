@@ -41,6 +41,6 @@ class Results:
         print(self.fullHitLines)
         print('hit docs')
         print(self.hitDocs)
-        print('matching docs:')
-        print(self.matchingLines)
+        # print('matching docs:')
+        # print(self.matchingLines)
 
