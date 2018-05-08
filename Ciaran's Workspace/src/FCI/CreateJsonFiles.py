@@ -16,6 +16,7 @@ from FCI.FormattedCodeInterface import FormattedCodeInterface
 from LogWriter import LogWriter
 import FCI.FCIConverter as FCIConverter
 from Server.LinuxConnection import LinuxConnection
+from NLTK.NLTKFormatter import NLTKFormatter
 
 
 class CreateJsonFiles:
@@ -28,6 +29,8 @@ class CreateJsonFiles:
         self.python_json_path = None
         self.java_json_path = None
         self.so_json_path = None
+        # self.so_python_json_path = None
+        # self.so_java_json_path = None
 
         self.json_data = None
         # Dictionary with project names and containing directory as keys and their corresponding json data as values
@@ -74,6 +77,8 @@ class CreateJsonFiles:
         self.python_json_path = file_paths["Linux"]["python_json_dir"]
         self.java_json_path = file_paths["Linux"]["java_json_dir"]
         self.so_json_path = file_paths["Linux"]["so_json_dir"]
+        # self.so_python_json_path = file_paths["Linux"]["so_python_json_dir"]
+        # self.so_java_json_path = file_paths["Linux"]["so_java_json_dir"]
 
         # if self.connection is not None:
             # self.master_json_path = file_paths["Linux"]["master_json_files"]
@@ -88,14 +93,25 @@ class CreateJsonFiles:
     # Goes through each line in the StackOverflow text files
     # Saves each question and corresponding answer to an FCI object
     def get_info_from_so_files(self):
+        nltk_formatter = NLTKFormatter()
+
         for file_name in os.listdir(self.so_questions):
             file_path = self.so_questions + "/" + file_name
             self.log_writer.write_info_log("Reading StackOverflow questions from " + file_name)
+
+            '''
+            json_file_path = ""
+            if file_name == "python_title_answer.txt":
+                json_file_path = self.so_python_json_path
+            else:
+                json_file_path = self.so_java_json_path
+            '''
+
             with open(file_path, 'r', encoding='UTF-8') as tsv:
                 for line in csv.reader(tsv, dialect="excel-tab"):
                     try:
                         fci_object = FormattedCodeInterface()
-                        fci_object.set_content(line[2])
+                        fci_object.set_content(nltk_formatter.format_sentence(line[2]))
                         fci_object.set_code(line[3])
                         self.save_fci_object_to_json_files(fci_object, self.so_json_path)
                         self.log_writer.write_info_log("Reading StackOverflow question " + line[0])

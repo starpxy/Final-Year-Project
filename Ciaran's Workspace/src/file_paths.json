@@ -6,6 +6,8 @@
     "master_json_dir" : "/home/ubuntu/test_files/json_files",
     "python_json_dir" : "/home/ubuntu/test_files/json_files/python",
     "java_json_dir" : "/home/ubuntu/test_files/json_files/java",
-    "so_json_dir" : "/home/ubuntu/test_files/json_files/stackoverflow"
+    "so_json_dir" : "/home/ubuntu/test_files/json_files/stackoverflow",
+    "so_python_json_dir" : "/home/ubuntu/test_files/json_files/stackoverflow",
+    "so_java_json_dir" : "/home/ubuntu/test_files/json_files/stackoverflow"
   }
 }
