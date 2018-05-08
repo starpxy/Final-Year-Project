@@ -90,8 +90,10 @@ class CreateJsonFiles:
     def get_info_from_so_files(self):
         for file_name in os.listdir(self.so_questions):
             file_path = self.so_questions + "/" + file_name
-            with open(file_path, 'r') as tsv:
+            self.log_writer.write_info_log("Reading StackOverflow questions from " + file_name)
+            with open(file_path, 'r', encoding='utf-8') as tsv:
                 for line in csv.reader(tsv, dialect="excel-tab"):
+                    self.log_writer.write_info_log("Reading StackOverflow question " + line[0])
                     fci_object = FormattedCodeInterface()
                     fci_object.set_content(line[2])
                     fci_object.set_code(line[3])
