@@ -9,7 +9,6 @@ from Interfaces import FCIConverter as conv
 from Interfaces import LogWriter as lg
 import os
 # import math
-import redis
 from LSI import Results
 import pickle
 import time
@@ -24,7 +23,6 @@ from scipy.sparse.linalg import svds
 #         return cls._instance
 
 class LSI_TFIDF():
-    r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
     # get files
     path = "/Users/hester/Desktop/finalYearProject/files"  # path name
@@ -38,13 +36,12 @@ class LSI_TFIDF():
     word = None
     vectorizer = None
     tfidf = None
-    pageNum = 10
     s=None
     u=None
     d=None
     idf=None
     lineNo={}
-    expireTime=300
+    expireTime=30
     end_time=time.clock()
     # def __init__(self):
         # self.vectorizer = CountVectorizer()
@@ -129,50 +126,32 @@ class LSI_TFIDF():
             pickle.dump(self.lineNo,f,True)
             print('finish')
 
-    def getDocumentList(self, query, page):
-        # check if the result of this query already exist in the redis
-        if not self.r.exists(query):  # if the result is not in the redis
-            self.vectorizer = CountVectorizer()
-            # if there exist the pickle file, read it
-            if os.path.exists(self.index_path):
-                rfile = open(self.index_path, 'rb')
-                self.s = pickle.load(rfile)
-                self.u = pickle.load(rfile)
-                self.d = pickle.load(rfile)
-                self.tfidf = pickle.load(rfile)
-                self.lineNo = pickle.load(rfile)
+    def getResult(self, query):
+        self.vectorizer = CountVectorizer()
+        # if there exist the pickle file, read it
+        if os.path.exists(self.index_path):
+            rfile = open(self.index_path, 'rb')
+            self.s = pickle.load(rfile)
+            self.u = pickle.load(rfile)
+            self.d = pickle.load(rfile)
+            self.tfidf = pickle.load(rfile)
+            self.lineNo = pickle.load(rfile)
 
-                self.idf = self.tfidf.idf_
-                self.word = list(self.tfidf.vocabulary_.keys())
-                self.files = list(self.lineNo.keys())
+            self.idf = self.tfidf.idf_
+            self.word = list(self.tfidf.vocabulary_.keys())
+            self.files = list(self.lineNo.keys())
 
-            else:  # if there is no such pickle file, indexing
-                self.indexing()
+        else:  # if there is no such pickle file, indexing
+            self.indexing()
 
-            # store the result of the query into redis
-            l = self.MatrixSearching(query, self.s,self.u, self.d.T)
-            if l is None:
-                return Results.Results(0, [])
-            elif (page-1)*self.pageNum>=len(l):
-                self.lw.write_error_log('page number out of range')
-                return None
+        l = self.MatrixSearching(query, self.s,self.u, self.d.T)
+        if l is None:
+            return Results.Results(0)
 
-            length=len(l)
+        results=Results.Results(numOfResults=l[3],matchingLines=l[2],hitDocs=l[1],fullHitLines=l[0])
 
-            self.lw.write_info_log("storing results into redis in form of list")
-            self.r.rpush(query, l)
 
-        # get the result list of this query from redis
-        else:
-            self.lw.write_info_log("geting results from redis")
-            l=eval(self.r.lindex(query, 0))
-            length = len(l)
-            if (page-1)*self.pageNum>=length:
-                self.lw.write_error_log('page number out of range')
-                return None
 
-        results = Results.Results(length, l[(page - 1) * self.pageNum:page * self.pageNum])
-        self.r.expire(query, self.expireTime)  # expire after 30s
         return results  # return results
 
 
@@ -203,40 +182,51 @@ class LSI_TFIDF():
         sInv = np.linalg.inv(sDiagno)
         Dq = np.dot(qArr, u)
         Dq = np.dot(Dq, sInv)
-        similarities = {}
-        for i in range(len(d)):
-            # similarity=round(spatial.distance.cosine(Dq, d[i]),8)
-            similarity=((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
-            # if similarity>0:
-            similarities[self.files[i]] = similarity
-                # print(similarities[self.files[i]])
 
-        # print(Dq)
-        keys=sorted(similarities, key=similarities.get, reverse=True)
-        matchingLines=[]#[(docName, [hit lines]) ]
-        hitDocs={}
-        i=0
-        for k in keys:
-            hitLines=[]
+        matchingLines = {}  # {similarity:[(docName, [hit lines])] }
+        hitDocs = {}  # {lengthHits:[(docName,[hit lines])]}
+        fullHitLines = {}  # {fullHitNum:[(docName,[hit lines])]}
+        length=0
+        for i in range(len(d)):
+            k=self.files[i]
+            similarity=((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+            length+=1
+            hitLines = []
+            hitWords = 0
+            commonLines = []
             for t in qWord:
                 if t in self.lineNo[k]:
-                    hitLines=list(set(hitLines).union(set(self.lineNo[k][t])))
-            lengthHit=len(hitLines)
-            if lengthHit>0:
-                if lengthHit in hitDocs:
-                    hitDocs[lengthHit].append((k,hitLines))
-                else:
-                    hitDocs[lengthHit]=[(k,hitLines)]
+                    hitWords += 1
+                    hitLines = list(set(hitLines).union(set(self.lineNo[k][t])))
+                    if hitWords == 1:
+                        commonLines = self.lineNo[k][t]
+                    commonLines = list(set(commonLines).intersection(set(self.lineNo[k][t])))
+            lengthHit = len(hitLines) * hitWords
+            if hitWords > 1:
+                fullHit = len(commonLines)
             else:
-                matchingLines.append((k,hitLines))
-            i+=1
+                fullHit = 0
+            if fullHit > 0:
+                if fullHit in fullHitLines:
+                    fullHitLines[fullHit].append((k, hitLines))
+                else:
+                    fullHitLines[fullHit] = [(k, hitLines)]
+            elif lengthHit > 0:
+                if lengthHit in hitDocs:
+                    hitDocs[lengthHit].append((k, hitLines))
+                else:
+                    hitDocs[lengthHit] = [(k, hitLines)]
+            else:
+                if similarity>0:
+                    if similarity not in matchingLines:
+                        matchingLines[similarity]=[(k, hitLines)]
+                    else:
+                        matchingLines[similarity].append((k, hitLines))
+                else:
+                    # don't store it
+                    length-=1
 
-        hits=sorted(hitDocs, reverse=False)
-        for h in hits:
-            matchingLines=hitDocs[h]+matchingLines
-
-        # return machingLines
-        return matchingLines
+        return (fullHitLines,hitDocs,matchingLines,length)
 
 
 

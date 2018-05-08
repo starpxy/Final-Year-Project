@@ -49,6 +49,19 @@ class FormattedCodeInterface:
         self.__url = url
         self.__wiki = wiki
 
+    def get_short_content(self):
+        temp = ''
+        con = self.__content.split('\n')
+        i = 0
+        for c in con:
+            if i > 20:
+                temp += '......'
+                break
+            else:
+                temp += (c + '\n')
+            i += 1
+        return temp
+
     def set_description(self, description):
         self.__description = description
 

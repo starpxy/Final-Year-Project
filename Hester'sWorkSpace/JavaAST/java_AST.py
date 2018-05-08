@@ -112,16 +112,18 @@ class JavaAST():
                         #except javalang.tree.ReferenceType, javalang.tree.ReferenceType,
                         if a is 'name' and ((not isinstance(root,javalang.tree.ReferenceType) and not isinstance(root,javalang.tree.ReferenceType)) or v in names):
                             if v not in names:
-                                # print('================')
-                                # print(v)
                                 names.append(v)
+                            print('================')
+                            print((type(root),a))
+                            print(v)
                             children.remove(v)
                             continue
                         elif a is 'member':
                             # PROBLEM: if the member is a method name not in self.names(defined below the current node), we will fail to ignore it
+
                             if v in names:
-                                # print('~~~~~~~~~~~~~~~~~~~~~~~~~')
-                                # print(v)
+                                print('~~~~~~~~~~~~~~~~~~~~~~~~~')
+                                print(v)
                                 children.remove(v)
                                 continue
                         elif a == 'qualifier':
@@ -223,7 +225,7 @@ class JavaAST():
                 m.update(attriValues.encode("utf8"))
                 hashAttris = m.hexdigest()
 
-                # print(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
+                print(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
                 # print(self.fileIndex[fileName])
                 #put the node into fileIndex
                 if weight not in self.fileIndex[fileName]:
@@ -231,7 +233,7 @@ class JavaAST():
                 self.fileIndex[fileName][weight][hashAttris]=(min,max)
 
                 # print(weight)
-                # print(attriValues)
+                print(attriValues)
                 # print((str(root),hashAttris,min,max))
                 #put all its childern in this file into the current node
                 if nestedDic:
@@ -435,7 +437,7 @@ class JavaAST():
         root = javalang.parse.parse(query)
         self.fileIndex['query'] = {}
         names=[]
-        self.index(root,'query',names, qTree,qLineNums,True)
+        self.index(root,'query',names,qTree,qLineNums,True)
         # print(qTree)
         # print(qLineNums)
         self.fileIndex.pop('query')

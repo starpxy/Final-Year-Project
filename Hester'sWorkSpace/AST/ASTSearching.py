@@ -43,14 +43,6 @@ class ASTSearching(Singleton):
     matchingBlock={} # {docID: (the startline and endline of the matching blocks)}.
     blockWeights={} #{docID: (startline, endline): weight of the biggest matching block}
     expireTime=30
-    def __init__(self):
-        if os.path.exists(self.index_path):
-            rfile = open(self.index_path, 'rb')
-            self.weights = pickle.load(rfile)
-            self.lineNums=pickle.load(rfile)
-            self.hashDic=pickle.load(rfile)
-        else:
-            self.ReadFiles()
 
     #parse the corpus
     def ReadFiles(self):
@@ -158,6 +150,15 @@ class ASTSearching(Singleton):
         matchingBlocks={}
         componentDocuments=[]
         if not self.r.exists(query):  # if the result is not in the redis
+
+            if os.path.exists(self.index_path):
+                rfile = open(self.index_path, 'rb')
+                self.weights = pickle.load(rfile)
+                self.lineNums = pickle.load(rfile)
+                self.hashDic = pickle.load(rfile)
+            else:
+                self.ReadFiles()
+
             # store the result of the query into redis
             matchingLines = {}  # {fileName:[(qStart,qEnd, fStart,fEnd)]}
             time_start = time.clock()
