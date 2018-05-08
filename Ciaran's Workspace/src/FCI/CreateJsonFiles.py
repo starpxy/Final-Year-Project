@@ -94,11 +94,11 @@ class CreateJsonFiles:
             with open(file_path, 'r', encoding='UTF-8') as tsv:
                 for line in csv.reader(tsv, dialect="excel-tab"):
                     try:
-                        self.log_writer.write_info_log("Reading StackOverflow question " + line[0])
                         fci_object = FormattedCodeInterface()
                         fci_object.set_content(line[2])
                         fci_object.set_code(line[3])
                         self.save_fci_object_to_json_files(fci_object, self.so_json_path)
+                        self.log_writer.write_info_log("Reading StackOverflow question " + line[0])
                     except Exception as e:
                         self.log_writer.write_error_log(e)
 

@@ -38,11 +38,21 @@
       <file leaf-file-name="CreateJsonFiles.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="102" column="58" lean-forward="true" selection-start-line="102" selection-start-column="58" selection-end-line="102" selection-end-column="58" />
+            <state relative-caret-position="312">
+              <caret line="101" column="42" lean-forward="true" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
               <folding>
                 <element signature="e#61#70#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestNLTK.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NLTK/TestNLTK.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -269,6 +279,12 @@
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="NLTK" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
@@ -727,16 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NLTK/TestNLTK.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="38" />
-          <folding>
-            <element signature="e#61#72#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/AST/logs/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -946,10 +952,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NLTK/TestNLTK.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="102" column="58" lean-forward="true" selection-start-line="102" selection-start-column="58" selection-end-line="102" selection-end-column="58" />
+        <state relative-caret-position="312">
+          <caret line="101" column="42" lean-forward="true" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
           <folding>
             <element signature="e#61#70#0" expanded="true" />
           </folding>
