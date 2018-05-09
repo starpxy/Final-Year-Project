@@ -13,11 +13,11 @@
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$Main.coverage" NAME="Main Coverage Results" MODIFIED="1521119683752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$FindCommentsTest.coverage" NAME="FindCommentsTest Coverage Results" MODIFIED="1524052078974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/FCI" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$StackOverflowJsons.coverage" NAME="StackOverflowJsons Coverage Results" MODIFIED="1525765369385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/FCI" />
-    <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestGetInfo.coverage" NAME="TestGetInfo Coverage Results" MODIFIED="1520941893496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FCI" />
+    <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestGetInfo.coverage" NAME="TestGetInfo Coverage Results" MODIFIED="1525868755782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/FCI" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestRelativePath__1_.coverage" NAME="TestRelativePath (1) Coverage Results" MODIFIED="1521117891341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$FileDetailsToJson.coverage" NAME="FileDetailsToJson Coverage Results" MODIFIED="1522218433208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FCI" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestRelativePath.coverage" NAME="TestRelativePath Coverage Results" MODIFIED="1521117816877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Testing" />
-    <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$MainInterface.coverage" NAME="MainInterface Coverage Results" MODIFIED="1525690050269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$MainInterface.coverage" NAME="MainInterface Coverage Results" MODIFIED="1525864452083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$delete_files_script.coverage" NAME="delete_files_script Coverage Results" MODIFIED="1520937694421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$FCIConverter.coverage" NAME="FCIConverter Coverage Results" MODIFIED="1520325351199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/com/codex" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestLinuxServer.coverage" NAME="TestLinuxServer Coverage Results" MODIFIED="1520503988707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Testing" />
@@ -27,6 +27,7 @@
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestNLTK.coverage" NAME="TestNLTK Coverage Results" MODIFIED="1524447370338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/NLTK" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$GetProjectInfo.coverage" NAME="GetProjectInfo Coverage Results" MODIFIED="1520938438701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FCI" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$Unittests_in_LinuxConnectionTest_py.coverage" NAME="Unittests in LinuxConnectionTest.py Coverage Results" MODIFIED="1522497904941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/Server" />
+    <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$Unittests_in_CreateJsonFilesTest_py.coverage" NAME="Unittests in CreateJsonFilesTest.py Coverage Results" MODIFIED="1525872321981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/FCI" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$log.coverage" NAME="log Coverage Results" MODIFIED="1520325364567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/com/codex" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$TestLog.coverage" NAME="TestLog Coverage Results" MODIFIED="1521002735111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Testing" />
     <SUITE FILE_PATH="coverage/Ciaran_s_Workspace$LocalJsonFileTest.coverage" NAME="LocalJsonFileTest Coverage Results" MODIFIED="1520520555293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FCI" />
@@ -36,14 +37,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CreateJsonFiles.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreateJsonFiles.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="113" column="86" lean-forward="false" selection-start-line="113" selection-start-column="86" selection-end-line="113" selection-end-column="86" />
-              <folding>
-                <element signature="e#61#70#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,42 +50,60 @@
       <file leaf-file-name="NLTKFormatter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NLTK/NLTKFormatter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+            <state relative-caret-position="-26">
+              <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateJsonFilesTest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/FCI/CreateJsonFilesTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="901">
+              <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
               <folding>
-                <element signature="e#61#72#0" expanded="true" />
+                <element signature="e#61#76#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestNLTK.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NLTK/TestNLTK.py">
+      <file leaf-file-name="LinuxConnectionTest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/Server/LinuxConnectionTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="55" column="26" lean-forward="false" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-              <folding>
-                <element signature="e#61#72#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="592">
+              <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FCIConverter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
+      <file leaf-file-name="file_paths.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/file_paths.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="7" column="62" lean-forward="true" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="file_paths.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/file_paths.json">
+        <entry file="file://$PROJECT_DIR$/test/FCI/file_paths.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="34">
+              <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestGetInfo.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FCI/TestGetInfo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="153" column="56" lean-forward="false" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -97,8 +114,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Project File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -114,17 +131,12 @@
       <find>ChannelStderrFile</find>
       <find>parse</find>
       <find>import zipfile</find>
+      <find>core.py</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Testing/TestLog.py" />
-        <option value="$PROJECT_DIR$/LogWriter.py" />
-        <option value="$PROJECT_DIR$/Scripts/unzip_projects_script.py" />
-        <option value="$PROJECT_DIR$/FCI/FormattedCodeInterface.py" />
-        <option value="$PROJECT_DIR$/Testing/TestRelativePath.py" />
-        <option value="$PROJECT_DIR$/TestRelativePath.py" />
         <option value="$PROJECT_DIR$/Server/LinuxConnection.py" />
         <option value="$PROJECT_DIR$/NLTK/TestNLTK.py" />
         <option value="$PROJECT_DIR$/Cleanup/ProjectCleanUp.py" />
@@ -144,7 +156,6 @@
         <option value="$PROJECT_DIR$/Testing/TestCodeNN.py" />
         <option value="$PROJECT_DIR$/CodeNN/src/python/utils.py" />
         <option value="$PROJECT_DIR$/test/Cleanup/CleanZippedProjectsTest.py" />
-        <option value="$PROJECT_DIR$/test/FCI/CreateJsonFilesTest.py" />
         <option value="$PROJECT_DIR$/test/Server/ServerConnectionTest.py" />
         <option value="$PROJECT_DIR$/src/Server/server_config.json" />
         <option value="$PROJECT_DIR$/test/Server/LinuxServerTest.py" />
@@ -167,9 +178,16 @@
         <option value="$PROJECT_DIR$/src/Testing/TestWindowsServer.py" />
         <option value="$PROJECT_DIR$/src/MainInterface.py" />
         <option value="$PROJECT_DIR$/src/FCI/StackOverflowJsons.py" />
-        <option value="$PROJECT_DIR$/src/file_paths.json" />
+        <option value="$PROJECT_DIR$/src/Hester'sWorkSpace/LSI/LSI_NLP.py" />
+        <option value="$PROJECT_DIR$/src/HesterLSI/LSI/LSI_NLP.py" />
+        <option value="$PROJECT_DIR$/test/FCI/python_title_answer.txt" />
+        <option value="$PROJECT_DIR$/src/FCI/TestGetInfo.py" />
+        <option value="$PROJECT_DIR$/test/FCI/unclean/example_github_project.json" />
+        <option value="$PROJECT_DIR$/test/FCI/file_paths.json" />
         <option value="$PROJECT_DIR$/src/FCI/CreateJsonFiles.py" />
         <option value="$PROJECT_DIR$/src/NLTK/NLTKFormatter.py" />
+        <option value="$PROJECT_DIR$/test/FCI/CreateJsonFilesTest.py" />
+        <option value="$PROJECT_DIR$/src/file_paths.json" />
       </list>
     </option>
   </component>
@@ -199,6 +217,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,34 +246,52 @@
             <path>
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="Cleanup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="FCI" type="462c0819:PsiDirectoryNode" />
-              <item name="json_files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="FCI" type="462c0819:PsiDirectoryNode" />
+              <item name="so_json_files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="NLTK" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="FCI" type="462c0819:PsiDirectoryNode" />
+              <item name="unclean" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="FCI" type="462c0819:PsiDirectoryNode" />
+              <item name="unclean" type="462c0819:PsiDirectoryNode" />
+              <item name="github_projects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ciaran's Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ciaran's Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,18 +304,18 @@
     <option name="myUseBundledCoveragePy" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\FCI\unclean\github_projects" />
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\FCI\unclean" />
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\FCI\so_questions" />
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\HesterLSI" />
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\FCI\Error Files" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\FCI\unclean\example_github_project" />
+      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\FCI" />
       <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\test\Server" />
       <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\FCI" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\CodeNN\Testing" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\CodeNN\Testing" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\Testing" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\FCI\json_files" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\FCI" />
-      <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src\FCI\Error Files" />
       <recent name="C:\Users\CeXGalway\PycharmProjects\Final-Year-Project\Ciaran's Workspace\src" />
     </key>
   </component>
@@ -293,7 +331,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.NLTKFormatter">
+  <component name="RunManager" selected="Python tests.Unittests in CreateJsonFilesTest.py">
     <configuration name="MainInterface" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -351,58 +389,54 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="TestNLTK" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="TestGetInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/NLTK" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/FCI" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Ciaran's Workspace" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/NLTK/TestNLTK.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/FCI/TestGetInfo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="TestWindowsServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests in CreateJsonFilesTest.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Testing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/FCI" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Ciaran's Workspace" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Testing/TestWindowsServer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Ciaran\u0027s Workspace/test/FCI/CreateJsonFilesTest.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.TestNLTK" />
-      <item index="1" class="java.lang.String" itemvalue="Python.MainInterface" />
-      <item index="2" class="java.lang.String" itemvalue="Python.StackOverflowJsons" />
-      <item index="3" class="java.lang.String" itemvalue="Python.TestWindowsServer" />
-      <item index="4" class="java.lang.String" itemvalue="Python.NLTKFormatter" />
+      <item index="0" class="java.lang.String" itemvalue="Python.MainInterface" />
+      <item index="1" class="java.lang.String" itemvalue="Python.StackOverflowJsons" />
+      <item index="2" class="java.lang.String" itemvalue="Python.NLTKFormatter" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in CreateJsonFilesTest.py" />
+      <item index="4" class="java.lang.String" itemvalue="Python.TestGetInfo" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.NLTKFormatter" />
-        <item index="1" class="java.lang.String" itemvalue="Python.StackOverflowJsons" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in CreateJsonFilesTest.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TestGetInfo" />
         <item index="2" class="java.lang.String" itemvalue="Python.MainInterface" />
-        <item index="3" class="java.lang.String" itemvalue="Python.TestWindowsServer" />
-        <item index="4" class="java.lang.String" itemvalue="Python.TestNLTK" />
+        <item index="3" class="java.lang.String" itemvalue="Python.NLTKFormatter" />
+        <item index="4" class="java.lang.String" itemvalue="Python.StackOverflowJsons" />
       </list>
     </recent_temporary>
   </component>
@@ -423,14 +457,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_LinuxConnectionTest_py - 2018.03.31 at 20h 01m 38s.xml">
-      <configuration name="Unittests in LinuxConnectionTest.py" configurationId="tests" />
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 09m 54s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_LinuxConnectionTest_py - 2018.03.31 at 20h 02m 34s.xml">
-      <configuration name="Unittests in LinuxConnectionTest.py" configurationId="tests" />
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 10m 20s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_LinuxConnectionTest_py - 2018.03.31 at 20h 05m 15s.xml">
-      <configuration name="Unittests in LinuxConnectionTest.py" configurationId="tests" />
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 12m 03s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 12m 38s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 13m 08s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 14m 14s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 14m 50s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 23m 49s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 24m 54s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_CreateJsonFilesTest_py - 2018.05.09 at 21h 25m 22s.xml">
+      <configuration name="Unittests in CreateJsonFilesTest.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -443,10 +498,11 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33383012" sideWeight="0.49048316" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.100292824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17862372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39791358" sideWeight="0.4956076" order="5" side_tool="false" content_ui="tabs" />
@@ -457,7 +513,6 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -549,120 +604,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/src/model/buildData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="131" column="79" lean-forward="false" selection-start-line="131" selection-start-column="79" selection-end-line="131" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/data/stackoverflow/csharp/train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="67" lean-forward="false" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/data/stackoverflow/csharp/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/data/stackoverflow/csharp/parseXml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1276">
-          <caret line="91" column="10" lean-forward="false" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/data/stackoverflow/python/parseXml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="92" column="7" lean-forward="false" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/Testing/buildData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/src/sql/SqlTemplate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="193" column="27" lean-forward="false" selection-start-line="193" selection-start-column="27" selection-end-line="193" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeNN/Testing/parseXml.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Python36/Lib/site-packages/nltk/tag/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="107" column="4" lean-forward="false" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/LocalJsonFileTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Scripts/delete_files_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Scripts/unzip_projects_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LogWriter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/RemoteFileTesting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/CommandLineTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/FileDetailsToJson.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://Python/#C:/Users/CeXGalway/PycharmProjects/Final-Year-Project/Ciaran's Workspace/src/FCI/FindCommentsTest.py">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -693,28 +634,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/AST/logs/__init__.py">
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/AST/logs/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/LSI/Results.py">
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/LSI/Results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/LSI/LSI_TFIDF.py">
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/LSI/LSI_TFIDF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/LSI/LSISubspace.py">
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/LSI/LSISubspace.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -736,13 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hester'sWorkSpace/LSI/TestLsi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/json_files/5922af37443d6a4e49f628e2d611bc65.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -750,25 +684,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/f_10000_lines.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/FormattedCodeInterface.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/FindCommentsTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -824,48 +743,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/Server/LinuxConnectionTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="23" column="69" lean-forward="true" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/Server/ServerConnectionTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainInterface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/server_config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/python_title_answer.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="168">
-          <caret line="1689" column="56" lean-forward="true" selection-start-line="1689" selection-start-column="56" selection-end-line="1689" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cleanup/CleanZippedProjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -873,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="109" lean-forward="false" selection-start-line="10" selection-start-column="109" selection-end-line="10" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,18 +765,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file_paths.json">
+    <entry file="file://$PROJECT_DIR$/src/Testing/RemoteFileTesting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        <state relative-caret-position="-255">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
+    <entry file="file://$PROJECT_DIR$/src/FCI/LocalJsonFileTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        <state relative-caret-position="-87">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/FindCommentsTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -906,28 +794,209 @@
         <state relative-caret-position="374">
           <caret line="55" column="26" lean-forward="false" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
           <folding>
-            <element signature="e#61#72#0" expanded="true" />
+            <element signature="e#61#72#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NLTK/NLTKFormatter.py">
+    <entry file="file://$PROJECT_DIR$/src/FCI/FCIConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-          <folding>
-            <element signature="e#61#72#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="589">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/files/0e9bf0bcad602ac6b544af1c0a870544.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/files/0bd72d790e4dc30b76d47ff320fd948b.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/files/0ab2795adabf7aa7341f1a95ea9ca12d.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/files/0a43de9ad6576d233cd4a7f947852db5.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/LSI/TestLsi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HesterLSI/LSI/LSI_NLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Server/ServerConnectionTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Cleanup/CleanZippedProjectsTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FCI/so_questions/python_title_answer.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="129" lean-forward="false" selection-start-line="2" selection-start-column="129" selection-end-line="2" selection-end-column="129" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/python_title_answer.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="136">
+          <caret line="8" column="105" lean-forward="true" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/f_10000_lines.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cleanup/CleanZippedProjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Python36/Lib/site-packages/nltk/corpus/reader/wordlist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FCI/TestGetInfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="153" column="56" lean-forward="false" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Server/LinuxConnectionTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FCI/unclean/sample_file_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FCI/unclean/github_projects/example_github_project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Python36/Lib/site-packages/nltk/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FCI/CreateJsonFiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="113" column="86" lean-forward="false" selection-start-line="113" selection-start-column="86" selection-end-line="113" selection-end-column="86" />
+        <state relative-caret-position="306">
+          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NLTK/NLTKFormatter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FCI/CreateJsonFilesTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           <folding>
-            <element signature="e#61#70#0" expanded="true" />
+            <element signature="e#61#76#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FCI/file_paths.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/file_paths.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="62" lean-forward="true" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

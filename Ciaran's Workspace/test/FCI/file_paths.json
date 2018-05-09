@@ -1,0 +1,13 @@
+{
+  "Linux" :{
+    "unclean_dir" : "unclean",
+    "clean_dir" : "",
+    "so_questions" : "so_questions",
+    "master_json_dir" : "",
+    "python_json_dir" : "",
+    "java_json_dir" : "",
+    "so_json_dir" : "so_json_files",
+    "so_python_json_dir" : "",
+    "so_java_json_dir" : ""
+  }
+}

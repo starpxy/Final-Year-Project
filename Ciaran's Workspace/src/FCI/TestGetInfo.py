@@ -148,7 +148,10 @@ class TestGetInfo:
 
 
 def main():
-    TestGetInfo(LinuxConnection()).run()
+    #TestGetInfo(LinuxConnection()).run()
+
+    print(os.getcwd())
+    paths = open("../../test/FCI/python_title_answer.txt")
 
 
 if __name__ == '__main__':

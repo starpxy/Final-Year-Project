@@ -22,6 +22,8 @@ from NLTK.NLTKFormatter import NLTKFormatter
 class CreateJsonFiles:
 
     def __init__(self):
+        self.file_paths = "file_paths.json"
+
         self.clean_projects_path = None
         self.unclean_projects_path = None
         self.so_questions = None
@@ -67,7 +69,7 @@ class CreateJsonFiles:
             self.connection.close_connection()
 
     def load_file_paths(self):
-        file_paths_config_file = open("file_paths.json")
+        file_paths_config_file = open(self.file_paths)
         file_paths = json.load(file_paths_config_file)
 
         self.clean_projects_path = file_paths["Linux"]["clean_dir"]
@@ -79,6 +81,8 @@ class CreateJsonFiles:
         self.so_json_path = file_paths["Linux"]["so_json_dir"]
         # self.so_python_json_path = file_paths["Linux"]["so_python_json_dir"]
         # self.so_java_json_path = file_paths["Linux"]["so_java_json_dir"]
+
+        file_paths_config_file.close()
 
         # if self.connection is not None:
             # self.master_json_path = file_paths["Linux"]["master_json_files"]
@@ -132,6 +136,7 @@ class CreateJsonFiles:
                         json_file = open(self.unclean_projects_path + json_path)
                         # Save the json_path without '.json' at the end to get the name of the unzipped project
                         self.project_info[json_path[:-5]] = json.load(json_file)
+                        json_file.close()
 
     # Goes through all files in a cleaned project and creates an fci object for each
     # Initially the path to a project is passed and the function recursively goes through all files in the project
@@ -141,7 +146,6 @@ class CreateJsonFiles:
             for file_name in os.listdir(parent_directory):
                 file_path = parent_directory + '/' + file_name
                 curr_file_path = file_path
-                # if file_name.endswith(".py") and is not in json_files:
                 if (file_name.endswith(".py") and file_name != "__init__.py") or file_name.endswith(".java"):
                     self.save_file_details_to_fci_object(file_path, file_name)
                 elif os.path.isdir(file_path):
@@ -159,7 +163,7 @@ class CreateJsonFiles:
         # self.set_content(file_path, fci_object)
 
         # Content
-        file = open(file_path)
+        file = open(file_path, encoding='UTF-8')
         content = ''
         for line in file.readlines():
             content += line
