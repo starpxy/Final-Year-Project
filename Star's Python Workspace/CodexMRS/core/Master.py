@@ -46,6 +46,7 @@ class Master:
         # operation 1 is for task assignment for LSI
         operate_type = message['operate_type']
         timestamp = message['timestamp']
+        print('{}========='.format(timestamp))
         if operate_type == 1:
             query = message['query']
             page = message['page']
