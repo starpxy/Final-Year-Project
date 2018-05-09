@@ -17,7 +17,7 @@ class Master:
     # __block_size = 100
     # __max_block_num = 5
     __workers = {
-        'csiserver.ucd.ie': ('127.0.0.1', 9611),  # another UCD server
+        'csiserver.ucd.ie': ('137.43.92.165', 9609),  # another UCD server
         'yeats.ucd.ie': ('127.0.0.1', 9610),  # this one is master it self
     }
     # __blocks = {}
