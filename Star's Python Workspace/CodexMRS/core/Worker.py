@@ -25,7 +25,7 @@ class Worker:
         query = message['query']
         timestamp = message['timestamp']
         result = LSI_TFIDF().getResult(query=query)
-        result = pickle.dumps(result, protocol=0)
+        result = result.to_dict()
         client = Client(self.__master[0], self.__ip, self.__master[1],
                         {'query': query, 'timestamp': timestamp, 'name': self.__name, 'result': result,
                          'operate_type': 2})

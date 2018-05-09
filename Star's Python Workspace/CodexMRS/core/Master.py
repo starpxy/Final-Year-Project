@@ -4,7 +4,7 @@
 """
 This one is yeats.ucd.ie
 """
-import pickle
+from CodexMRS.vendor.Results import Results
 from CodexMRS.base.configs import config
 from CodexMRS.base.network import Server
 from CodexMRS.base.network import Client
@@ -60,8 +60,7 @@ class Master:
         # operation 2 LSI merge
         elif operate_type == 2:
             result = message['result']
-            result = result.encode()
-            result = pickle.loads(result,protocol=0)
+            result = Results.from_dict(result)
             name = message['name']
             print(name)
             self.__status[timestamp]['workers'][name]['status'] = 2
@@ -79,8 +78,6 @@ class Master:
                 page = self.__status[timestamp]['page']
                 result_list = self.LSI_merge(results)
                 to_return = self.get_result_at_page(page, config['page_num'], result_list)
-                to_return = pickle.dumps(to_return, protocol=0)
-                to_return = to_return.decode()
                 client = Client(config['recall_ip'], self.__name, config['recall_port'], {'result': to_return})
                 client.send_message()
         # operation 3 NLP search
