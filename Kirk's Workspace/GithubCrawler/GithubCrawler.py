@@ -4,13 +4,12 @@ import sys
 import json
 import time
 import zipfile
+import argparse
 
 import requests
 from requests.auth import HTTPBasicAuth
 
 from tqdm import tqdm
-
-from DF.core.Client import Client
 
 from LogWriter import LogWriter
 
@@ -28,6 +27,9 @@ class GithubCrawler(object):
 		self.next_search_stars_ub = None
 		self.download_record_filepath = ""
 		self.output_path = "python"
+
+		# args
+		self.language = "python"
 
 	def config_github_account(self, username, password):
 		self.g_account = HTTPBasicAuth(username, password)
@@ -485,42 +487,53 @@ class GithubCrawler(object):
 		with open(self.download_record_filepath, "w") as f:
 			f.write(json.dumps(download_record_json, indent = 2))
 
+def parse_args():
+	"""
+	Parse arguments
+	:return: 'args' var contains all arguments
+	"""
+	parser = argparse.ArgumentParser(description = "GitHub Crawler for CodEX")
+	parser.add_argument("-l", "--language", type = str, help = "Programming Language of Github Repos to be Crawled")
+	parser.add_argument("-s", "--stop_nums", type = int, help = "Numbers of Repos to be Crawled (Default: Crawl as much as possible)", default = sys.maxsize)
+	parser.add_argument("-o", "--output_path", type = str, help = "Output Path (Default: 'data\\github_repo\\(language)')", default = os.path.join("data", "github_repo"))
+	args = parser.parse_args()
+	return args
+
 def main():
+	args = parse_args()
+	# print(args.language)
+	# print(args.stop_nums)
+	# print(args.output_path)
+
 	# Configs
-	language = "java"
-	output_path = os.path.join("..", "..", language)
-	stop_nums = 300
+	# output_path = os.path.join("..", "..", language)
+	stop_nums = args.stop_nums
+
+	# Config the download_records file path
+	if not os.path.exists("data"):
+		os.mkdir("data")
 
 	crawler = GithubCrawler()
+	crawler.language = args.language
 	crawler.config_github_account("SoapKe", "BBC19951228Soap")
 
 	# Config the output path
 	if not os.path.exists(output_path):
 		os.mkdir(output_path)
 
-	crawler.output_path = output_path
-
-	# Config the download_records file path
-	if not os.path.exists("data"):
-		os.mkdir("data")
-
-	crawler.download_record_filepath = os.path.join("data", "github_repo_records_" + language + ".json")
+	crawler.output_path = args.output_path
+	crawler.download_record_filepath = os.path.join("data", "github_repo_records_" + crawler.language + ".json")
 
 	total = 0
 
 	while True:
 		if(crawler.next_search_stars_ub == None):
-			data = crawler.call_api_search(language)
+			data = crawler.call_api_search(crawler.language)
 		else:
-			data = crawler.call_api_search(language, crawler.next_search_stars_ub)
+			data = crawler.call_api_search(crawler.language, crawler.next_search_stars_ub)
 
 		repo_json_list = data.get("items")
 
-		# DF
-		# client = Client("localhost", 9002)
-		# client.send_message(repo_json_list)
-
-		# exit()
 		# For each repo in the json result
 		for i in range(len(repo_json_list)):
 			# Check if it has been downloaded already

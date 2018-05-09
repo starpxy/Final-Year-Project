@@ -10,7 +10,7 @@ from requests.auth import HTTPBasicAuth
 
 from tqdm import tqdm
 
-from DF.core.Client import Client
+from CodexMRS.base.network import Client
 
 from LogWriter import LogWriter
 
@@ -523,7 +523,7 @@ def main():
 		if( (total % 300) == 0):
 			# DF
 			client = Client("172.21.0.2", 9002)
-			client.send_message(repo_json_list)
+			client.send_message()
 		elif( (total % 300) == 100):
 			# DF
 			client = Client("172.21.0.11", 9002)
