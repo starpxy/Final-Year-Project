@@ -18,7 +18,7 @@ from scipy.sparse.linalg import svds
 class LSI_TFIDF():
     lw = lg.LogWriter()
     # get files
-    path = config['']  # path name
+    path = ''  # path name
     index_path=config['LSI_pickle_path']
     files = []
     documents = {}
