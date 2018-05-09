@@ -38,23 +38,10 @@ class Server:
         Listen to the specific port, and start a new thread after it accept any client.
         :return: None
         """
-        try:
-            self.__server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.__server_socket.bind((self.__public_ip_address, self.__port))
-            self.__server_socket.listen(self.__max_client_num)
-            self.__listen()
-        except TimeoutError:
-            LogWriter().write_warning_log("Time out. Thread automatically closed.")
-            print("Time out. Thread automatically closed.")
-            exit()
-        except OSError:
-            LogWriter().write_error_log("Port {} is already in use!".format(self.__port))
-            print("Port {} is already in use!".format(self.__port))
-            exit()
-        except:
-            LogWriter().write_error_log("Server stopped by unknown exception or keyboard interruption.")
-            print("Server stopped by unknown exception or keyboard interruption.")
-            exit()
+        self.__server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.__server_socket.bind((self.__public_ip_address, self.__port))
+        self.__server_socket.listen(self.__max_client_num)
+        self.__listen()
 
     def __listen(self):
         """
@@ -89,7 +76,7 @@ class Server:
         if message.get_is_modified():
             print('Message has been modified!')
         else:
-            self.__task(json.loads(message.get_message_body()), address)
+            self.__task(json.loads(message.get_message_body()))
 
     def get_connected_ip(self):
         """
@@ -311,5 +298,5 @@ if __name__ == '__main__':
     # print(msg.get_sender())
     # server = Server(test, "yeats.ucd.ie")
     # server.start_listening()
-    client = Client("localhost", "127.0.0.1", 10000, {"test": "kk"})
+    client = Client("137.43.92.165", "127.0.0.1", 9609, {"test": "kk"})
     client.send_message()

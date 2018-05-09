@@ -9,8 +9,8 @@ This is to convert Formatted Code interface into JSON or read JSON file into FCI
 import os
 import json
 import hashlib
-from search.supportings.LogWriter import LogWriter
-from search.supportings.FormattedCodeInterface import FormattedCodeInterface
+from CodexMRS.vendor.LogWriter import LogWriter
+from CodexMRS.vendor.FormattedCodeInterface import FormattedCodeInterface
 
 
 def to_json_str(fci_object):
