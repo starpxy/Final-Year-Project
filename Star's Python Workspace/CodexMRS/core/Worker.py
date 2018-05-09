@@ -11,7 +11,7 @@ class Worker:
     __port = 9609
     __name = ''
     __ip = ''
-    __master = ('yeats.ucd.ie', 9609)
+    __master = ('137.43.92.45', 9609)
     __server = None
 
     #
