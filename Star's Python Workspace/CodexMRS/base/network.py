@@ -32,6 +32,8 @@ class Server:
         self.__max_client_num = max_node_num
         self.__public_ip_address = public_ip_address
         self.__task = task
+        global __shared_variable
+        __shared_variable = {}
 
     def start_listening(self):
         """
@@ -63,6 +65,7 @@ class Server:
         :param address: ip address of the client who connected with the server
         :return: None
         """
+        global __shared_variable
         if address not in self.__connected_ip:
             self.__connected_ip.append(address)
         msg = b''
@@ -76,7 +79,7 @@ class Server:
         if message.get_is_modified():
             print('Message has been modified!')
         else:
-            self.__task(json.loads(message.get_message_body()))
+            self.__task(json.loads(message.get_message_body()),__shared_variable)
 
     def get_connected_ip(self):
         """

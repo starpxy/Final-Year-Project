@@ -21,7 +21,7 @@ class Worker:
         self.__ip = ip
         self.__server.start_listening()
 
-    def __task(self, message):
+    def __task(self, message, __shared_variable):
         query = message['query']
         timestamp = message['timestamp']
         result = LSI_TFIDF().getResult(query=query)
