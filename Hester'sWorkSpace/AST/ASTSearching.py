@@ -190,20 +190,24 @@ class ASTSearching(Singleton):
             self.r.rpush(query, plagiarismList)
             self.r.rpush(query, documentList)
             self.r.rpush(query, matchingLines)
-            if globalSimilarity!=0 and len(matchingBlocks)!=0:
+            if globalSimilarity>=self.matchingThreshold and len(matchingBlocks)!=0 and len(componentDocuments)>1:
                 if len(plagiarismList)>0:
-                    if globalSimilarity>=similarities[plagiarismList[0]]and globalSimilarity>=self.matchingThreshold:
+                    if globalSimilarity>=similarities[plagiarismList[0]]:
                         self.r.rpush(query, globalSimilarity)
                         self.r.rpush(query, matchingBlocks)
                         self.r.rpush(query,componentDocuments)
                     else:
-                        globalSimilarity=0
-                        matchingBlocks={}
-                        componentDocuments=[]
+                        componentDocuments = []
+                        matchingBlocks = None
+                        globalSimilarity = None
                 else:
                     self.r.rpush(query, globalSimilarity)
                     self.r.rpush(query, matchingBlocks)
                     self.r.rpush(query, componentDocuments)
+            else:
+                componentDocuments = []
+                matchingBlocks = None
+                globalSimilarity = None
 
         # get the result list of this query from redis
         else:

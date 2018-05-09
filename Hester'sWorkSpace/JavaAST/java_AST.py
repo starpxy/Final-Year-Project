@@ -7,21 +7,20 @@ import hashlib
 from JavaAST import Results
 import redis
 import os
+from collections import OrderedDict
 
-q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/JavaAST/testCases/java1",'r').read()
-q2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/JavaAST/testCases/java2",'r').read()
-q3=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/JavaAST/testCases/java3",'r').read()
 
 class JavaAST():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
-    path = "/Users/hester/Desktop/JavaProgram/testACM/src/testACM"  # path name
-    index_path = '/Users/hester/Desktop/finalYearProject/CodexIndexJavaAST.pik'
+    path = "/Users/hester/Desktop/finalYearProject/JavaFiles/java3"  # path name
+    index_path = '/Users/hester/Desktop/finalYearProject/javaIndex/CodexIndexJavaAST3.pik'
 
     weights = {}  # {weight:[fileNames] }
     fileIndex={} #{fileName: {weight:{nodeHash:(startLine,EndLine)] } }
     files = []
     documents = {}
+    lastLineNo=0
 
     # these parameters should be tuned
     matchingThreshold = 0.6
@@ -31,25 +30,27 @@ class JavaAST():
     wholeSimilarity = 0
     matchingBlock = {}  # {docID: (the startline and endline of the matching blocks)}.
     blockWeights = {}  # {docID: (startline, endline): weight of the biggest matching block}
-    expireTime = 30
+    expireTime = 1
 
     def readFiles(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
+        if '.DS_Store' in self.files:
+            self.files.remove('.DS_Store')
         for file in self.files:  # go through the folder
             if not os.path.isdir(file):  # judge if it is a folder
-                # self.documents[file] = conv.to_dic(self.path + "/" + file)
-                self.documents[file]=open(self.path+'/'+file,'r').read()
-                if len(self.documents[file].strip()) > 0:
+                self.documents[file] = conv.to_dic(self.path + "/" + file)
+                # self.documents[file]=open(self.path+'/'+file,'r').read()
+                if len(self.documents[file]['content'].strip()) > 0:
                     try:
-                        tree = javalang.parse.parse(self.documents[file])
-                    except(SyntaxError):
+                        tree = javalang.parse.parse(self.documents[file]['content'])
+                    except(javalang.parser.JavaSyntaxError):
                         self.lw.write_error_log("syntax error! " + file)
                         continue
                     # remove strings and variable names
                     self.fileIndex[file] = {}
                     names = []  # self defined name
+                    self.lastLineNo=0
                     self.index(tree, file, names,{}, {}, False)
                     # print(self.fileIndex[file])
                 else:
@@ -86,8 +87,9 @@ class JavaAST():
         i = 0
         startLine = 0
         endLine = 0
-        # print('-----------------------')
-        # print(root)
+        print('-----------------------')
+        print(root)
+
         attriValues =''  # "attr1 attr2 attr3"
         if isinstance(root, list) and len(root) == 0:
             return (weight, min, max, '')
@@ -100,6 +102,8 @@ class JavaAST():
             elif isinstance(root, tuple):
                 children = root
             else:
+                min=self.lastLineNo+1
+                max=self.lastLineNo+1
                 return (weight, min, max, attriValues)
             #get attributes information
             hasContent=False
@@ -146,11 +150,19 @@ class JavaAST():
                                     return (0, min, max, None)
 
                                 hasContent=True
-                                attriValues+=str(v)+": "
+                                print(type(v))
+                                if isinstance(v,set) and len(v)>1:
+                                    print('//////////////////////////////////////')
+                                    v1=list(v)
+                                    v1.sort()
+                                    print(v1)
+
+                                    attriValues+=str(v1)+": "
+                                attriValues += str(v) + ": "
+                                print(attriValues)
 
                             if isinstance(v, (javalang.ast.Node, tuple, list)):
                                 children.remove(v)
-                                # print(v)
                                 t = self.index(v, fileName,names, nestHash,qLineNums,nestedDic)
 
                                 weight += t[0]
@@ -213,6 +225,10 @@ class JavaAST():
 
             # put the weight into weights
             if weight >= self.weightThreshold:
+                if min==0 and max==0:
+                    min=self.lastLineNo+1
+                    max=self.lastLineNo+1
+                self.lastLineNo = max
                 if not nestedDic:
                     if weight in self.weights:
                         if fileName not in self.weights[weight]:
@@ -234,7 +250,7 @@ class JavaAST():
 
                 # print(weight)
                 print(attriValues)
-                # print((str(root),hashAttris,min,max))
+                print((str(root),hashAttris,min,max))
                 #put all its childern in this file into the current node
                 if nestedDic:
                     nestHash[(weight,hashAttris,min,max)]={}
@@ -261,7 +277,8 @@ class JavaAST():
                                 # print(k)
                                 # print((weight,hashAttris,min,max))
                                 nestHash[(weight,hashAttris,min,max)][k]=nestHash.pop(k)
-
+            if max>0:
+                self.lastLineNo = max
             return (weight, min, max, attriValues)
 
 
@@ -273,7 +290,7 @@ class JavaAST():
             while j < length:
                 r=root[j]
                 rStr=''
-                if r != None and r != '':
+                if r is not None and r is not '':
                     t=self.index(r, fileName,names, nestHash,qLineNums, nestedDic)
                     weight += t[0]
                     if t[1] > 0:
@@ -307,14 +324,16 @@ class JavaAST():
                 #sort the list in order to ignore the code order change
                 l.sort()
                 attriValues+='[ '+''.join(l)+' ]'
+            if max>0:
+                self.lastLineNo = max
             return (weight, min, max, attriValues)
 
 
             # interface to front end. Input query, return a Result instance
 
     def getResults(self, query, page):
-        globalSimilarity = 0
-        matchingBlocks = {}
+        globalSimilarity = None
+        matchingBlocks = None
         componentDocuments = []
         if not self.r.exists(query):  # if the result is not in the redis
             #read pickle file
@@ -342,6 +361,8 @@ class JavaAST():
             for d in documentList:
                 if similarities[d] > self.matchingThreshold:
                     plagiarismList.append(d)
+                    print(similarities[d])
+                    print(matchingLines[d])
                     i += 1
                 else:
                     break
@@ -352,21 +373,25 @@ class JavaAST():
             self.r.rpush(query, plagiarismList)
             self.r.rpush(query, documentList)
             self.r.rpush(query, matchingLines)
-            if globalSimilarity != 0 and len(matchingBlocks) != 0:
+            if globalSimilarity >= self.matchingThreshold and len(matchingBlocks) != 0 and len(componentDocuments)>1:
                 if len(plagiarismList) > 0:
-                    if globalSimilarity >= similarities[plagiarismList[0]] and globalSimilarity >= self.matchingThreshold:
+                    if globalSimilarity >= similarities[plagiarismList[0]] :
                         self.r.rpush(query, globalSimilarity)
                         self.r.rpush(query, matchingBlocks)
                         self.r.rpush(query, componentDocuments)
                     else:
-                        globalSimilarity = 0
-                        matchingBlocks = {}
                         componentDocuments = []
+                        matchingBlocks = None
+                        globalSimilarity = None
                 else:
                     #if no plagiarised case is found, display the component programs
                     self.r.rpush(query, globalSimilarity)
                     self.r.rpush(query, matchingBlocks)
                     self.r.rpush(query, componentDocuments)
+            else:
+                componentDocuments = []
+                matchingBlocks = None
+                globalSimilarity = None
 
         # get the result list of this query from redis
         else:
@@ -437,6 +462,7 @@ class JavaAST():
         root = javalang.parse.parse(query)
         self.fileIndex['query'] = {}
         names=[]
+        self.lastLineNo=0
         self.index(root,'query',names,qTree,qLineNums,True)
         # print(qTree)
         # print(qLineNums)
@@ -551,5 +577,10 @@ class JavaAST():
                         self.similarities(qTree[w], weights, similarities, maxWeight,qLineNums, matchingLines)
 
 
+    def import_in(self, filename):
+        dic = conv.to_dic(file_name=filename)
+        print(dic['content'])
+
+        # return  self.compareQueries(dic['code'],q1)
 
 
