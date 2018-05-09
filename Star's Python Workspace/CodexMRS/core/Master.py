@@ -9,8 +9,6 @@ from CodexMRS.base.configs import config
 from CodexMRS.base.network import Server
 from CodexMRS.base.network import Client
 
-__status
-
 
 class Master:
     """
@@ -43,12 +41,12 @@ class Master:
     #             self.__blocks[i] = file_names[i:min((total_num - i * self.__block_size), self.__block_size)]
 
     def __task(self, message):
-        global __status
         """
         Task to execute on the server.
         :param message: the dictionary received from server
         :return: None
         """
+        global __status
         # operation 1 is for task assignment for LSI
         operate_type = message['operate_type']
         timestamp = message['timestamp']
