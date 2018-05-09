@@ -2,7 +2,7 @@
 # author:Star
 # time: 21/04/2018
 
-import json
+import pickle
 import socket
 import hashlib
 import threading
@@ -71,12 +71,11 @@ class Server:
             if not buff:
                 break
             msg += buff
-        msg = bytes.decode(msg)
-        message = MessageDumper.dump_s(msg)
+        message = MessageDumper.dump_b(msg)
         if message.get_is_modified():
             print('Message has been modified!')
         else:
-            self.__task(json.loads(message.get_message_body()))
+            self.__task(pickle.loads(message.get_message_body()))
 
     def get_connected_ip(self):
         """
@@ -118,9 +117,8 @@ class Client:
         print("Connected to server {}:{}".format(self.__des_ip, self.__target_port))
         LogWriter().write_info_log(
             "Connected to server {}:{}".format(self.__des_ip, self.__target_port))
-        message = json.dumps(self.__message)
-        to_send = MessageDumper.encode_s(self.__source_ip, self.__des_ip, message)
-        to_send = to_send.encode()
+        message = pickle.dumps(self.__message)
+        to_send = MessageDumper.encode_b(self.__source_ip, self.__des_ip, message)
         while len(to_send) > 1024:
             trunk = to_send[0:1024]
             to_send = to_send[1024:]
@@ -198,14 +196,14 @@ class Message:
     To return by MessageDumper
     """
     __header = None
-    __message_body = ''
+    __message_body = b''
     __is_modified = True
 
     def __init__(self, header, message_body):
         self.__header = header
         self.__message_body = message_body
         m = hashlib.md5()
-        m.update(message_body.encode('utf-8'))
+        m.update(message_body)
         digest = m.hexdigest()
         if self.__header.get_digest() == digest:
             self.__is_modified = False
@@ -240,52 +238,53 @@ class MessageDumper:
     """
 
     @staticmethod
-    def encode_s(source_ip, des_ip, message_body):
+    def encode_b(source_ip, des_ip, message_body):
         """
         Encode the message into string
         :param source_ip: sender ip address
         :param des_ip: destination ip address
-        :param message_body: a string to send
-        :return: a String that contains header and origin message
+        :param message_body:bytes to send
+        :return: bytes that contains header and origin message
         """
         m = hashlib.md5()
-        m.update(message_body.encode('utf-8'))
+        m.update(message_body)
         digest = m.hexdigest()
         total_length = len(message_body)
         header = Header(source_ip, des_ip, total_length, digest)
-        header_str = header.encode_s()
+        header_str = header.encode_s().encode()
         result = header_str + message_body
         return result
 
     @staticmethod
-    def dump_s(msg=''):
+    def dump_b(msg=b''):
         """
         Dump a String into a message object
         :param msg: a string received by server
         :return: Message object (return None when header isn't integrated)
         """
-        start = msg.find('|CodEX HEADER=|')
-        end = msg.find('|=CodEX HEADER|')
+        start = msg.find(b'|CodEX HEADER=|')
+        end = msg.find(b'|=CodEX HEADER|')
         if start == -1 or end == -1:
             return None
         header_str = msg[(start + 15):end]
-        attributes = header_str.split('/')
+        attributes = header_str.split(b'/')
         source_ip = ''
         des_ip = ''
         total_length = 0
         digest = ''
         for attr in attributes:
-            params = attr.split(':')
-            if params[0] == 'SOURCE_IP':
+            params = attr.split(b':')
+            if params[0] == b'SOURCE_IP':
                 source_ip = params[1]
-            elif params[0] == 'DES_IP':
+            elif params[0] == b'DES_IP':
                 des_ip = params[1]
-            elif params[0] == 'TOTAL_LENGTH':
+            elif params[0] == b'TOTAL_LENGTH':
                 total_length = int(params[1])
-            elif params[0] == 'DIGEST':
+            elif params[0] == b'DIGEST':
                 digest = params[1]
+        digest = digest.decode()
         header = Header(source_ip, des_ip, total_length, digest)
-        msg_body = msg[(end + 15):(total_length + end + 15)]
+        msg_body = msg[(end + 15):]
         message = Message(header, msg_body)
         return message
 
@@ -298,5 +297,5 @@ if __name__ == '__main__':
     # print(msg.get_sender())
     # server = Server(test, "yeats.ucd.ie")
     # server.start_listening()
-    client = Client("137.43.92.165", "127.0.0.1", 9609, {"test": "kk"})
+    client = Client("localhost", "127.0.0.1", 9609, {"test": "kk"})
     client.send_message()

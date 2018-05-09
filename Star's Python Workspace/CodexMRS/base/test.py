@@ -1,3 +1,8 @@
-import pickle
+from CodexMRS.base.network import Server
 
-s = pickle.dumps("asdfasdf")
+
+def test(message):
+    print(message)
+
+
+Server(test, "localhost").start_listening()
