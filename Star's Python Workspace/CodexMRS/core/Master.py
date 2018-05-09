@@ -53,6 +53,7 @@ class Master:
             # if want to increase reducer, please rewrite the for loop below.
             self.__status[timestamp] = {'page': page, 'workers': {}}
             for worker in self.__workers.keys():
+                print(worker)
                 self.__status[timestamp]['workers'] = {worker: {'status': 1}}
                 client = Client(self.__workers[worker][0], '127.0.0.1', self.__workers[worker][1],
                                 {'operate_type': 1, 'query': query, 'timestamp': timestamp})
