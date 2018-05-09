@@ -9,6 +9,8 @@ from CodexMRS.base.configs import config
 from CodexMRS.base.network import Server
 from CodexMRS.base.network import Client
 
+__status
+
 
 class Master:
     """
@@ -22,8 +24,11 @@ class Master:
     }
     # __blocks = {}
     __name = 'yeats.ucd.ie'
-    __status = {}
     __server = None
+
+    def __init__(self):
+        global __status
+        __status = {}
 
     # __block_dir = ''
     # def init_blocks(self):
@@ -38,6 +43,7 @@ class Master:
     #             self.__blocks[i] = file_names[i:min((total_num - i * self.__block_size), self.__block_size)]
 
     def __task(self, message):
+        global __status
         """
         Task to execute on the server.
         :param message: the dictionary received from server
@@ -52,10 +58,10 @@ class Master:
             page = message['page']
             # we do not have enough server to complete mapper and reducer. So just assign Mapper task first.
             # if want to increase reducer, please rewrite the for loop below.
-            self.__status[timestamp] = {'page': page, 'workers': {}}
+            __status[timestamp] = {'page': page, 'workers': {}}
             for worker in self.__workers.keys():
                 print(worker)
-                self.__status[timestamp]['workers'] = {worker: {'status': 1}}
+                __status[timestamp]['workers'] = {worker: {'status': 1}}
                 client = Client(self.__workers[worker][0], '127.0.0.1', self.__workers[worker][1],
                                 {'operate_type': 1, 'query': query, 'timestamp': timestamp})
                 client.send_message()
@@ -65,19 +71,19 @@ class Master:
             result = Results.from_dict(result)
             name = message['name']
             print(name)
-            self.__status[timestamp]['workers'][name]['status'] = 2
-            self.__status[timestamp]['workers'][name]['result'] = result
+            __status[timestamp]['workers'][name]['status'] = 2
+            __status[timestamp]['workers'][name]['result'] = result
             is_complete = True
-            print(self.__status[timestamp]['workers'])
-            for slave in self.__status[timestamp]['workers'].keys():
-                if self.__status[timestamp]['workers'][slave]['status'] == 1:
+            print(__status[timestamp]['workers'])
+            for slave in __status[timestamp]['workers'].keys():
+                if __status[timestamp]['workers'][slave]['status'] == 1:
                     is_complete = False
             if is_complete:
                 print("complete")
                 results = []
-                for worker in self.__status[timestamp]['workers'].keys():
-                    results.append(self.__status[timestamp]['workers'][worker]['result'])
-                page = self.__status[timestamp]['page']
+                for worker in __status[timestamp]['workers'].keys():
+                    results.append(__status[timestamp]['workers'][worker]['result'])
+                page = __status[timestamp]['page']
                 result_list = self.LSI_merge(results)
                 to_return = self.get_result_at_page(page, config['page_num'], result_list)
                 client = Client(config['recall_ip'], self.__name, config['recall_port'], {'result': to_return})
