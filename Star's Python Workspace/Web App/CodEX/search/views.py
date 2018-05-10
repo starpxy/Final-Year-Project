@@ -26,10 +26,11 @@ def task(message, shared):
 def search(request):
     q = request.GET['q']
     p = int(request.GET['p'])
-    client = Client("yeats.ucd.ie", "10.141.131.14", 9609, {'operate_type':1,'query':q,'page':p,'timestamp':time.time()})
+    client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
+                    {'operate_type': 1, 'query': q, 'page': p, 'timestamp': time.time()})
     client.send_message()
     server = Server(task, '10.141.131.14')
-    message = server.listen_once()
+    message = server.listen_once().get_message_body()
     result = message['result']
     pages = []
     # lsi = LSI_TFIDF()
