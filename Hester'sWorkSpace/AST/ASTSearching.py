@@ -42,7 +42,7 @@ class ASTSearching(Singleton):
     wholeSimilarity=0
     matchingBlock={} # {docID: (the startline and endline of the matching blocks)}.
     blockWeights={} #{docID: (startline, endline): weight of the biggest matching block}
-    expireTime=30
+    expireTime=1
 
     #parse the corpus
     def ReadFiles(self):
@@ -338,9 +338,10 @@ class ASTSearching(Singleton):
             self.lw.write_error_log("syntax error in qeury! " )
             return 0
         self.visitor.visit(qNode)
-
+        print(ast.dump(qNode,include_attributes=True))
         self.queryWeight(qNode,qLineNums,qTree)
-
+        print(qTree)
+        print(qLineNums)
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
         self.similarities(qTree,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)

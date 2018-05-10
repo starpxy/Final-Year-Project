@@ -1,32 +1,40 @@
 import ast
-class MyVisitor(ast.NodeTransformer):
-    # def generic_visit(self,node):
-    #     print('========')
-    #     l=getattr(node, "lineno", "-1")
-    #     print(l)
-    #     if l =='-1':
-    #         print('000000000')
-    #         ast.fix_missing_locations(node)
-    #     print(getattr(node, "lineno", "None"))
+class MyVisitor(ast.NodeVisitor):
+    def generic_visit(self, node):
+        ast.NodeVisitor.generic_visit(self, node)
 
     def visit_Str(self, node):
-        return None
+        node=None
 
     def visit_Name(self, node):
         if node.id!='print': #ignore identity names
             node.id=''
-        return node
+        else:
+            node=None
+            return None
+        ast.NodeVisitor.generic_visit(self, node)
 
     def visit_alias(self, node):
         node.asname=''
-        return node
+        ast.NodeVisitor.generic_visit(self, node)
 
     def visit_Expr(self, node):#remove print
         if isinstance(node.value, ast.Call):
             if isinstance(node.value.func,ast.Name):
                 if node.value.func.id=='print':
+                    node=None
                     return None
-        return node
+        ast.NodeVisitor.generic_visit(self, node)
 
+    def visit_ClassDef(self,node):
+        if hasattr(node,'name'):
+            node.name=''
+        ast.NodeVisitor.generic_visit(self, node)
+
+    def visit_FunctionDef(self,node):
+        if hasattr(node,'name'):
+            # print(node)
+            node.name=''
+        ast.NodeVisitor.generic_visit(self, node)
 
 

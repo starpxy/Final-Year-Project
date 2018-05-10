@@ -5,12 +5,16 @@ combined1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/T
 combined2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/combined_2/combine2", 'r').read()#combine multiple programs
 
 #change ordert test cases
-
 modify1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/change_order/modify_1", 'r').read()
 p1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/change_order/python1", 'r').read()
 
 modify2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/change_order/modify_2", 'r').read()
 p2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/change_order/python2", 'r').read()
+
+#modify identifier names
+modify3=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/modify_1", 'r').read()
+p3=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/python1", 'r').read()
+
 
 # q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q1",'r').read()#copy one program
 
@@ -25,7 +29,7 @@ astSearch=asts.ASTSearching()
 
 # time_start = time.clock()
 
-result=astSearch.getResults(modify2,1)
+result=astSearch.getResults(modify3,1)
 
 # time_end = time.clock()
 # print("whole: ")
@@ -33,4 +37,4 @@ result=astSearch.getResults(modify2,1)
 
 
 
-# astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/02fdc1f2367e925cfc7619e1d877b9e6.json")
+# astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/3a1f18fdff257b8dc80241f8f09f8b92.json")
