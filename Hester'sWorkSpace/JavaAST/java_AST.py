@@ -371,9 +371,9 @@ class JavaAST():
             for d in documentList:
                 if similarities[d] > self.matchingThreshold:
                     plagiarismList.append(d)
-                    print(similarities[d])
-                    matchingLines[d].sort()
-                    print(matchingLines[d])
+                    # print(similarities[d])
+                    # matchingLines[d].sort()
+                    # print(matchingLines[d])
                     i += 1
                 else:
                     break
@@ -457,8 +457,8 @@ class JavaAST():
                 return None
             results.setDocumentList(disDocumentList)
 
-        print('==============')
-        results.toString()
+        # print('==============')
+        # results.toString()
         return results
 
 

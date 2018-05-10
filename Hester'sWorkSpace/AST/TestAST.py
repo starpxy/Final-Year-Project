@@ -25,6 +25,12 @@ p5=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcase
 modify6=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/modify_2", 'r').read()
 p6=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/python2", 'r').read()
 
+#mixed plagiarized techs test case
+mix=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/mixed/mixed_test", 'r').read()
+
+p7=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/mixed/python3", 'r').read()
+
+
 # q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q1",'r').read()#copy one program
 
 # time_start = time.clock()
@@ -38,7 +44,7 @@ astSearch=asts.ASTSearching()
 
 # time_start = time.clock()
 
-# result=astSearch.getResults(modify6,1)
+result=astSearch.getResults(mix,1)
 
 # time_end = time.clock()
 # print("whole: ")
@@ -46,4 +52,4 @@ astSearch=asts.ASTSearching()
 
 
 
-astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/0ef9dfc02d4523ce6bac432705366b16.json")
+# astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/07273cf3c2d15f70be016fe0cbc101b4.json")

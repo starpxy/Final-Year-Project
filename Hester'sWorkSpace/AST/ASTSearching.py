@@ -177,9 +177,9 @@ class ASTSearching(Singleton):
             for d in documentList:
                 if similarities[d]>self.matchingThreshold:
                     plagiarismList.append(d)
-                    print(similarities[d])
-                    matchingLines[d].sort()
-                    print(matchingLines[d])
+                    # print(similarities[d])
+                    # matchingLines[d].sort()
+                    # print(matchingLines[d])
                     i+=1
                 else:
                     break
@@ -253,8 +253,8 @@ class ASTSearching(Singleton):
                 return None
             results.setDocumentList(disDocumentList)
 
-        print('==============')
-        results.toString()
+        # print('==============')
+        # results.toString()
         return results
 
 
@@ -339,10 +339,10 @@ class ASTSearching(Singleton):
             self.lw.write_error_log("syntax error in qeury! " )
             return 0
         self.visitor.visit(qNode)
-        print(ast.dump(qNode,include_attributes=True))
+        # print(ast.dump(qNode,include_attributes=True))
         self.queryWeight(qNode,qLineNums,qTree)
-        print(qTree)
-        print(qLineNums)
+        # print(qTree)
+        # print(qLineNums)
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
         self.similarities(qTree,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
