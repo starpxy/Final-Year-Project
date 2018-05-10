@@ -32,7 +32,7 @@ def search(request):
     client.send_message()
     server = Server(task, '10.141.131.14')
     message = server.listen_once().get_message_body()
-    message = json.dumps(message)
+    message = json.loads(message)
     result = message['result']
     pages = []
     # lsi = LSI_TFIDF()

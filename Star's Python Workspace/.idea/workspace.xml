@@ -70,7 +70,7 @@
             <state relative-caret-position="465">
               <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
               <folding>
-                <marker date="1525938132393" expanded="true" signature="63:561" ph="import ..." />
+                <marker date="1525938689820" expanded="true" signature="63:561" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -96,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shutdown.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="shutdown.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bash files/shutdown.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+            <state relative-caret-position="15">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -118,7 +118,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Master.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Master.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="318">
@@ -209,11 +209,11 @@
         <option value="$PROJECT_DIR$/deploy/yeats_worker.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/Worker.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/test.py" />
-        <option value="$PROJECT_DIR$/bash files/shutdown.sh" />
         <option value="$PROJECT_DIR$/Web App/CodEX/search/views.py" />
         <option value="$PROJECT_DIR$/Web App/CodEX/search/supportings/network.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/Master.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/network.py" />
+        <option value="$PROJECT_DIR$/bash files/shutdown.sh" />
       </list>
     </option>
   </component>
@@ -1061,7 +1061,7 @@
         <state relative-caret-position="465">
           <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
           <folding>
-            <marker date="1525938132393" expanded="true" signature="63:561" ph="import ..." />
+            <marker date="1525938689820" expanded="true" signature="63:561" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -1070,14 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bash files/shutdown.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1107,6 +1099,14 @@
           <folding>
             <element signature="e#82#125#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bash files/shutdown.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

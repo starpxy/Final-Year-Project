@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-ps -ef | grep python | grep -v grep
+ps -ef | grep uswgi | grep -v grep
 if [ $? -eq 0 ];then
   PID=$(echo `netstat -apn |grep 9609 | awk '{print $NF}'|awk -F '/' '{print $1}'`)
   PID2=$(echo `netstat -apn |grep 9610 | awk '{print $NF}'|awk -F '/' '{print $1}'`)
