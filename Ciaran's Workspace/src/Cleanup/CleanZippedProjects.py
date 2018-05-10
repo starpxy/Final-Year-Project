@@ -14,15 +14,18 @@ class CleanZippedProjects:
 
     def __init__(self):
         self.log_writer = LogWriter()
+        self.file_paths = "file_paths.json"
         self.unclean_projects_path = None
         self.clean_projects_path = None
 
     def load_file_paths(self):
-        file_paths_config_file = open("file_paths.json")
+        file_paths_config_file = open(self.file_paths)
         file_paths = json.load(file_paths_config_file)
 
         self.clean_projects_path = file_paths["Linux"]["clean_dir"]
         self.unclean_projects_path = file_paths["Linux"]["unclean_dir"]
+
+        file_paths_config_file.close()
 
     # Unzips all zipped folders in the directories in unclean to corresponding directories in clean
     def unzip(self):

@@ -168,6 +168,7 @@ class CreateJsonFiles:
         for line in file.readlines():
             content += line
         fci_object.set_content(content)
+        file.close()
 
         self.set_project_details(fci_object)
 
@@ -195,6 +196,7 @@ class CreateJsonFiles:
         for line in file.readlines():
             content += line
         fci_object.set_content(content)
+        file.close()
 
         # Code
         code = content

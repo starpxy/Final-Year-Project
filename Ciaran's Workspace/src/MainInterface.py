@@ -10,7 +10,7 @@ from Server.LinuxConnection import LinuxConnection
 def main():
     connection = LinuxConnection()
     file = "Main.py"
-    #path_to_file = "/home/ubuntu/Final-Year-Project/Ciaran's Workspace/src/"
+    # path_to_file = "/home/ubuntu/Final-Year-Project/Ciaran's Workspace/src/"
     '''path_to_file = "Final-Year-Project/Ciaran\\'s\ Workspace/src/"
     change_directory = "cd " + path_to_file
     run_file = "pyhton3.5 " + file
