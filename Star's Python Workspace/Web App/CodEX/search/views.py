@@ -46,10 +46,10 @@ def search(request):
         total_p -= 1
     files = []
     for f_f in f:
-        f_name = f_f[0]
+        f_name = f_f[0][0]
         temp = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + f_name)
         m_l = ''
-        for t_f_f in f_f[1]:
+        for t_f_f in f_f[0][1]:
             m_l += str(t_f_f + 1)
             m_l += ','
         m_l = m_l[0:len(m_l) - 1]
