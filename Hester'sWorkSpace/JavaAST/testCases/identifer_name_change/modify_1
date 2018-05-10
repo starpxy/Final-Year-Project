@@ -71,7 +71,7 @@ public class ProxyUtils {
    *
    */
   public static void modify_method_1(HttpServletRequest r,
-      HttpServletResponse response,
+      HttpServletResponse rs,
       String target)
       throws IOException {
     if (LOG.isDebugEnabled()) {
@@ -80,11 +80,11 @@ public class ProxyUtils {
           r.getRequestURI(),
           target);
     }
-    String l = response.encodeRedirectURL(target);
-    response.setStatus(HttpServletResponse.SC_FOUND);
-    response.setHeader(LOCATION, l);
-    response.setContentType(MimeType.HTML);
-    PrintWriter writer = response.getWriter();
+    String l = rs.encodeRedirectURL(target);
+    rs.setStatus(HttpServletResponse.SC_FOUND);
+    rs.setHeader(LOCATION, l);
+    rs.setContentType(MimeType.HTML);
+    PrintWriter writer = rs.getWriter();
     Page p = new Page(writer);
     p.html()
         .head().title("Moved").__()

@@ -25,8 +25,8 @@ from scipy.sparse.linalg import svds
 class LSI_TFIDF():
     lw = lg.LogWriter()
     # get files
-    path = "/Users/hester/Desktop/finalYearProject/files"  # path name
-    index_path='/Users/hester/Desktop/finalYearProject/CodexIndex.pik'
+    path = "/Users/hester/Desktop/finalYearProject/NLP files"  # path name
+    index_path='/Users/hester/Desktop/finalYearProject/NLP index/nlpIndex1.pik'
     files = []
     documents = {}
     sortedDocuments = []
@@ -42,7 +42,6 @@ class LSI_TFIDF():
     idf=None
     lineNo={}
     expireTime=30
-    end_time=time.clock()
     # def __init__(self):
         # self.vectorizer = CountVectorizer()
         # #if there exist the pickle file, read it
@@ -66,7 +65,8 @@ class LSI_TFIDF():
     def indexing(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
+        if '.DS_Store' in self.files:
+            self.files.remove('.DS_Store')
         fs = len(self.files)
         self.tfidf = TfidfVectorizer()
         i = 0
@@ -115,7 +115,7 @@ class LSI_TFIDF():
         # self.X=dok_matrix(self.X)
         print("start SVD")
         # svd decomposition
-        self.u, self.s, self.d = svds(self.re, k=500,return_singular_vectors='u')
+        self.u, self.s, self.d = svds(self.re, k=10,return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
         with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'

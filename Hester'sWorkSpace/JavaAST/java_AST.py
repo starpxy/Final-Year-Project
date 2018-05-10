@@ -7,7 +7,6 @@ import hashlib
 from JavaAST import Results
 import redis
 import os
-from collections import OrderedDict
 
 
 class JavaAST():
@@ -87,8 +86,8 @@ class JavaAST():
         i = 0
         startLine = 0
         endLine = 0
-        print('-----------------------')
-        print(root)
+        # print('-----------------------')
+        # print(root)
 
         attriValues =''  # "attr1 attr2 attr3"
         if isinstance(root, list) and len(root) == 0:
@@ -117,17 +116,17 @@ class JavaAST():
                         if a is 'name' and ((not isinstance(root,javalang.tree.ReferenceType) and not isinstance(root,javalang.tree.ReferenceType)) or v in names):
                             if v not in names:
                                 names.append(v)
-                            print('================')
-                            print((type(root),a))
-                            print(v)
+                            # print('================')
+                            # print((type(root),a))
+                            # print(v)
                             children.remove(v)
                             continue
                         elif a is 'member':
                             # PROBLEM: if the member is a method name not in self.names(defined below the current node), we will fail to ignore it
 
                             if v in names:
-                                print('~~~~~~~~~~~~~~~~~~~~~~~~~')
-                                print(v)
+                                # print('~~~~~~~~~~~~~~~~~~~~~~~~~')
+                                # print(v)
                                 children.remove(v)
                                 continue
                         elif a == 'qualifier':
@@ -150,16 +149,18 @@ class JavaAST():
                                     return (0, min, max, None)
 
                                 hasContent=True
-                                print(type(v))
+                                # print(v)
                                 if isinstance(v,set) and len(v)>1:
-                                    print('//////////////////////////////////////')
+                                    # print('//////////////////////////////////////')
                                     v1=list(v)
                                     v1.sort()
-                                    print(v1)
-
+                                    # print(v1)
                                     attriValues+=str(v1)+": "
-                                attriValues += str(v) + ": "
-                                print(attriValues)
+                                else:
+                                    # print('111111111111111111')
+                                    # print(v)
+                                    attriValues += str(v) + ": "
+                                # print(attriValues)
 
                             if isinstance(v, (javalang.ast.Node, tuple, list)):
                                 children.remove(v)
@@ -190,7 +191,16 @@ class JavaAST():
                 for child in children:
                     #ignore some meaningless nodes
                     if child != None and child != '' and not isinstance(child, list) and child not in names:
-                        attriValues+=str(child)+': '
+                        if isinstance(child, set) and len(child) > 1:
+                            # print('//////////////////////////////////////')
+                            child1 = list(child)
+                            child1.sort()
+                            # print(child1)
+                            attriValues += str(child1) + ": "
+                        else:
+                            # print('22222222222222222')
+                            # print(child)
+                            attriValues+=str(child)+': '
                     if isinstance(child, (javalang.ast.Node, tuple, list)):
                         t=self.index(child,fileName,names, nestHash,qLineNums,nestedDic)
 
@@ -241,7 +251,7 @@ class JavaAST():
                 m.update(attriValues.encode("utf8"))
                 hashAttris = m.hexdigest()
 
-                print(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
+                # print(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,')
                 # print(self.fileIndex[fileName])
                 #put the node into fileIndex
                 if weight not in self.fileIndex[fileName]:
@@ -249,8 +259,8 @@ class JavaAST():
                 self.fileIndex[fileName][weight][hashAttris]=(min,max)
 
                 # print(weight)
-                print(attriValues)
-                print((str(root),hashAttris,min,max))
+                # print(attriValues)
+                # print((str(root),hashAttris,min,max))
                 #put all its childern in this file into the current node
                 if nestedDic:
                     nestHash[(weight,hashAttris,min,max)]={}
@@ -362,6 +372,7 @@ class JavaAST():
                 if similarities[d] > self.matchingThreshold:
                     plagiarismList.append(d)
                     print(similarities[d])
+                    matchingLines[d].sort()
                     print(matchingLines[d])
                     i += 1
                 else:
@@ -469,6 +480,7 @@ class JavaAST():
         self.fileIndex.pop('query')
         similarities={} # {fileName:score}
         maxWeight=list(qTree.keys())[0][0]
+        # print(maxWeight)
         self.similarities(qTree,self.weights,similarities,maxWeight,qLineNums,matchingLines)
 
         # work out the global similarity

@@ -161,11 +161,7 @@ class ASTSearching(Singleton):
 
             # store the result of the query into redis
             matchingLines = {}  # {fileName:[(qStart,qEnd, fStart,fEnd)]}
-            time_start = time.clock()
             similarities = self.search(query, matchingLines)
-            time_end = time.clock()
-            print("searching: ")
-            print(time_end - time_start)
             if similarities==None:
                 self.lw.write_error_log('Pickle files not found!')
                 return None
@@ -180,6 +176,9 @@ class ASTSearching(Singleton):
             for d in documentList:
                 if similarities[d]>self.matchingThreshold:
                     plagiarismList.append(d)
+                    print(similarities[d])
+                    matchingLines[d].sort()
+                    print(matchingLines[d])
                     i+=1
                 else:
                     break
@@ -253,8 +252,8 @@ class ASTSearching(Singleton):
                 return None
             results.setDocumentList(disDocumentList)
 
-        # print('==============')
-        # results.toString()
+        print('==============')
+        results.toString()
         return results
 
 
@@ -344,11 +343,7 @@ class ASTSearching(Singleton):
 
         maxWeight=list(qTree.keys())[0][0]
         similarities={}#{fileName:score}
-        time_start2 = time.clock()
         self.similarities(qTree,self.weights,similarities,maxWeight,qLineNums,self.lineNums,matchingLines)
-        time_end2 = time.clock()
-        print("similarity: ")
-        print(time_end2 - time_start2)
 
         #work out the global similarity
         for dic in self.blockWeights:
@@ -473,7 +468,7 @@ class ASTSearching(Singleton):
 
     def import_in(self,filename):
         dic = conv.to_dic(file_name=filename)
-        print(dic['code'])
+        print(dic['content'])
         # return  self.compareQueries(dic['code'],q1)
 
 
