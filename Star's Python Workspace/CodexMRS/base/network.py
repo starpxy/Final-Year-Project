@@ -43,6 +43,7 @@ class Server:
         connection.settimeout(30)
         self.__execute(connection, address[0])
 
+
     def start_listening(self):
         """
         Listen to the specific port, and start a new thread after it accept any client.

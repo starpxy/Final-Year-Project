@@ -51,6 +51,7 @@ class Server:
             msg += buff
         msg = bytes.decode(msg)
         message = MessageDumper.dump_s(msg)
+        self.__server_socket.close()
         if message.get_is_modified():
             print('Message has been modified!')
         else:

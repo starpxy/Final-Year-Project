@@ -2,6 +2,7 @@
 # @author: Star
 # @time: 10-03-2018
 import time
+import json
 import search.supportings.FCIConverter as fci
 from search.supportings.network import Server
 from search.supportings.network import Client
@@ -31,6 +32,7 @@ def search(request):
     client.send_message()
     server = Server(task, '10.141.131.14')
     message = server.listen_once().get_message_body()
+    message = json.dumps(message)
     result = message['result']
     pages = []
     # lsi = LSI_TFIDF()
