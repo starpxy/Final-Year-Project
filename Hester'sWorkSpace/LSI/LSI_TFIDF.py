@@ -25,8 +25,8 @@ from scipy.sparse.linalg import svds
 class LSI_TFIDF():
     lw = lg.LogWriter()
     # get files
-    path = "/Users/hester/Desktop/finalYearProject/testPythonFiles"  # path name
-    index_path='/Users/hester/Desktop/finalYearProject/CodexIndexTest.pik'
+    path = "/Users/hester/Desktop/finalYearProject/testPythonFiles/test2"  # path name
+    index_path='/Users/hester/Desktop/finalYearProject/testPythonFiles/LSIindexTest2.pik'
     files = []
     documents = {}
     sortedDocuments = []

@@ -15,6 +15,15 @@ p2=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcase
 modify3=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/modify_1", 'r').read()
 p3=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/python1", 'r').read()
 
+modify4=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/modify_2", 'r').read()
+p4=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/identifier_name_modify/python2", 'r').read()
+
+#output insertion testcases
+modify5=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/modify_1", 'r').read()
+p5=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/python1", 'r').read()
+
+modify6=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/modify_2", 'r').read()
+p6=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/output_insertion/python2", 'r').read()
 
 # q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q1",'r').read()#copy one program
 
@@ -29,7 +38,7 @@ astSearch=asts.ASTSearching()
 
 # time_start = time.clock()
 
-result=astSearch.getResults(modify3,1)
+# result=astSearch.getResults(modify6,1)
 
 # time_end = time.clock()
 # print("whole: ")
@@ -37,4 +46,4 @@ result=astSearch.getResults(modify3,1)
 
 
 
-# astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/3a1f18fdff257b8dc80241f8f09f8b92.json")
+astSearch.import_in("/Users/hester/Desktop/finalYearProject/files/0ef9dfc02d4523ce6bac432705366b16.json")
