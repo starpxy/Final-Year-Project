@@ -301,5 +301,5 @@ if __name__ == '__main__':
     # print(msg.get_sender())
     # server = Server(test, "yeats.ucd.ie")
     # server.start_listening()
-    client = Client("yeats.ucd.ie", "127.0.0.1", 9609, {"test": "kk"})
+    client = Client("localhost", "127.0.0.1", 9609, {"test": "kwk"})
     client.send_message()

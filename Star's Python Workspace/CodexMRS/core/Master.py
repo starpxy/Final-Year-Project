@@ -4,7 +4,6 @@
 """
 This one is yeats.ucd.ie
 """
-import redis
 from CodexMRS.vendor.Results import Results
 from CodexMRS.base.configs import config
 from CodexMRS.base.network import Server
@@ -37,7 +36,7 @@ class Master:
     #         for i in range(0, int(total_num / self.__block_size), 1):
     #             self.__blocks[i] = file_names[i:min((total_num - i * self.__block_size), self.__block_size)]
 
-    def __task(self, message,__status):
+    def __task(self, message, __status):
         """
         Task to execute on the server.
         :param message: the dictionary received from server
@@ -46,6 +45,7 @@ class Master:
         # operation 1 is for task assignment for LSI
         operate_type = message['operate_type']
         timestamp = message['timestamp']
+        print(__status)
         print('{}========={}'.format(timestamp, operate_type))
         if operate_type == 1:
             query = message['query']
@@ -62,9 +62,7 @@ class Master:
         # operation 2 LSI merge
         elif operate_type == 2:
             result = message['result']
-            result = Results.from_dict(result)
             name = message['name']
-            print(name)
             __status[timestamp]['workers'][name]['status'] = 2
             __status[timestamp]['workers'][name]['result'] = result
             is_complete = True
@@ -76,7 +74,8 @@ class Master:
                 print("complete")
                 results = []
                 for worker in __status[timestamp]['workers'].keys():
-                    results.append(__status[timestamp]['workers'][worker]['result'])
+                    result = Results.from_dict(__status[timestamp]['workers'][worker]['result'])
+                    results.append(result)
                 page = __status[timestamp]['page']
                 result_list = self.LSI_merge(results)
                 to_return = self.get_result_at_page(page, config['page_num'], result_list)
