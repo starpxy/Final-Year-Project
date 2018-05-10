@@ -55,7 +55,7 @@ class Master:
             __status[timestamp] = {'page': page, 'workers': {}}
             for worker in self.__workers.keys():
                 print(worker)
-                __status[timestamp]['workers'] = {worker: {'status': 1}}
+                __status[timestamp]['workers'][worker] = {'status': 1}
                 client = Client(self.__workers[worker][0], '127.0.0.1', self.__workers[worker][1],
                                 {'operate_type': 1, 'query': query, 'timestamp': timestamp})
                 client.send_message()
