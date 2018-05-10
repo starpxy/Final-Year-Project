@@ -45,8 +45,8 @@ class Master:
         # operation 1 is for task assignment for LSI
         operate_type = message['operate_type']
         timestamp = message['timestamp']
-        print(__status)
-        print('{}========={}'.format(timestamp, operate_type))
+        # print(__status)
+        # print('{}========={}'.format(timestamp, operate_type))
         if operate_type == 1:
             query = message['query']
             page = message['page']
@@ -54,7 +54,7 @@ class Master:
             # if want to increase reducer, please rewrite the for loop below.
             __status[timestamp] = {'page': page, 'workers': {}}
             for worker in self.__workers.keys():
-                print(worker)
+                # print(worker)
                 __status[timestamp]['workers'][worker] = {'status': 1}
                 client = Client(self.__workers[worker][0], '127.0.0.1', self.__workers[worker][1],
                                 {'operate_type': 1, 'query': query, 'timestamp': timestamp})
@@ -71,7 +71,7 @@ class Master:
                 if __status[timestamp]['workers'][slave]['status'] == 1:
                     is_complete = False
             if is_complete:
-                print("complete")
+                # print("complete")
                 results = []
                 for worker in __status[timestamp]['workers'].keys():
                     result = Results.from_dict(__status[timestamp]['workers'][worker]['result'])
@@ -79,7 +79,8 @@ class Master:
                 page = __status[timestamp]['page']
                 result_list = self.LSI_merge(results)
                 to_return = self.get_result_at_page(page, config['page_num'], result_list)
-                client = Client(config['recall_ip'], self.__name, config['recall_port'], {'result': to_return})
+                client = Client(config['recall_ip'], self.__name, config['recall_port'],
+                                {'result': to_return})
                 client.send_message()
         # operation 3 NLP search
         elif operate_type == 3:
@@ -126,7 +127,7 @@ class Master:
             matchingLineskeys.sort(reverse=True)
 
         # sort the docs into a single list
-        displayList = []
+        displayList = []  # [(docName,[hit lines])]
         for k in fullHitLineskeys:
             displayList.append(fullHitLines[k])
         for k in hitDocskeys:

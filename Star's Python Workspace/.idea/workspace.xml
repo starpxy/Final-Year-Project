@@ -42,13 +42,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4485">
-              <caret line="303" column="59" selection-start-line="303" selection-start-column="59" selection-end-line="303" selection-end-column="59" />
+            <state relative-caret-position="247">
+              <caret line="280" column="20" selection-start-line="280" selection-start-column="20" selection-end-line="280" selection-end-column="20" />
               <folding>
                 <element signature="e#50#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+              <folding>
+                <element signature="e#63#108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,8 +69,8 @@
       <file leaf-file-name="Results.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/Results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+            <state relative-caret-position="-293">
+              <caret line="5" column="58" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -87,8 +99,8 @@
       <file leaf-file-name="Worker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/core/Worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+            <state relative-caret-position="435">
+              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
               <folding>
                 <element signature="e#48#61#0" expanded="true" />
               </folding>
@@ -96,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Master.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Master.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+            <state relative-caret-position="750">
+              <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
               <folding>
                 <element signature="e#82#125#0" expanded="true" />
               </folding>
@@ -108,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shutdown.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bash files/shutdown.sh">
+      <file leaf-file-name="configs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CodexMRS/base/configs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+            <state relative-caret-position="75">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -141,8 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DF/app/manage.py" />
-        <option value="$PROJECT_DIR$/CNN/test.py" />
         <option value="$PROJECT_DIR$/CNN/Learn2.py" />
         <option value="$PROJECT_DIR$/FormattedCodeInterface.py" />
         <option value="$PROJECT_DIR$/FreqCounter.py" />
@@ -188,9 +198,11 @@
         <option value="$PROJECT_DIR$/CodexMRS/vendor/Results.py" />
         <option value="$PROJECT_DIR$/deploy/yeats_worker.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/Worker.py" />
-        <option value="$PROJECT_DIR$/CodexMRS/base/network.py" />
         <option value="$PROJECT_DIR$/CodexMRS/base/test.py" />
         <option value="$PROJECT_DIR$/bash files/shutdown.sh" />
+        <option value="$PROJECT_DIR$/CodexMRS/base/network.py" />
+        <option value="$PROJECT_DIR$/Web App/CodEX/search/views.py" />
+        <option value="$PROJECT_DIR$/Web App/CodEX/search/supportings/network.py" />
         <option value="$PROJECT_DIR$/CodexMRS/core/Master.py" />
       </list>
     </option>
@@ -308,34 +320,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="deploy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bash files" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Star's Python Workspace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="CodexMRS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -355,6 +339,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Star's Python Workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CodexMRS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -392,19 +394,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Web App/CodEX/search/supportings" />
+      <recent name="$PROJECT_DIR$/CodexMRS/vendor" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/CodexMRS" />
+      <recent name="$PROJECT_DIR$/CodexMRS/base" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bash files" />
       <recent name="$PROJECT_DIR$/CodexMRS" />
       <recent name="$PROJECT_DIR$/CodexMRS/vendor" />
       <recent name="$PROJECT_DIR$/DF/core" />
       <recent name="$PROJECT_DIR$/Distributed Framework" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/CodexMRS/vendor" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/CodexMRS" />
-      <recent name="$PROJECT_DIR$/CodexMRS/base" />
-      <recent name="$PROJECT_DIR$/files" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test">
@@ -818,9 +820,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CNN/test.py" />
-    <entry file="file://$PROJECT_DIR$/DF/core/Task.py" />
-    <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/templates/detail.html" />
     <entry file="file://$PROJECT_DIR$/asserts/js/swipe.js" />
     <entry file="file://$PROJECT_DIR$/test.html" />
     <entry file="file://$PROJECT_DIR$/DF/app/configuration.py" />
@@ -945,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/base/configs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/LSI_TFIDF.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -966,26 +958,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/yeats_worker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/yeats_master.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/Results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1011,14 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/base/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="21" selection-start-line="15" selection-start-column="14" selection-end-line="24" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bash files/shutdown.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1027,32 +995,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
+    <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/supportings/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4485">
-          <caret line="303" column="59" selection-start-line="303" selection-start-column="59" selection-end-line="303" selection-end-column="59" />
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#50#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/yeats_worker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/core/Worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+        <state relative-caret-position="435">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
           <folding>
             <element signature="e#48#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="21" selection-start-line="15" selection-start-column="14" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web App/CodEX/search/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+          <folding>
+            <element signature="e#63#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/Results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-293">
+          <caret line="5" column="58" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/configs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        <state relative-caret-position="750">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
           <folding>
             <element signature="e#82#125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="280" column="20" selection-start-line="280" selection-start-column="20" selection-end-line="280" selection-end-column="20" />
+          <folding>
+            <element signature="e#50#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

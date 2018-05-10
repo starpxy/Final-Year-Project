@@ -6,7 +6,7 @@ import json
 import socket
 import hashlib
 import threading
-from CodexMRS.vendor.LogWriter import LogWriter
+from search.supportings.LogWriter import LogWriter
 
 
 class Server:
@@ -41,7 +41,20 @@ class Server:
         self.__server_socket.listen(self.__max_client_num)
         connection, address = self.__server_socket.accept()
         connection.settimeout(30)
-        self.__execute(connection, address[0])
+        if address not in self.__connected_ip:
+            self.__connected_ip.append(address)
+        msg = b''
+        while True:
+            buff = connection.recv(1024)
+            if not buff:
+                break
+            msg += buff
+        msg = bytes.decode(msg)
+        message = MessageDumper.dump_s(msg)
+        if message.get_is_modified():
+            print('Message has been modified!')
+        else:
+            return message
 
     def start_listening(self):
         """

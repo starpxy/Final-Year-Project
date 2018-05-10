@@ -1,30 +1,40 @@
 # coding:utf-8
 # @author: Star
 # @time: 10-03-2018
+import time
 import search.supportings.FCIConverter as fci
+from search.supportings.network import Server
+from search.supportings.network import Client
 from django.shortcuts import render
 from django.http import HttpResponse
 from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
+from search.supportings.LSI.Results import Results
 import CodEX.config as config
 from search.supportings.FrontEndInterface import FrontEndInterface
 from search.supportings.AST.ASTSearching import ASTSearching
 import time
 
 
-
 def index(request):
     return render(request, 'index-sub.html')
 
 
+def task(message, shared):
+    print(message)
+
+
 def search(request):
-    start = time.clock()
     q = request.GET['q']
     p = int(request.GET['p'])
+    client = Client("yeats.ucd.ie", "10.141.131.14", 9609, {'operate_type':1,'query':q,'page':p,'timestamp':time.time()})
+    client.send_message()
+    server = Server(task, '10.141.131.14')
+    message = server.listen_once()
+    result = message['result']
     pages = []
-    lsi = LSI_TFIDF()
-    result = lsi.getDocumentList(query=q, page=p)
-    f = result.getDocuments()
-    total_p = (result.getNumOfResults() / 10) + 1
+    # lsi = LSI_TFIDF()
+    f = result[1]
+    total_p = (result[0] / 10) + 1
     t_p = int(total_p)
     p_p = max(p - 5, 1)
     n_p = min(p + 5, total_p)
@@ -42,14 +52,13 @@ def search(request):
         m_l = m_l[0:len(m_l) - 1]
         fei = FrontEndInterface(temp, m_l)
         files.append(fei)
-    end = time.clock()
     return render(request, 'search-result-sub.html',
                   {'results': files, 'q': q, 'p': p, 'pages': pages, 'p_p': p_p, 'n_p': n_p, 'pre': p - 1,
                    'next': p + 1, 't_p': t_p})
 
 
 def init(request):
-    lsi=LSI_TFIDF()
+    lsi = LSI_TFIDF()
     return HttpResponse("init successfully")
 
 
