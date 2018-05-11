@@ -49,7 +49,7 @@ class Master:
         operate_type = message['operate_type']
         timestamp = message['timestamp']
         # print(__status)
-        # print('{}========={}'.format(timestamp, operate_type))
+        print('{}========={}'.format(timestamp, operate_type))
         if operate_type == 1:
             query = message['query']
             page = message['page']

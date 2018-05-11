@@ -24,7 +24,9 @@ class Worker:
     def __task(self, message, __shared_variable):
         query = message['query']
         timestamp = message['timestamp']
+        print("start computing...")
         result = LSI_TFIDF().getResult(query=query)
+        print("end computing...")
         result = result.to_dict()
         client = Client(self.__master[0], self.__ip, self.__master[1],
                         {'query': query, 'timestamp': timestamp, 'name': self.__name, 'result': result,
