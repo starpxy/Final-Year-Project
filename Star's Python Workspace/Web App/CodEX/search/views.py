@@ -74,9 +74,9 @@ def nlsindex(request):
 
 
 def plagiarizeResult(request):
-    snippet = request.GET['snippet']
-    page = int(request.GET['p'])
-    operate_type = request.GET['l']
+    snippet = request.POST['snippet']
+    page = int(request.POST['p'])
+    operate_type = request.POST['l']
     operate_type = int(operate_type)
     timestamp = time.time()
     client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
