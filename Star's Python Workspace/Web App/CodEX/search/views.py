@@ -62,7 +62,6 @@ def search(request):
 
 
 def init(request):
-    lsi = LSI_TFIDF()
     return HttpResponse("init successfully")
 
 
@@ -77,8 +76,15 @@ def nlsindex(request):
 def plagiarizeResult(request):
     snippet = request.GET['snippet']
     page = request.GET['p']
-    ast = ASTSearching()
-    result = ast.getResults(query=snippet, page=int(page))
+    operate_type = request.GET['l']
+    operate_type = int(operate_type)
+    timestamp = time.time()
+    client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
+                    {'operate_type': operate_type, 'query': snippet, 'page': page, 'timestamp': timestamp})
+    client.send_message()
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
+    result = message['result']
     is_global = False
     plagiarize_list = []
     document_list = []
