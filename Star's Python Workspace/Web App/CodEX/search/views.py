@@ -105,13 +105,13 @@ def plagiarizeResult(request):
                 component_document.append(FrontEndInterface(fobj, ml))
         matching_lines = result['matchingLines']
 
-        for t in result.getPlagiarismList():
+        for t in result['plagiarismList']:
             ml = ''
             for mls in matching_lines[t]:
                 ml += str(mls[0]) + '-' + str(mls[1]) + ','
             fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + t)
             plagiarize_list.append(FrontEndInterface(fobj, ml))
-        for t in result.getDocumentList():
+        for t in result['documentList']:
             ml = ''
             for mls in matching_lines[t]:
                 ml += str(mls[0]) + '-' + str(mls[1]) + ','
