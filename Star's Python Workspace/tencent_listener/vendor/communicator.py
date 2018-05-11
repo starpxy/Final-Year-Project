@@ -57,7 +57,7 @@ class CommunicationClient:
         :return: None
         """
         self.__connection_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self.__connection_socket.connect(socket_name)
+        self.__connection_socket.connect(config['socket_path'] + '/'+socket_name)
         message = json.dumps(message)
         msg = MessageDumper.encode_s('', '', message)
         msg = msg.encode()
