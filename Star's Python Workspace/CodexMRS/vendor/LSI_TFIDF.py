@@ -103,6 +103,7 @@ class LSI_TFIDF():
         self.vectorizer = CountVectorizer()
         # if there exist the pickle file, read it
         if os.path.exists(self.index_path):
+            print("in===1")
             rfile = open(self.index_path, 'rb')
             self.s = pickle.load(rfile)
             self.u = pickle.load(rfile)
@@ -120,7 +121,7 @@ class LSI_TFIDF():
         l = self.MatrixSearching(query, self.s,self.u, self.d.T)
         if l is None:
             return Results.Results(0)
-
+        print("in===2")
         results=Results.Results(numOfResults=l[3],matchingLines=l[2],hitDocs=l[1],fullHitLines=l[0])
 
 

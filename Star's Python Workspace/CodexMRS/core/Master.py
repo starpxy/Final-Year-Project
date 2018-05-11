@@ -74,7 +74,7 @@ class Master:
                 if __status[timestamp]['workers'][slave]['status'] == 1:
                     is_complete = False
             if is_complete:
-                # print("complete")
+                print("complete")
                 results = []
                 for worker in __status[timestamp]['workers'].keys():
                     result = Results.from_dict(__status[timestamp]['workers'][worker]['result'])

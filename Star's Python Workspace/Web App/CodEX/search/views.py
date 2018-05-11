@@ -75,7 +75,7 @@ def nlsindex(request):
 
 def plagiarizeResult(request):
     snippet = request.GET['snippet']
-    page = request.GET['p']
+    page = int(request.GET['p'])
     operate_type = request.GET['l']
     operate_type = int(operate_type)
     timestamp = time.time()
