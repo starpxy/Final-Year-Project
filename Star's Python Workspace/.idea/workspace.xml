@@ -42,10 +42,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
+            <state relative-caret-position="-255">
               <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
               <folding>
                 <element signature="e#50#61#0" expanded="true" />
@@ -108,7 +108,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="java_AST.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="java_AST.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/java_ast/java_AST.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-330">
@@ -1021,7 +1021,7 @@
         <state relative-caret-position="465">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
           <folding>
-            <marker date="1526040540032" expanded="true" signature="51:563" ph="import ..." />
+            <marker date="1526041083979" expanded="true" signature="51:563" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -1146,16 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding>
-            <element signature="e#50#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CodexMRS/core/Master.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1190,6 +1180,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/java_ast/java_AST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
+          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+          <folding>
+            <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tencent_listener/vendor/communicator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
@@ -1200,12 +1200,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodexMRS/vendor/java_ast/java_AST.py">
+    <entry file="file://$PROJECT_DIR$/CodexMRS/base/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-330">
-          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        <state relative-caret-position="-255">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
           <folding>
-            <element signature="e#23#38#0" expanded="true" />
+            <element signature="e#50#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

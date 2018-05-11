@@ -91,20 +91,19 @@ def plagiarizeResult(request):
     component_document = []
     global_similarity = 0
     if result != None:
-        total_num = result.getNumOfResults()
+        total_num = result['numOfResults']
         total_page = (total_num / config.configs['others']['page_num']) + 1
-        matching_blocks = result.getMatchingBlocks()
-        global_similarity = result.getGlobalSimilarity()
+        matching_blocks = result['matchingBlocks']
+        global_similarity = result['globalSimilarity']
         if global_similarity != None and global_similarity > 0:
             is_global = True
-            cd = result.getComponentDocuments()
+            cd = result['componentDocuments']
             component_document = []
             for c in cd:
                 ml = str(matching_blocks[c][0]) + '-' + str(matching_blocks[c][1])
                 fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + c)
                 component_document.append(FrontEndInterface(fobj, ml))
-            result.getMatchingBlocks()
-        matching_lines = result.getMatchingLines()
+        matching_lines = result['matchingLines']
 
         for t in result.getPlagiarismList():
             ml = ''
