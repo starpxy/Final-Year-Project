@@ -8,6 +8,9 @@ from CodexMRS.vendor.Results import Results
 from CodexMRS.base.configs import config
 from CodexMRS.base.network import Server
 from CodexMRS.base.network import Client
+from CodexMRS.vendor.LSI_NLP import LSI_TFIDF
+from CodexMRS.vendor.java_ast.java_AST import JavaAST
+from CodexMRS.vendor.python_ast.ASTSearching import ASTSearching
 
 
 class Master:
@@ -80,14 +83,39 @@ class Master:
                 result_list = self.LSI_merge(results)
                 to_return = self.get_result_at_page(page, config['page_num'], result_list)
                 client = Client(config['recall_ip'], self.__name, config['recall_port'],
-                                {'result': to_return})
+                                {'result': to_return, 'timestamp': timestamp})
                 client.send_message()
-        # operation 3 NLP search
+        # operation 3 Python AST search
         elif operate_type == 3:
-            pass
-        # operation 4 NLP merge
+            query = message['query']
+            page = message['page']
+            ast = ASTSearching()
+            result = ast.getResults(query, page)
+            result_dic = result.to_dict()
+            client = Client(config['recall_ip'], self.__name, config['recall_port'],
+                            {'result': result_dic, 'timestamp': timestamp})
+            client.send_message()
+        # operation 4 Java AST search
         elif operate_type == 4:
-            pass
+            query = message['query']
+            page = message['page']
+            ast = JavaAST()
+            result = ast.getResults(query, page)
+            result_dic = result.to_dict()
+            client = Client(config['recall_ip'], self.__name, config['recall_port'],
+                            {'result': result_dic, 'timestamp': timestamp})
+            client.send_message()
+        # operation 5 NLP search
+        elif operate_type == 5:
+            query = message['query']
+            page = message['page']
+            lsi = LSI_TFIDF()
+            results = [lsi.getResult(query)]
+            displayList = self.LSI_merge(results)
+            to_return = self.get_result_at_page(page, config['page_num'], displayList)
+            client = Client(config['recall_ip'], self.__name, config['recall_port'],
+                            {'result': to_return, 'timestamp': timestamp})
+            client.send_message()
 
     def __check_ip_availability(self, ip_add):
         """

@@ -63,6 +63,7 @@
     .codex-result-title{
         font-size: 30px;
         font-weight: bold;
+        margin: 0;
         font-family:"Hiragino Maru Gothic ProN","Sathu","Arial";
     }
     .c{

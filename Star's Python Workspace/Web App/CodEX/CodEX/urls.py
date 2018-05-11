@@ -20,9 +20,10 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_views.search),
-    path('snippet/',search_views.plagiarize),
-    path('snippet-result/',search_views.plagiarizeResult),
-    path('detail/',search_views.detail),
-    path('init/',search_views.init),
+    path('nls/', search_views.nlsindex),
+    path('snippet/', search_views.plagiarize),
+    path('snippet-result/', search_views.plagiarizeResult),
+    path('detail/', search_views.detail),
+    path('init/', search_views.init),
     path('', search_views.index),
 ]
