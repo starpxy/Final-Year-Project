@@ -37,3 +37,12 @@ class FilterLargeFiles:
     def delete_and_record(self, file_path):
         self.log_writer.write_info_log("Deleting " + file_path)
         os.remove(file_path)
+
+
+def main():
+    flf = FilterLargeFiles()
+    flf.filter_files()
+
+
+if __name__ == '__main__':
+    main()
