@@ -1,19 +1,18 @@
 # coding:utf-8
 # @author: Star
 # @time: 10-03-2018
-import time
 import json
+import time
 import search.supportings.FCIConverter as fci
 from search.supportings.network import Server
+from search.supportings.communicator import CommunicationServer
 from search.supportings.network import Client
 from django.shortcuts import render
 from django.http import HttpResponse
 from search.supportings.LSI.LSI_TFIDF import LSI_TFIDF
-from search.supportings.LSI.Results import Results
 import CodEX.config as config
 from search.supportings.FrontEndInterface import FrontEndInterface
 from search.supportings.AST.ASTSearching import ASTSearching
-import time
 
 
 def index(request):
@@ -27,15 +26,17 @@ def task(message, shared):
 def search(request):
     q = request.GET['q']
     p = int(request.GET['p'])
+    timestamp = time.time()
     client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
-                    {'operate_type': 1, 'query': q, 'page': p, 'timestamp': time.time()})
+                    {'operate_type': 1, 'query': q, 'page': p, 'timestamp': timestamp})
     client.send_message()
-    server = Server(task, '10.141.131.14')
-    message = server.listen_once().get_message_body()
-    message = json.loads(message)
+    # server = Server(task, '10.141.131.14')
+    # message = server.listen_once().get_message_body()
+    # message = json.loads(message)
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
     result = message['result']
     pages = []
-    # lsi = LSI_TFIDF()
     f = result[1]
     total_p = (result[0] / 10) + 1
     t_p = int(total_p)
@@ -61,7 +62,6 @@ def search(request):
 
 
 def init(request):
-    lsi = LSI_TFIDF()
     return HttpResponse("init successfully")
 
 
@@ -69,39 +69,49 @@ def plagiarize(request):
     return render(request, 'snippet.html', {})
 
 
+def nlsindex(request):
+    return render(request, 'nls.html', {})
+
+
 def plagiarizeResult(request):
-    snippet = request.GET['snippet']
-    page = request.GET['p']
-    ast = ASTSearching()
-    result = ast.getResults(query=snippet, page=int(page))
+    snippet = request.POST['snippet']
+    page = int(request.POST['p'])
+    operate_type = request.POST['l']
+    operate_type = int(operate_type)
+    timestamp = time.time()
+    client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
+                    {'operate_type': operate_type, 'query': snippet, 'page': page, 'timestamp': timestamp})
+    client.send_message()
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
+    result = message['result']
     is_global = False
     plagiarize_list = []
     document_list = []
     component_document = []
     global_similarity = 0
     if result != None:
-        total_num = result.getNumOfResults()
+        total_num = result['numOfResults']
         total_page = (total_num / config.configs['others']['page_num']) + 1
-        matching_blocks = result.getMatchingBlocks()
-        global_similarity = result.getGlobalSimilarity()
+        matching_blocks = result['matchingBlocks']
+        global_similarity = result['globalSimilarity']
         if global_similarity != None and global_similarity > 0:
             is_global = True
-            cd = result.getComponentDocuments()
+            cd = result['componentDocuments']
             component_document = []
             for c in cd:
                 ml = str(matching_blocks[c][0]) + '-' + str(matching_blocks[c][1])
                 fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + c)
                 component_document.append(FrontEndInterface(fobj, ml))
-            result.getMatchingBlocks()
-        matching_lines = result.getMatchingLines()
+        matching_lines = result['matchingLines']
 
-        for t in result.getPlagiarismList():
+        for t in result['plagiarismList']:
             ml = ''
             for mls in matching_lines[t]:
                 ml += str(mls[0]) + '-' + str(mls[1]) + ','
             fobj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/" + t)
             plagiarize_list.append(FrontEndInterface(fobj, ml))
-        for t in result.getDocumentList():
+        for t in result['documentList']:
             ml = ''
             for mls in matching_lines[t]:
                 ml += str(mls[0]) + '-' + str(mls[1]) + ','

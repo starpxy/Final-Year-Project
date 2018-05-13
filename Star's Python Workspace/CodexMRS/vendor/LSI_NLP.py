@@ -8,18 +8,26 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from CodexMRS.vendor import FCIConverter as conv
 from CodexMRS.vendor import LogWriter as lg
 import os
-from CodexMRS.base.configs import config
+# import math
 from CodexMRS.vendor import Results
 import pickle
-import time
+from CodexMRS.base.configs import config
 from scipy.sparse.linalg import svds
 
+
+# singleton
+# class Singleton(object):
+#     _instance = None
+#     def __new__(cls, *args, **kw):
+#         if not cls._instance:
+#             cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
+#         return cls._instance
 
 class LSI_TFIDF():
     lw = lg.LogWriter()
     # get files
-    path = ''  # path name
-    index_path=config['LSI_pickle_path']
+    path = ""  # path name
+    index_path = config['NLP_pickle_path']
     files = []
     documents = {}
     sortedDocuments = []
@@ -29,17 +37,38 @@ class LSI_TFIDF():
     word = None
     vectorizer = None
     tfidf = None
-    s=None
-    u=None
-    d=None
-    idf=None
-    lineNo={}
-    expireTime=30
-    end_time=time.clock()
+    s = None
+    u = None
+    d = None
+    idf = None
+    lineNo = {}
+    expireTime = 30
+
+    # def __init__(self):
+    # self.vectorizer = CountVectorizer()
+    # #if there exist the pickle file, read it
+    # if os.path.exists(self.index_path):
+    #     rfile=open(self.index_path, 'rb')
+    #     self.s = pickle.load(rfile)
+    #     self.u = pickle.load(rfile)
+    #     self.d = pickle.load(rfile)
+    #     self.tfidf = pickle.load(rfile)
+    #     self.lineNo=pickle.load(rfile)
+    #
+    #     self.idf = self.tfidf.idf_
+    #     self.word=list(self.tfidf.vocabulary_.keys())
+    #     self.files=list(self.lineNo.keys())
+    #
+    # else:#if there is no such pickle file, indexing
+    #     self.indexing()
+
+
+    # indexing
     def indexing(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
+        if '.DS_Store' in self.files:
+            self.files.remove('.DS_Store')
         fs = len(self.files)
         self.tfidf = TfidfVectorizer()
         i = 0
@@ -49,14 +78,14 @@ class LSI_TFIDF():
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
                 if len(self.documents[file]['content'].strip()) > 0:
                     self.contents.append(self.documents[file]['content'])
-                    #store the line numbers of the term
-                    self.lineNo[file]={}
-                    j=0
+                    # store the line numbers of the term
+                    self.lineNo[file] = {}
+                    j = 0
                     for line in self.documents[file]['content'].split('\n'):
-                        lineList=[line]
-                        if len(lineList)>0:
+                        lineList = [line]
+                        if len(lineList) > 0:
                             try:
-                                self.tfidf.fit_transform(lineList) #get the unique standard term of this line
+                                self.tfidf.fit_transform(lineList)  # get the unique standard term of this line
                             except ValueError:
                                 j += 1
                                 continue
@@ -64,31 +93,31 @@ class LSI_TFIDF():
                                 if term in self.lineNo[file]:
                                     self.lineNo[file][term].append(j)
                                 else:
-                                    self.lineNo[file][term]=[j]
-                        j+=1
-                    i+=1
+                                    self.lineNo[file][term] = [j]
+                        j += 1
+                    i += 1
                 else:
                     self.documents.pop(file)
                     self.files.remove(file)
-                    fs-=1
+                    fs -= 1
             else:
                 self.files.remove(file)
         print('finish reading')
         # self.files = list(self.documents.keys())
-        size=len(self.documents)
+        size = len(self.documents)
         self.lw.write_info_log("get " + str(size) + " documents")
         self.lw.write_info_log("indexing...")
         self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to', 'print']
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
-        self.idf=self.tfidf.idf_
-        self.word=self.word=list(self.tfidf.vocabulary_.keys())
+        self.idf = self.tfidf.idf_
+        self.word = self.word = list(self.tfidf.vocabulary_.keys())
 
-        #compression matrix
-        self.re=dok_matrix(self.re)
+        # compression matrix
+        self.re = dok_matrix(self.re)
         # self.X=dok_matrix(self.X)
         print("start SVD")
         # svd decomposition
-        self.u, self.s, self.d = svds(self.re, k=500,return_singular_vectors='u')
+        self.u, self.s, self.d = svds(self.re, k=10, return_singular_vectors='u')
         print('start dumping')
         # store the index into the pickle
         with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
@@ -96,14 +125,13 @@ class LSI_TFIDF():
             pickle.dump(self.u, f, True)
             pickle.dump(self.d, f, True)
             pickle.dump(self.tfidf, f, True)
-            pickle.dump(self.lineNo,f,True)
+            pickle.dump(self.lineNo, f, True)
             print('finish')
 
     def getResult(self, query):
         self.vectorizer = CountVectorizer()
         # if there exist the pickle file, read it
         if os.path.exists(self.index_path):
-            print("in===1")
             rfile = open(self.index_path, 'rb')
             self.s = pickle.load(rfile)
             self.u = pickle.load(rfile)
@@ -118,17 +146,13 @@ class LSI_TFIDF():
         else:  # if there is no such pickle file, indexing
             self.indexing()
 
-        l = self.MatrixSearching(query, self.s,self.u, self.d.T)
+        l = self.MatrixSearching(query, self.s, self.u, self.d.T)
         if l is None:
             return Results.Results(0)
-        print("in===2")
-        results=Results.Results(numOfResults=l[3],matchingLines=l[2],hitDocs=l[1],fullHitLines=l[0])
 
-
+        results = Results.Results(numOfResults=l[3], matchingLines=l[2], hitDocs=l[1], fullHitLines=l[0])
 
         return results  # return results
-
-
 
     def MatrixSearching(self, query, s, u, d):
 
@@ -138,9 +162,9 @@ class LSI_TFIDF():
 
         # fill in the tf-idf into the empty Xq matrix
         ifEmpty = True
-        j=0
+        j = 0
         for w in qWord:
-            i=qWord.index(w)
+            i = qWord.index(w)
             if w in self.word:
                 j = self.word.index(w)
                 qArr[0][j] = qFreq[i] * self.idf[j]
@@ -160,11 +184,11 @@ class LSI_TFIDF():
         matchingLines = {}  # {similarity:[(docName, [hit lines])] }
         hitDocs = {}  # {lengthHits:[(docName,[hit lines])]}
         fullHitLines = {}  # {fullHitNum:[(docName,[hit lines])]}
-        length=0
+        length = 0
         for i in range(len(d)):
-            k=self.files[i]
-            similarity=((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
-            length+=1
+            k = self.files[i]
+            similarity = ((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+            length += 1
             hitLines = []
             hitWords = 0
             commonLines = []
@@ -191,51 +215,51 @@ class LSI_TFIDF():
                 else:
                     hitDocs[lengthHit] = [(k, hitLines)]
             else:
-                if similarity>0:
+                if similarity > 0:
                     if similarity not in matchingLines:
-                        matchingLines[similarity]=[(k, hitLines)]
+                        matchingLines[similarity] = [(k, hitLines)]
                     else:
                         matchingLines[similarity].append((k, hitLines))
                 else:
                     # don't store it
-                    length-=1
+                    length -= 1
 
-        return (fullHitLines,hitDocs,matchingLines,length)
-
-
+        return (fullHitLines, hitDocs, matchingLines, length)
 
 
-    # #highlight the matching lines
-    # def highlighting(self,ocurrence,qWord,similarities):
-    #     if similarities is None:
-    #         return None
-    #     rT=self.X.T
-    #     #construct matching lines
-    #     machingLines=[]
-    #     for doc in similarities:
-    #         i=self.files.index(doc)
-    #         if np.dot(rT[i], ocurrence[0]) >0:
-    #             lines=[]
-    #             lineNo=0
-    #             for line in self.contents[i].split('\n'):
-    #                 if line.strip() is '':
-    #                     lineNo+=1
-    #                     continue
-    #                 try:
-    #                     self.vectorizer.fit_transform([line])
-    #                 except ValueError:
-    #                     lineNo += 1
-    #                     continue
-    #                 else:
-    #                     w = self.vectorizer.get_feature_names()
-    #                     if len(list(set(w).intersection(set(qWord))))>0:
-    #                         lines.append(lineNo)
-    #                 lineNo+=1
-    #             machingLines.append((doc, lines))
-    #         else:
-    #             machingLines.append((doc, []))
-    #
-    #     return machingLines
+
+
+        # #highlight the matching lines
+        # def highlighting(self,ocurrence,qWord,similarities):
+        #     if similarities is None:
+        #         return None
+        #     rT=self.X.T
+        #     #construct matching lines
+        #     machingLines=[]
+        #     for doc in similarities:
+        #         i=self.files.index(doc)
+        #         if np.dot(rT[i], ocurrence[0]) >0:
+        #             lines=[]
+        #             lineNo=0
+        #             for line in self.contents[i].split('\n'):
+        #                 if line.strip() is '':
+        #                     lineNo+=1
+        #                     continue
+        #                 try:
+        #                     self.vectorizer.fit_transform([line])
+        #                 except ValueError:
+        #                     lineNo += 1
+        #                     continue
+        #                 else:
+        #                     w = self.vectorizer.get_feature_names()
+        #                     if len(list(set(w).intersection(set(qWord))))>0:
+        #                         lines.append(lineNo)
+        #                 lineNo+=1
+        #             machingLines.append((doc, lines))
+        #         else:
+        #             machingLines.append((doc, []))
+        #
+        #     return machingLines
 
 
 

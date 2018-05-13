@@ -6,7 +6,7 @@ import json
 import socket
 import hashlib
 import threading
-from search.supportings.LogWriter import LogWriter
+from CodexMRS.vendor.LogWriter import LogWriter
 
 
 class Server:
@@ -41,21 +41,8 @@ class Server:
         self.__server_socket.listen(self.__max_client_num)
         connection, address = self.__server_socket.accept()
         connection.settimeout(30)
-        if address not in self.__connected_ip:
-            self.__connected_ip.append(address)
-        msg = b''
-        while True:
-            buff = connection.recv(1024)
-            if not buff:
-                break
-            msg += buff
-        msg = bytes.decode(msg)
-        message = MessageDumper.dump_s(msg)
-        self.__server_socket.close()
-        if message.get_is_modified():
-            LogWriter().write_error_log('Message has been modified!')
-        else:
-            return message
+        self.__execute(connection, address[0])
+
 
     def start_listening(self):
         """
@@ -76,7 +63,7 @@ class Server:
             connection, address = self.__server_socket.accept()
             connection.settimeout(30)
             LogWriter().write_info_log("{} connect to the server...".format(address[0]))
-            LogWriter().write_error_log("{} connect to the server...".format(address[0]))
+            print("{} connect to the server...".format(address[0]))
             thread = threading.Thread(target=self.__execute(connection, address[0]))
             thread.start()
 
@@ -99,7 +86,7 @@ class Server:
         msg = bytes.decode(msg)
         message = MessageDumper.dump_s(msg)
         if message.get_is_modified():
-            LogWriter().write_error_log('Message has been modified!')
+            print('Message has been modified!')
         else:
             self.__task(json.loads(message.get_message_body()), __shared_variable)
 
@@ -140,6 +127,7 @@ class Client:
         """
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect((self.__des_ip, self.__target_port))
+        print("Connected to server {}:{}".format(self.__des_ip, self.__target_port))
         LogWriter().write_info_log(
             "Connected to server {}:{}".format(self.__des_ip, self.__target_port))
         message = json.dumps(self.__message)
@@ -152,7 +140,7 @@ class Client:
         if len(to_send) > 0:
             client.send(to_send)
         client.close()
-        LogWriter().write_error_log('Message sent successfully.')
+        print('Message sent successfully.')
 
 
 class Header:
