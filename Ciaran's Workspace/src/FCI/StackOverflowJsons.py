@@ -73,13 +73,50 @@ class StackOverflowJsons:
     # Goes through each line in the StackOverflow text files
     # Saves each question and corresponding answer to an FCI object
     def get_info_from_so_files(self):
+        '''
         with open("python_title_answer.txt", 'r', encoding='UTF-8') as tsv:
+        #with open("python_title_answer.txt", 'r', encoding='UTF-8') as f:
             for line in csv.reader(tsv, dialect="excel-tab"):
                 try:
+                    content = line[2]
+                    code = line[3]
+                    fci_object = FormattedCodeInterface()
+                    fci_object.set_content(line[2])
+                    fci_object.set_code(line[3])
                     print(line[2])
                     print(line[3])
                 except Exception as e:
                     print(e)
+        '''
+
+        #file = open('python_title_answer.txt', 'r', encoding='UTF-8')
+        #f = open('python_title_answer.txt', 'rb')
+        f = open('python_title_answer.txt')
+
+        '''
+        content =''
+        for line in file.readlines():
+            content += line
+        print(content)
+        '''
+        data = []
+        for line in f:
+            # Remove the new line at the end and then split the string based on
+            # tabs. This creates a python list of the values.
+            # el = line.encode('utf8')
+            values = line.split('\t')
+            content = values[2]
+            # code = values[3].encode('UTF-8')
+            code = values[3]
+            print(code)
+            fci_object = FormattedCodeInterface()
+            fci_object.set_content(content)
+            fci_object.set_code(code)
+            FCIConverter.to_local_json_file("json_files", fci_object)
+            # values = dl.strip().split('\t')
+            # data.append([float(v) for v in values])
+        print(data)
+        f.close()  # close the file'''
 
     # Goes through each unclean folder and searches for all json files from Kirk
     # When a file is found it saves it to a directory with the folder and file name as a key
