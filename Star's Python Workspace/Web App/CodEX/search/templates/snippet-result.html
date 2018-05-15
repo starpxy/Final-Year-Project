@@ -32,6 +32,15 @@
             color: #ffffff;
             background-color: #9ce5cc;
         }
+        .my-url{
+            color: #ffffff;
+        }
+        .my-url:hover{
+            color: #fbfcfc;
+        }
+        #l{
+            height: auto;
+        }
     </style>
 </head>
 
@@ -49,10 +58,10 @@
                 <a class="nav-link" href="/">Keyword Search </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/snippet">Snippet Search <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/snippet/">Snippet Search <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/nls">Nature Language Searching</a>
+                <a class="nav-link" href="/nls/">Nature Language Searching</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 search" action="/search" method="get">
@@ -64,7 +73,7 @@
 </nav>
 
 <div class="jumbotron" style="padding: 20px">
-    <form class="row codex-result-search-bar snippet" action="/snippet-result" method="get">
+    <form class="row codex-result-search-bar snippet" action="/snippet-result/" method="post">
         <div class="codex-result-title">
             <label class="c">C</label>
             <label class="o">o</label>
@@ -77,6 +86,15 @@
         <textarea id="area" name="snippet" class="col-md-8 form-control form-control-lg"
                   placeholder="Insert code snippet here to search the usage of it or detect plagiarism..." rows="1"
                   style="resize:none;">{{ snippet }}</textarea>
+        <select id="l" class="custom-select col-md-1" name="l">
+            {% if l == 3 %}
+                <option selected value="3">Python</option>
+                <option value="4">Java</option>
+            {% else %}
+                <option value="3">Python</option>
+                <option selected value="4">Java</option>
+            {% endif %}
+            </select>
         <button type="submit" class="col-md-1 btn btn-primary">Search</button>
     </form>
 </div>
@@ -104,23 +122,23 @@
 <div class="container">
     {% if is_global %}
         <div class="card text-white bg-primary mb-3">
-            <div class="card-header"><h4>Matching Degree:{{ global_similarity }}%</h4></div>
+            <div class="card-header"><h4>Matching Degree: {{ global_similarity }}% </h4></div>
+        <br>
             {% for component_document in component_documents %}
-                <div class="card-body">
-                    <a href="/snippet-detail/?q={{ snippet }}&id={{ component_document.get_fci_obj.get_id }}&ml={{ component_document.get_match_lines }}">
-                <h5>{{ component_document.get_fci_obj.get_project_name }} - {{ component_document.get_fci_obj.get_file_name }} </h5></a>
-                    <pre class="line-numbers" style="max-height: 200px">
+                <div class="container">
+                    <a class="my-url" href="/snippet-detail/?ts={{ ts }}&l={{ l }}&id={{ component_document.get_fci_obj.get_id }}&ml={{ component_document.get_match_lines }}&qml={{ component_document.get_query_match_lines }}"><h5>{{ component_document.get_fci_obj.get_project_name }} - {{ component_document.get_fci_obj.get_file_name }} </h5></a>
+                    <pre class="" style="max-height: 200px">
                         <code class="language-{{ component_document.get_fci_obj.get_language }}" >{{ component_document.get_fci_obj.get_content }}</code>
                     </pre>
-                    <hr>
                 </div>
+                <hr>
             {% endfor %}
         </div>
     {% endif %}
 </div>
 <div class="container">
     {% for i in plagiarize_list %}
-        <a href="/snippet-detail/?q={{ snippet }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}">
+        <a href="/snippet-detail/?ts={{ ts }}&l={{ l }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}&qml={{ i.get_query_match_lines }}">
         <h5>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }} <span class="badge badge-danger">Plagiarized</span></h5>
         </a>
         <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}"><code
@@ -129,7 +147,7 @@
         <hr>
     {% endfor %}
     {% for i in document_list %}
-        <a href="/snippet-detail/?q={{ snippet }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}">
+        <a href="/snippet-detail/?ts={{ ts }}&l={{ l }}&id={{ i.get_fci_obj.get_id }}&ml={{ i.get_match_lines }}&qml={{ i.get_query_match_lines }}">
         <h5>{{ i.get_fci_obj.get_project_name }} - {{ i.get_fci_obj.get_file_name }}</h5>
         </a>
         <pre style="max-height: 300px" class="line-numbers" data-line="{{ i.get_match_lines }}"><code

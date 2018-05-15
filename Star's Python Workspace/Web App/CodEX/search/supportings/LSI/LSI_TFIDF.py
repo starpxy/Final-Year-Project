@@ -8,30 +8,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from search.supportings import FCIConverter as conv
 from search.supportings import LogWriter as lg
 import os
-# import math
-import redis
+from CodEX.config import configs
 from search.supportings.LSI import Results
 import pickle
 import time
-from CodEX.config import configs
 from scipy.sparse.linalg import svds
-
-
-# singleton
-# class Singleton(object):
-#     _instance = None
-#
-#     def __new__(cls, *args, **kw):
-#         if not cls._instance:
-#             cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
-#         return cls._instance
-
+import redis
 
 class LSI_TFIDF():
-    r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
+    r = redis.Redis(host='localhost', port=6379, decode_responses=True)
     lw = lg.LogWriter()
     # get files
-    path = configs['paths']['FCI_path']  # path name
+    path = configs['paths']['FCI_path'] + '/lsi'  # path name
     index_path = configs['paths']['LSI_indexing_path']
     files = []
     documents = {}
@@ -42,19 +30,40 @@ class LSI_TFIDF():
     word = None
     vectorizer = None
     tfidf = None
-    pageNum = 10
     s = None
     u = None
     d = None
     idf = None
     lineNo = {}
-    expireTime = 300
+    expireTime = 600
+    end_time = time.clock()
+    pageNum=configs['others']['page_num']
+
+    # def __init__(self):
+    # self.vectorizer = CountVectorizer()
+    # #if there exist the pickle file, read it
+    # if os.path.exists(self.index_path):
+    #     rfile=open(self.index_path, 'rb')
+    #     self.s = pickle.load(rfile)
+    #     self.u = pickle.load(rfile)
+    #     self.d = pickle.load(rfile)
+    #     self.tfidf = pickle.load(rfile)
+    #     self.lineNo=pickle.load(rfile)
+    #
+    #     self.idf = self.tfidf.idf_
+    #     self.word=list(self.tfidf.vocabulary_.keys())
+    #     self.files=list(self.lineNo.keys())
+    #
+    # else:#if there is no such pickle file, indexing
+    #     self.indexing()
 
 
+    # indexing
     def indexing(self):
         self.lw.write_info_log("reading files...")
         self.files = os.listdir(self.path)  # get all the file names
-        self.files.remove('.DS_Store')
+        if '.DS_Store' in self.files:
+            self.files.remove('.DS_Store')
         fs = len(self.files)
         self.tfidf = TfidfVectorizer()
         i = 0
@@ -103,7 +112,7 @@ class LSI_TFIDF():
         # self.X=dok_matrix(self.X)
         print("start SVD")
         # svd decomposition
-        self.u, self.s, self.d = svds(self.re, k=500, return_singular_vectors='u')
+        self.u, self.s, self.d = svds(self.re, k=1000)
         print('start dumping')
         # store the index into the pickle
         with open(self.index_path, 'wb')as f:  # use pickle module to save data into file 'CodexIndex.pik'
@@ -114,11 +123,10 @@ class LSI_TFIDF():
             pickle.dump(self.lineNo, f, True)
             print('finish')
 
-    def getDocumentList(self, query, page):
-        # check if the result of this query already exist in the redis
+    def getResult(self, query, page):
         if not self.r.exists(query):  # if the result is not in the redis
             self.vectorizer = CountVectorizer()
-            #read pickle
+            # if there exist the pickle file, read it
             if os.path.exists(self.index_path):
                 rfile = open(self.index_path, 'rb')
                 self.s = pickle.load(rfile)
@@ -134,31 +142,48 @@ class LSI_TFIDF():
             else:  # if there is no such pickle file, indexing
                 self.indexing()
 
-            # store the result of the query into redis
             l = self.MatrixSearching(query, self.s, self.u, self.d.T)
             if l is None:
-                return Results.Results(0, [])
-            elif (page - 1) * self.pageNum >= len(l):
-                self.lw.write_error_log('page number out of range')
-                return None
+                return (0, [])
 
-            length = len(l)
+            fullHitLines = l[0]
+            hitDocs = l[1]
+            matchingLines = l[2]
+            numOfResults = l[3]
+            fullHitLineskeys = list(fullHitLines.keys())
+            hitDocskeys = list(hitDocs.keys())
+            matchingLineskeys = list(matchingLines.keys())
+            fullHitLineskeys.sort(reverse=True)
+            hitDocskeys.sort(reverse=True)
+            matchingLineskeys.sort(reverse=True)
+            displayList = []  # [(docName,[hit lines])]
+            if len(fullHitLineskeys)>0:
+                for k in fullHitLineskeys:
+                    for t in fullHitLines[k]:
+                        displayList.append(t)
+            if len(hitDocskeys) > 0:
+                for k in hitDocskeys:
+                    for t in hitDocs[k]:
+                        displayList.append(t)
+            if len(matchingLines) > 0:
+                for k in matchingLineskeys:
+                    for t in matchingLines[k]:
+                        displayList.append(t)
 
             self.lw.write_info_log("storing results into redis in form of list")
-            self.r.rpush(query, l)
+            self.r.rpush(query, numOfResults)
+            self.r.rpush(query, displayList)
 
-        # get the result list of this query from redis
         else:
             self.lw.write_info_log("geting results from redis")
-            l = eval(self.r.lindex(query, 0))
-            length = len(l)
-            if (page - 1) * self.pageNum >= length:
-                self.lw.write_error_log('page number out of range')
-                return None
+            numOfResults = eval(self.r.lindex(query, 0))
+            displayList = eval(self.r.lindex(query, 1))
 
-        results = Results.Results(length, l[(page - 1) * self.pageNum:page * self.pageNum])
-        self.r.expire(query, self.expireTime)  # expire after 30s
-        return results  # return results
+        self.r.expire(query, self.expireTime)
+        currentDisplay = displayList[(page - 1) * self.pageNum: page * self.pageNum]
+        return (numOfResults, currentDisplay)
+
+
 
     def MatrixSearching(self, query, s, u, d):
 
@@ -186,163 +211,62 @@ class LSI_TFIDF():
         sInv = np.linalg.inv(sDiagno)
         Dq = np.dot(qArr, u)
         Dq = np.dot(Dq, sInv)
-        similarities = {}
-        for i in range(len(d)):
-            # similarity=round(spatial.distance.cosine(Dq, d[i]),8)
-            similarity = ((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
-            # if similarity>0:
-            similarities[self.files[i]] = similarity
-            # print(similarities[self.files[i]])
 
-        # print(Dq)
-        keys = sorted(similarities, key=similarities.get, reverse=True)
-        matchingLines = []  # [(docName, [hit lines]) ]
-        hitDocs = {}
-        i = 0
-        for k in keys:
+        matchingLines = {}  # {similarity:[(docName, [hit lines])] }
+        hitDocs = {}  # {lengthHits:[(docName,[hit lines])]}
+        fullHitLines = {}  # {fullHitNum:[(docName,[hit lines])]}
+        length = 0
+        for i in range(len(d)):
+            k = self.files[i]
+            similarity = ((np.dot(Dq, d[i])) / ((np.linalg.norm(Dq)) * (np.linalg.norm(d[i]))))[0]
+            length += 1
             hitLines = []
+            hitWords = 0
+            ifMiss=False
+            commonLines = []
             for t in qWord:
                 if t in self.lineNo[k]:
+                    hitWords += 1
                     hitLines = list(set(hitLines).union(set(self.lineNo[k][t])))
-            lengthHit = len(hitLines)
-            if lengthHit > 0:
-                # print(i)
+                    if not ifMiss:
+                        if hitWords == 1:
+                            commonLines = self.lineNo[k][t]
+                        else:
+                            commonLines = list(set(commonLines).intersection(set(self.lineNo[k][t])))
+                else:
+                    ifMiss=True
+            lengthHit = len(hitLines) * hitWords
+            if hitWords > 1 and not ifMiss:
+                fullHit = len(commonLines)
+            else:
+                fullHit = 0
+            if fullHit > 0:
+                print(k,end=': ')
+                print(hitWords)
+                if fullHit in fullHitLines:
+                    fullHitLines[fullHit].append((k, hitLines))
+                else:
+                    fullHitLines[fullHit] = [(k, hitLines)]
+            elif lengthHit > 0:
                 if lengthHit in hitDocs:
                     hitDocs[lengthHit].append((k, hitLines))
                 else:
                     hitDocs[lengthHit] = [(k, hitLines)]
             else:
-                matchingLines.append((k, hitLines))
-            i += 1
+                if similarity > 0:
+                    if similarity not in matchingLines:
+                        matchingLines[similarity] = [(k, hitLines)]
+                    else:
+                        matchingLines[similarity].append((k, hitLines))
+                else:
+                    # don't store it
+                    length -= 1
 
-        hits = sorted(hitDocs, reverse=False)
-        for h in hits:
-            matchingLines = hitDocs[h] + matchingLines
-
-        # return machingLines
-        return matchingLines
-
-
-
-
-        # #highlight the matching lines
-        # def highlighting(self,ocurrence,qWord,similarities):
-        #     if similarities is None:
-        #         return None
-        #     rT=self.X.T
-        #     #construct matching lines
-        #     machingLines=[]
-        #     for doc in similarities:
-        #         i=self.files.index(doc)
-        #         if np.dot(rT[i], ocurrence[0]) >0:
-        #             lines=[]
-        #             lineNo=0
-        #             for line in self.contents[i].split('\n'):
-        #                 if line.strip() is '':
-        #                     lineNo+=1
-        #                     continue
-        #                 try:
-        #                     self.vectorizer.fit_transform([line])
-        #                 except ValueError:
-        #                     lineNo += 1
-        #                     continue
-        #                 else:
-        #                     w = self.vectorizer.get_feature_names()
-        #                     if len(list(set(w).intersection(set(qWord))))>0:
-        #                         lines.append(lineNo)
-        #                 lineNo+=1
-        #             machingLines.append((doc, lines))
-        #         else:
-        #             machingLines.append((doc, []))
-        #
-        #     return machingLines
+        return (fullHitLines, hitDocs, matchingLines, length)
 
 
 
-
-        # print(r.get('sortedDocuments'))  # 取出键name对应的值
-
-        # throw away the low-frequency terms (terms appears only once)
-
-        # i=0
-        # while True:
-        #     if i>=len(word):
-        #         break
-        #     if X[i]<2:
-        #         word.pop(i)
-        #         X=np.delete(X,i,0)
-        #         re=np.delete(re,i,0)
-        #     else:
-        #         i+=1
-        #
-        # print(re.shape)
-
-
-        # def printA(query):
-        #     print('re\n')
-        #     print(re)
-        #     u, s, vt = svd(re, full_matrices=False)
-        #     print("""\r""")
-        #     print('u\n')
-        #     print(u)
-        #     print("""\r""")
-        #     print('s\n')
-        #     print(s)
-        #     print("""\r""")
-        #     print('vt\n')
-        #     print(vt)
-        #     print("""\r""")
-        #     d = vt.T
-        #
-        #     plt.title("LSI Subspace with TF-IDF weight")
-        #     plt.xlabel(u'dimention2')
-        #     plt.ylabel(u'dimention3')
-        #
-        #     ut = u.T  # Transaction
-        #     demention2 = ut[1]
-        #     demention3 = ut[2]
-        #     # draw terms
-        #     for i in range(len(demention2)):
-        #         plt.text(demention2[i], demention3[i], word[i])
-        #         plt.plot(demention2[i], demention3[i], '*')  # draw points
-        #
-        #     vdemention2 = vt[1]  # we choose the 2nd and 3rd dimensions because the first dimension has little meaning
-        #     vdemention3 = vt[2]
-        #     # get query coordinates
-        #     # get the term frequency
-        #     qFreq = vectorizer.fit_transform([query]).toarray().T  # make the vectorizer fit the query
-        #     qWord = vectorizer.get_feature_names()  # the unique terms after preprocessing
-        #     qArr = np.zeros([1, len(word)])
-        #     # fill in the term frequency into the empty Xq matrix
-        #     for w in qWord:
-        #         i = qWord.index(w)
-        #         if w in word:
-        #             j = word.index(w)
-        #             idf = len(np.nonzero(re[j])[0])
-        #             idf = (1 + len(files)) / (idf + 1)
-        #             idf = math.log2(idf) + 1
-        #             qArr[0][j] = qFreq[i] * idf
-        #
-        #     dX = np.dot(np.array(demention2), np.array(qArr))/len(qArr)
-        #     dY = np.dot(np.array(demention3), np.array(qArr))/len(qArr)
-        #     # draw query point
-        #     plt.text(dX, dY, 'QUERY')
-        #     plt.plot(dX, dY, 'ro')
-        #     similarities={}
-        #     for j in range(len(vdemention2)):
-        #         plt.text(vdemention2[j], vdemention3[j], 'T' + str(j))
-        #         plt.plot(vdemention2[j], vdemention3[j], '.')
-        #         # calculate the eclidean distance similarity
-        #         similarity=math.sqrt(math.pow((vdemention2[j]-dX),2)+math.pow((vdemention3[j]-dY),2))
-        #         similarities[files[j]]=similarity
-        #     # sort similarity and print out
-        #     centroidResult = sorted(similarities.keys(),key=similarities.__getitem__,reverse=True)
-        #     return centroidResult
-
-
-
-
-
-        # printA()
-        # plt.show()
-        # getDocumentList(query, 2)
+if __name__ == '__main__':
+    lsi = LSI_TFIDF()
+    currentDisplay = lsi.getResult('merge sort',1)
+    print(currentDisplay)
