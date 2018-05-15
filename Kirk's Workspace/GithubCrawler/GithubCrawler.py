@@ -539,6 +539,10 @@ def main():
 			# Check if it has been downloaded already
 			if(crawler.check_repo_records(repo_json_list[i])):
 
+				# To do
+				# Put it into Queue
+				# MultiThreading
+
 				# Save repo json
 				crawler.save_repo_info_to_json(repo_json_list[i])
 

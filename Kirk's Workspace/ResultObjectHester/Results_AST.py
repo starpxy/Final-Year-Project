@@ -95,10 +95,20 @@ class Results:
         """
         Updated by Kirk on 09/05/2018
         """
-        self.numOfResults = resultDict["numOfResults"]
-        self.documentList = resultDict["documentList"]
-        self.matchingLines = resultDict["matchingLines"]
-        self.globalSimilarity = resultDict["globalSimilarity"]
-        self.matchingBlocks = resultDict["matchingBlocks"]
-        self.plagiarismList = resultDict["plagiarismList"]
-        self.componentDocuments = resultDict["componentDocuments"]
+        numOfResults = resultDict["numOfResults"]
+        documentList = resultDict["documentList"]
+        matchingLines = resultDict["matchingLines"]
+        globalSimilarity = resultDict["globalSimilarity"]
+        matchingBlocks = resultDict["matchingBlocks"]
+        plagiarismList = resultDict["plagiarismList"]
+        componentDocuments = resultDict["componentDocuments"]
+
+        return Results(
+            numOfResults = numOfResults, 
+            documentList = documentList,
+            matchingLines = matchingLines,
+            globalSimilarity = globalSimilarity,
+            matchingBlocks = matchingBlocks,
+            plagiarismList = plagiarismList,
+            componentDocuments = componentDocuments
+            )

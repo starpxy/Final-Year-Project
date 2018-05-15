@@ -1,0 +1,136 @@
+public final class combined {
+    private final boolean useBrokenFlagDescriptorChecksum;
+    private OutputStream out;
+    int LIST_OFFSET = Property.TYPE_ARRAY;
+
+    int CORE_TYPE_VALUE_INTEGER = 0;
+    int CORE_TYPE_VALUE_BOOLEAN = 1;
+    int CORE_TYPE_VALUE_STRING = 2;
+    int CORE_TYPE_VALUE_BINARY = 4;
+    int CORE_TYPE_VALUE_UNSUPPORTED_TABLE = 5;
+    int CORE_TYPE_VALUE_UNSUPPORTED_MIXED = 6;
+    int CORE_TYPE_VALUE_UNSUPPORTED_DATE = 7;
+    int CORE_TYPE_VALUE_DATE = 8;
+    int CORE_TYPE_VALUE_FLOAT = 9;
+    int CORE_TYPE_VALUE_DOUBLE = 10;
+    int CORE_TYPE_VALUE_OBJECT = 12;
+    int CORE_TYPE_VALUE_LIST = 13;
+    int CORE_TYPE_VALUE_LINKING_OBJECTS = 14;
+    private int rpcResponseDelay;
+    private AtomicInteger heartbeatCount = new AtomicInteger(0);
+    private AtomicInteger rpcCount = new AtomicInteger(0);
+    private ReportState reportState;
+    private AtomicInteger containerReportsCount = new AtomicInteger(0);
+    public static final int MAGIC = 0x184D2204;
+    public static final int LZ4_MAX_HEADER_LENGTH = 19;
+    public static final int LZ4_FRAME_INCOMPRESSIBLE_MASK = 0x80000000;
+
+    public static final String CLOSED_STREAM = "The stream is already closed";
+
+    public static final int BLOCKSIZE_64KB = 4;
+    public static final int BLOCKSIZE_256KB = 5;
+    public static final int BLOCKSIZE_1MB = 6;
+    public static final int BLOCKSIZE_4MB = 7;
+
+    private final LZ4Compressor compressor;
+    private final XXHash32 checksum;
+    private final boolean useBrokenFlagDescriptorChecksum;
+    private final FLG flg;
+    private final BD bd;
+    private final int maxBlockSize;
+    private OutputStream out;
+    private byte[] buffer;
+    private byte[] compressedBuffer;
+    private int bufferOffset;
+    private boolean finished;
+
+  // Map of datanode to containers
+    private Map<DatanodeDetails, Map<String, ContainerInfo>> nodeContainers =
+      new HashMap();
+
+    int MAX_CORE_TYPE_VALUE = CORE_TYPE_VALUE_LINKING_OBJECTS;
+    //from 0b168f43d5f3c145cebf118a8e859346(74-87)
+    public java1_method1(OutputStream out, int blockSize, boolean blockChecksum, boolean useBrokenFlagDescriptorChecksum) throws IOException {
+        this.out = out;
+        compressor = LZ4Factory.fastestInstance().fastCompressor();
+        checksum = XXHashFactory.fastestInstance().hash32();
+        this.useBrokenFlagDescriptorChecksum = useBrokenFlagDescriptorChecksum;
+        bd = new BD(blockSize);
+        flg = new FLG(blockChecksum);
+        bufferOffset = 0;
+        maxBlockSize = bd.getBlockMaximumSize();
+        buffer = new byte[maxBlockSize];
+        compressedBuffer = new byte[compressor.maxCompressedLength(maxBlockSize)];
+        finished = false;
+        writeHeader();
+    }
+
+    //from 0b168f43d5f3c145cebf118a8e859346(143-163)
+    private void java1_method2() throws IOException {
+        ByteUtils.writeUnsignedIntLE(buffer, 0, MAGIC);
+        bufferOffset = 4;
+        buffer[bufferOffset++] = flg.toByte();
+        buffer[bufferOffset++] = bd.toByte();
+
+        // compute checksum on all descriptor fields
+        int offset = 4;
+        int len = bufferOffset - offset;
+        if (this.useBrokenFlagDescriptorChecksum) {
+            len += offset;
+            offset = 0;
+        }
+        byte hash = (byte) ((checksum.hash(buffer, offset, len, 0) >> 8) & 0xFF);
+        buffer[bufferOffset++] = hash;
+
+        // write out frame descriptor
+        out.write(buffer, 0, bufferOffset);
+        bufferOffset = 0;
+    }
+
+    //from 0e9492108514af176b0fd865a7ccb801(226-249)
+    public java2_method1(StorageContainerDatanodeProtocolProtos
+      .ContainerReportsRequestProto reports) throws IOException {
+    Preconditions.checkNotNull(reports);
+    containerReportsCount.incrementAndGet();
+
+    DatanodeDetails datanode = DatanodeDetails.getFromProtoBuf(
+        reports.getDatanodeDetails());
+    if (reports.getReportsCount() > 0) {
+      Map containers = nodeContainers.get(datanode);
+      if (containers == null) {
+        containers = new LinkedHashMap();
+        nodeContainers.put(datanode, containers);
+      }
+
+      for (StorageContainerDatanodeProtocolProtos.ContainerInfo report:
+          reports.getReportsList()) {
+        containers.put(report.getContainerName(), report);
+      }
+    }
+
+    return StorageContainerDatanodeProtocolProtos
+        .ContainerReportsResponseProto.newBuilder().build();
+  }
+
+  //from 1cf4d15f3f89ebd202b3a3a2e0404598(23-39)
+    public void testEnabledSetting() throws Exception {
+        boolean enabled = randomBoolean();
+        Settings settings = Settings.builder()
+            .put("path.home", createTempDir())
+            .put("xpack.logstash.enabled", enabled)
+            .build();
+        LogstashFeatureSet featureSet = new LogstashFeatureSet(settings, null);
+        assertThat(featureSet.enabled(), is(enabled));
+
+        PlainActionFuture<XPackFeatureSet.Usage> future = new PlainActionFuture<>();
+        featureSet.usage(future);
+        XPackFeatureSet.Usage usage = future.get();
+
+        BytesStreamOutput out = new BytesStreamOutput();
+        usage.writeTo(out);
+        XPackFeatureSet.Usage serializedUsage = new LogstashFeatureSetUsage(out.bytes().streamInput());
+        assertThat(serializedUsage.enabled(), is(enabled));
+    }
+
+
+   }

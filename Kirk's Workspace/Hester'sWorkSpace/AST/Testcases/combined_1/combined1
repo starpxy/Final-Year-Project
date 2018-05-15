@@ -1,0 +1,145 @@
+#not copied
+def __init__(self):
+    self.lw.write_info_log("reading files...")
+    self.files = os.listdir(self.path)  # get all the file names
+    self.files.remove('.DS_Store')
+    for file in self.files:  # go through the folder
+        if not os.path.isdir(file):  # judge if it is a folder
+            self.documents[file] = conv.to_dic(self.path + "/" + file)
+            self.contents.append(self.documents[file]['content'])
+            self.wholeContent += self.documents[file]['content']
+    self.lw.write_info_log("get " + str(len(self.documents)) + " documents")
+    # indexing
+    self.lw.write_info_log("indexing...")
+    self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to', 'print']
+    self.vectorizer = CountVectorizer()
+    self.tfidf = TfidfVectorizer()
+    self.X=''
+
+
+#from c3 l8-l48
+_name = 'project.task.merge.wizard'
+
+task_ids = fields.Many2many('project.task', string="Tasks to Merge", required=True)
+user_id = fields.Many2one('res.users', string="Assigned to")
+create_new_task = fields.Boolean('Create a new task')
+target_task_name = fields.Char('New task name')
+target_project_id = fields.Many2one('project.project', string="Target Project")
+target_task_id = fields.Many2one('project.task', string="Merge into an existing task")
+
+@api.multi
+def merge_tasks(self):
+    values = {
+        'user_id': self.user_id.id,
+        'description': self.merge_description(),
+    }
+    if self.create_new_task:
+        values.update({
+            'name': self.target_task_name,
+            'project_id': self.target_project_id.id
+        })
+        self.target_task_id = self.env['project.task'].create(values)
+    else:
+        self.target_task_id.write(values)
+    self.merge_followers()
+    self.target_task_id.message_post_with_view(
+        self.env.ref('project.mail_template_task_merge'),
+        values={'target': True, 'tasks': self.task_ids - self.target_task_id},
+        subtype_id=self.env.ref('mail.mt_comment').id
+    )
+    (self.task_ids - self.target_task_id).message_post_with_view(
+        self.env.ref('project.mail_template_task_merge'),
+        values={'target': False, 'task': self.target_task_id},
+        subtype_id=self.env.ref('mail.mt_comment').id
+    )
+    (self.task_ids - self.target_task_id).write({'active': False})
+    return {
+        "type": "ir.actions.act_window",
+        "res_model": "project.task",
+        "views": [[False, "form"]],
+        "res_id": self.target_task_id.id,
+    }
+
+
+#from c2 L55-L84
+def test_any_batch_size(self):
+    inputs = tf.placeholder(tf.float32, shape=[None, 28, 28, 1])
+    mscore = util.mnist_score(inputs)
+    for batch_size in [4, 16, 30]:
+      with self.test_session() as sess:
+        sess.run(mscore, feed_dict={inputs: np.zeros([batch_size, 28, 28, 1])})
+
+def test_deterministic(self):
+    m_score = util.mnist_score(real_digit())
+    with self.test_session():
+      m_score1 = m_score.eval()
+      m_score2 = m_score.eval()
+    self.assertEqual(m_score1, m_score2)
+
+    with self.test_session():
+      m_score3 = m_score.eval()
+    self.assertEqual(m_score1, m_score3)
+
+def test_single_example_correct(self):
+    real_score = util.mnist_score(real_digit())
+    fake_score = util.mnist_score(fake_digit())
+    with self.test_session():
+      self.assertNear(1.0, real_score.eval(), 1e-6)
+      self.assertNear(1.0, fake_score.eval(), 1e-6)
+
+def test_minibatch_correct(self):
+    mscore = util.mnist_score(
+        tf.concat([real_digit(), real_digit(), fake_digit()], 0))
+    with self.test_session():
+      self.assertNear(1.612828, mscore.eval(), 1e-6)
+
+
+
+#from c1 L11-L31
+def get_payslip_lines(self, objs):
+        res = []
+        ids = []
+        for item in objs:
+            if item.appears_on_payslip is True and not item.salary_rule_id.parent_rule_id:
+                ids.append(item.id)
+        if ids:
+            res = self.env['hr.payslip.line'].browse(ids)
+        return res
+
+def get_total_by_rule_category(self, obj, code):
+    category_total = 0
+    category_id = self.env['hr.salary.rule.category'].search([('code', '=', code)], limit=1).id
+    if category_id:
+        line_ids = self.env['hr.payslip.line'].search([('slip_id', '=', obj.id), ('category_id', 'child_of', category_id)])
+        for line in line_ids:
+            category_total += line.total
+    return category_total
+
+def get_employer_line(self, obj, parent_line):
+    return self.env['hr.payslip.line'].search([('slip_id', '=', obj.id), ('salary_rule_id.parent_rule_id.id', '=', parent_line.salary_rule_id.id)], limit=1)
+
+
+#not copied
+def import_in(self,filename):
+    dic = conv.to_dic(file_name=filename)
+    print(dic['code'])
+    # return  self.compareQueries(dic['code'],q1)
+
+
+#compare if two queries are the same using hash functions
+def compareQueries(self, query1, query2):
+    h1=self.nodeToHash(query1)
+    h2 = self.nodeToHash(query2)
+    return h1==h2
+
+#parse a query
+def nodeToHash(self, node):
+    qRoot = ast.parse(node)
+    self.visitor.visit(qRoot)
+    qt = ast.dump(qRoot)
+    m = hashlib.md5()
+    m.update(qt.encode("utf8"))
+    h = m.hexdigest()
+    return h
+
+

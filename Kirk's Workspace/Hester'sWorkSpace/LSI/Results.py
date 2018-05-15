@@ -44,33 +44,3 @@ class Results:
         # print('matching docs:')
         # print(self.matchingLines)
 
-    def to_dict(self):
-        """
-        Updated by Kirk on 09/05/2018
-        :result Return a dictionary
-        """
-        resultDict = {}
-
-        resultDict["numOfResults"] = self.numOfResults
-        resultDict["matchingLines"] = self.matchingLines
-        resultDict["hitDocs"] = self.hitDocs
-        resultDict["fullHitLines"] = self.fullHitLines
-
-        return resultDict
-
-    @staticmethod
-    def from_dict(resultDict):
-        """
-        Updated by Kirk on 09/05/2018
-        """
-        numOfResults = resultDict["numOfResults"]
-        matchingLines = resultDict["matchingLines"]
-        hitDocs = resultDict["hitDocs"]
-        fullHitLines = resultDict["fullHitLines"]
-
-        return Results(
-            numOfResults = numOfResults, 
-            matchingLines = matchingLines,
-            hitDocs = hitDocs,
-            fullHitLines = fullHitLines
-            )
