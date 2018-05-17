@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/CodEX$LSI_TFIDF.coverage" NAME="LSI_TFIDF Coverage Results" MODIFIED="1526363608872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/LSI" />
-    <SUITE FILE_PATH="coverage/CodEX$LSI_NLP.coverage" NAME="LSI_NLP Coverage Results" MODIFIED="1526309292609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/LSI" />
+    <SUITE FILE_PATH="coverage/CodEX$LSI_NLP.coverage" NAME="LSI_NLP Coverage Results" MODIFIED="1526388933596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/LSI" />
     <SUITE FILE_PATH="coverage/CodEX$ASTSearching.coverage" NAME="ASTSearching Coverage Results" MODIFIED="1526218769070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/AST" />
     <SUITE FILE_PATH="coverage/CodEX$test.coverage" NAME="test Coverage Results" MODIFIED="1521030304538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/LSI" />
     <SUITE FILE_PATH="coverage/CodEX$java_AST.coverage" NAME="java_AST Coverage Results" MODIFIED="1526218043842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search/supportings/java_ast" />
@@ -34,34 +34,34 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodEX/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+            <state relative-caret-position="285">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LSI_TFIDF.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LSI_TFIDF.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/supportings/LSI/LSI_TFIDF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="300">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LSI_NLP.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LSI_NLP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/search/supportings/LSI/LSI_NLP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-510">
-              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+            <state relative-caret-position="409">
+              <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1526357636536" expanded="true" signature="779:10361" ph="..." />
-                <marker date="1526357636536" expanded="true" signature="4937:7368" ph="..." />
-                <marker date="1526357636536" expanded="true" signature="4974:6998" ph="..." />
-                <marker date="1526357636536" expanded="true" signature="8841:9319" ph="..." />
+                <element signature="e#4440#6895#0" expanded="false" />
+                <element signature="e#6953#9888#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,12 +70,10 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+            <state relative-caret-position="304">
+              <caret line="88" column="23" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
               <folding>
                 <element signature="e#51#62#0" expanded="true" />
-                <marker date="1526357765348" expanded="true" signature="1651:1969" ph="..." />
-                <marker date="1526357765348" expanded="true" signature="1809:1866" ph="..." />
               </folding>
             </state>
           </provider>
@@ -84,8 +82,8 @@
       <file leaf-file-name="nlp-result.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/templates/nlp-result.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
-              <caret line="85" column="63" selection-start-line="85" selection-start-column="63" selection-end-line="85" selection-end-column="63" />
+            <state relative-caret-position="175">
+              <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -104,18 +102,8 @@
       <file leaf-file-name="FCIConverter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search/supportings/FCIConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormattedCodeInterface.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/search/supportings/FormattedCodeInterface.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="94" column="24" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="24" />
+            <state relative-caret-position="349">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -194,7 +182,6 @@
         <option value="$PROJECT_DIR$/CodEX/urls.py" />
         <option value="$PROJECT_DIR$/search/templates/nls.html" />
         <option value="$PROJECT_DIR$/search/templates/index-sub.html" />
-        <option value="$PROJECT_DIR$/CodEX/config.py" />
         <option value="$PROJECT_DIR$/search/supportings/AST/Results.py" />
         <option value="$PROJECT_DIR$/search/supportings/java_ast/Results.py" />
         <option value="$PROJECT_DIR$/search/supportings/AST/ASTSearching.py" />
@@ -202,9 +189,10 @@
         <option value="$PROJECT_DIR$/search/templates/snippet-result.html" />
         <option value="$PROJECT_DIR$/search/supportings/LSI/logs/info.log" />
         <option value="$PROJECT_DIR$/search/templates/nlp-result.html" />
-        <option value="$PROJECT_DIR$/search/supportings/LSI/LSI_NLP.py" />
         <option value="$PROJECT_DIR$/search/views.py" />
         <option value="$PROJECT_DIR$/search/supportings/LSI/LSI_TFIDF.py" />
+        <option value="$PROJECT_DIR$/CodEX/config.py" />
+        <option value="$PROJECT_DIR$/search/supportings/LSI/LSI_NLP.py" />
       </list>
     </option>
   </component>
@@ -488,7 +476,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.LSI_TFIDF">
+  <component name="RunManager" selected="Python.LSI_NLP">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -855,8 +843,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.LSI_TFIDF" />
-        <item index="1" class="java.lang.String" itemvalue="Python.LSI_NLP" />
+        <item index="0" class="java.lang.String" itemvalue="Python.LSI_NLP" />
+        <item index="1" class="java.lang.String" itemvalue="Python.LSI_TFIDF" />
         <item index="2" class="java.lang.String" itemvalue="Python.ASTSearching" />
         <item index="3" class="java.lang.String" itemvalue="Python.java_AST" />
         <item index="4" class="java.lang.String" itemvalue="Python.test" />
@@ -886,7 +874,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.48855507" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.47424892" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.47424892" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33493975" sideWeight="0.8483548" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -1063,6 +1051,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,6 +1059,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="105" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="137" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,6 +1082,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,6 +1113,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#1342#3506#0" expanded="false" />
+            <element signature="e#3592#15778#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1137,6 +1132,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="161" column="16" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
+          <folding>
+            <element signature="e#1843#3288#0" expanded="false" />
+            <element signature="e#3393#5709#0" expanded="false" />
+            <element signature="e#12386#14454#0" expanded="false" />
+            <element signature="e#21456#21952#0" expanded="false" />
+            <element signature="e#21997#22607#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1177,22 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/supportings/FCIConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/supportings/FormattedCodeInterface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="94" column="24" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search/templates/nls.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
@@ -1215,53 +1201,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodEX/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search/templates/nlp-result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="85" column="63" selection-start-line="85" selection-start-column="63" selection-end-line="85" selection-end-column="63" />
+        <state relative-caret-position="175">
+          <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/search/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+        <state relative-caret-position="304">
+          <caret line="88" column="23" selection-start-line="88" selection-start-column="23" selection-end-line="88" selection-end-column="23" />
           <folding>
             <element signature="e#51#62#0" expanded="true" />
-            <marker date="1526357765348" expanded="true" signature="1651:1969" ph="..." />
-            <marker date="1526357765348" expanded="true" signature="1809:1866" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/supportings/LSI/LSI_NLP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1526357636536" expanded="true" signature="779:10361" ph="..." />
-            <marker date="1526357636536" expanded="true" signature="4937:7368" ph="..." />
-            <marker date="1526357636536" expanded="true" signature="4974:6998" ph="..." />
-            <marker date="1526357636536" expanded="true" signature="8841:9319" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/search/supportings/LSI/LSI_TFIDF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
+        <state relative-caret-position="300">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/supportings/FormattedCodeInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="94" column="24" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodEX/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/supportings/FCIConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search/supportings/LSI/LSI_NLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#4440#6895#0" expanded="false" />
+            <element signature="e#6953#9888#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

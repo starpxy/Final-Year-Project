@@ -83,8 +83,9 @@
 <div class="container">
     {% for i in results %}
         <div class="container">
-            <a href="/detail/?id={{ i.get_fci_obj.get_id }}&ml=">
-                <h5>{{ i.get_fci_obj.get_project_name }} </h5></a>
+{#            <a href="/detail/?id={{ i.get_fci_obj.get_id }}&ml=">#}
+                <h5>{{ i.get_fci_obj.get_project_name }} </h5>
+{#            </a>#}
             <pre style="max-height: 300px" class="line-numbers" data-line=""><code
                     class="language-{{ i.get_fci_obj.get_language }}">{{ i.get_fci_obj.get_code }}</code></pre>
             <hr>

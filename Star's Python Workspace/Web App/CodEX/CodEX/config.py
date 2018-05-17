@@ -17,9 +17,10 @@ configs = {
         'AST_java_indexing_path':'/Users/quanyewu/Desktop/files/ast_java.pik',
         'socket_path': '/home/ubuntu/temp-socket',
         'unclean_path': '',
+        'stopwords_path':'/Users/quanyewu/Desktop/files/nlp_stopwords.txt',
         'cleaned_path': '',
     },
     'others': {
-        'page_num': 4,
+        'page_num': 5,
     }
 }

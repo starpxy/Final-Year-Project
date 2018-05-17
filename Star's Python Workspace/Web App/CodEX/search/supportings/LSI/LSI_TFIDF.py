@@ -39,6 +39,7 @@ class LSI_TFIDF():
     end_time = time.clock()
     pageNum=configs['others']['page_num']
 
+
     # def __init__(self):
     # self.vectorizer = CountVectorizer()
     # #if there exist the pickle file, read it
@@ -102,7 +103,6 @@ class LSI_TFIDF():
         size = len(self.documents)
         self.lw.write_info_log("get " + str(size) + " documents")
         self.lw.write_info_log("indexing...")
-        self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to', 'print']
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
         self.idf = self.tfidf.idf_
         self.word = self.word = list(self.tfidf.vocabulary_.keys())

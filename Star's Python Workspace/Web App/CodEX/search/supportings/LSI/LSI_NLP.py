@@ -46,25 +46,13 @@ class LSI_TFIDF():
     lineNo = {}
     expireTime = 30
     pageNum=configs['others']['page_num']
+    # self defined stop words
+    stopwords = []
 
-    # def __init__(self):
-    # self.vectorizer = CountVectorizer()
-    # #if there exist the pickle file, read it
-    # if os.path.exists(self.index_path):
-    #     rfile=open(self.index_path, 'rb')
-    #     self.s = pickle.load(rfile)
-    #     self.u = pickle.load(rfile)
-    #     self.d = pickle.load(rfile)
-    #     self.tfidf = pickle.load(rfile)
-    #     self.lineNo=pickle.load(rfile)
-    #
-    #     self.idf = self.tfidf.idf_
-    #     self.word=list(self.tfidf.vocabulary_.keys())
-    #     self.files=list(self.lineNo.keys())
-    #
-    # else:#if there is no such pickle file, indexing
-    #     self.indexing()
-
+    def __init__(self):
+        f = open(configs['paths']['stopwords_path'], 'r', encoding="utf-8")
+        s = f.read()
+        self.stopwords = s.split('\n')
 
     # indexing
     def indexing(self):
@@ -73,18 +61,18 @@ class LSI_TFIDF():
         if '.DS_Store' in self.files:
             self.files.remove('.DS_Store')
         fs = len(self.files)
-        self.tfidf = TfidfVectorizer()
+        self.tfidf = TfidfVectorizer(stop_words=self.stopwords)
         i = 0
         while i < fs:  # go through the folder
             file = self.files[i]
             if not os.path.isdir(file):  # judge if it is a folder
                 self.documents[file] = conv.to_dic(self.path + "/" + file)
-                if len(self.documents[file]['project_name'].strip()) > 0:
-                    self.contents.append(self.documents[file]['project_name'])
+                if len(self.documents[file]['content'].strip()) > 0:
+                    self.contents.append(self.documents[file]['content'])
                     # store the line numbers of the term
                     self.lineNo[file] = {}
                     j = 0
-                    for line in self.documents[file]['project_name'].split('\n'):
+                    for line in self.documents[file]['content'].split('\n'):
                         lineList = [line]
                         if len(lineList) > 0:
                             try:
@@ -110,7 +98,6 @@ class LSI_TFIDF():
         size = len(self.documents)
         self.lw.write_info_log("get " + str(size) + " documents")
         self.lw.write_info_log("indexing...")
-        self.stopwords = ['and', 'edition', 'for', 'in', 'little', 'of', 'the', 'to', 'print']
         self.re = self.tfidf.fit_transform(self.contents).toarray().T  # tf-idf values
         self.idf = self.tfidf.idf_
         self.word = self.word = list(self.tfidf.vocabulary_.keys())
@@ -168,6 +155,7 @@ class LSI_TFIDF():
             if len(fullHitLineskeys)>0:
                 for k in fullHitLineskeys:
                     for t in fullHitLines[k]:
+                        print(k)
                         displayList.append(t)
             if len(hitDocskeys) > 0:
                 for k in hitDocskeys:
@@ -271,4 +259,4 @@ class LSI_TFIDF():
 
 
 if __name__ == '__main__':
-    LSI_TFIDF().getResult("1",1)
+    LSI_TFIDF().getResult('merge sort',1)
