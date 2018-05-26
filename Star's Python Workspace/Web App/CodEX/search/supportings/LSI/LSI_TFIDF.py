@@ -162,6 +162,7 @@ class LSI_TFIDF():
                     for t in fullHitLines[k]:
                         displayList.append(t)
             if len(hitDocskeys) > 0:
+                # print('================')
                 for k in hitDocskeys:
                     for t in hitDocs[k]:
                         displayList.append(t)
@@ -241,13 +242,12 @@ class LSI_TFIDF():
             else:
                 fullHit = 0
             if fullHit > 0:
-                print(k,end=': ')
-                print(hitWords)
                 if fullHit in fullHitLines:
                     fullHitLines[fullHit].append((k, hitLines))
                 else:
                     fullHitLines[fullHit] = [(k, hitLines)]
-            elif lengthHit > 0:
+            elif lengthHit > 0 and len(qWord)==1:
+                # print('-----------')
                 if lengthHit in hitDocs:
                     hitDocs[lengthHit].append((k, hitLines))
                 else:
@@ -255,13 +255,13 @@ class LSI_TFIDF():
             else:
                 if similarity > 0:
                     if similarity not in matchingLines:
-                        matchingLines[similarity] = [(k, hitLines)]
+                        matchingLines[similarity] = [(k, [])]
                     else:
-                        matchingLines[similarity].append((k, hitLines))
+                        matchingLines[similarity].append((k, []))
                 else:
                     # don't store it
                     length -= 1
-
+        # print(hitDocs)
         return (fullHitLines, hitDocs, matchingLines, length)
 
 

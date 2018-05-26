@@ -2,6 +2,7 @@
 # @author: Star
 # @time: 10-03-2018
 import json
+import hashlib
 import redis
 import time
 from CodEX.config import configs
@@ -18,7 +19,7 @@ from search.supportings.AST.ASTSearching import ASTSearching
 
 
 def index(request):
-    return render(request, 'index-sub.html')
+    return render(request, 'index.html')
 
 
 def task(message, shared):
@@ -60,7 +61,7 @@ def search(request):
         m_l = m_l[0:len(m_l) - 1]
         fei = FrontEndInterface(temp, m_l)
         files.append(fei)
-    return render(request, 'search-result-sub.html',
+    return render(request, 'search-result.html',
                   {'results': files, 'q': q, 'p': p, 'pages': pages, 'p_p': p_p, 'n_p': n_p, 'pre': p - 1,
                    'next': p + 1, 't_p': t_p})
 
@@ -113,8 +114,11 @@ def plagiarizeResult(request):
     page = int(request.POST['p'])
     operate_type = request.POST['l']
     timestamp = time.time()
+    m = hashlib.md5()
+    m.update((str(timestamp)+snippet).encode("utf8"))
+    ts = m.hexdigest()
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)
-    r.set(str(timestamp), snippet, ex=3000)
+    r.set(ts, snippet, ex=3000)
     operate_type = int(operate_type)
     # timestamp = time.time()
     # client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
@@ -190,7 +194,7 @@ def plagiarizeResult(request):
     return render(request, 'snippet-result.html',
                   {'snippet': snippet, "is_global": is_global, 'component_documents': component_document,
                    "global_similarity": global_similarity, "plagiarize_list": plagiarize_list,
-                   "document_list": document_list, "l": operate_type, 'ts': str(timestamp)})
+                   "document_list": document_list, "l": operate_type, 'ts': ts})
 
 
 def snippet_detail(request):
@@ -218,4 +222,4 @@ def detail(request):
     ml = request.GET['ml']
     m_l = ml
     fci_obj = fci.to_fciObject(config.configs['paths']['FCI_path'] + "/lsi/" + id + '.json')
-    return render(request, 'detail-sub.html', {'detail': fci_obj, 'match_lines': m_l})
+    return render(request, 'detail.html', {'detail': fci_obj, 'match_lines': m_l})

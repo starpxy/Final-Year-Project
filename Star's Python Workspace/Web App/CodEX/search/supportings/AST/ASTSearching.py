@@ -41,7 +41,7 @@ class ASTSearching(Singleton):
     wholeSimilarity = 0
     matchingBlock = {}  # {docID: (the startline and endline of the matching blocks)}.
     blockWeights = {}  # {docID: (qstartline, qendline): weight of the biggest matching block}
-    expireTime = 300
+    expireTime = 1
 
     # parse the corpus
     def ReadFiles(self):
