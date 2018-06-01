@@ -7,9 +7,11 @@ from gensim import corpora, models, similarities
 import os
 import pickle
 import time
-
+import operator
+import json
 import FCIConverter
 from LogWriter import LogWriter
+from NLTK.NLTKFormatter import NLTKFormatter
 
 # from nltk.stem.lancaster import LancasterStemmer
 
@@ -39,8 +41,8 @@ def ReadFilesDeep(rootDir):
 	return filePath
 
 # File path for JSON folder
-path_json = "C:\\Users\\soapk\\Desktop\\so_all"
-path_so_pix = "C:\\Users\\soapk\\Desktop\\so_all.pik"
+path_json = "C:\\Users\\soapk\\Desktop\\so_all_cleaned"
+path_so_pix = "C:\\Users\\soapk\\Desktop\\so_all_cleaned.pik"
 
 # Get all SO JSONs
 files = ReadFilesDeep(path_json)
@@ -104,10 +106,36 @@ else:
 
 # print(texts_stemmed)
 
-saved_filename = "so_all"
+saved_filename = "so_all_cleaned"
 
 if os.path.exists(os.path.join('C:\\Users\\soapk\\Desktop', saved_filename + ".dict")):
 	dictionary = corpora.Dictionary.load(os.path.join('C:\\Users\\soapk\\Desktop', saved_filename + ".dict"))
+	
+	# with open("C:\\Users\\soapk\\Desktop\\so_dict.txt", 'w', encoding = 'utf-8')as f:
+	# 	f.write(str(dictionary.token2id))
+	# 	f.write("\n\n")
+
+	# 	for word in dictionary.token2id:
+	# 		f.write(word + "\n")
+	# 		f.write("tokenid " + str(dictionary.token2id[word]) + "\n")
+	# 		f.write("freq " + str(dictionary.dfs[dictionary.token2id[word]]) + "\n")
+	# 		f.write("\n")
+
+			
+
+	# # Dict {word : freq}
+	# freqDict = {}
+	# for word in dictionary.token2id:
+	# 	freqDict[word] = dictionary.dfs[dictionary.token2id[word]]
+	# 	# print(word)
+	# 	# print(dictionary.token2id[word])
+	# 	# print(dictionary.dfs[dictionary.token2id[word]])
+
+	# sorted_freqDict = sorted(freqDict.items(), key=operator.itemgetter(1))
+
+	# with open("C:\\Users\\soapk\\Desktop\\so_dict_sorted.txt", 'w', encoding = 'utf-8')as f:
+	# 	f.write(json.dumps(sorted_freqDict))
+
 else:
 	dictionary = corpora.Dictionary(so_titles)
 
@@ -143,11 +171,22 @@ else:
 	index = similarities.SparseMatrixSimilarity(corpus_tfidf, num_features = len(dictionary))
 	index.save(os.path.join('C:\\Users\\soapk\\Desktop', saved_filename + ".index"))
 
-# print("!")
-query = "quick sort"
 
-bow_query = dictionary.doc2bow(query.lower().split())
-# print("!")
+nltk_formatter = NLTKFormatter()
+
+query = "return error"
+
+print(nltk_formatter.format_sentence(query).split())
+print(query.lower().split())
+
+# Ciaran NLTK approach
+bow_query = dictionary.doc2bow(nltk_formatter.format_sentence(query).split())
+
+print(bow_query)
+
+# Basic gensim approach
+bow_query_basic = dictionary.doc2bow(query.lower().split())
+print(bow_query_basic)
 
 # Query
 sims = index[tfidf[bow_query]]
@@ -162,13 +201,14 @@ print(endTime - startTime)
 
 # lw.write_info_log("Sims Result\n" + str(sims)
 
-with open("C:\\Users\\soapk\\Desktop\\result.txt", 'w', encoding = 'utf-8')as f:
+with open("C:\\Users\\soapk\\Desktop\\result-" + query + ".txt", 'w', encoding = 'utf-8')as f:
 	for i in range(len(sims)):
 		so_id = sims[i][0]
 		so_sim_score = sims[i][1]
 		# print(so_dict[so_id])
 		# print(so_dict[so_id]['content'])
 		if not so_sim_score == 0:
+			# f.write("Search Ranked Result: " + so_dict[so_id]['id'] + "\n")
 			f.write("Search Ranked Result: " + so_dict[so_id]['project_name'] + "\n")
 
 		# lw.write_info_log("Search Ranked Result: " + so_dict[so_id]['project_name'])

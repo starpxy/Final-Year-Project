@@ -518,8 +518,8 @@ def main():
 	crawler.config_github_account("SoapKe", "BBC19951228Soap")
 
 	# Config the output path
-	if not os.path.exists(output_path):
-		os.mkdir(output_path)
+	if not os.path.exists(args.output_path):
+		os.mkdir(args.output_path)
 
 	crawler.output_path = args.output_path
 	crawler.download_record_filepath = os.path.join("data", "github_repo_records_" + crawler.language + ".json")
