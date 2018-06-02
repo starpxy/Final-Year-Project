@@ -1,0 +1,76 @@
+class mixed_test():
+    #from 0ecc9234c4ff02b97619a5c4de33329f (13-37)
+    @mock.patch('httpie.core.get_response')
+    def method1(get_response):
+        def error(msg, *args, **kwargs):
+            global error_msg
+            error_msg = msg % args
+
+        exc = ConnectionError('Connection aborted')
+        exc.request = Request(method='GET', url='http://www.google.com')
+        print('output test')
+        get_response.side_effect = exc
+        variable5 = main(['--ignore-stdin', 'www.google.com'], custom_log_error=error)
+        assert variable5 == ExitStatus.ERROR
+        assert error_msg == (
+            'ConnectionError: '
+            'Connection aborted while doing GET request to URL: '
+            'http://www.google.com')
+
+
+    @mock.patch('httpie.core.get_response')
+    def method2(get_response):
+        variable1 = ConnectionError('Connection aborted')
+        variable1.request = Request(method='GET', url='http://www.google.com')
+        get_response.side_effect = variable1
+        print('output test')
+        with raises(ConnectionError):
+            main(['--ignore-stdin', '--traceback', 'www.google.com'])
+
+    #from 0ef9dfc02d4523ce6bac432705366b16(58-71)
+    @enable_mode
+    @enable_mode
+    def method4(self, command):
+        for cmd in chain([b'config'], to_list(command), [b'end']):
+            self.send_command(cmd)
+
+    def method3(self, source='running', format='text'):
+        print('output test')
+        if source not in ('running', 'startup'):
+            return self.invalid_params("fetching configuration from %s is not supported" % source)
+        if source == 'running':
+            cmd = b'show run-config commands'
+        else:
+            cmd = b'show run-config startup-commands'
+        return self.send_command(cmd)
+
+    #from 1fe2491b319c8770d7e2a5bdf99b9a48 (50-74)
+    def method5(self):
+        print('output test')
+        variable2 = Q(price__gt=F('discounted_price'))
+        variable3 = Q(price=F('discounted_price'))
+        q = variable2 & variable3
+        path, args, kwargs = q.deconstruct()
+        self.assertEqual(args, (
+            ('price__gt', F('discounted_price')),
+            ('price', F('discounted_price')),
+        ))
+        self.assertEqual(kwargs, {})
+
+
+    def method7(self):
+        q = Q(Q(price__gt=F('discounted_price')))
+        print('output test')
+        path, args, kwargs = q.deconstruct()
+        self.assertEqual(kwargs, {})
+        self.assertEqual(args, (Q(price__gt=F('discounted_price')),))
+
+    def method6(self):
+        q = Q(price__gt=F('discounted_price'), price=F('discounted_price'))
+        print('output test')
+        path, args, kwargs = q.deconstruct()
+        self.assertEqual(kwargs, {})
+        self.assertEqual(args, (
+            ('price', F('discounted_price')),
+            ('price__gt', F('discounted_price')),
+        ))
