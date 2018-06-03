@@ -1,4 +1,4 @@
-from LSI import LSI_TFIDF as LSI
+from CodexMRS.vendor.as_algorithms.LSI import LSI_TFIDF as LSI
 import time
 
 time_start = time.clock()

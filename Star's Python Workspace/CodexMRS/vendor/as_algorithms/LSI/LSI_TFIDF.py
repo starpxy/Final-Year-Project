@@ -5,11 +5,11 @@ from scipy import spatial
 from scipy.sparse import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from search.supportings import FCIConverter as conv
-from search.supportings import LogWriter as lg
+from CodexMRS.vendor import FCIConverter as conv
+from CodexMRS.vendor import LogWriter as lg
 import os
-from CodEX.config import configs
-from search.supportings.LSI import Results
+from CodexMRS.base.configs import config as configs
+from CodexMRS.vendor.as_algorithms.LSI import Results
 import pickle
 import time
 from scipy.sparse.linalg import svds
@@ -19,8 +19,8 @@ class LSI_TFIDF():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)
     lw = lg.LogWriter()
     # get files
-    path = configs['paths']['FCI_path'] + '/lsi'  # path name
-    index_path = configs['paths']['LSI_indexing_path']
+    path = ''  # path name
+    index_path = configs['LSI_pickle_path']
     files = []
     documents = {}
     sortedDocuments = []
@@ -37,7 +37,7 @@ class LSI_TFIDF():
     lineNo = {}
     expireTime = 600
     end_time = time.clock()
-    pageNum=configs['others']['page_num']
+    pageNum=configs['page_num']
 
 
     # def __init__(self):

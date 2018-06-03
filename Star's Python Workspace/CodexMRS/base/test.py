@@ -18,8 +18,5 @@ from CodexMRS.base.network import Server
 
 def test(message, share):
     print(message)
-    print(share)
-    share[message['test']] = 10
-
 
 Server(test, "localhost").start_listening()

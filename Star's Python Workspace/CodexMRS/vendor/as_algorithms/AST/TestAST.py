@@ -1,4 +1,4 @@
-from AST import ASTSearching as asts
+from CodexMRS.vendor.as_algorithms.AST import ASTSearching as asts
 import time
 q=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q", 'r').read()#combine multiple programs
 q1=open("/Users/hester/Desktop/Final-Year-Project/Hester'sWorkSpace/AST/Testcases/q1",'r').read()#copy one program

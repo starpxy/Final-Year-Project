@@ -6,6 +6,9 @@ import hashlib
 import redis
 import time
 from CodEX.config import configs
+from search.supportings.network import Client
+from search.supportings.communicator import CommunicationServer
+from search.supportings.network import Server
 import search.supportings.FCIConverter as fci
 from django.views.decorators.csrf import csrf_exempt
 from search.supportings.java_ast.java_AST import JavaAST
@@ -29,18 +32,16 @@ def task(message, shared):
 def search(request):
     q = request.GET['q']
     p = int(request.GET['p'])
-    # timestamp = time.time()
-    # client = Client("yeats.ucd.ie", "10.141.131.14", 9609,
-    #                 {'operate_type': 1, 'query': q, 'page': p, 'timestamp': timestamp})
-    # client.send_message()
-    # server = Server(task, '10.141.131.14')
-    # message = server.listen_once().get_message_body()
-    # message = json.loads(message)
-    # server = CommunicationServer()
-    # message = server.receive_message(socket_name=str(timestamp))
-    # result = message['result']
-    tfidf = LSI_TFIDF()
-    result = tfidf.getResult(query=q, page=p)
+
+    timestamp = time.time()
+    client = Client("as", "137.43.92.9", 9609,
+                    {'operate_type': 1, 'query': q, 'page': p, 'timestamp': str(timestamp)})
+    client.send_message()
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
+    result = message['result']
+    # tfidf = LSI_TFIDF()
+    # result = tfidf.getResult(query=q, page=p)
     pages = []
     f = result[1]
     total_p = (result[0] / configs['others']['page_num']) + 1
@@ -81,8 +82,15 @@ def nlsindex(request):
 def nls_result(request):
     q = request.GET['q']
     p = int(request.GET['p'])
-    tfidf = NLP_LSI_TFIDF()
-    result = tfidf.getResult(query=q, page=p)
+    # tfidf = NLP_LSI_TFIDF()
+    # result = tfidf.getResult(query=q, page=p)
+    timestamp = time.time()
+    client = Client("as", "137.43.92.9", 9609,
+                    {'operate_type': 2, 'query': q, 'page': p, 'timestamp': str(timestamp)})
+    client.send_message()
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
+    result = message['result']
     pages = []
     f = result[1]
     total_p = (result[0] / 10) + 1
@@ -130,12 +138,21 @@ def plagiarizeResult(request):
     ast = None
     language = ''
     if operate_type == 3:
-        ast = ASTSearching()
+        # ast = ASTSearching()
+        ast = 3
         language = 'python'
     else:
-        ast = JavaAST()
+        # ast = JavaAST()
+        ast = 4
         language = 'java'
-    result = ast.getResults(snippet, page)
+    timestamp = time.time()
+    client = Client("as", "137.43.92.9", 9609,
+                    {'operate_type': ast, 'query': snippet, 'page': page, 'timestamp': str(timestamp)})
+    client.send_message()
+    server = CommunicationServer()
+    message = server.receive_message(socket_name=str(timestamp))
+    result = message['result']
+    # result = ast.getResults(snippet, page)
     if result == 0:
         return render(request, 'snippet-result.html',
                       {'snippet': snippet, })

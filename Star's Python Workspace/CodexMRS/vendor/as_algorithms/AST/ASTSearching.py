@@ -1,13 +1,13 @@
 import redis
 import os
 import ast
-from search.supportings import FCIConverter as conv
-from search.supportings import LogWriter as lg
-from search.supportings.AST import MyVisitor as mv
+from CodexMRS.vendor import FCIConverter as conv
+from CodexMRS.vendor import LogWriter as lg
+from CodexMRS.vendor.as_algorithms.AST import MyVisitor as mv
 import pickle
 import hashlib
-from search.supportings.AST import Results
-from CodEX.config import configs
+from CodexMRS.vendor.as_algorithms.AST import Results
+from CodexMRS.base.configs import config as configs
 
 
 class Singleton(object):
@@ -22,8 +22,8 @@ class Singleton(object):
 class ASTSearching(Singleton):
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
-    path = configs['paths']['FCI_path']+'/python'  # path name
-    index_path = configs['paths']['AST_python_indexing_path']
+    path = ''  # path name
+    index_path = configs['AST_python_pickle_path']
     files = []
     documents = {}
     # hashTrees={}#{fileName: {nodeHash: {nested dictionaries with hash values in stand of nodes} } }
@@ -37,7 +37,7 @@ class ASTSearching(Singleton):
     matchingThreshold = 0.6
     weightThreshold = 10  # weight outweigh weightThreshold will be taken into consideration
     blockThreshold = 50  # weight outweigh the blockthreshold means this node will be a code block which should be included into the global searching
-    pageNum = configs['others']['page_num']
+    pageNum = configs['page_num']
     wholeSimilarity = 0
     matchingBlock = {}  # {docID: (the startline and endline of the matching blocks)}.
     blockWeights = {}  # {docID: (qstartline, qendline): weight of the biggest matching block}

@@ -5,15 +5,15 @@ from scipy import spatial
 from scipy.sparse import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from search.supportings import FCIConverter as conv
-from search.supportings import LogWriter as lg
+from CodexMRS.vendor import FCIConverter as conv
+from CodexMRS.vendor import LogWriter as lg
 import os
 # import math
-from search.supportings.LSI import Results
+from CodexMRS.vendor.as_algorithms.LSI import Results
 import pickle
 import redis
 from scipy.sparse.linalg import svds
-from CodEX.config import configs
+from CodexMRS.base.configs import config as configs
 
 
 # singleton
@@ -28,8 +28,8 @@ class LSI_TFIDF():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)
     lw = lg.LogWriter()
     # get files
-    path = configs['paths']['FCI_path']+'/so' # path name
-    index_path = configs['paths']['NLP_indexing_path']
+    path = '' # path name
+    index_path = configs['NLP_pickle_path']
     files = []
     documents = {}
     sortedDocuments = []
@@ -45,12 +45,12 @@ class LSI_TFIDF():
     idf = None
     lineNo = {}
     expireTime = 30
-    pageNum=configs['others']['page_num']
+    pageNum=configs['page_num']
     # self defined stop words
     stopwords = []
 
     def __init__(self):
-        f = open(configs['paths']['stopwords_path'], 'r', encoding="utf-8")
+        f = open(configs['stopwords_path'], 'r', encoding="utf-8")
         s = f.read()
         self.stopwords = s.split('\n')
 

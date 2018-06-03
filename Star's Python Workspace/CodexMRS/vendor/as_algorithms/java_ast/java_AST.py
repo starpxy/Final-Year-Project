@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 import javalang
-from search.supportings import FCIConverter as conv
-from search.supportings import LogWriter as lg
+from CodexMRS.vendor import FCIConverter as conv
+from CodexMRS.vendor import LogWriter as lg
 import pickle
 import hashlib
-from search.supportings.java_ast import Results
+from CodexMRS.vendor.as_algorithms.java_ast import Results
 import redis
 import os
-from CodEX.config import configs
+from CodexMRS.base.configs import config as configs
 
 
 class JavaAST():
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)  # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379
     lw = lg.LogWriter()
-    path = configs['paths']['FCI_path'] + '/java'  # path name
-    index_path = configs['paths']['AST_java_indexing_path']
+    path = ''  # path name
+    index_path = configs['AST_java_pickle_path']
 
     weights = {}  # {weight:[fileNames] }
     fileIndex = {}  # {fileName: {weight:{nodeHash:(startLine,EndLine)] } }
@@ -26,7 +26,7 @@ class JavaAST():
     matchingThreshold = 0.6
     weightThreshold = 10  # weight outweigh weightThreshold will be taken into consideration
     blockThreshold = 50  # weight outweigh the blockthreshold means this node will be a code block which should be included into the global searching
-    pageNum = configs['others']['page_num']
+    pageNum = configs['page_num']
     wholeSimilarity = 0
     matchingBlock = {}  # {docID: (the startline and endline of the matching blocks)}.
     blockWeights = {}  # {docID: (startline, endline): weight of the biggest matching block}
