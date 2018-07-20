@@ -309,5 +309,8 @@ if __name__ == '__main__':
     # print(msg.get_sender())
     # server = Server(test, "yeats.ucd.ie")
     # server.start_listening()
-    client = Client("localhost", "127.0.0.1", 9610, {"timestamp": "",'query':'test','page':1,'operate_type':1})
+    # client = Client("localhost", "127.0.0.1", 9610, {"timestamp": "",'query':'test','page':1,'operate_type':1})
+    # client.send_message()
+    client = Client("as", "monolith.ucd.ie", 9609,
+                    {'operate_type': 1, 'query': 'test', 'page': 1, 'timestamp': str(10000)})
     client.send_message()
